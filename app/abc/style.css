@@ -1,0 +1,332 @@
+
+/* Style the navigation bar */
+nav {
+    background-color:white;
+    padding: 15px; 
+    position: relative;
+    border: #426d45 ;
+}
+
+/* Style the unordered list */
+nav ul {
+    list-style-type: none; /* Remove default bullet points */
+    margin: 0px;
+    padding: 0; 
+    display: flex; /* Display list items in a row */
+    justify-content: center;
+}
+
+/* Style each list item */
+nav ul li {
+    margin-right: 20px; 
+    margin-left: 200px;
+}
+
+/* Style the links */
+nav a {
+    color: black; /* White text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make the text bold */
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+nav a:hover {
+    color: navy 
+}
+
+
+
+/* Why to recycle*/
+/* Style the recycle container */
+.recycle {
+    
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #426d45; /* Light background color for the container */
+    border: 1px solid #ddd; /* Light border around the container */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    margin: 80px 0; /* Center the container and add vertical margins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+
+/* Style the heading */
+.recycle h2 {
+    font-size: 40px; /* Font size for the heading */
+    color: #E1EDBD; /* Dark text color for better readability */
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+/* Style the paragraph */
+.recycle p {
+    
+    width:1000px;
+    height: 500px;
+    font-size: 20px; /* Font size for the paragraph */
+    color: white; /* Slightly lighter text color for the paragraph */
+    line-height: 1.6; /* Increase line height for better readability */
+}
+
+/* Style for the image */
+.recycle img {
+    
+    margin-right: 50px;
+    position: absolute; /* Absolute positioning */
+    top: 20px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    width: 300px; /* Width of the image */
+    height: 260px; /* Maintain aspect ratio */
+    z-index: 1; /* Ensure the image is in front of the content */
+}
+
+
+
+/* Style the content container */
+.content {
+    background-color: #ffffff; 
+    padding: 20px; /* Padding inside the container */
+    
+}
+
+/* Style the h2 heading */
+.content h2 {
+    color: blue; /* Blue color for the heading */
+    font-size: 60px; /* Font size for the heading */
+    margin-bottom: 5px; /* Space below the heading */
+   
+}
+
+
+
+/* Style the paragraphs */
+.content p {
+    font-size: 20px; /* Font size for the paragraphs */
+    color: #555; /* Slightly lighter text color for better readability */
+    line-height: 1.6; /* Increase line height for readability */
+    margin: 0 0 10px; /* Space below each paragraph */
+}
+
+
+.About {
+    padding: 20px;
+    font-family: Arial, sans-serif; /* Base font for content */
+    text-align: center; 
+}
+
+.About h2 {
+    font-family: 'Copperplate Gothic Light'; 
+    font-size: 40px;
+    font-weight: bold;
+    color:#8D6E63; /* Dark color for better readability */
+    margin-bottom: 15px;
+    
+}
+
+.About p {
+    font-size: 20px;
+    color: black; /* Slightly lighter color for paragraph text */
+    line-height: 1.6; /* Improved readability */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.About ul {
+    list-style-position: none; /* Position bullets inside the container */
+    margin: 0px auto ;
+    padding-left: 20px;
+    display: inline-block; /* Make the list container inline-block to center it */
+    text-align: left; /* Align text inside the list to the left */
+    margin-bottom: 40px;
+}
+
+.About li {
+    margin-bottom: 10px; /* Space between list items */
+    font-size: 18px;
+    color: #ab360f;
+}
+
+
+
+.container {
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.test {
+    
+    width: 50%;
+    height:auto;
+    background-color:#426d45; /* Light background color for the container */
+    border: 1px solid #ddd; /* Light border around the container */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px; /* Padding inside the container */
+    margin: 20px 0 10px 15px; /* Center the container and add vertical margins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    
+}
+
+.test p {
+    color: white;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.test:hover {
+    transform: scale(1.05); /* Slightly increase the size of the div */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darken and enlarge the shadow */
+}
+
+.graph {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.graph img {
+    margin-right: 20px; /* Adjust the space between the image and the text as needed */
+    
+}
+
+.graph h2, .graph p {
+    margin: 0;
+    font-size: 17px;
+}
+
+.graph h2 {
+    margin-bottom: 10px; /* Adjust the space between the heading and the paragraph as needed */
+    text-align: center;
+    font-size: 50px;
+}
+
+
+  
+  .team-section {
+    text-align: center;
+    padding: 50px;
+    background-color: #ffffff;
+  }
+  
+  .team-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    
+  }
+  
+  .team-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    flex-wrap: wrap;
+  }
+  
+  .team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member img {
+    width: 150px;
+    height: 210px;
+    object-fit: cover; /* Ensures images are properly cropped */
+    border-radius: 10%;
+    margin-bottom: 20px;
+    margin-left: 30px;
+  }
+  
+  .team-member h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .team-member p {
+    font-size: 1rem;
+    color: #666;
+  }
+
+
+  .footer {
+    background-color: #426d45;
+    color: white;
+    padding: 40px 20px;
+    height: 300px;
+  }
+
+  .footer-about{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-logo img {
+    width: 120px;
+  }
+  
+  .footer-links ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-links ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-contact p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  .footer-social a {
+    margin-right: 10px;
+  }
+  
+  .footer-social img {
+    width: 24px;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #4caf50;
+    padding-top: 20px;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

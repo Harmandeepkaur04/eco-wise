@@ -1,12 +1,10 @@
-import Image from "next/image";
+import React from "react";
+import Index from "./Index/Home";
 
 export default function Home() {
   return (
-    <main className="mainpage">
-      <div className="info-container">
-        <p>Details here</p>
-        <p>More details</p>
-      </div>
-    </main>
+   <main>
+    <Index/>
+   </main>
   );
 }
