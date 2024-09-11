@@ -12,11 +12,11 @@ export default function Index(){
         <header>
             <nav>
                 <ul>
-                <h1>EcoWise</h1>
-                    <li><Link href="/recycle">Recycle</Link></li>
+                {/* <h1>EcoWise</h1> */}
+                    <li><Link href="/recycle-page">Recycle</Link></li>
                     <li><Link href="/disposal">Disposal
                     </Link></li>
-                    <li><Link href="/rewards">Rewards</Link></li>
+                    <li><Link href="/rewards-page">Rewards</Link></li>
                     <li><Link href="/calender">Calender</Link></li>
                     <li><Link href="/profile">Profile</Link></li>
                 </ul> 
