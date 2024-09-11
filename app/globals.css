@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #8eb69b;
     --foreground: #ededed;
   }
 }
@@ -24,4 +24,32 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header {
+  font-size: 1.5rem;
+  color: #163832;
+  font-style: italic;
+}
+
+.sign-in-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.mainpage {
+  padding: 2rem;
+}
+
+.info-container {
+  color: #163832;
 }
