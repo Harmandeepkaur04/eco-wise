@@ -1,9 +1,10 @@
-import Image from "next/image";
+import React from "react";
+import Index from "./Index/home";
 
 export default function Home() {
   return (
-   <p>
-    Eco-wise
-   </p>
+   <main>
+    <Index/>
+   </main>
   );
 }
