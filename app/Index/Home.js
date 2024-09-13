@@ -4,7 +4,6 @@ import Link from 'next/link';
 import '../Index/style.css';
 
 
-
 export default function Index(){
 
     return (
@@ -14,10 +13,10 @@ export default function Index(){
                 <ul>
                 {/* <h1>EcoWise</h1> */}
                     <li><Link href="/recycle-page">Recycle</Link></li>
-                    <li><Link href="/disposal">Disposal
+                    <li><Link href="/disposal">Disposal 
                     </Link></li>
                     <li><Link href="/rewards-page">Rewards</Link></li>
-                    <li><Link href="/calender">Calender</Link></li>
+                    <li><Link href="/calendar">Calendar</Link></li>
                     <li><Link href="/profile">Profile</Link></li>
                 </ul> 
                 </nav>    

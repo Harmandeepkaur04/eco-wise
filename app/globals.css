@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #8eb69b;
+    --background: #eaf1b1;
     --foreground: #ededed;
   }
 }
@@ -26,19 +26,25 @@ body {
   }
 }
 
+/* Styles for header container */
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  height: 60px; /* Set a fixed height to ensure alignment */
+  background-color: transparent; /* Make sure the background is consistent */
 }
 
+/* Styles for header text */
 .header {
   font-size: 1.5rem;
   color: #163832;
   font-style: italic;
+  line-height: 60px; /* Align text vertically */
 }
 
+/* Sign-in container styles */
 .sign-in-container {
   display: flex;
   justify-content: center;
@@ -46,10 +52,12 @@ body {
   height: 100vh;
 }
 
+/* Main page styles */
 .mainpage {
   padding: 2rem;
 }
 
+/* Info container styles */
 .info-container {
   color: #163832;
 }

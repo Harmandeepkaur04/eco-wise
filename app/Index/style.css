@@ -1,37 +1,52 @@
 /* Style the navigation bar */
+/* Navigation bar at the top, not fixed */
+/* Navigation bar styles */
 nav {
-    background-color:white;
-    padding: 15px; 
-    position: relative;
-    border: #426d45 ;
+  display: flex;
+  justify-content: center; /* Center nav items horizontally */
+  align-items: center; /* Center nav items vertically */
+  width: 100%; /* Full width */
+  background-color: transparent; /* Transparent background */
+  padding: 10px 20px; /* Add padding for spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  height: 60px; /* Match height with .header-container */
 }
 
 /* Style the unordered list */
 nav ul {
-    list-style-type: none; /* Remove default bullet points */
-    margin: 0px;
-    padding: 0; 
-    display: flex; /* Display list items in a row */
-    justify-content: center;
+  list-style-type: none; /* Remove default bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Display list items in a row */
+  justify-content: center;
+  width: 100%;
 }
 
 /* Style each list item */
 nav ul li {
-    margin-right: 20px; 
-    margin-left: 200px;
+  margin: 0 20px; /* Add equal space between items */
+  padding-bottom: 10px;
 }
 
 /* Style the links */
 nav a {
-    color: black; /* White text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Make the text bold */
-    transition: color 0.3s; /* Smooth color transition on hover */
+  color: #102f15; /* Default text color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold text */
+  border: 2px solid transparent; /* Transparent border initially */
+  padding: 10px;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; /* Smooth transitions */
+  position: relative; /* Keep the links positioned in place */
 }
 
+/* Hover effect for the links */
 nav a:hover {
-    color: navy 
+  border: 2px solid #728c5a; /* The border color on hover */
+  background-color: #728c5a; /* Background color on hover */
+  color: white; /* Text color on hover */
+  border-radius: 5px; /* Rounded corners */
 }
+
 
 
 
@@ -42,7 +57,7 @@ nav a:hover {
     position: relative;
     width: 100%;
     height: 300px;
-    background-color: #426d45; /* Light background color for the container */
+    background-color: #728c5a; /* Light background color for the container */
     border: 1px solid #ddd; /* Light border around the container */
     border-radius: 8px; /* Rounded corners */
     padding: 20px; /* Padding inside the container */
@@ -53,7 +68,7 @@ nav a:hover {
 /* Style the heading */
 .recycle h2 {
     font-size: 40px; /* Font size for the heading */
-    color: #E1EDBD; /* Dark text color for better readability */
+    color: #eaf1b1; /* Dark text color for better readability */
     margin-bottom: 10px; /* Space below the heading */
 }
 
@@ -63,7 +78,7 @@ nav a:hover {
     width:1000px;
     height: 500px;
     font-size: 20px; /* Font size for the paragraph */
-    color: white; /* Slightly lighter text color for the paragraph */
+    color: #eaf1b1; /* Slightly lighter text color for the paragraph */
     line-height: 1.6; /* Increase line height for better readability */
 }
 
@@ -74,7 +89,7 @@ nav a:hover {
     position: absolute; /* Absolute positioning */
     top: 20px; /* Adjust as needed */
     right: 10px; /* Adjust as needed */
-    width: 300px; /* Width of the image */
+    width: 350px; /* Width of the image */
     height: 260px; /* Maintain aspect ratio */
     z-index: 1; /* Ensure the image is in front of the content */
 }
@@ -83,14 +98,15 @@ nav a:hover {
 
 /* Style the content container */
 .content {
-    background-color: #ffffff; 
+    background-color: #728c5a; 
     padding: 20px; /* Padding inside the container */
-    
+    border: 1px solid #ddd; /* Light border around the container */
+    border-radius: 8px; /* Rounded corners */
 }
 
 /* Style the h2 heading */
-.content h2 {
-    color: blue; /* Blue color for the heading */
+.content h2 { 
+    color: #eaf1b1; /* Blue color for the heading */
     font-size: 60px; /* Font size for the heading */
     margin-bottom: 5px; /* Space below the heading */
    
@@ -101,7 +117,7 @@ nav a:hover {
 /* Style the paragraphs */
 .content p {
     font-size: 20px; /* Font size for the paragraphs */
-    color: #555; /* Slightly lighter text color for better readability */
+    color: #eaf1b1; /* Slightly lighter text color for better readability */
     line-height: 1.6; /* Increase line height for readability */
     margin: 0 0 10px; /* Space below each paragraph */
 }
@@ -117,14 +133,14 @@ nav a:hover {
     font-family: 'Copperplate Gothic Light'; 
     font-size: 40px;
     font-weight: bold;
-    color:#8D6E63; /* Dark color for better readability */
+    color:#102f15; /* Dark color for better readability */
     margin-bottom: 15px;
     
 }
 
 .About p {
     font-size: 20px;
-    color: black; /* Slightly lighter color for paragraph text */
+    color: #102f15; /* Slightly lighter color for paragraph text */
     line-height: 1.6; /* Improved readability */
     text-align: center;
     margin-bottom: 15px;
@@ -158,7 +174,7 @@ nav a:hover {
     
     width: 50%;
     height:auto;
-    background-color:#426d45; /* Light background color for the container */
+    background-color:#728c5a; /* Light background color for the container */
     border: 1px solid #ddd; /* Light border around the container */
     border-radius: 8px; /* Rounded corners */
     padding: 10px; /* Padding inside the container */
@@ -169,7 +185,7 @@ nav a:hover {
 }
 
 .test p {
-    color: white;
+    color: #eaf1b1;
     font-size: 20px;
     margin: 10px 0;
 }
@@ -187,18 +203,20 @@ nav a:hover {
 
 .graph img {
     margin-right: 20px; /* Adjust the space between the image and the text as needed */
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .graph h2, .graph p {
     margin: 0;
     font-size: 17px;
+    color: #102f15;
 }
 
 .graph h2 {
     margin-bottom: 10px; /* Adjust the space between the heading and the paragraph as needed */
     text-align: center;
     font-size: 50px;
+    color: #102f15;
 }
 
 
@@ -206,13 +224,13 @@ nav a:hover {
   .team-section {
     text-align: center;
     padding: 50px;
-    background-color: #ffffff;
+    background-color: #728c5a;
   }
   
   .team-section h1 {
     font-size: 2.5rem;
     margin-bottom: 50px;
-    
+    color: #eaf1b1;
   }
   
   .team-container {
@@ -223,7 +241,7 @@ nav a:hover {
   }
   
   .team-member {
-    background-color: #fff;
+    background-color: #eaf1b1;
     border-radius: 8px;
     padding: 20px;
     text-align: center;
@@ -243,16 +261,17 @@ nav a:hover {
   .team-member h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #102f15;
   }
   
   .team-member p {
     font-size: 1rem;
-    color: #666;
+    color: #102f15;
   }
   .footer { 
-    background-color: #426d45;
-    color: white;
-    padding: 40px 20px;
+    background-color: #102f15;
+    color: #eaf1b1;
+    padding: 40px 0px 40px 20px;
     height: 300px;
     display: flex;
     flex-direction: column;
