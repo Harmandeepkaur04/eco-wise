@@ -98,15 +98,14 @@ nav a:hover {
 
 /* Style the content container */
 .content {
-    background-color: #728c5a; 
+    background-color: #ffffff; 
     padding: 20px; /* Padding inside the container */
-    border: 1px solid #ddd; /* Light border around the container */
-    border-radius: 8px; /* Rounded corners */
+    
 }
 
 /* Style the h2 heading */
 .content h2 { 
-    color: #eaf1b1; /* Blue color for the heading */
+    color: #102f15; /* Blue color for the heading */
     font-size: 60px; /* Font size for the heading */
     margin-bottom: 5px; /* Space below the heading */
    
@@ -117,7 +116,7 @@ nav a:hover {
 /* Style the paragraphs */
 .content p {
     font-size: 20px; /* Font size for the paragraphs */
-    color: #eaf1b1; /* Slightly lighter text color for better readability */
+    color: #728c5a; /* Slightly lighter text color for better readability */
     line-height: 1.6; /* Increase line height for readability */
     margin: 0 0 10px; /* Space below each paragraph */
 }
@@ -203,7 +202,7 @@ nav a:hover {
 
 .graph img {
     margin-right: 20px; /* Adjust the space between the image and the text as needed */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
 .graph h2, .graph p {
@@ -224,13 +223,13 @@ nav a:hover {
   .team-section {
     text-align: center;
     padding: 50px;
-    background-color: #728c5a;
+    background-color: #ffffff;
   }
   
   .team-section h1 {
     font-size: 2.5rem;
     margin-bottom: 50px;
-    color: #eaf1b1;
+    color: #102f15;
   }
   
   .team-container {
