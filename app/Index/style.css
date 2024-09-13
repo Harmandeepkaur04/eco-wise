@@ -1,97 +1,92 @@
-/* Style the navigation bar */
-/* Navigation bar at the top, not fixed */
-/* Navigation bar styles */
+
 nav {
   display: flex;
-  justify-content: center; /* Center nav items horizontally */
-  align-items: center; /* Center nav items vertically */
-  width: 100%; /* Full width */
-  background-color: transparent; /* Transparent background */
-  padding: 10px 20px; /* Add padding for spacing */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-  height: 60px; /* Match height with .header-container */
+  justify-content: center; 
+  align-items: center; 
+  width: 100%; 
+  background-color: transparent; 
+  padding: 10px 20px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  height: 60px; 
 }
 
 /* Style the unordered list */
 nav ul {
-  list-style-type: none; /* Remove default bullet points */
+  list-style-type: none; 
   margin: 0;
   padding: 0;
-  display: flex; /* Display list items in a row */
+  display: flex; 
   justify-content: center;
   width: 100%;
 }
 
 /* Style each list item */
 nav ul li {
-  margin: 0 20px; /* Add equal space between items */
+  margin: 0 20px; 
   padding-bottom: 10px;
 }
 
 /* Style the links */
 nav a {
-  color: #102f15; /* Default text color */
-  text-decoration: none; /* Remove underline */
-  font-weight: bold; /* Bold text */
-  border: 2px solid transparent; /* Transparent border initially */
+  color: #102f15; 
+  text-decoration: none; 
+  font-weight: bold; 
+  border: 2px solid transparent; 
   padding: 10px;
-  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; /* Smooth transitions */
-  position: relative; /* Keep the links positioned in place */
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
+  position: relative; 
 }
 
 /* Hover effect for the links */
 nav a:hover {
-  border: 2px solid #728c5a; /* The border color on hover */
-  background-color: #728c5a; /* Background color on hover */
-  color: white; /* Text color on hover */
-  border-radius: 5px; /* Rounded corners */
+  border: 2px solid #728c5a; 
+  background-color: #728c5a; 
+  color: white; 
+  border-radius: 5px; 
 }
 
 
-
-
-/* Why to recycle*/
 /* Style the recycle container */
 .recycle {
     
     position: relative;
     width: 100%;
     height: 300px;
-    background-color: #728c5a; /* Light background color for the container */
-    border: 1px solid #ddd; /* Light border around the container */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px; /* Padding inside the container */
-    margin: 80px 0; /* Center the container and add vertical margins */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    background-color: #728c5a; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 20px;
+    margin: 80px 0; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Style the heading */
+
 .recycle h2 {
-    font-size: 40px; /* Font size for the heading */
-    color: #eaf1b1; /* Dark text color for better readability */
-    margin-bottom: 10px; /* Space below the heading */
+    font-size: 40px; 
+    color: #eaf1b1; 
+    margin-bottom: 10px; 
 }
 
-/* Style the paragraph */
+
 .recycle p {
     
     width:1000px;
     height: 500px;
-    font-size: 20px; /* Font size for the paragraph */
-    color: #eaf1b1; /* Slightly lighter text color for the paragraph */
-    line-height: 1.6; /* Increase line height for better readability */
+    font-size: 20px; 
+    color: #eaf1b1; 
+    line-height: 1.6; 
 }
 
 /* Style for the image */
 .recycle img {
     
     margin-right: 50px;
-    position: absolute; /* Absolute positioning */
-    top: 20px; /* Adjust as needed */
-    right: 10px; /* Adjust as needed */
-    width: 350px; /* Width of the image */
-    height: 260px; /* Maintain aspect ratio */
-    z-index: 1; /* Ensure the image is in front of the content */
+    position: absolute; 
+    top: 20px; 
+    right: 10px; 
+    width: 350px; 
+    height: 260px;
+    z-index: 1; 
 }
 
 
@@ -99,32 +94,29 @@ nav a:hover {
 /* Style the content container */
 .content {
     background-color: #ffffff; 
-    padding: 20px; /* Padding inside the container */
+    padding: 20px; 
     
 }
 
-/* Style the h2 heading */
+
 .content h2 { 
-    color: #102f15; /* Blue color for the heading */
-    font-size: 60px; /* Font size for the heading */
-    margin-bottom: 5px; /* Space below the heading */
+    color: #102f15; 
+    font-size: 60px; 
+    margin-bottom: 5px;
    
 }
 
-
-
-/* Style the paragraphs */
 .content p {
-    font-size: 20px; /* Font size for the paragraphs */
-    color: #728c5a; /* Slightly lighter text color for better readability */
-    line-height: 1.6; /* Increase line height for readability */
-    margin: 0 0 10px; /* Space below each paragraph */
+    font-size: 20px; 
+    color: #728c5a; 
+    line-height: 1.6; 
+    margin: 0 0 10px; 
 }
 
 
 .About {
     padding: 20px;
-    font-family: Arial, sans-serif; /* Base font for content */
+    font-family: Arial, sans-serif; 
     text-align: center; 
 }
 
@@ -132,30 +124,30 @@ nav a:hover {
     font-family: 'Copperplate Gothic Light'; 
     font-size: 40px;
     font-weight: bold;
-    color:#102f15; /* Dark color for better readability */
+    color:#102f15; 
     margin-bottom: 15px;
     
 }
 
 .About p {
     font-size: 20px;
-    color: #102f15; /* Slightly lighter color for paragraph text */
-    line-height: 1.6; /* Improved readability */
+    color: #102f15; 
+    line-height: 1.6; 
     text-align: center;
     margin-bottom: 15px;
 }
 
 .About ul {
-    list-style-position: none; /* Position bullets inside the container */
+    list-style-position: none; 
     margin: 0px auto ;
     padding-left: 20px;
-    display: inline-block; /* Make the list container inline-block to center it */
-    text-align: left; /* Align text inside the list to the left */
+    display: inline-block; 
+    text-align: left; 
     margin-bottom: 40px;
 }
 
 .About li {
-    margin-bottom: 10px; /* Space between list items */
+    margin-bottom: 10px; 
     font-size: 18px;
     color: #ab360f;
 }
@@ -173,13 +165,13 @@ nav a:hover {
     
     width: 50%;
     height:auto;
-    background-color:#728c5a; /* Light background color for the container */
-    border: 1px solid #ddd; /* Light border around the container */
-    border-radius: 8px; /* Rounded corners */
-    padding: 10px; /* Padding inside the container */
-    margin: 20px 0 10px 15px; /* Center the container and add vertical margins */
+    background-color:#728c5a; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 10px; 
+    margin: 20px 0 10px 15px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     
 }
 
@@ -190,8 +182,8 @@ nav a:hover {
 }
 
 .test:hover {
-    transform: scale(1.05); /* Slightly increase the size of the div */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darken and enlarge the shadow */
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 .graph {
@@ -201,7 +193,7 @@ nav a:hover {
 }
 
 .graph img {
-    margin-right: 20px; /* Adjust the space between the image and the text as needed */
+    margin-right: 20px; 
     
 }
 
@@ -212,7 +204,7 @@ nav a:hover {
 }
 
 .graph h2 {
-    margin-bottom: 10px; /* Adjust the space between the heading and the paragraph as needed */
+    margin-bottom: 10px; 
     text-align: center;
     font-size: 50px;
     color: #102f15;
@@ -251,7 +243,7 @@ nav a:hover {
   .team-member img {
     width: 150px;
     height: 210px;
-    object-fit: cover; /* Ensures images are properly cropped */
+    object-fit: cover; 
     border-radius: 10%;
     margin-bottom: 20px;
     margin-left: 30px;
