@@ -7,7 +7,7 @@ export default function Home() {
   return (
    <main>
     <Index/>
-    <Profile/>
+    
     
    </main>
   );
