@@ -1,52 +1,49 @@
 nav {
     display: flex;
-    justify-content: center; /* Center nav items horizontally */
-    align-items: center; /* Center nav items vertically */
-    width: 100%; /* Full width */
-    background-color: transparent; /* Transparent background */
-    padding: 10px 20px; /* Add padding for spacing */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-    height: 60px; /* Match height with .header-container */
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    background-color: transparent; 
+    padding: 10px 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    height: 60px; 
   }
   
   /* Style the unordered list */
   nav ul {
-    list-style-type: none; /* Remove default bullet points */
+    list-style-type: none; 
     margin: 0;
     padding: 0;
-    display: flex; /* Display list items in a row */
+    display: flex; 
     justify-content: center;
     width: 100%;
   }
   
   /* Style each list item */
   nav ul li {
-    margin: 0 20px; /* Add equal space between items */
+    margin: 0 20px;
     padding-bottom: 10px;
   }
   
   /* Style the links */
   nav a {
-    color: #102f15; /* Default text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold; /* Bold text */
-    border: 2px solid transparent; /* Transparent border initially */
+    color: #102f15; 
+    text-decoration: none; 
+    font-weight: bold; 
+    border: 2px solid transparent; 
     padding: 10px;
-    transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; /* Smooth transitions */
-    position: relative; /* Keep the links positioned in place */
+    transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
+    position: relative; 
   }
   
   /* Hover effect for the links */
   nav a:hover {
-    border: 2px solid #728c5a; /* The border color on hover */
-    background-color: #728c5a; /* Background color on hover */
-    color: white; /* Text color on hover */
-    border-radius: 5px; /* Rounded corners */
+    border: 2px solid #728c5a; 
+    background-color: #728c5a; 
+    color: white; 
+    border-radius: 5px; 
   }
   
-
-
-
 
 .container{
     display: flex;
@@ -57,10 +54,10 @@ nav {
     background-color: white;
   }
   h1 {
-    font-size: 2.5rem; /* Larger font size */
-    text-align: center; /* Center the heading */
-    margin: 40px 0; /* Equal space at top and bottom */
-    color: #102f15; /* Darker green color */
+    font-size: 2.5rem; 
+    text-align: center; 
+    margin: 40px 0; 
+    color: #102f15; 
 }
 
 
@@ -101,7 +98,7 @@ nav {
 }
 
 button:hover {
-    background-color: #557a40; /* Darker green on hover */
-    transform: scale(1.05); /* Slight grow effect on hover */
+    background-color: #557a40; 
+    transform: scale(1.05); 
 }
 
