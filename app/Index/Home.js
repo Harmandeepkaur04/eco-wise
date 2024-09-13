@@ -17,7 +17,7 @@ export default function Index(){
                     <li><Link href="/disposal">Disposal
                     </Link></li>
                     <li><Link href="/rewards-page">Rewards</Link></li>
-                    <li><Link href="/calender">Calender</Link></li>
+                    <li><Link href="/calendar">Calendar</Link></li>
                     <li><Link href="/profile">Profile</Link></li>
                 </ul> 
                 </nav>    
