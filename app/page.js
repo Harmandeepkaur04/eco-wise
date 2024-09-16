@@ -1,13 +1,11 @@
 import React from "react";
-import Index from "./index/home";
-import Profile from "./profile/page";
+import Index from "./Index/home";
 
 
 export default function Home() {
   return (
    <main>
     <Index/>
-    
     
    </main>
   );

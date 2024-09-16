@@ -22,8 +22,9 @@ nav ul {
 
 /* Style each list item */
 nav ul li {
-  margin: 0 20px; 
-  padding-bottom: 10px;
+    margin-right: 20px; 
+    margin-left: 200px;
+    
 }
 
 /* Style the links */
@@ -39,10 +40,7 @@ nav a {
 
 /* Hover effect for the links */
 nav a:hover {
-  border: 2px solid #728c5a; 
-  background-color: #728c5a; 
-  color: white; 
-  border-radius: 5px; 
+    color: rgb(7, 182, 235); 
 }
 
 
