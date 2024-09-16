@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import '../Index/style.css';
+import { FaFacebook , FaTwitter} from 'react-icons/fa6';
+
 
 
 export default function Index(){
@@ -113,9 +115,12 @@ export default function Index(){
 
         <div className='footer-social'>
         <h4>Follow Us</h4>
-        <a href="#"><img src="/path-to-your-icons/facebook-icon.png" alt="Facebook" /></a>
-        <a href="#"><img src="/path-to-your-icons/twitter-icon.png" alt="Twitter" /></a>
-        <a href="#"><img src="/path-to-your-icons/instagram-icon.png" alt="Instagram" /></a>
+        <FaFacebook className="icon facebook-icon" title="facebook" alt = "Facebook"/>
+        <FaTwitter className="icon twitter-icon" title='twitter' />
+        
+
+        
+        
         </div>
   
         <div className='footer-bottom'>
