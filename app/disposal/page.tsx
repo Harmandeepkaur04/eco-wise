@@ -11,6 +11,7 @@ export default function Disposal (){
             <nav>
                 <ul>
                 {/* <h1>EcoWise</h1> */}
+                    <li><Link href="/Index">Home</Link></li>
                     <li><Link href="/recycle-page">Recycle</Link></li>
                     <li><Link href="/disposal">Disposal 
                     </Link></li>

@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,25 +21,42 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <header className="header-container">
-            <h1 className="header">Eco Wise</h1>
-            <div className="user-button-container">
-            <UserButton showName />
-            </div>
-        </header>
-        <SignedOut>
-          <div className="sign-in-container">
-            <SignIn routing="hash" />
-          </div>
-        </SignedOut>
-        <SignedIn>
-          {children}
-        </SignedIn>
-      </body>
-    </html>
-    </ClerkProvider>
+
+    <><main>
+      {/**/}
+      <header>
+        <nav>
+          <ul>
+            <h1>EcoWise</h1>
+            <li><Link href="/Index">Home</Link></li>
+            <li><Link href="/recycle-page">Recycle</Link></li>
+            <li><Link href="/disposal">Disposal
+            </Link></li>
+            <li><Link href="/rewards-page">Rewards</Link></li>
+            <li><Link href="/calendar">Calendar</Link></li>
+            <li><Link href="/profile">Profile</Link></li>
+          </ul>
+        </nav>
+      </header>
+    </main><ClerkProvider>
+        <html lang="en">
+          <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <header className="header-container">
+              <h1 className="header">Eco Wise</h1>
+              <div className="user-button-container">
+                <UserButton showName />
+              </div>
+            </header>
+            <SignedOut>
+              <div className="sign-in-container">
+                <SignIn routing="hash" />
+              </div>
+            </SignedOut>
+            <SignedIn>
+              {children}
+            </SignedIn>
+          </body>
+        </html>
+      </ClerkProvider></>
   );
 }

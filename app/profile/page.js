@@ -23,6 +23,7 @@ export default function ProfilePage() {
     <header>
             <nav>
                 <ul>
+                    <li><Link href="/Index">Home</Link></li>
                     <li><Link href="/recycle-page">Recycle</Link></li>
                     <li><Link href="/disposal">Disposal 
                     </Link></li>

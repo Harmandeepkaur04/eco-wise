@@ -10,7 +10,7 @@ export default function Navbar(){
            
                 <ul>
                 <h1>EcoWise</h1>
-                    <li><Link href ="/Home">Home</Link></li>
+                    <li><Link href ="/Index">Home</Link></li>
                     <li><Link href="/recycle-page">Recycle</Link></li>
                     <li><Link href="/disposal">Disposal
                     </Link></li>
