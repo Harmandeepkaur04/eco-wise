@@ -7,22 +7,22 @@ export default function Disposal (){
 
     return <>
     <main>
-        <header>
-            <nav>
-                <ul>
-                {/* <h1>EcoWise</h1> */}
-                    <li><Link href="/recycle-page">Recycle</Link></li>
-                    <li><Link href="/disposal">Disposal 
-                    </Link></li>
-                    <li><Link href="/rewards-page">Rewards</Link></li>
-                    <li><Link href="/calendar">Calendar</Link></li>
-                    <li><Link href="/profile">Profile</Link></li>
-                </ul> 
-                </nav>    
-        </header>
+    
     <div>
-        <h2>Waste Management and Recycling Locations</h2>
+        <h1>Waste Management and Recycling Locations:</h1>
     </div>
+    
+    <div className='div-container'>
+        <h1>East Calgary Landfill and Eco Centre</h1>
+        <br />
+        <h3>Information:</h3>
+        <p>Materials accepted</p>
+        <ul>
+            <li>Residential Waste</li>
+            <li>Commercial Waste</li>
+        </ul>
+    </div>
+    
     <GoogleMaps />
     </main>
     </>
