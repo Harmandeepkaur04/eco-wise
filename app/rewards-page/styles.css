@@ -1,57 +1,60 @@
-/* pages/styles.module.css */
+body {
+  font-family: 'Inter', sans-serif; /* Inter Font */
+  color: #426D54; /* Forest Green */
+  margin: 0;
+  padding: 0;
+}
+
+
+h1, h2, h3 {
+  color: #5A8559; /* Dark Green */
+  text-align: center;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 50px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+footer {
+  background-color: #426D54; /* Forest Green */
+  color: #E1EDBD; /* Light Pastel Green */
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+header {
+  background-color: #5A8559; /* Dark Green */
+  color: #E1EDBD; /* Light Pastel Green */
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 2px solid #426D54; /* Forest Green */
+}
+
 .container {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .quiz {
-    margin-bottom: 20px;
-  }
-  
-  .question {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
-  
-  .answerButton {
-    display: block;
-    margin: 5px 0;
-    padding: 10px;
-    background-color: #0070f3;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .answerButton:hover {
-    background-color: #005bb5;
-  }
-  
-  .leaderboard {
-    margin-top: 20px;
-  }
-  
-  .leaderboard h2 {
-    text-align: center;
-  }
-  
-  .leaderboard ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .leaderboard li {
-    background-color: #f0f0f0;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0px;
+  background-color: #ffffff; /* Soft Green */
+  border-radius: 8px;
+}
+
+.tile {
+  background-color: #5A8559;
+  border-radius: 8px;
+  box-shadow: #5A8559;
+  padding: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #000;
+}
+
+.tile:hover {
+  background-color: #E1EDBD;
+  box-shadow: 0 4px 16px rgba(49, 245, 95, 0.8); /* Neon Yellow Shadow */
+  transform: scale(1.05);
+}
