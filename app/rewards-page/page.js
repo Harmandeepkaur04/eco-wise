@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import questions from './quiz1';
 import WasteManagementQuestions from './quiz2';
+import challenges from './challenges'
+import Challenges from './challenges';
 
 const scores = [
   { name: 'Alice', points: 10 },
@@ -157,6 +159,7 @@ const Home = () => {
         <h1>Recycling Rewards</h1>
       </header>
       <Leaderboard scores={scores} />
+      <Challenges/>
       <h2>Test Your Knowledge!</h2>
       <div className="quiz-tiles">
         <div className={`quiz-tile ${showQuiz1 ? 'active' : ''}`} onClick={handleShowQuiz1}>
