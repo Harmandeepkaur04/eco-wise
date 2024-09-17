@@ -5,6 +5,8 @@ import Leaderboard from './leaderboard';
 import './styles.css';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import questions from './quiz1';
+import WasteManagementQuestions from './quiz2';
 
 const scores = [
   { name: 'Alice', points: 10 },
@@ -12,24 +14,11 @@ const scores = [
   { name: 'Charlie', points: 5 },
 ];
 
-const Quiz1 = () => {
+const Quiz1 = ({ onRetake }) => {
   const [score, setScore] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
   const [feedback, setFeedback] = useState('');
-
-  const questions = [
-    { question: 'What material is commonly recycled into new paper products?', options: ['Plastic', 'Glass', 'Paper', 'Metal'], answer: 'Paper', fact: 'Paper can be recycled up to 7 times before the fibers become too short.' },
-    { question: 'Which of these items can be recycled?', options: ['Plastic bottles', 'Styrofoam', 'Ceramics', 'Food waste'], answer: 'Plastic bottles', fact: 'Plastic bottles are one of the most commonly recycled items.' },
-    { question: 'What is the recycling symbol for aluminum?', options: ['♻️', '⚛️', '🔄', '♿'], answer: '♻️', fact: 'The recycling symbol ♻️ is universally recognized.' },
-    { question: 'Which type of plastic is often recycled into clothing and textiles?', options: ['PET', 'PVC', 'LDPE', 'HDPE'], answer: 'PET', fact: 'PET is commonly used to make polyester for clothing.' },
-    { question: 'What is the process of breaking down organic waste into nutrient-rich soil called?', options: ['Recycling', 'Composting', 'Incineration', 'Landfilling'], answer: 'Composting', fact: 'Composting helps reduce landfill waste and enriches soil.' },
-    { question: 'Which of these metals is most commonly recycled?', options: ['Gold', 'Silver', 'Aluminum', 'Titanium'], answer: 'Aluminum', fact: 'Recycling aluminum saves 95% of the energy required to produce it from raw materials.' },
-    { question: 'What is the main benefit of recycling glass?', options: ['Reduces water pollution', 'Saves energy', 'Increases landfill space', 'Produces more waste'], answer: 'Saves energy', fact: 'Recycling glass reduces the need for raw materials and saves energy.' },
-    { question: 'Which of these items should not be placed in a recycling bin?', options: ['Cardboard', 'Plastic bags', 'Glass jars', 'Metal cans'], answer: 'Plastic bags', fact: 'Plastic bags can get tangled in recycling machinery and should be taken to specific recycling points.' },
-    { question: 'What is the term for materials that can be recycled multiple times without degrading?', options: ['Biodegradable', 'Non-renewable', 'Sustainable', 'Closed-loop'], answer: 'Closed-loop', fact: 'Closed-loop recycling allows materials to be reused indefinitely.' },
-    { question: 'Which of these is a common use for recycled rubber?', options: ['Fuel', 'Roads', 'Packaging', 'Furniture'], answer: 'Roads', fact: 'Recycled rubber is often used in asphalt for roads.' },
-  ];
 
   const handleAnswer = (option) => {
     const isCorrect = option === questions[questionIndex].answer;
@@ -45,27 +34,98 @@ const Quiz1 = () => {
     setQuestionIndex(questionIndex + 1);
   };
 
+  const handleRetakeQuiz = () => {
+    setScore(0);
+    setQuestionIndex(0);
+    setShowFeedback(false);
+    setFeedback('');
+    onRetake();
+  };
+
   return (
     <div className="quiz">
+      <div className="progress-bar">
+        <div className="progress" style={{ width: `${(questionIndex / questions.length) * 100}%` }}></div>
+      </div>
       {questionIndex < questions.length ? (
-        <div>
-          <h2>{questions[questionIndex].question}</h2>
+        <div className="question-card">
+          <h1>{questions[questionIndex].question}</h1>
           {questions[questionIndex].options.map((option) => (
-            <button key={option} onClick={() => handleAnswer(option)}>
+            <button key={option} className="option-button" onClick={() => handleAnswer(option)}>
               {option}
             </button>
           ))}
           {showFeedback && (
-            <div>
+            <div className="feedback">
               <p>{feedback}</p>
               <p>{questions[questionIndex].fact}</p>
-              <button onClick={handleNextQuestion}>Next Question</button>
+              <button className="next-button" onClick={handleNextQuestion}>Next Question</button>
             </div>
           )}
         </div>
       ) : (
-        <div>
+        <div className="score-card">
           <h2>Your score: {score}</h2>
+          <button className="retake-button" onClick={handleRetakeQuiz}>Retake Quiz</button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const Quiz2 = ({ onRetake }) => {
+  const [score, setScore] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [feedback, setFeedback] = useState('');
+
+  const handleAnswer = (option) => {
+    const isCorrect = option === WasteManagementQuestions[questionIndex].answer;
+    setFeedback(isCorrect ? 'Correct!' : 'Incorrect!');
+    if (isCorrect) {
+      setScore(score + 1);
+    }
+    setShowFeedback(true);
+  };
+
+  const handleNextQuestion = () => {
+    setShowFeedback(false);
+    setQuestionIndex(questionIndex + 1);
+  };
+
+  const handleRetakeQuiz = () => {
+    setScore(0);
+    setQuestionIndex(0);
+    setShowFeedback(false);
+    setFeedback('');
+    onRetake();
+  };
+
+  return (
+    <div className="quiz">
+      <div className="progress-bar">
+        <div className="progress" style={{ width: `${(questionIndex / WasteManagementQuestions.length) * 100}%` }}></div>
+      </div>
+      {questionIndex < WasteManagementQuestions.length ? (
+        <div className="question-card">
+          <h1>{WasteManagementQuestions[questionIndex].question}</h1>
+          {WasteManagementQuestions[questionIndex].options.map((option) => (
+            <button key={option} className="option-button" onClick={() => handleAnswer(option)}>
+              {option}
+            </button>
+          ))}
+          {showFeedback && (
+            <div className="feedback">
+              <p>{feedback}</p>
+              <p>{WasteManagementQuestions[questionIndex].fact}</p>
+              <button className="next-button" onClick={handleNextQuestion}>Next Question</button>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="score-card">
+          <h2>Your score: {score}</h2>
+          <button className="retake-button" onClick={handleRetakeQuiz}>Retake Quiz</button>
         </div>
       )}
     </div>
@@ -73,11 +133,22 @@ const Quiz1 = () => {
 };
 
 const Home = () => {
-  const router = useRouter();
+  const [showQuiz1, setShowQuiz1] = useState(false);
+  const [showQuiz2, setShowQuiz2] = useState(false);
 
-  const handleQuizRedirect = () => {
-    // Navigate to the Quiz 1 page
-    router.push("/rewards/quiz1");
+  const handleShowQuiz1 = () => {
+    setShowQuiz1(true);
+    setShowQuiz2(false);
+  };
+
+  const handleShowQuiz2 = () => {
+    setShowQuiz1(false);
+    setShowQuiz2(true);
+  };
+
+  const handleRetakeQuiz = () => {
+    setShowQuiz1(false);
+    setShowQuiz2(false);
   };
 
   return (
@@ -86,7 +157,17 @@ const Home = () => {
         <h1>Recycling Rewards</h1>
       </header>
       <Leaderboard scores={scores} />
-      <Quiz1 />
+      <h2>Test Your Knowledge!</h2>
+      <div className="quiz-tiles">
+        <div className={`quiz-tile ${showQuiz1 ? 'active' : ''}`} onClick={handleShowQuiz1}>
+          <h3>Quiz 1: Recycling</h3>
+          {showQuiz1 && <Quiz1 onRetake={handleRetakeQuiz} />}
+        </div>
+        <div className={`quiz-tile ${showQuiz2 ? 'active' : ''}`} onClick={handleShowQuiz2}>
+          <h3>Quiz 2: Waste Management</h3>
+          {showQuiz2 && <Quiz2 onRetake={handleRetakeQuiz} />}
+        </div>
+      </div>
       <footer>
         <p>© 2024 Recycling Rewards. All rights reserved.</p>
       </footer>
