@@ -2,6 +2,11 @@ main {
   color: #102f15;
 }
 
+main h1 {
+  font-size: xx-large;
+  align-items: center
+}
+
 .square-map-container {
     display: flex;
     justify-content: right;
@@ -22,19 +27,26 @@ main {
     width: 600px;
     height: 400px;
     background-color: #728c5a;
+    margin-left: 15px;
+    color: #eaf1b1;
 }
 
 .div-container h1 {
   font-size: xx-large;
-  color: #eaf1b1;
   text-align: center;
+  color: #eaf1b1;
 }
 
 .div-container h3 {
   font-size: x-large;
   margin-left: 5px;
-  color: #eaf1b1;
 }
 .div-container p {
-  color: #eaf1b1;
+  margin-left: 15px;
+  font-size: large;
+}
+
+.div-container ul {
+  margin-left: 25px;
+  color: #ebfadc;
 }
