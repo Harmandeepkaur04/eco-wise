@@ -36,13 +36,19 @@ export default function GoogleMaps() {
                 url: 'https://maps.app.goo.gl/4ie6rAzaSLznqfXF7',
                 label: 'Shepard Landfill and Eco Centre'
             };
+
+            const Center = {
+                lat: 51.04426294335533, 
+                lng: -114.0723209037262
+            }
+
             const markerPositions = [ECLaEC, SLaEC, SL];
 
             const { Marker } = (await loader.importLibrary('marker')) as google.maps.MarkerLibrary;
 
             const options: google.maps.MapOptions = {
-                center: ECLaEC,
-                zoom: 10,
+                center: Center,
+                zoom: 11,
                 mapId: 'NEXT_MAPS_TUTS',
             };
 
