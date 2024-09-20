@@ -17,7 +17,7 @@ export default function Disposal() {
     <>
       <main>
         <div>
-          <h2>Waste Management and Recycling Locations:</h2>
+          <h2>Waste Management and Recycling Locations</h2>
           {/* Buttons for scrolling */}
           <div className="scroll-buttons">
             <button onClick={scrollToTable} className="scroll-button">
@@ -96,6 +96,10 @@ export default function Disposal() {
           <div className="map-container">
             <GoogleMaps />
           </div>
+        </div>
+
+        <div>
+          <h2>Holiday Hours</h2>
         </div>
 
         <table ref={tableRef} className="table-container">
