@@ -23,7 +23,6 @@ h2 {
 
 footer, header {
   background-color: #5A8559; /* Dark Green */
-  color: #E1EDBD; /* Light Pastel Green */
   text-align: center;
   padding: 10px 0;
 }
@@ -34,15 +33,18 @@ footer {
   bottom: 0;
 }
 
-header {
+.container header {
   border-bottom: 2px solid #426D54; /* Forest Green */
+  color: #fff;
+  padding: 20px;
+font-size: 30px;
 }
 
 .container {
   max-width: 1300px;
   margin: 0 auto;
   padding: 0;
-  background-color: #ffffff; /* Soft Green */
+  background-color: #ffffff; 
   border-radius: 8px;
 }
 
@@ -58,13 +60,13 @@ header {
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: #000;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  background-image: url('/quiz.png'); /* Add your image path here */
+  background-image: url('/quiz.png'); 
   background-size: cover; /* Ensure the image covers the entire tile */
   background-position: center; /* Center the image */
-  color: #fff; /* Change text color for better contrast */
+  color: #fff; 
 }
 
 .quiz-tile:hover {
@@ -82,7 +84,7 @@ header {
   max-width: 800px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: #000;
 }
 
 .progress-bar {
@@ -153,7 +155,7 @@ header {
   max-width: 800px;
   background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: #000;
   padding: 20px;
 }
 

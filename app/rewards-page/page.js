@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import questions from './quiz1';
 import WasteManagementQuestions from './quiz2';
-import challenges from './challenges'
+import Tips from './tips';
 import Challenges from './challenges';
 
 const scores = [
@@ -156,7 +156,7 @@ const Home = () => {
   return (
     <div className="container">
       <header>
-        <h1>Recycling Rewards</h1>
+        <p>Rewards</p>
       </header>
       <Leaderboard scores={scores} />
       <Challenges/>
@@ -171,6 +171,9 @@ const Home = () => {
           {showQuiz2 && <Quiz2 onRetake={handleRetakeQuiz} />}
         </div>
       </div>
+      <div>
+          <Tips/>
+        </div>
       <footer>
         <p>© 2024 Recycling Rewards. All rights reserved.</p>
       </footer>
