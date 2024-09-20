@@ -17,29 +17,6 @@ nav {
 nav ul {
   list-style-type: none; 
   margin: 0;
-<<<<<<< Updated upstream
-  padding: 0;
-  display: flex; 
-  justify-content: center;
-  width: 100%;
-}
-
-/* Style each list item */
-nav ul li {
-  margin: 0 20px; 
-  padding-bottom: 10px;
-}
-
-/* Style the links */
-nav a {
-  color: #102f15; 
-  text-decoration: none; 
-  font-weight: bold; 
-  border: 2px solid transparent; 
-  padding: 10px;
-  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
-  position: relative; 
-=======
 }
 
 /* Calendar container */
@@ -302,7 +279,6 @@ nav a {
   border-radius: 5px;
   border: 1px solid #728C5A;
   font-size: 16px;
->>>>>>> Stashed changes
 }
 
 /* Hover effect for the links */

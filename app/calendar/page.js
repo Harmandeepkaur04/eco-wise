@@ -43,41 +43,6 @@ const Calendar = () => {
   };
 
   return (
-<<<<<<< Updated upstream
-    <><header>
-      <nav>
-        <ul>
-          <h1>EcoWise</h1>
-          <li><Link href="/recycle-page">Recycle</Link></li>
-          <li><Link href="/disposal">Disposal
-          </Link></li>
-          <li><Link href="/rewards-page">Rewards</Link></li>
-          <li><Link href="/calendar">Calendar</Link></li>
-          <li><Link href="/profile">Profile</Link></li>
-        </ul>
-      </nav>
-    </header><div className="calendar-container">
-        {/* Monthly Schedule Overview Widget */}
-        <div className="monthly-overview-widget">
-          <h2>Monthly Schedule Overview</h2>
-          <p>Upcoming: September 20, Compost Bin 6 AM</p>
-          {savedNotes && <p>{savedNotes}</p>} {/* Display saved notes here */}
-        </div>
-
-        {/* Split screen layout */}
-        <div className="calendar-content">
-          {/* Left Box */}
-          <div className="calendar-left-widget">
-            {/* Month, Date, and Time on Top */}
-            <h3 className="month-date">September 11</h3>
-            <h4 className="time-display">6:00 AM</h4>
-            {/* Class List */}
-            <div className="class-list">
-              <p><FaLeaf /> Compost: September 20, 6 AM</p>
-              <p><FaRecycle /> Recycling: Every Thursday, 6 AM</p>
-              <p><FaTrash /> Black Garbage: Every other Friday, 6 AM</p>
-              {savedNotes && <p>Note: {savedNotes}</p>} {/* Display saved notes here */}
-=======
     <div className="calendar-container">
       {/* Monthly Schedule Overview Widget */}
       <div className="monthly-overview-widget">
@@ -89,7 +54,6 @@ const Calendar = () => {
             <div className="note-actions">
               <FaEdit className="icon edit-icon" onClick={() => handleEditNote(note.id)} />
               <FaTrashAlt className="icon delete-icon" onClick={() => handleDeleteNote(note.id)} />
->>>>>>> Stashed changes
             </div>
           </div>
         ))} {/* Display notes placed below overview */}
