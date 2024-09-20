@@ -1,5 +1,4 @@
 "use client"
-// pages/rewards/index.js
 import Link from 'next/link';
 import Leaderboard from './leaderboard';
 import './styles.css';
