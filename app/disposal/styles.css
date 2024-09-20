@@ -59,7 +59,7 @@ h2 {
 }
 
 .square-map {
-  width: 90vh;
+  width: 85vh;
   height: 100vh;
   border: 3px solid #102f15;
   border-radius: 8px;
@@ -70,7 +70,7 @@ h2 {
 .div-container {
   border: 3px solid #102f15;
   border-radius: 8px;
-  width: 90vh;
+  width: 85vh;
   height: 50vh;
   background-color: #728c5a;
   margin-left: 15px;
