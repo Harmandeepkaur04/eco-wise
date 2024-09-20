@@ -17,6 +17,7 @@ nav {
 nav ul {
   list-style-type: none; 
   margin: 0;
+<<<<<<< Updated upstream
   padding: 0;
   display: flex; 
   justify-content: center;
@@ -38,6 +39,270 @@ nav a {
   padding: 10px;
   transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
   position: relative; 
+=======
+}
+
+/* Calendar container */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #EAF1B1;
+  border-radius: 10px;
+  font-size: 22px;
+}
+
+/* Monthly overview widget */
+.monthly-overview-widget {
+  background-color: #728C5A;
+  color: #102F15;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px; /* Increased font size */
+}
+
+/* Calendar content layout */
+.calendar-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Left widget */
+.calendar-left-widget {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  width: 40%;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.month-date {
+  font-size: 36px;
+}
+
+.time-display {
+  font-size: 28px;
+}
+
+.class-list p {
+  font-size: 18px; /* Decreased font size for upcoming reminders */
+  display: flex;
+  align-items: center;
+}
+
+.class-list p svg {
+  margin-right: 10px;
+}
+
+/* Right-side calendar */
+.calendar-right-side {
+  background-color: #EBFADC;
+  width: 55%;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  font-size: 28px;
+}
+
+.year-display {
+  font-size: 24px;
+  color: #102F15;
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.day-header {
+  font-weight: bold;
+  color: #102F15;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  background-color: #EBFADC;
+  color: #102F15;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+}
+
+/* Icons inside calendar days */
+.icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+/* Notes Section */
+.note-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color:#EAF1B1;
+}
+
+.note-input {
+  width: 100%;
+  max-width: 500px;
+  height: 100px;
+  margin: 10px auto;
+  background-color: #728C5A; /* Emerald green */
+  color: #EAF1B1; /* Cream */
+  border: 1px solid #102F15; /* Dark green */
+  padding: 10px;
+  font-family: 'Times New Roman', serif;
+  resize: none;
+  border-radius: 5px;
+}
+
+/* Note display with hover feature for edit and delete buttons */
+.note-display {
+  background-color: #EBFADC; /* Light green */
+  color: rgba(16, 47, 21, 0.7); /* Lighter dark green for notes */
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #728C5A; /* Emerald green border */
+  position: relative;
+}
+
+.note-display:hover .edit-btn,
+.note-display:hover .delete-btn {
+  opacity: 1; /* Show buttons only when hovered */
+}
+
+/* Initially hide the edit and delete buttons */
+.edit-btn,
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
+}
+
+.edit-btn {
+  right: 45px; /* Slightly shifted to the left for the edit button */
+}
+
+.edit-btn,
+.delete-btn {
+  background-color: #728C5A; /* Emerald green */
+  color: #EAF1B1; /* Cream */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  background-color: #556B2F; /* Darker green on hover */
+}
+
+/* Save button styling */
+.save-btn {
+  background-color: #728C5A; /* Emerald green */
+  color: #EAF1B1; /* Cream */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.save-btn:hover {
+  background-color: #556B2F; /* Darker green on hover */
+}
+
+/* "Make Reminder" option and button */
+.reminder-btn {
+  background-color: #728C5A; /* Emerald green */
+  color: #EAF1B1; /* Cream */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.reminder-btn:hover {
+  background-color: #556B2F; /* Darker green on hover */
+}
+
+/* Notes positioned below the monthly schedule overview */
+.notes-below-monthly-overview {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Notes positioned at the bottom of the overall calendar */
+.notes-bottom-overall-calendar {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Style for calendar widget notes */
+.widget-note-display {
+  background-color: #EBFADC; /* Same light green as other widgets */
+  color: rgba(16, 47, 21, 0.7); /* Lighter dark green for consistency */
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid #728C5A;
+  font-size: 16px;
+>>>>>>> Stashed changes
 }
 
 /* Hover effect for the links */
