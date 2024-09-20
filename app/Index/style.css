@@ -250,7 +250,8 @@
   .footer-social {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    gap: 10px; 
   }
 
   .footer-social h4{
@@ -261,7 +262,18 @@
     text-align: center;
     margin: 0;
   }
-  
+
+.footer-social .icon {
+    font-size: 24px; /* Adjust the size of the icons */
+    color: #000; /* Adjust color if needed */
+    cursor: pointer;
+    transition: color 0.3s ease;
+    gap: 2px;
+}
+
+.footer-social .icon:hover {
+    color: #007bff; /* Change color on hover if desired */
+}
 
 
 
