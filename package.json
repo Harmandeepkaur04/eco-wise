@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.5.3",
     "@googlemaps/js-api-loader": "^1.16.8",
     "next": "^14.2.11",
     "react": "^18.3.1",
@@ -18,8 +17,6 @@
   },
   "devDependencies": {
     "@types/google.maps": "^3.58.0",
-    "@types/node": "22.5.4",
-    "@types/react": "18.3.5",
     "eslint": "^8",
     "eslint-config-next": "14.2.9",
     "postcss": "^8",
