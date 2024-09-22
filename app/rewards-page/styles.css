@@ -76,14 +76,23 @@ footer {
 .quiz-tile.active {
   background-color: #e1edbd;
 }
+.quiz-tiles {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between tiles */
+  flex-wrap: wrap; /* Allow wrapping to the next line if necessary */
+  margin: 20px 0;
+}
 
-.quiz {
+.quiz-tile {
+  flex: 0 1 calc(30% - 20px); /* Adjust width to fit three tiles per row */
+  margin: 10px; /* Space between tiles */
   padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #fff;
 }
 
 .progress-bar {
