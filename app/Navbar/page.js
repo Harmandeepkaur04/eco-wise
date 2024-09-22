@@ -16,7 +16,7 @@ export default function Navbar(){
                     </Link></li>
                     <li><Link href="/rewards-page">Rewards</Link></li>
                     <li><Link href="/calendar">Calendar</Link></li>
-                    <li><Link href="/profile">Profile</Link></li>
+                    // <li><Link href="/profile">Profile</Link></li>
                 </ul>
                 </nav>    
         </header>
