@@ -1,6 +1,5 @@
-"use client"
-import Link from 'next/link';
-import './styles.css';
+"use client";
+import { Title, Text, List, Anchor, Container } from '@mantine/core';
 import React from 'react';
 
 const tips = [
@@ -29,12 +28,12 @@ const tips = [
 const resources = [
   {
     title: 'Earth911 Recycling Search',
-    Link: 'https://earth911.com/recycling-center-search-guides/',
+    link: 'https://earth911.com/recycling-center-search-guides/',
     description: 'Find local recycling centers and learn how to recycle different materials.',
   },
   {
     title: 'EPA Recycling Basics',
-    Link: 'https://www.epa.gov/recycle/recycling-basics',
+    link: 'https://www.epa.gov/recycle/recycling-basics',
     description: 'Learn the basics of recycling and how to get started.',
   },
   {
@@ -46,31 +45,31 @@ const resources = [
 
 const Tips = () => {
   return (
-    <div className="container">
+    <Container>
       <section className="tips-section">
-        <h2>Tips for Effective Recycling</h2>
-        <ul>
+        <Title order={2}>Tips for Effective Recycling</Title>
+        <List>
           {tips.map((tip, index) => (
-            <li key={index}>
-              <h3>{tip.title}</h3>
-              <p>{tip.content}</p>
-            </li>
+            <List.Item key={index}>
+              <Title order={3}>{tip.title}</Title>
+              <Text>{tip.content}</Text>
+            </List.Item>
           ))}
-        </ul>
+        </List>
       </section>
       <section className="resources-section">
-        <h2>Helpful Resources</h2>
-        <ul>
+        <Title order={2}>Helpful Resources</Title>
+        <List>
           {resources.map((resource, index) => (
-            <li key={index}>
-              <h3>{resource.title}</h3>
-              <p>{resource.description}</p>
-              <a href={resource.link} target="_blank" rel="noopener noreferrer">Learn More</a>
-            </li>
+            <List.Item key={index}>
+              <Title order={3}>{resource.title}</Title>
+              <Text>{resource.description}</Text>
+              <Anchor href={resource.link} target="_blank" rel="noopener noreferrer">Learn More</Anchor>
+            </List.Item>
           ))}
-        </ul>
+        </List>
       </section>
-    </div>
+    </Container>
   );
 };
 

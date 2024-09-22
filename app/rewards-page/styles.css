@@ -229,3 +229,12 @@ input[type="checkbox"] {
   height: 25px; /* Adjust the height as needed */
   margin-right: 10px;
 }
+@media (max-width: 768px) {
+  .quiz-tiles {
+    flex-direction: column; /* Stack tiles vertically on small screens */
+  }
+
+  .quiz-tile {
+    margin: 10px 0; /* Adjust margins for better spacing */
+  }
+}

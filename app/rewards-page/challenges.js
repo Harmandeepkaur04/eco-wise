@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Checkbox, Title, List, Text } from '@mantine/core';
 
 const Challenges = () => {
   const [challenges, setChallenges] = useState([
@@ -33,24 +34,21 @@ const Challenges = () => {
   const allTasksCompleted = challenges.every(challenge => challenge.completed);
 
   return (
-    <div >
-      <h2>Monthly Challenges</h2>
-      <ul>
+    <div>
+      <Title order={2}>Monthly Challenges</Title>
+      <List>
         {challenges.map((challenge) => (
-          <li key={challenge.id} >
-            <label>
-              <input
-                type="checkbox"
-                checked={challenge.completed}
-                onChange={() => toggleCompletion(challenge.id)}
-              />
-              {challenge.name} - {challenge.points} points
-            </label>
-          </li>
+          <List.Item key={challenge.id}>
+            <Checkbox
+              checked={challenge.completed}
+              onChange={() => toggleCompletion(challenge.id)}
+              label={`${challenge.name} - ${challenge.points} points`}
+            />
+          </List.Item>
         ))}
-      </ul>
-      <h3>Total Points: {totalPoints}</h3>
-      {allTasksCompleted && <p className="completedMessage">All tasks completed! Come back tomorrow for more challenges.</p>}
+      </List>
+      <Title order={3}>Total Points: {totalPoints}</Title>
+      {allTasksCompleted && <Text className="completedMessage">All tasks completed! Come back tomorrow for more challenges.</Text>}
     </div>
   );
 };

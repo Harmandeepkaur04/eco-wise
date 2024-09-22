@@ -1,10 +1,10 @@
-"use client"
-// pages/rewards/index.js
+"use client";
 import Link from 'next/link';
-import Leaderboard from './leaderboard';
+import Leaderboard from './Leaderboard';
 import './styles.css';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { Title, Button, Container, Group } from '@mantine/core';
 import questions from './quiz1';
 import WasteManagementQuestions from './quiz2';
 import Tips from './tips';
@@ -16,7 +16,7 @@ const scores = [
   { name: 'Charlie', points: 5 },
 ];
 
-const Quiz1 = ({ onRetake }) => {
+const Quiz = ({ questions, onRetake }) => {
   const [score, setScore] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -51,83 +51,22 @@ const Quiz1 = ({ onRetake }) => {
       </div>
       {questionIndex < questions.length ? (
         <div className="question-card">
-          <h1>{questions[questionIndex].question}</h1>
+          <Title order={3}>{questions[questionIndex].question}</Title>
           {questions[questionIndex].options.map((option) => (
-            <button key={option} className="option-button" onClick={() => handleAnswer(option)}>
-              {option}
-            </button>
+            <Button key={option} onClick={() => handleAnswer(option)}>{option}</Button>
           ))}
           {showFeedback && (
             <div className="feedback">
               <p>{feedback}</p>
               <p>{questions[questionIndex].fact}</p>
-              <button className="next-button" onClick={handleNextQuestion}>Next Question</button>
+              <Button onClick={handleNextQuestion}>Next Question</Button>
             </div>
           )}
         </div>
       ) : (
         <div className="score-card">
-          <h2>Your score: {score}</h2>
-          <button className="retake-button" onClick={handleRetakeQuiz}>Retake Quiz</button>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const Quiz2 = ({ onRetake }) => {
-  const [score, setScore] = useState(0);
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [showFeedback, setShowFeedback] = useState(false);
-  const [feedback, setFeedback] = useState('');
-
-  const handleAnswer = (option) => {
-    const isCorrect = option === WasteManagementQuestions[questionIndex].answer;
-    setFeedback(isCorrect ? 'Correct!' : 'Incorrect!');
-    if (isCorrect) {
-      setScore(score + 1);
-    }
-    setShowFeedback(true);
-  };
-
-  const handleNextQuestion = () => {
-    setShowFeedback(false);
-    setQuestionIndex(questionIndex + 1);
-  };
-
-  const handleRetakeQuiz = () => {
-    setScore(0);
-    setQuestionIndex(0);
-    setShowFeedback(false);
-    setFeedback('');
-    onRetake();
-  };
-
-  return (
-    <div className="quiz">
-      <div className="progress-bar">
-        <div className="progress" style={{ width: `${(questionIndex / WasteManagementQuestions.length) * 100}%` }}></div>
-      </div>
-      {questionIndex < WasteManagementQuestions.length ? (
-        <div className="question-card">
-          <h1>{WasteManagementQuestions[questionIndex].question}</h1>
-          {WasteManagementQuestions[questionIndex].options.map((option) => (
-            <button key={option} className="option-button" onClick={() => handleAnswer(option)}>
-              {option}
-            </button>
-          ))}
-          {showFeedback && (
-            <div className="feedback">
-              <p>{feedback}</p>
-              <p>{WasteManagementQuestions[questionIndex].fact}</p>
-              <button className="next-button" onClick={handleNextQuestion}>Next Question</button>
-            </div>
-          )}
-        </div>
-      ) : (
-        <div className="score-card">
-          <h2>Your score: {score}</h2>
-          <button className="retake-button" onClick={handleRetakeQuiz}>Retake Quiz</button>
+          <Title order={4}>Your score: {score}</Title>
+          <Button onClick={handleRetakeQuiz}>Retake Quiz</Button>
         </div>
       )}
     </div>
@@ -154,30 +93,28 @@ const Home = () => {
   };
 
   return (
-    <div className="container">
+    <Container>
       <header>
-        <p>Rewards</p>
+        <Title order={2}>Rewards</Title>
       </header>
       <Leaderboard scores={scores} />
-      <Challenges/>
-      <h2>Test Your Knowledge!</h2>
-      <div className="quiz-tiles">
+      <Challenges />
+      <Title order={3}>Test Your Knowledge!</Title>
+      <Group spacing="md">
         <div className={`quiz-tile ${showQuiz1 ? 'active' : ''}`} onClick={handleShowQuiz1}>
-          <h3>Quiz 1: Recycling</h3>
-          {showQuiz1 && <Quiz1 onRetake={handleRetakeQuiz} />}
+          <Title order={4}>Quiz 1: Recycling</Title>
+          {showQuiz1 && <Quiz questions={questions} onRetake={handleRetakeQuiz} />}
         </div>
         <div className={`quiz-tile ${showQuiz2 ? 'active' : ''}`} onClick={handleShowQuiz2}>
-          <h3>Quiz 2: Waste Management</h3>
-          {showQuiz2 && <Quiz2 onRetake={handleRetakeQuiz} />}
+          <Title order={4}>Quiz 2: Waste Management</Title>
+          {showQuiz2 && <Quiz questions={WasteManagementQuestions} onRetake={handleRetakeQuiz} />}
         </div>
-      </div>
-      <div>
-          <Tips/>
-        </div>
+      </Group>
+      <Tips />
       <footer>
         <p>© 2024 Recycling Rewards. All rights reserved.</p>
       </footer>
-    </div>
+    </Container>
   );
 };
 
