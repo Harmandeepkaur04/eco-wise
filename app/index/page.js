@@ -1,3 +1,4 @@
+
 "use client"
 import React from 'react';
 import Link from 'next/link';
@@ -10,6 +11,7 @@ export default function Index(){
 
     return (
         <main>
+        
         <div className='recycle'>
             <h2>Why to Recycle?</h2>
             <p>

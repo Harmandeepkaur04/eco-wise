@@ -224,71 +224,8 @@ li {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-@media (max-width: 1024px) {
-  .quiz-tile {
-    flex: 1 1 calc(50% - 20px); /* Adjusts for medium screens */
-  }
+input[type="checkbox"] {
+  width: 25px; /* Adjust the width as needed */
+  height: 25px; /* Adjust the height as needed */
+  margin-right: 10px;
 }
-
-@media (max-width: 768px) {
-  .quiz-tiles {
-    flex-direction: column;
-  }
-
-  .quiz-tile {
-    flex: 1 1 100%;
-    margin: 10px 0;
-  }
-}
-
-/* Challenges.module.css */
-
-.challengeContainer {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f0f4f1; /* Light background for overall page */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.challengeList {
-  padding: 0;
-}
-
-.challengeItem {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  background-color: #e1edbd; /* Soft pastel green */
-  border-radius: 5px;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.challengeItem:hover {
-  background-color: #b0cf98; /* Slightly darker green on hover */
-  transform: scale(1.02);
-}
-
-
-.completedMessage {
-  font-size: 18px;
-  color: #5A8559; /* Dark Green */
-  text-align: center;
-  font-weight: bold;
-  margin-top: 20px;
-}
-.challengeItem.completed {
-  background-color: #26b461; /* Highlight completed tasks */
-  filter: blur(2px); /* Apply blur effect */
-  text-decoration: line-through;
-}
-
-/* Adjust for mobile */
-@media (max-width: 768px) {
-  .challengeItem {
-    padding: 8px;
-  }
-}
-

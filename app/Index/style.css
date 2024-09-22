@@ -1,50 +1,4 @@
 
-nav {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  width: 100%; 
-  background-color: transparent; 
-  padding: 10px 20px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  height: 60px; 
-}
-
-/* Style the unordered list */
-nav ul {
-  list-style-type: none; 
-  margin: 0;
-  padding: 0;
-  display: flex; 
-  justify-content: center;
-  width: 100%;
-}
-
-/* Style each list item */
-nav ul li {
-  margin: 0 20px; 
-  padding-bottom: 10px;
-}
-
-/* Style the links */
-nav a {
-  color: #102f15; 
-  text-decoration: none; 
-  font-weight: bold; 
-  border: 2px solid transparent; 
-  padding: 10px;
-  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
-  position: relative; 
-}
-
-/* Hover effect for the links */
-nav a:hover {
-  border: 2px solid #728c5a; 
-  background-color: #728c5a; 
-  color: white; 
-  border-radius: 5px; 
-}
-
 
 /* Style the recycle container */
 .recycle {
@@ -88,7 +42,6 @@ nav a:hover {
     height: 260px;
     z-index: 1; 
 }
-
 
 
 /* Style the content container */
@@ -296,7 +249,8 @@ nav a:hover {
   .footer-social {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    gap: 10px; 
   }
 
   .footer-social h4{
@@ -307,7 +261,18 @@ nav a:hover {
     text-align: center;
     margin: 0;
   }
-  
+
+.footer-social .icon {
+    font-size: 24px; /* Adjust the size of the icons */
+    color: #000; /* Adjust color if needed */
+    cursor: pointer;
+    transition: color 0.3s ease;
+    gap: 2px;
+}
+
+.footer-social .icon:hover {
+    color: red; /* Change color on hover if desired */
+}
 
 
 

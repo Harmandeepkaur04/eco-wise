@@ -49,37 +49,40 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: '40px';
+    padding: 40px;
     font-family: arial,sans-serif;
     background-color: white;
   }
   h1 {
-    font-size: 2.5rem; 
+    font-size: 40px; 
     text-align: center; 
     margin: 40px 0; 
     color: #102f15; 
 }
 
-
   .userInfoSection{
     width: 100%;
     max-width: 600px;
-    background-color: '#e6f7ff';
     padding:20px;
     border-radius: 10px;
+    background-color: #eaf1b1 ;
     box-shadow:0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom:30px;
+    font-size: 20px;
   }
 
 
 .infoSection{
     width: 100%;
     max-width: 600px;
-    background-color:#f0f0f0 ;
+    background-color:#eaf1b1 ;
     padding: 20px;
     border-radius: 10px;
-    box-Shadow: '0 2px 10px rgba(0, 0, 0, 0.1)';
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
   }
 .option{
     margin-bottom: 20px;
