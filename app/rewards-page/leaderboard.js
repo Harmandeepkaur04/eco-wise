@@ -1,16 +1,18 @@
-// pages/rewards/Leaderboard.js
+import { Title, List } from '@mantine/core';
+
 const Leaderboard = ({ scores }) => {
-    return (
-      <div>
-        <h2>Leaderboard</h2>
-        <ul>
-          {scores.map((score, index) => (
-            <li key={index}>{score.name}: {score.points}</li>
-          ))}
-        </ul>
-      </div>
-    );
-  };
-  
-  export default Leaderboard;
-  
+  return (
+    <div>
+      <Title order={2}>Leaderboard</Title>
+      <List>
+        {scores.map((score, index) => (
+          <List.Item key={index}>
+            {score.name}: {score.points}
+          </List.Item>
+        ))}
+      </List>
+    </div>
+  );
+};
+
+export default Leaderboard;
