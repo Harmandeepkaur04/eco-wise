@@ -44,7 +44,6 @@
 }
 
 
-
 /* Style the content container */
 .content {
     background-color: #ffffff; 
@@ -272,7 +271,7 @@
 }
 
 .footer-social .icon:hover {
-    color: #007bff; /* Change color on hover if desired */
+    color: red; /* Change color on hover if desired */
 }
 
 
