@@ -37,16 +37,16 @@ export default function Index() {
         </Text>
 
         <Grid className='container'>
-          <Grid.Col span={3} className='test'>
+          <Grid.Col span={12} className='test'>
             <Text>Recycling Information</Text>
           </Grid.Col>
-          <Grid.Col span={3} className='test'>
+          <Grid.Col span={6} className='test'>
             <Text>Local Disposal Center Locator</Text>
           </Grid.Col>
-          <Grid.Col span={3} className='test'>
+          <Grid.Col span={6} className='test'>
             <Text>Educational Resources</Text>
           </Grid.Col>
-          <Grid.Col span={3} className='test'>
+          <Grid.Col span={6} className='test'>
             <Text>Community Engagement</Text>
           </Grid.Col>
         </Grid>

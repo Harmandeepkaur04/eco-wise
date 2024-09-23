@@ -1,20 +1,23 @@
-"use client"
-import React from 'react';
-import '../profile/styles.css';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useState } from 'react';
-export default function ProfilePage() {
-    const [userInfo] = useState({
-        name: 'Ben Stoks',  
-        email: 'ben@example.com', 
-        address: '123 green Street, Alberta, Canada', 
-      });
+import { Container, Title, Text, Group, Button, List, ThemeIcon } from '@mantine/core';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { IconCheck } from '@tabler/icons-react';
+import '../profile/styles.css';
 
-  const [points] = useState(150); 
+export default function ProfilePage() {
+  const [userInfo] = useState({
+    name: 'Ben Stoks',
+    email: 'ben@example.com',
+    address: '123 green Street, Alberta, Canada',
+  });
+
+  const [points] = useState(150);
 
   const [notifications] = useState([
     'Reminder: Drop off your recyclables at the nearest center today!',
-    'New event: Community cleanup drive on Saturday!'
+    'New event: Community cleanup drive on Saturday!',
   ]);
 
   const [isUserInfo, setIsUserInfo] = useState(false);
@@ -38,75 +41,67 @@ export default function ProfilePage() {
     setIsNotifications(!isNotifications);
   };
 
-
   return (
     <main>
-    <header>
-            <nav>
-                <ul>
-                    <li><Link href="/recycle-page">Recycle</Link></li>
-                    <li><Link href="/disposal">Disposal</Link></li>
-                    <li><Link href="/rewards-page">Rewards</Link></li>
-                    <li><Link href="/calendar">Calendar</Link></li>
-                    <li><Link href="/profile">Profile</Link></li>
-                </ul> 
-                </nav>    
-        </header>
-
-    <div className='container'>
-      <h1><strong>Profile Page</strong></h1>
       
-      {/* User Info Section */}
-      <div className='infoSection' >
-        <h3 onClick={toggleUserInfo} style={{cursor:'pointer'}}>User Information</h3>
 
-        {isUserInfo && (
+      <Container className='container'>
+        <Title order={1}><strong>Profile Page</strong></Title>
 
-        <div>
-        <p><strong>Name:</strong> {userInfo.name}</p>
-        <p><strong>Email:</strong> {userInfo.email}</p>
-        <p><strong>Address:</strong> {userInfo.address}</p>
-      </div>
-        )}
-      </div>
+        {/* User Info Section */}
+        <div className='infoSection'>
+          <Title order={3} onClick={toggleUserInfo} style={{ cursor: 'pointer' }}>User Information</Title>
+          {isUserInfo && (
+            <div>
+              <Text><strong>Name:</strong> {userInfo.name}</Text>
+              <Text><strong>Email:</strong> {userInfo.email}</Text>
+              <Text><strong>Address:</strong> {userInfo.address}</Text>
+            </div>
+          )}
+        </div>
 
-        <div  className='infoSection' >
-          <h3 onClick={togglePoints} style={{cursor:'pointer'}}>Points Earned</h3>
+        <div className='infoSection'>
+          <Title order={3} onClick={togglePoints} style={{ cursor: 'pointer' }}>Points Earned</Title>
           {isPoints && (
-          <div>
-          <p>{points} points</p>
-          </div>
+            <div>
+              <Text>{points} points</Text>
+            </div>
           )}
-          
         </div>
-      
-        <div  className='infoSection'>
-          <h3 onClick={toggleRewards} style={{cursor:'pointer'}}>See Your Rewards</h3>
+
+        <div className='infoSection'>
+          <Title order={3} onClick={toggleRewards} style={{ cursor: 'pointer' }}>See Your Rewards</Title>
           {isRewards && (
-          <div>
-          <p>Check your reward status based on the points earned.</p>
-          </div>
+            <div>
+              <Text>Check your reward status based on the points earned.</Text>
+            </div>
           )}
         </div>
 
-        <div  className='infoSection'>
-          <h3 onClick={toggleNotifications} style={{cursor:'pointer'}}>Notifications</h3>
-          {isNotifications &&(
-          <div>
-          <ul>
-            {notifications.map((note, index) => (
-              <li key={index}>{note}</li>
-            ))}
-          </ul>
-          </div>
-        )}
+        <div className='infoSection'>
+          <Title order={3} onClick={toggleNotifications} style={{ cursor: 'pointer' }}>Notifications</Title>
+          {isNotifications && (
+            <List
+              spacing="xs"
+              size="sm"
+              center
+              icon={
+                <ThemeIcon color="teal" size={24} radius="xl">
+                  <IconCheck size={16} />
+                </ThemeIcon>
+              }
+            >
+              {notifications.map((note, index) => (
+                <List.Item key={index}>{note}</List.Item>
+              ))}
+            </List>
+          )}
         </div>
 
-        <div className='button'>
-          <button onClick={() => alert('Signed out!')}>Sign Out</button>
-        </div>
-      </div>
-
+        <Group position="center" className='button'>
+          <Button onClick={() => alert('Signed out!')}>Sign Out</Button>
+        </Group>
+      </Container>
     </main>
   );
 }

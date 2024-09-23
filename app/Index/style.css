@@ -116,13 +116,13 @@
 
 .test {
     
-    width: 50%;
+    width: 200%;
     height:auto;
     background-color:#728c5a; 
     border: 1px solid #ddd; 
     border-radius: 8px; 
     padding: 10px; 
-    margin: 20px 0 10px 15px; 
+    margin: 20px 10 0px 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     
