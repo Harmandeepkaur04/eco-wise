@@ -108,7 +108,7 @@
 
 
 .container {
-    margin-left: 100px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,7 +122,7 @@
     border: 1px solid #ddd; 
     border-radius: 8px; 
     padding: 10px; 
-    margin: 20px 10 0px 10px; 
+    margin: 10px 0 20px 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     
