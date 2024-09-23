@@ -12,6 +12,7 @@ const Challenges = () => {
     { id: 7, name: 'Start a compost bin', completed: false, points: 20 },
     { id: 8, name: 'Participate in a local clean-up event', completed: false, points: 15 },
   ]);
+  
   const [totalPoints, setTotalPoints] = useState(0);
 
   const toggleCompletion = (id) => {
@@ -48,5 +49,6 @@ const Challenges = () => {
     </div>
   );
 };
+
 
 export default Challenges;

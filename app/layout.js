@@ -1,10 +1,9 @@
-// app/layout.js or app/layout.jsx
 import React from 'react';
 import localFont from "next/font/local";
-
 import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
-import Link from "next/link";
-
+import { MantineProvider } from '@mantine/core';
+import Link from 'next/link';
+import './globals.css';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,53 +18,44 @@ const geistMono = localFont({
 
 export default function RootLayout({ children }) {
   return (
-
-    <ClerkProvider>
-    
     <html lang="en">
+      <head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-       
-        <header className="header-container">
-            <h1 className="header">Eco Wise</h1>
-            <nav>
-              <ul className="nav-links">
-                <li><Link href="/Home">Home</Link></li>
-                <li><Link href="/recycle-page">Recycle</Link></li>
-                <li><Link href="/disposal">Disposal</Link></li>
-                <li><Link href="/rewards-page">Rewards</Link></li>
-                <li><Link href="/calendar">Calendar</Link></li>
-                <li><Link href="/profile">Profile</Link></li>
-              </ul>
-            </nav>
-            <div className="user-button-container">
-              <UserButton showName />
-            </div>
-        </header>
-        <SignedOut>
-          <div className="sign-in-container">
-            <SignIn routing="hash" />
-          </div>
-        </SignedOut>
+        <ClerkProvider>
+          <MantineProvider withGlobalStyles withNormalizeCSS>
+            {/* Header */}
+            <header className="header-container">
+              <h1 className="header">Eco Wise</h1>
+              <nav>
+                <ul className="nav-links">
+                  <li><Link href="/Home">Home</Link></li>
+                  <li><Link href="/recycle-page">Recycle</Link></li>
+                  <li><Link href="/disposal">Disposal</Link></li>
+                  <li><Link href="/rewards-page">Rewards</Link></li>
+                  <li><Link href="/calendar">Calendar</Link></li>
+                  <li><Link href="/profile">Profile</Link></li>
+                </ul>
+              </nav>
+              <div className="user-button-container">
+                <UserButton showName />
+              </div>
+            </header>
 
-        <nav>
-                <ul>
-                <h1>EcoWise</h1>
-                    <li><Link href="/index">Home</Link></li>
-                    <li><Link href="/recycle-page">Recycle</Link></li>
-                    <li><Link href="/disposal">Disposal
-                    </Link></li>
-                    <li><Link href="/rewards-page">Rewards</Link></li>
-                    <li><Link href="/calendar">Calender</Link></li>
-                    <li><Link href="/profile">Profile</Link></li>
-                </ul> 
-                </nav>
-        <SignedIn>
-          {children}
-        </SignedIn>
-        
+            {/* Sign In / Sign Out Logic */}
+            <SignedOut>
+              <div className="sign-in-container">
+                <SignIn routing="hash" />
+              </div>
+            </SignedOut>
+            <SignedIn>
+              {/* Main Content for signed-in users */}
+              <main className="main-content">
+                {children}
+              </main>
+            </SignedIn>
+          </MantineProvider>
+        </ClerkProvider>
       </body>
     </html>
-    </ClerkProvider>
-
   );
 }

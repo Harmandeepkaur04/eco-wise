@@ -93,6 +93,7 @@ const Home = () => {
     setShowQuiz2(false);
   };
 
+  
   return (
     <Container>
       <header>
