@@ -1,195 +1,196 @@
-/* General Layout */
+/* General body styles */
 body {
-    background-color: #EAF1B1; 
-    color: #102F15; 
-    font-family: 'Times New Roman', serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; 
-    margin: 0;
-  }
-  
-  .calendar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center everything within the container */
-    width: 90%;
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #EAF1B1; 
-    border-radius: 10px;
-    
-  }
-  
-  .monthly-overview-widget {
-    background-color: #728C5A; 
-    color: #102F15; 
-    padding: 20px;
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  /* Split screen layout ooo fancy */
-  .calendar-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    gap: 20px;
-    margin-bottom: 20px; 
-  }
-  
-  /* Left Widget - Large Date and Tasks */
-  .calendar-left-widget {
-    background-color: #728C5A; 
-    color: #EAF1B1; 
-    width: 40%;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: left;
-  }
-  
-  .month-date {
-    font-size: 36px; 
-  }
-  
-  .time-display {
-    font-size: 28px; 
-  }
-  
-  .class-list p {
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .class-list p svg {
-    margin-right: 10px;
-  }
-  
-  /* Right-side Calendar */
-  .calendar-right-side {
-    background-color: #EBFADC;
-    width: 55%;
-    padding: 30px;
-    border-radius: 10px;
-  }
-  
-  .calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .calendar-header h2 {
-    margin: 0;
-    font-size: 28px;
-  }
-  
-  .year-display {
-    font-size: 24px;
-    color: #102F15; 
-  }
-  
-  /* Calendar Grid */
-  .calendar-grid {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .day-names {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .day-header {
-    font-weight: bold;
-    color: #102F15; 
-  }
-  
-  .calendar-body {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-  }
-  
-  .calendar-day {
-    background-color: #EBFADC; 
-    color: #102F15; 
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    border-radius: 5px;
-  }
-  
-  
-  /* Notes */
-  .note-box {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    width: 100%; 
-  }
-  
-  .note-input {
-    width: 100%;
-    max-width: 500px; 
-    height: 100px;
-    margin: 10px auto; 
-    background-color: #728C5A; 
-    color: #102F15; 
-    border: 1px solid #102F15;
-    padding: 10px;
-    font-family: 'Times New Roman', serif;
-    resize: none; 
-    border-radius: 5px;
-  }
-  
-  .note-display {
-    background-color: #EBFADC; 
-    color: #102F15; 
-    padding: 10px;
-    margin-top: 10px;
-    text-align: center;
-    border-radius: 5px;
-  }
-  
-  .calendar-options {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px; 
-  }
-  
-  .calendar-btn,
-  .save-btn {
-    background-color: #728C5A; 
-    color: #EAF1B1; 
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 5px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .calendar-btn:hover,
-  .save-btn:hover {
-    background-color: #556B2F; 
-  }
-  
-  /* General Adjustments For the Calendar*/
-  .calendar-content {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
+  background-color: #EAF1B1; 
+  color: #102F15; 
+  font-family: 'Times New Roman', serif;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  margin: 0;
+}
+
+/* Calendar container */
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #EAF1B1;
+  border-radius: 10px;
+  font-size: 22px;
+}
+
+/* Monthly overview widget */
+.monthly-overview-widget {
+  background-color: #728C5A;
+  color: #102F15;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px; /* Increased font size */
+}
+
+/* Calendar content layout */
+.calendar-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Left widget */
+.calendar-left-widget {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  width: 40%;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.month-date {
+  font-size: 36px;
+}
+
+.time-display {
+  font-size: 28px;
+}
+
+.class-list p {
+  font-size: 18px; /* Decreased font size for upcoming reminders */
+  display: flex;
+  align-items: center;
+}
+
+.class-list p svg {
+  margin-right: 10px;
+}
+
+/* Right-side calendar */
+.calendar-right-side {
+  background-color: #EBFADC;
+  width: 55%;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+  font-size: 28px;
+}
+
+.year-display {
+  font-size: 24px;
+  color: #102F15;
+}
+
+/* Calendar grid */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-names {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.day-header {
+  font-weight: bold;
+  color: #102F15;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  background-color: #EBFADC;
+  color: #102F15;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  border-radius: 5px;
+}
+
+/* Icons inside calendar days */
+.icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+/* Notes Section */
+.note-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color:#EAF1B1;
+}
+
+.note-input {
+  width: 100%;
+  max-width: 500px;
+  height: 100px;
+  margin: 10px auto;
+  background-color: #728C5A; /* Emerald green */
+  color: #EAF1B1; /* Cream */
+  border: 1px solid #102F15; /* Dark green */
+  padding: 10px;
+  font-family: 'Times New Roman', serif;
+  resize: none;
+  border-radius: 5px;
+}
+
+.note-display {
+  background-color: #EBFADC; /* Light green */
+  color: rgba(16, 47, 21, 0.7); /* Lighter dark green for notes */
+  padding: 10px;
+  margin-top: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #728C5A; /* Emerald green border */
+}
+
+.calendar-options {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.calendar-btn,
+.save-btn {
+  background-color: #728C5A; /* Emerald green */
+  color: #EAF1B1; /* Cream */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.calendar-btn:hover,
+.save-btn:hover {
+  background-color: #556B2F; /* Darker green for hover effect */
+}

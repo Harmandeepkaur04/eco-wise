@@ -34,6 +34,7 @@ const RecyclePage = () => {
           <li className="tile">
             <img src='/article1.png' alt="Article 1"/>
             <a href="https://www.earthday.org/7-tips-to-recycle-better/" target="_blank" rel="noopener noreferrer">7 Tips to recycle</a>
+            {/* Used Youtube tutorial */}
           </li>
           <li className="tile">
             <img src='/article2.png' alt="Article 2"/>

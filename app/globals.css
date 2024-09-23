@@ -26,14 +26,15 @@ body {
   }
 }
 
+
 /* Styles for header container */
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  height: 60px; /* Set a fixed height to ensure alignment */
-  background-color: transparent; /* Make sure the background is consistent */
+  height: 80px; /* Increased height for better spacing */
+  background-color: transparent; /* Keep the background consistent */
 }
 
 /* Styles for header text */
@@ -41,7 +42,40 @@ body {
   font-size: 1.5rem;
   color: #163832;
   font-style: italic;
-  line-height: 60px; /* Align text vertically */
+  margin: 0;
+}
+
+/* Navigation styles */
+nav ul {
+  display: flex;
+  gap: 20px; /* Space between navigation links */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #102f15; 
+  text-decoration: none; 
+  font-weight: bold; 
+  border: 2px solid transparent; 
+  padding: 10px;
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
+  position: relative; 
+  align-items: center;
+}
+
+/* Hover effect for the links */
+nav a:hover {
+  border: 2px solid #728c5a; 
+  background-color: #728c5a; 
+  color: white; 
+  border-radius: 5px; 
+}
+
+/* User button container */
+.user-button-container {
+  margin-left: auto; /* Align the user button to the far right */
 }
 
 /* Sign-in container styles */
@@ -53,8 +87,9 @@ body {
 }
 
 /* Main page styles */
-.mainpage {
+.main-content {
   padding: 2rem;
+  margin-top: 80px; /* Ensure content starts below the header */
 }
 
 /* Info container styles */
