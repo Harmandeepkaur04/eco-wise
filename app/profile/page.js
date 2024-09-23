@@ -3,9 +3,7 @@ import React from 'react';
 import '../profile/styles.css';
 import Link from 'next/link';
 import { useState } from 'react';
-
 export default function ProfilePage() {
-
     const [userInfo] = useState({
         name: 'Ben Stoks',  
         email: 'ben@example.com', 
@@ -56,7 +54,7 @@ export default function ProfilePage() {
         </header>
 
     <div className='container'>
-      <h1>Profile Page</h1>
+      <h1><strong>Profile Page</strong></h1>
       
       {/* User Info Section */}
       <div className='infoSection' >
