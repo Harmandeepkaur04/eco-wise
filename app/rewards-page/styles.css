@@ -231,7 +231,6 @@ li {
     flex: 1 1 calc(50% - 20px); /* Adjusts for medium screens */
   }
 }
-
 @media (max-width: 768px) {
   .quiz-tiles {
     display: flex;
@@ -240,7 +239,6 @@ li {
     margin: 20px 0;
     overflow-x: auto; /* Allows horizontal scrolling if needed */
   }
-
   .quiz-tile {
     flex: 0 0 auto; /* Prevents the tiles from shrinking */
     margin: 10px; /* Adjust margin as needed */
