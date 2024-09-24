@@ -1,36 +1,63 @@
 "use client";
-import React from 'react';
-import Link from 'next/link';
-import { Container, Title, Text, Image, Grid, Group } from '@mantine/core';
+import React, { useState } from 'react';
+import { Container, Title, Text, Image, Grid, Group, Input, Select } from '@mantine/core';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import '../Index/style.css';
 
 export default function Index() {
+  // Search bar state
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedOption, setSelectedOption] = useState('');
+
+  // Example data for dropdown (you can modify it to match your content)
+  const searchOptions = [
+    { value: 'why-recycle', label: 'Why Recycle' },
+    { value: 'three-million', label: '3 Million' },
+    { value: 'beyond-recycling', label: 'Beyond Recycling' },
+    { value: 'canada-revolution', label: 'Canada Revolution' },
+  ];
+
+  // Filter options based on search term
+  const filteredOptions = searchOptions.filter(option =>
+    option.label.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <main>
-      <Container className='recycle'>
-        <Title order={2}>Why to Recycle?</Title>
+      {/* Search Bar Section */}
+      <Container className="search-container">
+        <Input
+          placeholder="Search topics..."
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.currentTarget.value)}
+        />
+        <Select
+          data={filteredOptions}
+          placeholder="Select a section"
+          value={selectedOption}
+          onChange={setSelectedOption}
+        />
+      </Container>
+
+      {/* Section 1: Why Recycle */}
+      <Container id='why-recycle' className='recycle'>
+        <Title order={2}>Why Recycle?</Title>
         <Text>
           Recycling is vital for conserving resources, reducing waste, and minimizing environmental impact. It decreases pollution, lowers energy use, and reduces the strain on landfills.
-          <br />
-          By recycling, we contribute to a more sustainable future, protecting ecosystems and promoting responsible waste management.
-          <Image src='/img.jpg' alt='Recycling' />
         </Text>
+        <Image src='/img.jpg' alt='Recycling' />
       </Container>
 
-      <Container className='content'>
+      {/* Section 2: Three Million */}
+      <Container id='three-million' className='content'>
         <Title order={2}>3 Million</Title>
         <Text>
-          tonnes of plastic waste are generated annually in Canada, with only about 9% of it being recycled.
-        </Text>
-
-        <Title order={2}>$5.5 Billion</Title>
-        <Text>
-          is the contribution of the recycling industry to the Canadian economy.
+          Tonnes of plastic waste are generated annually in Canada, with only about 9% of it being recycled.
         </Text>
       </Container>
 
-      <Container className='About'>
+      {/* Section 3: Beyond Recycling */}
+      <Container id='beyond-recycling' className='About'>
         <Title order={2}>Beyond Recycling</Title>
         <Text>
           At ECO WISE, we go beyond recycling to support a sustainable future. Here's how we make a difference:
@@ -52,7 +79,8 @@ export default function Index() {
         </Grid>
       </Container>
 
-      <Container className='graph'>
+      {/* Section 4: Canada Revolution */}
+      <Container id='canada-revolution' className='graph'>
         <Image src='/graph.png' alt='Graph' />
         <div>
           <Title order={2}>Canada’s Recycling Revolution: A Snapshot of Efforts</Title>
@@ -62,6 +90,7 @@ export default function Index() {
         </div>
       </Container>
 
+      {/* Team Section */}
       <section className="team-section">
         <Title order={1}>Meet Our Team</Title>
         <div className="team-container">
@@ -83,6 +112,7 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Footer Section */}
       <Container className='footer'>
         <Container className='footer-about'>
           <Title order={4}>About</Title>
