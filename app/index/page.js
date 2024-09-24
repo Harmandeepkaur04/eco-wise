@@ -5,39 +5,11 @@ import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import '../Index/style.css';
 
 export default function Index() {
-  // Search bar state
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedOption, setSelectedOption] = useState('');
-
-  // Example data for dropdown (you can modify it to match your content)
-  const searchOptions = [
-    { value: 'why-recycle', label: 'Why Recycle' },
-    { value: 'three-million', label: '3 Million' },
-    { value: 'beyond-recycling', label: 'Beyond Recycling' },
-    { value: 'canada-revolution', label: 'Canada Revolution' },
-  ];
-
-  // Filter options based on search term
-  const filteredOptions = searchOptions.filter(option =>
-    option.label.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  
 
   return (
     <main>
-      {/* Search Bar Section */}
-      <Container className="search-container">
-        <Input
-          placeholder="Search topics..."
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.currentTarget.value)}
-        />
-        <Select
-          data={filteredOptions}
-          placeholder="Select a section"
-          value={selectedOption}
-          onChange={setSelectedOption}
-        />
-      </Container>
+      
 
       {/* Section 1: Why Recycle */}
       <Container id='why-recycle' className='recycle'>
