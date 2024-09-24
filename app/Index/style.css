@@ -1,6 +1,11 @@
-
-
 /* Style the recycle container */
+
+.link{
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #102f15;
+  margin-bottom: 50px;
+}
 
 /* Facility Links Style */
 .facility-links {
