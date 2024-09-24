@@ -27,7 +27,6 @@ export default function Index() {
           Tonnes of plastic waste are generated annually in Canada, with only about 9% of it being recycled.
         </Text>
       </Container>
-
       {/* Section 3: Beyond Recycling */}
       <Container id='beyond-recycling' className='About'>
         <Title order={2}>Beyond Recycling</Title>
