@@ -7,8 +7,12 @@ import '../Index/style.css';
 export default function Index() {
   return (
     <main>
+
+      <Text className='link'>JUMP TO SECTION</Text>
+
+
       {/* Facility Links Section */}
-      <nav className="facility-links">
+      <Container className="facility-links">
         <ul>
           <li><a href="#why-recycle">Why Recycle?</a></li>
           <li><a href="#three-million">3 Million</a></li>
@@ -16,7 +20,7 @@ export default function Index() {
           <li><a href="#canada-revolution">Canada's Revolution</a></li>
           <li><a href="#team-section">Meet Our Team</a></li>
         </ul>
-      </nav>
+      </Container>
 
       {/* Section 1: Why Recycle */}
       <Container id='why-recycle' className='recycle'>
@@ -36,9 +40,9 @@ export default function Index() {
       </Container>
 
       <Container id='three-million' className='content'>
-        <Title order={2}>3 Million</Title>
+        <Title order={2}>5.5 Billion</Title>
         <Text>
-          Tonnes of plastic waste are generated annually in Canada, with only about 9% of it being recycled.
+        is the contribution of the recycling industry to the Canadian economy.
         </Text>
       </Container>
 
