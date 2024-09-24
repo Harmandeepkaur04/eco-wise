@@ -27,13 +27,23 @@ export default function Index() {
           Tonnes of plastic waste are generated annually in Canada, with only about 9% of it being recycled.
         </Text>
       </Container>
+
+      <Container id='three-million' className='content'>
+        <Title order={2}>5.5 Billion</Title>
+        <Text>
+        is the contribution of the recycling industry to the Canadian economy.
+        </Text>
+      </Container>
+
       {/* Section 3: Beyond Recycling */}
       <Container id='beyond-recycling' className='About'>
         <Title order={2}>Beyond Recycling</Title>
         <Text>
           At ECO WISE, we go beyond recycling to support a sustainable future. Here's how we make a difference:
         </Text>
+        </Container>
 
+        <Container>
         <Grid className='container'>
           <Grid.Col span={12} className='test'>
             <Text>Recycling Information</Text>
