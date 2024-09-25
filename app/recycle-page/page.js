@@ -43,6 +43,10 @@ const RecyclePage = () => {
             <img src='/article3.png' alt="Article 3"/>
             <a href="https://www.greenamerica.org/save-trees/why-recycled-paper" target="_blank" rel="noopener noreferrer">Why Recycled Paper?</a>
           </li>
+          <li className="tile">
+            <img src='/article4.png' alt="Article 4"/>
+            <a href="https://www.alberta.ca/recycling#:~:text=Information%20for%20businesses%20and%20municipalities.%20Review%20a%20wide%20range%20of" target="_blank" rel="noopener noreferrer">Recycling</a>
+          </li>
         </ul>
       </section>
 

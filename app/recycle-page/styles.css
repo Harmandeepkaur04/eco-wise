@@ -92,6 +92,8 @@ header {
   list-style-type: none;
   background-color: #ddf7c9;
   box-shadow: 0 4px 8px rgba(19, 125, 19, 0.5);
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .article-list li {
@@ -101,8 +103,10 @@ header {
   text-align: center;
   margin: 10px;
   padding: 20px;
-  width: 30%;
+  width: 300px;
   transition: transform 0.3s ease;
+  display: inline-block;
+
 }
 
 .article-list li:hover {
