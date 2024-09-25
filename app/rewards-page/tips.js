@@ -1,5 +1,6 @@
 "use client";
 import { Title, Text, List, Anchor, Container } from '@mantine/core';
+import Link from 'next/link';
 import React from 'react';
 
 const tips = [
