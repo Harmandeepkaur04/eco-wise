@@ -1,7 +1,6 @@
 import React from 'react';
 import '../recycle-page/styles.css';
 
-
 const RecyclePage = () => {
   return (
     <div className="container">
