@@ -198,19 +198,17 @@ button:hover {
   transform: scale(1.05); /* Slight scale effect */
 }
 
-/* Quiz Tile */
-/* Quiz Tiles Container */
 /* Quiz Tiles Container */
 .quiz-tiles {
   display: flex; /* Use Flexbox */
-  justify-content: space-around; /* Space evenly between tiles */
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: space-between; /* Space evenly between tiles */
+  flex-wrap: nowrap; /* Prevent wrapping */
   margin: 20px 0;
 }
 
 /* Quiz Tile */
 .quiz-tile {
-  flex: 1 1 300px; /* Allow tiles to grow and shrink, with a base width */
+  flex: 1; /* Allow tiles to grow equally */
   margin: 10px; /* Space around each tile */
   padding: 20px;
   background-color: #f9f9f9; /* Light background */
@@ -218,6 +216,9 @@ button:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  background-image: url('/quiz.png'); /* Add your image path here */
+  background-size: cover; /* Cover the entire tile */
+  background-position: center; /* Center the image */
 }
 
 .quiz-tile:hover {

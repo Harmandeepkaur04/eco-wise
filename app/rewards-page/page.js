@@ -101,7 +101,7 @@ const Home = () => {
       <Leaderboard scores={scores} />
       <Challenges />
       <Title order={3}>Test Your Knowledge!</Title>
-      <Group spacing="md">
+      <Group className="quiz-tiles" spacing="md">
         <div className={`quiz-tile ${showQuiz1 ? 'active' : ''}`} onClick={handleShowQuiz1}>
           <Title order={4}>Quiz 1: Recycling</Title>
           {showQuiz1 && <Quiz questions={questions} onRetake={handleRetakeQuiz} />}
