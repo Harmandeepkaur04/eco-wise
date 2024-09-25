@@ -33,7 +33,7 @@ const RecyclePage = () => {
           <li className="tile">
             <img src='/article1.png' alt="Article 1"/>
             <a href="https://www.earthday.org/7-tips-to-recycle-better/" target="_blank" rel="noopener noreferrer">7 Tips to recycle</a>
-            {/* Used Youtube tutorial */}
+            {/* Used w3schools for iframe https://www.w3schools.com/tags/tag_iframe.asp#:~:text=The%20%3Ciframe%3E%20tag%20specifies%20an%20inline%20frame.%20An%20inline%20frame */}
           </li>
           <li className="tile">
             <img src='/article2.png' alt="Article 2"/>
