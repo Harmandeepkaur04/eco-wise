@@ -1,5 +1,3 @@
-// pages/quiz1.js
-
     const questions = [
       { question: 'What material is commonly recycled into new paper products?', options: ['Plastic', 'Glass', 'Paper', 'Metal'], answer: 'Paper', fact: 'Paper can be recycled up to 7 times before the fibers become too short.' },
       { question: 'Which of these items can be recycled?', options: ['Plastic bottles', 'Styrofoam', 'Ceramics', 'Food waste'], answer: 'Plastic bottles', fact: 'Plastic bottles are one of the most commonly recycled items.' },

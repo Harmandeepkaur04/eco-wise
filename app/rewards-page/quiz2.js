@@ -1,4 +1,3 @@
-// pages/rewards/wasteManagementQuestions.js
 const wasteManagementQuestions = [
     { question: 'What is the primary goal of waste management?', options: ['Reduce waste', 'Increase landfill space', 'Burn waste', 'Export waste'], answer: 'Reduce waste', fact: 'The primary goal of waste management is to reduce the amount of waste generated and to manage it in an environmentally responsible manner.' },
     { question: 'Which of the following is a method of waste disposal?', options: ['Recycling', 'Composting', 'Incineration', 'All of the above'], answer: 'All of the above', fact: 'Recycling, composting, and incineration are all methods of waste disposal.' },
