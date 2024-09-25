@@ -134,3 +134,94 @@ li {
 li:hover {
   background-color: #b0cf98; /* Darker green on hover */
 }
+/* Quiz Styles */
+.quiz {
+  background: #ffffff; /* White background for quizzes */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0; /* Light gray */
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #5A8559; /* Dark Green */
+  transition: width 0.3s ease; /* Smooth transition */
+}
+
+/* Question Card */
+.question-card {
+  margin-bottom: 20px;
+  text-align: center; /* Center align text */
+}
+
+/* Feedback */
+.feedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333; /* Dark text for feedback */
+}
+
+/* Score Card */
+.score-card {
+  text-align: center;
+  background-color: #e1edbd; /* Light Pastel Green */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Buttons */
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #5A8559; /* Dark Green */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #426D54; /* Forest Green */
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Quiz Tile */
+/* Quiz Tiles Container */
+/* Quiz Tiles Container */
+.quiz-tiles {
+  display: flex; /* Use Flexbox */
+  justify-content: space-around; /* Space evenly between tiles */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  margin: 20px 0;
+}
+
+/* Quiz Tile */
+.quiz-tile {
+  flex: 1 1 300px; /* Allow tiles to grow and shrink, with a base width */
+  margin: 10px; /* Space around each tile */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.quiz-tile:hover {
+  background-color: #e1edbd; /* Light Pastel Green on hover */
+  transform: scale(1.02); /* Slight scale effect */
+}
+
