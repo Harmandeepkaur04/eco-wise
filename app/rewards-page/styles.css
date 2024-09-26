@@ -228,3 +228,112 @@ button:hover {
   transform: scale(1.02); /* Slight scale effect */
 }
 
+
+.tips-section, .resources-section {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f0f4f1; /* Light background */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow effect */
+  position: relative; /* For pseudo-elements */
+}
+
+.tips-section:hover, .resources-section:hover {
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.tips-section h2, .resources-section h2 {
+  font-size: 2.2rem;
+  color: #5A8559; /* Dark Green */
+  margin-bottom: 15px;
+  text-align: center; /* Center align headings */
+  font-weight: bold;
+  text-transform: uppercase; /* Make headings stand out */
+  letter-spacing: 1.5px; /* Space between letters */
+  animation: fadeIn 0.5s; /* Fade-in effect */
+}
+
+.tips-section h3, .resources-section h3 {
+  font-size: 1.6rem;
+  color: #426D54; /* Forest Green */
+  margin: 10px 0 5px;
+  border-bottom: 2px dotted #5A8559; /* Dotted underline for emphasis */
+  padding-bottom: 5px; /* Space below the underline */
+}
+
+.tips-section p, .resources-section p {
+  font-size: 1.1rem;
+  color: #555; /* Darker gray for text */
+  line-height: 1.6;
+  margin-bottom: 15px; /* Space between paragraphs */
+  position: relative; /* For text decoration */
+}
+
+.tips-section p::before {
+  content: '💡'; /* Light bulb icon */
+  position: absolute;
+  left: -30px; /* Positioning the icon */
+  font-size: 1.8rem; /* Icon size */
+}
+
+.tips-section ul, .resources-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tips-section li, .resources-section li {
+  margin-bottom: 15px;
+  background-color: #e1edbd; /* Light Pastel Green */
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  position: relative; /* For pseudo-element */
+  overflow: hidden; /* Contain pseudo-element */
+}
+
+.tips-section li:hover, .resources-section li:hover {
+  background-color: #b0cf98; /* Darker green on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.tips-section li::after {
+  content: '✨'; /* Sparkle icon */
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 1.5rem; /* Icon size */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease; /* Fade in effect */
+}
+
+.tips-section li:hover::after {
+  opacity: 1; /* Show sparkle on hover */
+}
+
+a {
+  color: #5A8559; /* Dark Green for links */
+  text-decoration: none;
+  font-weight: bold; /* Bold links */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+a:hover {
+  color: #007bff; /* Change color on hover */
+  text-decoration: underline;
+}
+
+/* Keyframes for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
