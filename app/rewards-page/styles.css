@@ -209,7 +209,7 @@ button:hover {
 /* Quiz Tile */
 .quiz-tile {
   flex: 0 0 400px; /* Fixed width */
-  height: 750px;
+  height: 650px;
   flex: 1; /* Allow tiles to grow equally */
   margin: 10px; /* Space around each tile */
   padding: 20px;
