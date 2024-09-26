@@ -1,28 +1,27 @@
 "use client";
 import { Title, Text, List, Anchor, Container } from '@mantine/core';
-import Link from 'next/link';
 import React from 'react';
 
 const tips = [
   {
-    title: 'Know What to Recycle',
-    content: 'Familiarize yourself with your local recycling guidelines. Not all materials are recyclable in every area.',
+    title: 'Understand Recycling Rules',
+    content: 'Check local guidelines to know what materials can be recycled in your area.',
   },
   {
-    title: 'Clean Your Recyclables',
-    content: 'Rinse out containers to remove food residue. Dirty recyclables can contaminate other materials.',
+    title: 'Rinse Before Recycling',
+    content: 'Clean containers to remove food residue; dirty items can contaminate the recycling stream.',
   },
   {
-    title: 'Reduce Plastic Use',
-    content: 'Opt for reusable bags, bottles, and containers to minimize plastic waste.',
+    title: 'Minimize Plastic Use',
+    content: 'Choose reusable bags, bottles, and containers to cut down on plastic waste.',
   },
   {
-    title: 'Compost Organic Waste',
-    content: 'Composting food scraps and yard waste reduces landfill waste and creates nutrient-rich soil.',
+    title: 'Start Composting',
+    content: 'Compost food scraps and yard waste to reduce landfill contributions and enrich your garden soil.',
   },
   {
-    title: 'Donate Unwanted Items',
-    content: 'Give gently used items a second life by donating them to charities or thrift stores.',
+    title: 'Donate Instead of Discarding',
+    content: 'Give gently used items a second life by donating them to local charities or thrift shops.',
   },
 ];
 
@@ -30,17 +29,17 @@ const resources = [
   {
     title: 'Earth911 Recycling Search',
     link: 'https://earth911.com/recycling-center-search-guides/',
-    description: 'Find local recycling centers and learn how to recycle different materials.',
+    description: 'Locate recycling centers and learn how to recycle various materials effectively.',
   },
   {
     title: 'EPA Recycling Basics',
     link: 'https://www.epa.gov/recycle/recycling-basics',
-    description: 'Learn the basics of recycling and how to get started.',
+    description: 'Discover the fundamentals of recycling and how to get started in your community.',
   },
   {
-    title: 'Compost Guide',
+    title: 'Composting Guide',
     link: 'https://www.compostguide.com/',
-    description: 'A comprehensive guide to composting at home.',
+    description: 'A detailed guide to help you compost effectively at home.',
   },
 ];
 
