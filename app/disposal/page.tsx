@@ -107,6 +107,55 @@ export default function Disposal() {
               <td>CLOSED</td>
               <td>CLOSED</td>
             </tr>
+            <tr>
+              <td>Family Day</td>
+              <td>Feb 19</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Good Friday</td>
+              <td>Mar 29</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Easter Sunday</td>
+              <td>Mar 31</td>
+              <td>CLOSED</td>
+              <td>CLOSED</td>
+              <td>CLOSED</td>
+            </tr>
+            <tr>
+              <td>Easter Monday</td>
+              <td>Apr 1</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Victoria Day</td>
+              <td>May 20</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Canada Day</td>
+              <td>July 1</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Heritage Day</td>
+              <td>Aug 5</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
         </tbody>
       </Table>
     </Container>
