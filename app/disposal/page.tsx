@@ -1,12 +1,28 @@
-import React from "react";
-import { Button, Text, Table, Container, Paper, Group, Title, Grid, } from "@mantine/core";
+'use client';
+
+import React,{ useRef } from "react";
+import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, } from "@mantine/core";
 import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 
 export default function Disposal() {
+
+    const tableRef = useRef(null); // Create a ref for the table
+  
+    // Function to scroll to the table
+    const scrollToTable = () => {
+      tableRef.current.scrollIntoView({ behavior: "smooth" });
+    };
+
   return (
     <Container component="main">
       <Title component="h2">Waste Management and Recycling Locations</Title>
+
+      <div className="scroll-buttons">
+            <button onClick={scrollToTable} className="scroll-button">
+              View Holiday Hours
+            </button>
+          </div>
 
       <div className="flex-container">
         <div className="locations-container">
@@ -79,7 +95,7 @@ export default function Disposal() {
 
       <Title component="h2">Holiday Hours</Title>
 
-      <Table className="table-container">
+      <Table ref={tableRef} className="table-container">
         <thead>
           <tr>
             <th>Holiday</th>
