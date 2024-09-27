@@ -156,6 +156,55 @@ export default function Disposal() {
               <td>OPEN</td>
               <td>OPEN</td>
             </tr>
+            <tr>
+              <td>Labour Day</td>
+              <td>Sept 2</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>National Day for Truth & Reconciliation</td>
+              <td>Sept 30</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Thanksgiving Day</td>
+              <td>Oct 14</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Remembrance Day</td>
+              <td>Nov 11</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>Christmas Day</td>
+              <td>Dec 25</td>
+              <td>CLOSED</td>
+              <td>CLOSED</td>
+              <td>CLOSED</td>
+            </tr>
+            <tr>
+              <td>Boxing Day</td>
+              <td>Dec 26</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+              <td>OPEN</td>
+            </tr>
+            <tr>
+              <td>New Year's Day (2025)</td>
+              <td>Jan 1</td>
+              <td>CLOSED</td>
+              <td>CLOSED</td>
+              <td>CLOSED</td>
+            </tr>
         </tbody>
       </Table>
     </Container>
