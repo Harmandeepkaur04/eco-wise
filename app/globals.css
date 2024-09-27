@@ -48,7 +48,6 @@ body {
 /* Navigation styles */
 nav ul {
   display: flex;
-  gap: 20px; /* Space between navigation links */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -122,7 +121,7 @@ nav ul {
 /* Style each list item */
 nav ul li {
     margin-right: 20px; 
-    margin-left: 200px;
+    margin-left: 90px;
     
 }
 

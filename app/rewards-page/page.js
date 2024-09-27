@@ -96,7 +96,7 @@ const Home = () => {
   return (
     <Container>
       <header>
-        <Title order={2}>Rewards</Title>
+        <Title className='Rewards' order={2}>Rewards</Title>
       </header>
       <Leaderboard scores={scores} />
       <Challenges />
