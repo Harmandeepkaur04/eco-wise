@@ -166,6 +166,10 @@ li:hover {
   margin-bottom: 20px;
   text-align: center; /* Center align text */
 }
+.quiz1, .quiz2{
+  text-align: center;
+  font-size: 50px;
+}
 
 /* Feedback */
 .feedback {
@@ -194,6 +198,13 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.retake-button{
+  align: center;
+  align-items: center;
+  align-content: center;
+  
 }
 
 button:hover {
