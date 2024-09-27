@@ -1,4 +1,3 @@
-// pages/rewards/Quiz.js
 import { useState } from 'react';
 
 const Quiz = ({ questions }) => {
