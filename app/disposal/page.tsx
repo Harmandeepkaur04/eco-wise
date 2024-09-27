@@ -1,118 +1,105 @@
-"use client";
-
-import React, { useRef } from "react";
+import React from "react";
+import {
+  Button,
+  Text,
+  Table,
+  Container,
+  Paper,
+  Group,
+  Title,
+  Grid,
+} from "@mantine/core";
 import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
-import Link from "next/link";
 
 export default function Disposal() {
-  const tableRef = useRef(null); // Create a ref for the table
-
-  // Function to scroll to the table
-  const scrollToTable = () => {
-    tableRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <>
-      <main>
-        <div>
-          <h2>Waste Management and Recycling Locations</h2>
-          {/* Buttons for scrolling */}
-          <div className="scroll-buttons">
-            <button onClick={scrollToTable} className="scroll-button">
-              View Holiday Hours
-            </button>
+    <Container component="main">
+      <Title component="h2">Waste Management and Recycling Locations</Title>
+
+      <div className="flex-container">
+        <div className="locations-container">
+          <div className="div-container">
+            <Title component="h1">East Calgary Landfill and Eco Centre</Title>
+            <Text component="p">Materials Accepted:</Text>
+            <ul>
+              <li>Residential Waste</li>
+              <li>Commercial Waste</li>
+            </ul>
+            <Text component="p">Hours of Operation (April - October):</Text>
+            <ul>
+              <li>Monday: 6 am - 5 pm</li>
+              <li>Tuesday: 6 am - 5 pm</li>
+              <li>Wednesday: 6 am - 5 pm</li>
+              <li>Thursday: 6 am - 5 pm</li>
+              <li>Friday: 6 am - 5 pm</li>
+              <li>Saturday: 7:30 am - 5 pm</li>
+              <li>Sunday: 7:30 am - 5 pm</li>
+            </ul>
+          </div>
+
+          <div className="div-container">
+            <Title component="h1">Spyhill Landfill and Eco Centre</Title>
+            <Text component="p">Materials Accepted:</Text>
+            <ul>
+              <li>Residential Waste</li>
+              <li>Commercial Waste</li>
+            </ul>
+            <br />
+            <Text component="p">Hours of Operation (Year Round):</Text>
+            <ul>
+              <li>Monday: 7:30 am - 5 pm</li>
+              <li>Tuesday: 7:30 am - 5 pm</li>
+              <li>Wednesday: 7:30 am - 5 pm</li>
+              <li>Thursday: 7:30 am - 5 pm</li>
+              <li>Friday: 7:30 am - 5 pm</li>
+              <li>Saturday: 7:30 am - 5 pm</li>
+              <li>Sunday: CLOSED</li>
+            </ul>
+          </div>
+
+          <div className="div-container">
+            <Title component="h1">Shepard Landfill and Eco Centre</Title>
+            <Text component="p">Materials Accepted:</Text>
+            <ul>
+              <li>Residential Waste</li>
+              <li>
+                No Commercial Waste except for Clean Fill and Industrial Waste -
+                Permits and Appointments may be required.
+              </li>
+            </ul>
+            <br />
+            <Text component="p">Hours of Operation (Year Round):</Text>
+            <ul>
+              <li>Monday: 7:30 am - 5 pm</li>
+              <li>Tuesday: 7:30 am - 5 pm</li>
+              <li>Wednesday: 7:30 am - 5 pm</li>
+              <li>Thursday: 7:30 am - 5 pm</li>
+              <li>Friday: 7:30 am - 5 pm</li>
+              <li>Saturday: 7:30 am - 5 pm</li>
+              <li>Sunday: CLOSED</li>
+            </ul>
           </div>
         </div>
 
-        <div className="flex-container">
-          <div className="locations-container">
-            <div className="div-container">
-              <h1>East Calgary Landfill and Eco Centre</h1>
-              <p>Materials Accepted:</p>
-              <ul>
-                <li>Residential Waste</li>
-                <li>Commercial Waste</li>
-              </ul>
-              <br />
-              <p>Hours of Operation (April - October):</p>
-              <ul>
-                <li>Monday: 6 am - 5 pm</li>
-                <li>Tuesday: 6 am - 5 pm</li>
-                <li>Wednesday: 6 am - 5 pm</li>
-                <li>Thursday: 6 am - 5 pm</li>
-                <li>Friday: 6 am - 5 pm</li>
-                <li>Saturday: 7:30 am - 5 pm</li>
-                <li>Sunday: 7:30 am - 5 pm</li>
-              </ul>
-            </div>
-
-            <div className="div-container">
-              <h1>Spyhill Landfill and Eco Centre</h1>
-              <p>Materials Accepted:</p>
-              <ul>
-                <li>Residential Waste</li>
-                <li>Commercial Waste</li>
-              </ul>
-              <br />
-              <p>Hours of Operation (Year Round):</p>
-              <ul>
-                <li>Monday: 7:30 am - 5 pm</li>
-                <li>Tuesday: 7:30 am - 5 pm</li>
-                <li>Wednesday: 7:30 am - 5 pm</li>
-                <li>Thursday: 7:30 am - 5 pm</li>
-                <li>Friday: 7:30 am - 5 pm</li>
-                <li>Saturday: 7:30 am - 5 pm</li>
-                <li>Sunday: CLOSED</li>
-              </ul>
-            </div>
-
-            <div className="div-container">
-              <h1>Shepard Landfill and Eco Centre</h1>
-              <p>Materials Accepted:</p>
-              <ul>
-                <li>Residential Waste</li>
-                <li>
-                  No Commercial Waste except for Clean Fill and Industrial Waste
-                  - Permits and Appointments may be required.
-                </li>
-              </ul>
-              <br />
-              <p>Hours of Operation (Year Round):</p>
-              <ul>
-                <li>Monday: 7:30 am - 5 pm</li>
-                <li>Tuesday: 7:30 am - 5 pm</li>
-                <li>Wednesday: 7:30 am - 5 pm</li>
-                <li>Thursday: 7:30 am - 5 pm</li>
-                <li>Friday: 7:30 am - 5 pm</li>
-                <li>Saturday: 7:30 am - 5 pm</li>
-                <li>Sunday: CLOSED</li>
-              </ul>
-            </div>
-          </div>
-
-          <br />
-          <div className="map-container">
-            <GoogleMaps />
-          </div>
+        <div className="map-container">
+          <GoogleMaps />
         </div>
+      </div>
 
-        <div>
-          <h2>Holiday Hours</h2>
-        </div>
+      <Title component="h2">Holiday Hours</Title>
 
-        <table ref={tableRef} className="table-container">
-          <thead>
-            <tr>
-              <th>Holiday</th>
-              <th>2024 Dates</th>
-              <th>East Calgary</th>
-              <th>Spyhill</th>
-              <th>Shepard</th>
-            </tr>
-          </thead>
-          <tbody>
+      <Table className="table-container">
+        <thead>
+          <tr>
+            <th>Holiday</th>
+            <th>2024 Dates</th>
+            <th>East Calgary</th>
+            <th>Spyhill</th>
+            <th>Shepard</th>
+          </tr>
+        </thead>
+        <tbody>
             <tr>
               <td>New Year's Day</td>
               <td>Jan 1</td>
@@ -218,9 +205,8 @@ export default function Disposal() {
               <td>CLOSED</td>
               <td>CLOSED</td>
             </tr>
-          </tbody>
-        </table>
-      </main>
-    </>
+        </tbody>
+      </Table>
+    </Container>
   );
 }

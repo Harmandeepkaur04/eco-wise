@@ -1,6 +1,56 @@
-
-
 /* Style the recycle container */
+
+.link{
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #102f15;
+  margin-bottom: 50px;
+}
+
+/* Facility Links Style */
+.facility-links {
+  margin-top: 0px;
+  padding: 5px;
+  border-radius: 0px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.facility-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content:space-around; /* Evenly spaces links */
+}
+
+.facility-links ul li {
+  display: inline-block;
+}
+
+.facility-links ul li a {
+  font-weight: 300; /* Low text weight */
+  text-decoration: none; /* Remove underline */
+  color: #007bff; /* Attractive blue text */
+  font-size: 18px; /* Slightly larger text */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.facility-links ul li a:hover, 
+.facility-links ul li a:focus {
+  color: #007bff; /* Keep the color the same on hover */
+  text-decoration: none; /* No underline on hover */
+}
+
+.facility-links ul li a:active {
+  color: #0056b3; /* Slightly darker blue when clicked */
+}
+
+
+
+
+
+
 .recycle {
     
     position: relative;
@@ -108,7 +158,7 @@
 
 
 .container {
-    margin-left: 100px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,13 +166,13 @@
 
 .test {
     
-    width: 50%;
+    width: 200%;
     height:auto;
     background-color:#728c5a; 
     border: 1px solid #ddd; 
     border-radius: 8px; 
     padding: 10px; 
-    margin: 20px 0 10px 15px; 
+    margin: 10px 0 20px 10px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
     
