@@ -88,7 +88,7 @@ nav a:hover {
 /* Main page styles */
 .main-content {
   padding: 2rem;
-  margin-top: 80px; /* Ensure content starts below the header */
+  margin-top: 30px; /* Ensure content starts below the header */
 }
 
 /* Info container styles */
