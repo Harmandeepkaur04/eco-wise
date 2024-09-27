@@ -8,7 +8,7 @@ export default function Index() {
   return (
     <main>
 
-      <Text className='link'>JUMP TO SECTION</Text>
+      <Text className='link'>On this Page</Text>
 
 
       {/* Facility Links Section */}
