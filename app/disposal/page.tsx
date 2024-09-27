@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Text,
-  Table,
-  Container,
-  Paper,
-  Group,
-  Title,
-  Grid,
-} from "@mantine/core";
+import { Button, Text, Table, Container, Paper, Group, Title, Grid, } from "@mantine/core";
 import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 
@@ -26,6 +17,7 @@ export default function Disposal() {
               <li>Residential Waste</li>
               <li>Commercial Waste</li>
             </ul>
+            <br />
             <Text component="p">Hours of Operation (April - October):</Text>
             <ul>
               <li>Monday: 6 am - 5 pm</li>
@@ -37,7 +29,6 @@ export default function Disposal() {
               <li>Sunday: 7:30 am - 5 pm</li>
             </ul>
           </div>
-
           <div className="div-container">
             <Title component="h1">Spyhill Landfill and Eco Centre</Title>
             <Text component="p">Materials Accepted:</Text>
@@ -57,7 +48,6 @@ export default function Disposal() {
               <li>Sunday: CLOSED</li>
             </ul>
           </div>
-
           <div className="div-container">
             <Title component="h1">Shepard Landfill and Eco Centre</Title>
             <Text component="p">Materials Accepted:</Text>
