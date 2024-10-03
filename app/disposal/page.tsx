@@ -5,6 +5,24 @@ import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, } fr
 import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 
+const elements = [
+  { Holiday: "New Year's Day", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
+  { Holiday: "Family Day", Date: 'Feb 19', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Good Friday', Date: 'Mar 29', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Easter Sunday', Date: 'Mar 31', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
+  { Holiday: 'Easter Monday', Date: 'Apr 1', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Victoria Day', Date: 'May 20', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Canada Day', Date: 'Jul 1', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Heritage Day', Date: 'Aug 5', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Labour Day', Date: 'Sept 2', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'National Day for Truth & Reconciliation', Date: 'Sept 30', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Thanksgiving Day', Date: 'Oct 14', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Remembrance Day', Date: 'Nov 11', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: 'Christmas Day', Date: 'Dec 25', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
+  { Holiday: 'Boxing Day', Date: 'Dec 26', East: 'OPEN', Spyhill: 'OPEN', Shepard: 'OPEN' },
+  { Holiday: "New Year's Day (2025)", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
+];
+
 export default function Disposal() {
 
     const tableRef = useRef(null); // Create a ref for the table
@@ -13,6 +31,16 @@ export default function Disposal() {
     const scrollToTable = () => {
       tableRef.current.scrollIntoView({ behavior: "smooth" });
     };
+
+    const rows = elements.map((element) => (
+      <Table.Tr key={element.Holiday}>
+        <Table.Td>{element.Holiday}</Table.Td>
+        <Table.Td>{element.Date}</Table.Td>
+        <Table.Td>{element.East}</Table.Td>
+        <Table.Td>{element.Spyhill}</Table.Td>
+        <Table.Td>{element.Shepard}</Table.Td>
+      </Table.Tr>
+    ));
 
   return (
     <Container component="main">
@@ -110,124 +138,19 @@ export default function Disposal() {
 
       <Title component="h2">Holiday Hours</Title>
 
-      <Table ref={tableRef} className="table-container">
-        <thead>
-          <tr>
-            <th>Holiday</th>
-            <th>2024 Dates</th>
-            <th>East Calgary</th>
-            <th>Spyhill</th>
-            <th>Shepard</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td>New Year's Day</td>
-              <td>Jan 1</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-            </tr>
-            <tr>
-              <td>Family Day</td>
-              <td>Feb 19</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Good Friday</td>
-              <td>Mar 29</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Easter Sunday</td>
-              <td>Mar 31</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-            </tr>
-            <tr>
-              <td>Easter Monday</td>
-              <td>Apr 1</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Victoria Day</td>
-              <td>May 20</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Canada Day</td>
-              <td>July 1</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Heritage Day</td>
-              <td>Aug 5</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Labour Day</td>
-              <td>Sept 2</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>National Day for Truth & Reconciliation</td>
-              <td>Sept 30</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Thanksgiving Day</td>
-              <td>Oct 14</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Remembrance Day</td>
-              <td>Nov 11</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>Christmas Day</td>
-              <td>Dec 25</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-            </tr>
-            <tr>
-              <td>Boxing Day</td>
-              <td>Dec 26</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-              <td>OPEN</td>
-            </tr>
-            <tr>
-              <td>New Year's Day (2025)</td>
-              <td>Jan 1</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-              <td>CLOSED</td>
-            </tr>
-        </tbody>
-      </Table>
+      <Table ref={tableRef} className="table-container" stickyHeader stickyHeaderOffset={60}>
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Holiday</Table.Th>
+          <Table.Th>2024 Dates</Table.Th>
+          <Table.Th>East Calgary</Table.Th>
+          <Table.Th>Spyhill</Table.Th>
+          <Table.Th>Shepard</Table.Th>
+        </Table.Tr>
+      </Table.Thead>
+      <Table.Tbody>{rows}</Table.Tbody>
+    </Table>
+
     </Container>
   );
 }
