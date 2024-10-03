@@ -1,5 +1,6 @@
 main {
   color: #102f15;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h2 {
@@ -38,7 +39,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
+
   flex-wrap: wrap;
 }
 
@@ -72,7 +73,7 @@ h2 {
   border: 3px solid #102f15;
   border-radius: 8px;
   width: 85vh;
-  height: 50vh;
+  height: 70vh;
   background-color: #728c5a;
   margin-left: 15px;
   color: #eaf1b1;
@@ -92,12 +93,13 @@ h2 {
 
 .div-container p {
   margin-left: 15px;
-  font-size: large;
+  font-size: x-large;
 }
 
 .div-container ul {
   margin-left: 25px;
   color: #ebfadc;
+  font-size: large;
 }
 
 .table-container {
