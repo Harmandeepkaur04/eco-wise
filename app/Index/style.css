@@ -17,15 +17,16 @@
 }
 
 .facility-links ul {
-  list-style: none;
+  list-style: disc;
   padding: 0;
   margin: 0;
-  display:grid;
+  display:flex;
   justify-content:left; /* Evenly spaces links */
 }
 
 .facility-links ul li {
-  display: inline-block;
+  display: inline;
+  margin-right: 10px;
 }
 
 .facility-links ul li a {
