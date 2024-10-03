@@ -44,6 +44,11 @@ export default function Disposal() {
               <li>Saturday: 7:30 am - 5 pm</li>
               <li>Sunday: 7:30 am - 5 pm</li>
             </ul>
+            <br />
+            <Text component="p">Address:</Text>
+            <ul>
+              <li>3020 68 Street SE</li>
+            </ul>
           </div>
           <div className="div-container">
             <Title component="h1">Spyhill Landfill and Eco Centre</Title>
@@ -62,6 +67,11 @@ export default function Disposal() {
               <li>Friday: 7:30 am - 5 pm</li>
               <li>Saturday: 7:30 am - 5 pm</li>
               <li>Sunday: CLOSED</li>
+            </ul>
+            <br />
+            <Text component="p">Address:</Text>
+            <ul>
+              <li>11808 69 Street NW</li>
             </ul>
           </div>
           <div className="div-container">
@@ -84,6 +94,11 @@ export default function Disposal() {
               <li>Friday: 7:30 am - 5 pm</li>
               <li>Saturday: 7:30 am - 5 pm</li>
               <li>Sunday: CLOSED</li>
+            </ul>
+            <br />
+            <Text component="p">Address:</Text>
+            <ul>
+              <li>12111 68 Street SE</li>
             </ul>
           </div>
         </div>
