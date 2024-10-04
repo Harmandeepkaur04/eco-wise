@@ -1,21 +1,22 @@
-/* General Layout */
+/* General body styles */
 body {
-  background-color: #EAF1B1; 
-  color: #102F15; 
+  background-color: #EAF1B1;
+  color: #102F15;
   font-family: 'Times New Roman', serif;
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
   margin: 0;
 }
 
-/* Calendar container */
+/* General styling */
 .calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 20px;
   background-color: #EAF1B1;
