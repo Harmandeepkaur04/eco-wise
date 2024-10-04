@@ -1,4 +1,3 @@
-
 "use client"
 import Link from 'next/link';
 import Leaderboard from './Leaderboard';
@@ -97,12 +96,12 @@ const Home = () => {
   return (
     <Container>
       <header>
-        <Title order={2}>Rewards</Title>
+        <Title className='Rewards' order={2}>Rewards</Title>
       </header>
       <Leaderboard scores={scores} />
       <Challenges />
       <Title order={3}>Test Your Knowledge!</Title>
-      <Group spacing="md">
+      <Group className="quiz-tiles" spacing="md">
         <div className={`quiz-tile ${showQuiz1 ? 'active' : ''}`} onClick={handleShowQuiz1}>
           <Title order={4}>Quiz 1: Recycling</Title>
           {showQuiz1 && <Quiz questions={questions} onRetake={handleRetakeQuiz} />}
