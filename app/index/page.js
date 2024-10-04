@@ -16,6 +16,7 @@ export default function Index() {
         <ul>
           <li><a href="#why-recycle">Why Recycle?</a></li>
           <li><a href="#three-million">3 Million</a></li>
+          <li><a href="#five-billion">5.5 Billion</a></li>
           <li><a href="#beyond-recycling">Beyond Recycling</a></li>
           <li><a href="#canada-revolution">Canada's Revolution</a></li>
           <li><a href="#team-section">Meet Our Team</a></li>
@@ -39,7 +40,7 @@ export default function Index() {
         </Text>
       </Container>
 
-      <Container id='three-million' className='content'>
+      <Container id='five-billion' className='content'>
         <Title order={2}>5.5 Billion</Title>
         <Text>
         is the contribution of the recycling industry to the Canadian economy.
