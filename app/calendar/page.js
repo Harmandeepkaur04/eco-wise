@@ -108,15 +108,15 @@ const Calendar = () => {
       setShowYearPicker(false);
     }, 5000); // Change to 5000ms (5 seconds)
   };
-  
+
+
   return (
-    <><div className="calendar-container">
-        {/* Monthly Schedule Overview Widget */}
-        <div className="monthly-overview-widget">
-          <h2>Monthly Schedule Overview</h2>
-          <p>Upcoming: September 20, Compost Bin 6 AM</p>
-          {savedNotes && <p>{savedNotes}</p>} {/* Display saved notes here */}
-        </div>
+    <div className="calendar-container">
+      <div className="monthly-overview-widget">
+        <h2>Monthly Schedule Overview</h2>
+        <p>Upcoming: {months[currentMonth]} {upcomingReminder.date}, {upcomingReminder.type} 6 AM {upcomingReminder.icon}</p>
+        {savedNotes.length > 0 && <p>Notes: {savedNotes.join(', ')}</p>}
+      </div>
 
         {/* Split screen layout */}
         <div className="calendar-content">
@@ -192,7 +192,7 @@ const Calendar = () => {
             </div>
           )}
         </div>
-      </div></>
+      </div>
   );
 };
 
