@@ -8,12 +8,12 @@ const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
   const today = new Date();
 
+  const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
   const [notes, setNotes] = useState('');
-  const [savedNotes, setSavedNotes] = useState('');
+  const [savedNotes, setSavedNotes] = useState([]); // Store notes as an array
   const [showNotes, setShowNotes] = useState(false);
-
-  const handleNoteChange = (e) => setNotes(e.target.value);
-  const toggleNotes = () => setShowNotes(!showNotes);
+  const [selectedDay, setSelectedDay] = useState(today.getDate());
+  const [currentMonth, setCurrentMonth] = useState(today.getMonth());
 
   // Save notes and display them in the reminders widget
   const handleSaveNotes = () => {
