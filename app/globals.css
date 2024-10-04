@@ -29,12 +29,18 @@ body {
 
 /* Styles for header container */
 .header-container {
+  position: fixed;
+  top: 0;
+  width: 100%; /* Full width */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  height: 80px; /* Increased height for better spacing */
-  background-color: transparent; /* Keep the background consistent */
+  height: 80px;
+  background-color: var(--background);
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Ensure padding is included within the width */
 }
 
 /* Styles for header text */
@@ -51,6 +57,9 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  gap: 20px;
+  width: 100%; /* Full width to ensure responsiveness */
+  box-sizing: border-box;
 }
 
 nav a {
@@ -60,8 +69,8 @@ nav a {
   border: 2px solid transparent; 
   padding: 10px;
   transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
-  position: relative; 
-  align-items: center;
+  position: relative;
+  white-space: nowrap; /* Prevents text from breaking into multiple lines */
 }
 
 /* Hover effect for the links */
@@ -72,73 +81,14 @@ nav a:hover {
   border-radius: 5px; 
 }
 
-/* User button container */
-.user-button-container {
-  margin-left: auto; /* Align the user button to the far right */
-}
-
-/* Sign-in container styles */
-.sign-in-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column; /* Stack links vertically on smaller screens */
+    gap: 10px;
+  }
 }
 
 /* Main page styles */
 .main-content {
   padding: 2rem;
-  margin-top: 30px; /* Ensure content starts below the header */
-}
-
-/* Info container styles */
-.info-container {
-  color: #163832;
-}
-
-/* Nav bar 
-nav {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  width: 100%; 
-  background-color: transparent; 
-  padding: 10px 20px; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  height: 60px; 
-}
-
-/* Style the unordered list */
-nav ul {
-  list-style-type: none; 
-  margin: 0;
-  padding: 0;
-  display: flex; 
-  justify-content: center;
-  width: 100%;
-}
-
-/* Style each list item */
-nav ul li {
-    margin-right: 20px; 
-    margin-left: 90px;
-    
-}
-
-/* Style the links */
-nav a {
-  color: #102f15; 
-  text-decoration: none; 
-  font-weight: bold; 
-  border: 2px solid transparent; 
-  padding: 10px;
-  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
-  position: relative; 
-}
-
-/* Hover effect for the links */
-nav a:hover {
-    color: rgb(7, 182, 235); 
-}
-
-

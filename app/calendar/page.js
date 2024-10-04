@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../calendar/styles.css';
-import { FaRecycle, FaLeaf, FaTrash } from 'react-icons/fa';
+import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 
 const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
