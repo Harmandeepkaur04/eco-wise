@@ -1,7 +1,13 @@
 'use client';
 
 import React,{ useRef } from "react";
-import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, } from "@mantine/core";
+import { useDisclosure } from '@mantine/hooks';
+import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, Box, } from "@mantine/core";
+import '@mantine/core/styles/Overlay.css';
+import '@mantine/core/styles/ModalBase.css';
+import '@mantine/core/styles/CloseButton.css';
+import '@mantine/core/styles/Drawer.css';
+
 import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 
@@ -42,6 +48,8 @@ export default function Disposal() {
       </Table.Tr>
     ));
 
+    const [opened, { open, close }] = useDisclosure(false);
+
   return (
     <Container component="main">
       <Title component="h2">Waste Management and Recycling Locations</Title>
@@ -57,10 +65,13 @@ export default function Disposal() {
           <div className="div-container">
             <Title component="h1">East Calgary Landfill and Eco Centre</Title>
             <Text component="p">Materials Accepted:</Text>
-            <ul>
-              <li>Residential Waste</li>
-              <li>Commercial Waste</li>
-            </ul>
+            <Drawer className="drawer" position="right" size='xl' opened={opened} onClose={close}>
+        {<Box className="drawer-content">
+          <Title>Residential Waste</Title>
+          </Box>}
+      </Drawer>
+
+      <Button className="button" onClick={open}>Residential Waste</Button>
             <br />
             <Text component="p">Hours of Operation (April - October):</Text>
             <ul>

@@ -1,5 +1,5 @@
 main {
-  color: #102f15;
+  color: #102f15 !important;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -13,6 +13,35 @@ h2 {
   margin-top: 15px;
   padding: 10px;
   border-radius: 8px;
+}
+
+.drawer {
+  background-color: #102f15; /* Custom background color */
+  border: 2px solid #102f15; /* Border */
+  border-radius: 8px; /* Rounded corners */
+  color: #ebfadc; /* Text color inside the drawer */
+}
+
+.drawer-content {
+  background-color: #102f15; /* Ensure content has the same background */
+  padding: 20px; /* Add some padding for better spacing */
+  border-radius: 8px; /* Rounded corners for the content */
+}
+
+.button {
+  margin-left: 15px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #102f15;
+  color: #eaf1b1;
 }
 
 .scroll-buttons {
