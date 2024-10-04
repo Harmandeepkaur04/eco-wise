@@ -198,6 +198,22 @@ body {
   color: #556B2F; /* Change color on hover */
 }
 
+/* Month Picker Styles */
+.month-picker {
+  position: absolute;
+  top: 5px; /* Position below the month text */
+  left: calc(30% - 20px); /* Center the picker aligned with month */
+  background-color: #EAF1B1; /* Match with the background */
+  border-radius: 5px;
+  z-index: 100; /* Ensure it appears above other elements */
+  padding: 10px;
+  display: flex; /* Align options horizontally */
+  flex-wrap: wrap; /* Allow wrap if necessary */
+  opacity: 0; /* Start as invisible */
+  transform: translateY(-5px); /* Start with a slight upward motion */
+  animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
+}
+
 /* Notes Section */
 .note-box {
   margin-top: 20px;
