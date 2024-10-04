@@ -118,21 +118,28 @@ const Calendar = () => {
         {savedNotes.length > 0 && <p>Notes: {savedNotes.join(', ')}</p>}
       </div>
 
-        {/* Split screen layout */}
-        <div className="calendar-content">
-          {/* Left Box */}
-          <div className="calendar-left-widget">
-            {/* Month, Date, and Time on Top */}
-            <h3 className="month-date">September 11</h3>
-            <h4 className="time-display">6:00 AM</h4>
-            {/* Class List */}
-            <div className="class-list">
-              <p><FaLeaf /> Compost: September 20, 6 AM</p>
-              <p><FaRecycle /> Recycling: Every Thursday, 6 AM</p>
-              <p><FaTrash /> Black Garbage: Every other Friday, 6 AM</p>
-              {savedNotes && <p>Note: {savedNotes}</p>} {/* Display saved notes here */}
-            </div>
+      <div className="calendar-content">
+        <div className="calendar-left-widget">
+          <h3 className="month-date">{months[currentMonth]} {selectedDay}</h3>
+          <h4 className="time-display">{getLocalTime()}</h4>
+          <div className="class-list">
+            <p><FaLeaf /> Compost: Every Thursday, 6 AM</p>
+            <p><FaTrash /> Garbage: Every other Friday, 6 AM</p>
+            {savedNotes.length > 0 && (
+              <div className="saved-notes">
+                {savedNotes.map((note, index) => (
+                  <div key={index} className="saved-note">
+                    <span>{note}</span>
+                    <div className="note-buttons">
+                      <button onClick={() => handleEditNote(index)} className="edit-btn">Edit</button>
+                      <button onClick={() => handleDeleteNote(index)} className="delete-btn">Delete</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+        </div>
 
           {/* Right-side Calendar */}
           <div className="calendar-right-side">
