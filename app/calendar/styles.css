@@ -153,11 +153,30 @@ body {
   gap: 5px; /* Space between the icons */
 }
 
-/* Icons inside calendar days */
 .icon {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+  font-size: 16px; /* Adjust the icon size as needed */
+}
+
+/* Calendar Header Styles */
+.calendar-header {
+  display: flex;
+  justify-content: space-between; /* Space out the three sections */
+  align-items: center; /* Align items vertically */
+  position: relative; /* For absolute positioning of pickers */
+}
+
+/* Left Section Styles */
+.calendar-header-left {
+  flex: 1; /* Allow the left section to take available space */
+  text-align: center; /* Center text in the left section */
+}
+
+/* Middle Section Styles */
+.calendar-header-middle {
+  flex: 1; /* Allow the middle section to take available space */
+  display: flex; /* Align pickers in a row */
+  justify-content: center; /* Center the pickers */
+  align-items: center; /* Center items vertically */
 }
 
 /* Notes Section */
