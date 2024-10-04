@@ -29,6 +29,11 @@ const Calendar = () => {
 
   const getLocalTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+  const calculateUpcomingReminder = (day) => {
+    const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
+
+  };
+  
   return (
     <><div className="calendar-container">
         {/* Monthly Schedule Overview Widget */}
