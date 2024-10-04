@@ -87,18 +87,23 @@ body {
 
 .calendar-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space between month and year */
   align-items: center;
-  margin-bottom: 20px;
+  width: 100%; /* Ensure it takes full width */
+  margin-bottom: 30px;
 }
 
-.calendar-header h2 {
-  font-size: 28px;
+.month-display {
+  flex: 1; /* Allow the month to take available space */
+  text-align: left; /* Align month to the left */
+  font-size: 40px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
 }
 
 .year-display {
-  font-size: 24px;
-  color: #102F15;
+  text-align: right; /* Align year to the right */
+  font-size: 40px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
 }
 
 /* Calendar grid */
