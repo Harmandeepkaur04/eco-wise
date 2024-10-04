@@ -3,13 +3,15 @@ body {
   background-color: #EAF1B1;
   color: #102F15;
   font-family: 'Times New Roman', serif;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Changed to align calendar below the nav bar */
   min-height: 100vh;
   margin: 0;
 }
 
+.h2 {
+  font-weight: bold;
+}
 /* General styling */
 .calendar-container {
   display: flex;
@@ -17,7 +19,7 @@ body {
   align-items: center;
   width: 100%;
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 100px auto 0 auto; /* Added top margin to create space for the navigation bar */
   padding: 20px;
   background-color: #EAF1B1;
   border-radius: 10px;
@@ -81,7 +83,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Align items to the start */
-  position: relative; /* Ensure that children can be absolutely positioned */
+  position: relative;
+  
 }
 
 .calendar-header {
@@ -220,42 +223,33 @@ body {
   border-radius: 5px;
   z-index: 100; /* Ensure it appears above other elements */
   padding: 5px;
-  display: flex; /* Align options horizontally */
+  display: flex;
   flex-wrap: nowrap; /* No wrapping, keep it horizontal */
   margin-left: 5px; /* Space between the year display and options */
-  opacity: 0; /* Start as invisible */
-  transform: translateY(-5px); /* Start with a slight upward motion */
-  animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: fadeIn 0.3s forwards;
 }
 
-.year-option {
-  padding: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Smooth background transition */
-}
-
-.year-option:hover {
-  background-color: #D1E6A7; /* Change color on hover */
-}
-
-/* Common Option Styles */
+/* Picker Option Hover Effects */
+.year-option,
 .month-option {
   padding: 5px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Smooth background transition */
+  transition: background-color 0.3s;
 }
 
+.year-option:hover,
 .month-option:hover {
-  background-color: #D1E6A7; /* Change color on hover */
+  background-color: #D1E6A7;
 }
 
-/* Container for the Today button */
+/* Today button */
 .today-btn-container {
-  margin-top: auto; /* Push the button to the bottom */
-  align-self: flex-start; /* Align button to the left */
+  margin-top: auto;
+  align-self: flex-start;
 }
 
-/* Today Button Styles */
 .today-btn {
   background-color: #728C5A;
   color: #EAF1B1;
@@ -263,19 +257,18 @@ body {
   padding: 10px 20px;
   margin-top: 20px;
   border-radius: 5px;
-  display: flex; /* Flexbox to center the icon and text */
+  display: flex;
   align-items: center;
-  transition: background-color 0.3s; /* Smooth background transition */
+  transition: background-color 0.3s;
 }
 
 .today-btn svg {
-  margin-right: 8px; /* Spacing between icon and text */
+  margin-right: 8px;
 }
 
 .today-btn:hover {
   background-color: #556B2F;
 }
-
 
 /* Animation Styles */
 @keyframes fadeIn {
@@ -292,13 +285,13 @@ body {
 /* Animation for Hovering Pickers */
 .month-picker,
 .year-picker {
-  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for visibility */
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .month-picker:hover,
 .year-picker:hover {
-  opacity: 1; /* Keep visible on hover */
-  transform: translateY(0); /* Ensure they return to original position */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Notes section */
@@ -308,9 +301,9 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  opacity: 0; /* Start as invisible for animation */
-  transform: translateY(-10px); /* Start with a slight upward motion */
-  animation: fadeIn 0.3s forwards; /* Fade in animation */
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.3s forwards;
 }
 
 .note-input {
@@ -318,38 +311,38 @@ body {
   max-width: 500px;
   height: 100px;
   margin: 10px auto;
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
+  background-color: #EAF1B1;
+  color: #102F15;
+  border: 1px solid #728C5A;
   padding: 10px;
   font-family: 'Times New Roman', serif;
   resize: none;
   border-radius: 5px;
-  transition: border-color 0.3s; /* Smooth border color transition */
+  transition: border-color 0.3s;
 }
 
 .note-input:focus {
-  outline: none; /* Remove default outline */
-  border-color: #556B2F; /* Change border color on focus */
+  outline: none;
+  border-color: #556B2F;
 }
 
 .save-btn {
-  background-color: #728C5A; /* Match with the background */
-  color: #EAF1B1; /* Text color */
+  background-color: #728C5A;
+  color: #EAF1B1;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s; /* Add transform for hover effect */
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .save-btn:hover {
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
-  transform: translateY(-2px); /* Add slight upward motion */
+  background-color: #EAF1B1;
+  color: #102F15;
+  border: 1px solid #728C5A;
+  transform: translateY(-2px);
 }
 
 .saved-notes {
@@ -362,62 +355,38 @@ body {
 
 .saved-note {
   display: flex;
-  justify-content: space-between; /* Space between note text and buttons */
-  background-color: #728C5A; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #D1E6A7; /* Border color */
+  justify-content: space-between;
+  background-color: #728C5A;
+  color: #102F15;
+  border: 1px solid #D1E6A7;
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
-  position: relative; /* Position relative to control absolute positioning of buttons */
+  position: relative;
 }
 
 /* Note buttons hidden by default */
 .note-buttons {
-  display: none; /* Start hidden */
+  display: none;
 }
 
 .saved-note:hover .note-buttons {
-  display: flex; /* Show buttons on hover */
-  gap: 10px; /* Space between buttons */
+  display: flex;
+  gap: 10px;
 }
 
 /* Edit and Delete buttons styling */
 .edit-btn,
 .delete-btn {
-  background: transparent; /* Make buttons transparent */
+  background: transparent;
   border: none;
-  color: #102F15; /* Color for edit/delete buttons */
+  color: #102F15;
   cursor: pointer;
-  transition: color 0.3s; /* Smooth color transition */
-  font-size: 14px; /* Make text smaller */
+  transition: color 0.3s;
+  font-size: 14px;
 }
 
 .edit-btn:hover,
 .delete-btn:hover {
-  color: #556B2F; /* Change color on hover */
-}
-
-/* Animation Styles */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px); /* Slight upward motion */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Return to original position */
-  }
-}
-
-.calendar-btn {
-  display: flex;
-  justify-content: space-between; /* Space between note text and buttons */
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
-  position: relative; /* Position relative to control absolute positioning of buttons */
+  color: #556B2F;
 }
