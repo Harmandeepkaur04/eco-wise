@@ -1,7 +1,6 @@
 import React from 'react';
 import '../recycle-page/styles.css';
 
-
 const RecyclePage = () => {
   return (
     <div className="container">
@@ -34,7 +33,7 @@ const RecyclePage = () => {
           <li className="tile">
             <img src='/article1.png' alt="Article 1"/>
             <a href="https://www.earthday.org/7-tips-to-recycle-better/" target="_blank" rel="noopener noreferrer">7 Tips to recycle</a>
-            {/* Used Youtube tutorial */}
+            {/* Used w3schools for iframe https://www.w3schools.com/tags/tag_iframe.asp#:~:text=The%20%3Ciframe%3E%20tag%20specifies%20an%20inline%20frame.%20An%20inline%20frame */}
           </li>
           <li className="tile">
             <img src='/article2.png' alt="Article 2"/>
@@ -43,6 +42,10 @@ const RecyclePage = () => {
           <li className="tile">
             <img src='/article3.png' alt="Article 3"/>
             <a href="https://www.greenamerica.org/save-trees/why-recycled-paper" target="_blank" rel="noopener noreferrer">Why Recycled Paper?</a>
+          </li>
+          <li className="tile">
+            <img src='/article4.png' alt="Article 4"/>
+            <a href="https://www.alberta.ca/recycling#:~:text=Information%20for%20businesses%20and%20municipalities.%20Review%20a%20wide%20range%20of" target="_blank" rel="noopener noreferrer">Recycling</a>
           </li>
         </ul>
       </section>

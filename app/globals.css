@@ -54,8 +54,6 @@ body {
 /* Navigation styles */
 nav ul {
   display: flex;
-  flex-wrap: wrap; /* Ensure links wrap if there's not enough space */
-  justify-content: flex-start; /* Align links to the left */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -94,5 +92,3 @@ nav a:hover {
 /* Main page styles */
 .main-content {
   padding: 2rem;
-  margin-top: 100px; /* Ensure content starts below the fixed header */
-}
