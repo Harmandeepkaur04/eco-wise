@@ -135,10 +135,22 @@ body {
   background-color: #EBFADC;
   color: #102F15;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 20px; /* Increased padding for better icon fit */
   text-align: center;
   position: relative;
   border-radius: 5px;
+}
+
+.selected-day {
+  border: 2px solid #728C5A;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center; /* Center the icons horizontally */
+  align-items: center; /* Center the icons vertically */
+  margin-top: 5px; /* Space between the day number and the icons */
+  gap: 5px; /* Space between the icons */
 }
 
 /* Icons inside calendar days */
