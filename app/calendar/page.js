@@ -167,6 +167,16 @@ const Calendar = () => {
                 </div>
               )}
 
+              {showYearPicker && (
+                <div className="year-picker">
+                  {years.map((year) => (
+                    <div key={year} onClick={() => handleYearSelect(year)} className="year-option">
+                      {year}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
                 <div className="calendar-body">
                   {daysInMonth.map((day) => (
