@@ -1,11 +1,12 @@
-/* General Layout */
+/* General body styles */
 body {
-  background-color: #EAF1B1; 
-  color: #102F15; 
+  background-color: #EAF1B1;
+  color: #102F15;
   font-family: 'Times New Roman', serif;
+  display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
   margin: 0;
 }
 
