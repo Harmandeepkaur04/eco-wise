@@ -252,9 +252,23 @@ const Calendar = () => {
               placeholder="Add your notes here..."
               value={notes}
               onChange={handleNoteChange}
-            />
-          )}
-        </div>
+              />
+              <button className="save-btn" onClick={handleSaveNotes}>
+              {editingIndex !== null ? 'Update Note' : 'Save Note'}
+            </button>
+            <div className="saved-notes">
+              {savedNotes.map((note, index) => (
+                <div key={index} className="saved-note">
+                  <span>{note}</span>
+                  <div className="note-buttons">
+                    <button onClick={() => handleEditNote(index)} className="edit-btn">Edit</button>
+                    <button onClick={() => handleDeleteNote(index)} className="delete-btn">Delete</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
