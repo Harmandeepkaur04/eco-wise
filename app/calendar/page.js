@@ -197,23 +197,42 @@ const Calendar = () => {
                   <div key={day} className="day-header">{day.slice(0, 2).toUpperCase()}</div>
                 ))}
               </div>
+              <div className="calendar-body">
+                {Array.from({ length: firstDayOfMonth }).map((_, i) => (
+                  <div key={i} className="empty-day"></div> 
+                ))}
+                {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
+                  const date = new Date(currentYear, currentMonth, day);
+                  const isGarbageDay = date.getDay() === 5 && (Math.floor((day - 1) / 7) % 2 === 0); // Check for every other Friday
+                  const isCompostDay = date.getDay() === 4; // Check for Thursday
 
-        {/* Note-taking section */}
-        <div className="calendar-options">
-          <button className="calendar-btn" onClick={toggleNotes}>
-            {showNotes ? 'Hide Notes' : 'Add Notes'}
-          </button>
-          {showNotes && (
-            <div className="note-box">
-              <textarea
-                className="note-input"
-                placeholder="Add your notes here..."
-                value={notes}
-                onChange={handleNoteChange} />
-              <button className="save-btn" onClick={handleSaveNotes}>
-                Save Notes
-              </button>
+                  return (
+                    <div
+                      key={day}
+                      className={`calendar-day ${selectedDay === day ? "selected-day" : ""}`}
+                      onClick={() => {
+                        setSelectedDay(day);
+                      }}
+                    >
+                      {day}
+                      <div className="icon-container">
+                        {isCompostDay && (
+                          <FaLeaf className="icon compost-icon" title="Compost Day" />
+                        )}
+                        {isGarbageDay && (
+                          <FaTrash className="icon trash-icon" title="Garbage Day" />
+                        )}
+                        {isCompostDay && (
+                          <FaRecycle className="icon" title="Recycling Day" />
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
+          </div>
+          
           )}
         </div>
       </div>
