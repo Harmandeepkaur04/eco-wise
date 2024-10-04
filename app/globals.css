@@ -26,21 +26,16 @@ body {
   }
 }
 
-
 /* Styles for header container */
 .header-container {
-  position: fixed;
-  top: 0;
-  width: 100%; /* Full width */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   height: 80px;
-  background-color: var(--background);
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box; /* Ensure padding is included within the width */
+  background-color: transparent;
+  width: 100%; /* Ensure the header spans the full width */
+  box-sizing: border-box;
 }
 
 /* Styles for header text */
@@ -52,44 +47,61 @@ body {
 }
 
 /* Navigation styles */
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box; /* Make sure padding is included within width */
+}
+
 nav ul {
   display: flex;
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 20px;
-  width: 100%; /* Full width to ensure responsiveness */
-  box-sizing: border-box;
+  flex-wrap: wrap; /* Allows wrapping if space is constrained */
 }
 
 nav a {
-  color: #102f15; 
-  text-decoration: none; 
-  font-weight: bold; 
-  border: 2px solid transparent; 
+  color: #102f15;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid transparent;
   padding: 10px;
-  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease; 
-  position: relative;
-  white-space: nowrap; /* Prevents text from breaking into multiple lines */
+  transition: background-color 0.3s ease, border 0.3s ease, color 0.3s ease;
+  white-space: nowrap; /* Prevent text wrapping inside nav items */
 }
 
 /* Hover effect for the links */
 nav a:hover {
-  border: 2px solid #728c5a; 
-  background-color: #728c5a; 
-  color: white; 
-  border-radius: 5px; 
+  border: 2px solid #728c5a;
+  background-color: #728c5a;
+  color: white;
+  border-radius: 5px;
 }
 
-/* Responsive styling for smaller screens */
+/* Responsive styles */
 @media (max-width: 768px) {
   nav ul {
-    flex-direction: column; /* Stack links vertically on smaller screens */
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Reduce gap for smaller screens */
+  }
+
+  nav a {
+    padding: 8px;
+    font-size: 0.9rem; /* Reduce font size on smaller screens */
+  }
+
+  .header {
+    font-size: 1.2rem; /* Adjust header font size */
   }
 }
 
-/* Main page styles */
-.main-content {
-  padding: 2rem;
+/* User button container */
+.user-button-container {
+  margin-left: auto;
 }
