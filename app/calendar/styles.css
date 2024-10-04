@@ -10,13 +10,13 @@ body {
   margin: 0;
 }
 
-/* Calendar container */
+/* General styling */
 .calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 20px;
   background-color: #EAF1B1;
