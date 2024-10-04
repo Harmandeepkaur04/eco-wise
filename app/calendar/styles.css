@@ -382,28 +382,42 @@ body {
   display: flex; /* Show buttons on hover */
   gap: 10px; /* Space between buttons */
 }
-
-
-.calendar-options {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-}
-
-.calendar-btn,
-.save-btn {
-  background-color: #728C5A; /* Emerald green */
-  color: #EAF1B1; /* Cream */
+/* Edit and Delete buttons styling */
+.edit-btn,
+.delete-btn {
+  background: transparent; /* Make buttons transparent */
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  color: #102F15; /* Color for edit/delete buttons */
   cursor: pointer;
-  margin-right: 5px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: color 0.3s; /* Smooth color transition */
+  font-size: 14px; /* Make text smaller */
 }
 
-.calendar-btn:hover,
-.save-btn:hover {
-  background-color: #556B2F; /* Darker green for hover effect */
+.edit-btn:hover,
+.delete-btn:hover {
+  color: #556B2F; /* Change color on hover */
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px); /* Slight upward motion */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Return to original position */
+  }
+}
+
+.calendar-btn {
+  display: flex;
+  justify-content: space-between; /* Space between note text and buttons */
+  background-color: #EAF1B1; /* Match with the background */
+  color: #102F15; /* Text color */
+  border: 1px solid #728C5A; /* Border color */
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  position: relative; /* Position relative to control absolute positioning of buttons */
 }
