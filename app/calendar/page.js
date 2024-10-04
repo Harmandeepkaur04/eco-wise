@@ -17,9 +17,14 @@ const Calendar = () => {
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [upcomingReminder, setUpcomingReminder] = useState({});
   const [editingIndex, setEditingIndex] = useState(null); // For tracking which note is being edited
+  const [showMonthPicker, setShowMonthPicker] = useState(false);
+  const [showYearPicker, setShowYearPicker] = useState(false);
+  const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i);
+  const months = Array.from({ length: 12 }, (_, i) =>
+    new Date(0, i).toLocaleString("default", { month: "long" })
+  );
 
 
-  
   // Save notes and display them in the reminders widget
   const handleSaveNotes = () => {
     setSavedNotes(notes);
