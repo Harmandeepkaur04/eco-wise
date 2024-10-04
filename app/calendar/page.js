@@ -190,6 +190,14 @@ const Calendar = () => {
             </div>
           </div>
 
+          <div className="calendar">
+            <div className="calendar-grid">
+              <div className="day-names">
+                {daysOfWeek.map((day) => (
+                  <div key={day} className="day-header">{day.slice(0, 2).toUpperCase()}</div>
+                ))}
+              </div>
+
         {/* Note-taking section */}
         <div className="calendar-options">
           <button className="calendar-btn" onClick={toggleNotes}>
