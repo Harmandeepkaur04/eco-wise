@@ -141,12 +141,18 @@ const Calendar = () => {
           </div>
         </div>
 
-          {/* Right-side Calendar */}
-          <div className="calendar-right-side">
-            {/* Calendar Header */}
-            <div className="calendar-header">
-              <h2>SEPTEMBER</h2>
-              <span className="year-display">2023</span>
+        <div className="calendar-right-side">
+          {/* Calendar Header Divided into Three Columns */}
+          <div className="calendar-header">
+            <div className="calendar-header-left">
+              <div 
+                className="month-display" 
+                onMouseEnter={handleMouseEnterMonth} 
+                onMouseLeave={handleMouseLeavePicker} 
+                onClick={handleMouseEnterMonth}
+              >
+                {months[currentMonth]}
+              </div>
             </div>
 
             {/* Calendar Grid */}
@@ -200,6 +206,7 @@ const Calendar = () => {
           )}
         </div>
       </div>
+    </div>
   );
 };
 
