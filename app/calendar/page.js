@@ -31,7 +31,7 @@ const Calendar = () => {
 
   const calculateUpcomingReminder = (day) => {
     const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
-
+    
     // Check for compost and recycle bins
     if (dayOfWeek === 4) { // Thursday
       return { date: day, type: 'Compost and Recycle Bin', icon: [<FaRecycle />, <FaLeaf />], day: 'Thursday' };
@@ -40,9 +40,9 @@ const Calendar = () => {
     } else {
       return { date: day, type: 'No Collection', icon: null, day: '' };
     }
-    };
+  };
 
-    const handleNoteChange = (e) => setNotes(e.target.value);
+  const handleNoteChange = (e) => setNotes(e.target.value);
   const toggleNotes = () => setShowNotes(!showNotes);
 
   const handleSaveNotes = () => {
@@ -108,7 +108,6 @@ const Calendar = () => {
       setShowYearPicker(false);
     }, 5000); // Change to 5000ms (5 seconds)
   };
-
 
   return (
     <div className="calendar-container">
@@ -197,6 +196,7 @@ const Calendar = () => {
                   <div key={day} className="day-header">{day.slice(0, 2).toUpperCase()}</div>
                 ))}
               </div>
+
               <div className="calendar-body">
                 {Array.from({ length: firstDayOfMonth }).map((_, i) => (
                   <div key={i} className="empty-day"></div> 
@@ -232,7 +232,7 @@ const Calendar = () => {
               </div>
             </div>
           </div>
-
+          
           <div className="today-btn-container">
             <button className="today-btn" onClick={goToToday}>
               <FaCalendarDay /> {today.getDate()} {/* Display the current date with the icon */}
@@ -252,8 +252,8 @@ const Calendar = () => {
               placeholder="Add your notes here..."
               value={notes}
               onChange={handleNoteChange}
-              />
-              <button className="save-btn" onClick={handleSaveNotes}>
+            />
+            <button className="save-btn" onClick={handleSaveNotes}>
               {editingIndex !== null ? 'Update Note' : 'Save Note'}
             </button>
             <div className="saved-notes">
