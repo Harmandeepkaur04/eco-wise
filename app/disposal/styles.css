@@ -16,16 +16,17 @@ h2 {
 }
 
 .drawer {
-  background-color: #102f15; /* Custom background color */
-  border: 2px solid #102f15; /* Border */
-  border-radius: 8px; /* Rounded corners */
-  color: #ebfadc; /* Text color inside the drawer */
+  background-color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  color: #102f15;
 }
 
 .drawer-content {
-  background-color: #102f15; /* Ensure content has the same background */
-  padding: 20px; /* Add some padding for better spacing */
-  border-radius: 8px; /* Rounded corners for the content */
+  border: solid 5px #102f15;
+  background-color: #eaf1b1;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .button {
@@ -37,6 +38,7 @@ h2 {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-left: 25px;
 }
 
 .button:hover {
@@ -90,7 +92,7 @@ h2 {
 }
 
 .square-map {
-  width: 85vh;
+  width: 90vh;
   height: 100vh;
   border: 3px solid #102f15;
   border-radius: 8px;
@@ -101,12 +103,14 @@ h2 {
 .div-container {
   border: 3px solid #102f15;
   border-radius: 8px;
-  width: 85vh;
+  width: 90vh;
   height: 70vh;
   background-color: #728c5a;
   margin-left: 15px;
   color: #eaf1b1;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  text-align: center;
 }
 
 .div-container h1 {
@@ -126,9 +130,20 @@ h2 {
 }
 
 .div-container ul {
-  margin-left: 25px;
-  color: #ebfadc;
-  font-size: large;
+  padding: 5px 10px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: solid #102f15;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.address {
+  padding: 5px 10px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: solid #102f15;
+  border-radius: 8px;
 }
 
 .table-container {

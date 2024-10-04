@@ -65,7 +65,7 @@ export default function Disposal() {
           <div className="div-container">
             <Title component="h1">East Calgary Landfill and Eco Centre</Title>
             <Text component="p">Materials Accepted:</Text>
-            <Drawer className="drawer" position="right" size='xl' opened={opened} onClose={close}>
+            <Drawer className="drawer" position="right" size='xl' opened={opened} onClose={close} withCloseButton={false}>
         {<Box className="drawer-content">
           <Title>Residential Waste</Title>
           </Box>}
@@ -85,9 +85,7 @@ export default function Disposal() {
             </ul>
             <br />
             <Text component="p">Address:</Text>
-            <ul>
-              <li>3020 68 Street SE</li>
-            </ul>
+            <Text className="address">3020 68 Street SE</Text>
           </div>
           <div className="div-container">
             <Title component="h1">Spyhill Landfill and Eco Centre</Title>
@@ -109,9 +107,7 @@ export default function Disposal() {
             </ul>
             <br />
             <Text component="p">Address:</Text>
-            <ul>
-              <li>11808 69 Street NW</li>
-            </ul>
+            <Text className="address">11808 69 Street NW</Text>
           </div>
           <div className="div-container">
             <Title component="h1">Shepard Landfill and Eco Centre</Title>
@@ -136,9 +132,7 @@ export default function Disposal() {
             </ul>
             <br />
             <Text component="p">Address:</Text>
-            <ul>
-              <li>12111 68 Street SE</li>
-            </ul>
+            <Text className="address">12111 68 Street SE</Text>
           </div>
         </div>
 
