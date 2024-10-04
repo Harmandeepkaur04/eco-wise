@@ -232,7 +232,14 @@ const Calendar = () => {
               </div>
             </div>
           </div>
-          
+
+          <div className="today-btn-container">
+            <button className="today-btn" onClick={goToToday}>
+              <FaCalendarDay /> {today.getDate()} {/* Display the current date with the icon */}
+            </button>
+          </div>
+        </div>
+      </div>
           )}
         </div>
       </div>
