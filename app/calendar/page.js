@@ -240,6 +240,19 @@ const Calendar = () => {
           </div>
         </div>
       </div>
+
+      <div className="calendar-options">
+        <button className="calendar-btn" onClick={toggleNotes}>
+          {showNotes ? 'Hide Notes' : 'Add Notes'}
+        </button>
+        {showNotes && (
+          <div className="note-box">
+            <textarea
+              className="note-input"
+              placeholder="Add your notes here..."
+              value={notes}
+              onChange={handleNoteChange}
+            />
           )}
         </div>
       </div>
