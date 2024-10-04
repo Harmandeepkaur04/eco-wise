@@ -228,6 +228,28 @@ body {
   transform: translateY(-5px); /* Start with a slight upward motion */
   animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
 }
+
+.year-option {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.year-option:hover {
+  background-color: #D1E6A7; /* Change color on hover */
+}
+
+/* Common Option Styles */
+.month-option {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.month-option:hover {
+  background-color: #D1E6A7; /* Change color on hover */
+}
+
 /* Notes Section */
 .note-box {
   margin-top: 20px;
