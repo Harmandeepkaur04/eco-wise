@@ -334,16 +334,55 @@ body {
   border-color: #556B2F; /* Change border color on focus */
 }
 
-
-.note-display {
-  background-color: #EBFADC; /* Light green */
-  color: rgba(16, 47, 21, 0.7); /* Lighter dark green for notes */
-  padding: 10px;
+.save-btn {
+  background-color: #728C5A; /* Match with the background */
+  color: #EAF1B1; /* Text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
   margin-top: 10px;
-  text-align: center;
   border-radius: 5px;
-  border: 1px solid #728C5A; /* Emerald green border */
+  transition: background-color 0.3s, transform 0.2s; /* Add transform for hover effect */
 }
+
+.save-btn:hover {
+  background-color: #EAF1B1; /* Match with the background */
+  color: #102F15; /* Text color */
+  border: 1px solid #728C5A; /* Border color */
+  transform: translateY(-2px); /* Add slight upward motion */
+}
+
+.saved-notes {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-note {
+  display: flex;
+  justify-content: space-between; /* Space between note text and buttons */
+  background-color: #728C5A; /* Match with the background */
+  color: #102F15; /* Text color */
+  border: 1px solid #D1E6A7; /* Border color */
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  position: relative; /* Position relative to control absolute positioning of buttons */
+}
+
+/* Note buttons hidden by default */
+.note-buttons {
+  display: none; /* Start hidden */
+}
+
+.saved-note:hover .note-buttons {
+  display: flex; /* Show buttons on hover */
+  gap: 10px; /* Space between buttons */
+}
+
 
 .calendar-options {
   display: flex;
