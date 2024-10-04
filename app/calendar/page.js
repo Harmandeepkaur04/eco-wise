@@ -14,14 +14,26 @@ const Calendar = () => {
   const [showNotes, setShowNotes] = useState(false);
   const [selectedDay, setSelectedDay] = useState(today.getDate());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
+  const [currentYear, setCurrentYear] = useState(today.getFullYear());
+  const [upcomingReminder, setUpcomingReminder] = useState({});
+  const [editingIndex, setEditingIndex] = useState(null); // For tracking which note is being edited
+  const [showMonthPicker, setShowMonthPicker] = useState(false);
+  const [showYearPicker, setShowYearPicker] = useState(false);
+  const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i);
+  const months = Array.from({ length: 12 }, (_, i) =>
+    new Date(0, i).toLocaleString("default", { month: "long" })
+  );
 
-  // Save notes and display them in the reminders widget
-  const handleSaveNotes = () => {
-    setSavedNotes(notes);
-    setNotes('');
-    setShowNotes(false); // Hides the note input after saving *change the layout please don't forget it's not  that good
+  const daysInMonth = getDaysInMonth(currentMonth, currentYear);
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+  const getLocalTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+  const calculateUpcomingReminder = (day) => {
+    const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
+
   };
-
+  
   return (
     <><div className="calendar-container">
         {/* Monthly Schedule Overview Widget */}
