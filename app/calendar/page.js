@@ -32,8 +32,16 @@ const Calendar = () => {
   const calculateUpcomingReminder = (day) => {
     const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
 
-  };
-  
+    // Check for compost and recycle bins
+    if (dayOfWeek === 4) { // Thursday
+      return { date: day, type: 'Compost and Recycle Bin', icon: [<FaRecycle />, <FaLeaf />], day: 'Thursday' };
+    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) { // Every other Friday
+      return { date: day, type: 'Black Garbage Bin Collection', icon: <FaTrash />, day: 'Friday' };
+    } else {
+      return { date: day, type: 'No Collection', icon: null, day: '' };
+    }
+    };
+
   return (
     <><div className="calendar-container">
         {/* Monthly Schedule Overview Widget */}
