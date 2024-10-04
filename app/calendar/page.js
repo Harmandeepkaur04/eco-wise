@@ -8,9 +8,9 @@ const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
   const today = new Date();
 
+  const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
   const [notes, setNotes] = useState('');
-  const [savedNotes, setSavedNotes] = useState('');
-  const [showNotes, setShowNotes] = useState(false);
+  const [savedNotes, setSavedNotes] = useState([]); // Store notes as an array
 
   const handleNoteChange = (e) => setNotes(e.target.value);
   const toggleNotes = () => setShowNotes(!showNotes);
