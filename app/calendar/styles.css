@@ -49,7 +49,7 @@ body {
 .calendar-left-widget {
   background-color: #728C5A;
   color: #EAF1B1;
-  width: 40%;
+  width: 45%;
   padding: 30px;
   border-radius: 10px;
   text-align: left;
@@ -64,7 +64,7 @@ body {
 }
 
 .class-list p {
-  font-size: 18px; /* Decreased font size for upcoming reminders */
+  font-size: 18px;
   display: flex;
   align-items: center;
 }
@@ -76,9 +76,13 @@ body {
 /* Right-side calendar */
 .calendar-right-side {
   background-color: #EBFADC;
-  width: 55%;
+  width: 50%;
   padding: 30px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start */
+  position: relative; /* Ensure that children can be absolutely positioned */
 }
 
 .calendar-header {
