@@ -7,9 +7,10 @@ import '@mantine/core/styles/Overlay.css';
 import '@mantine/core/styles/ModalBase.css';
 import '@mantine/core/styles/CloseButton.css';
 import '@mantine/core/styles/Drawer.css';
-
 import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
+import Drawers from "../components/Drawer";
+import ShepardDrawers from "../components/ShepardDrawer";
 
 const elements = [
   { Holiday: "New Year's Day", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
@@ -38,6 +39,7 @@ export default function Disposal() {
       tableRef.current.scrollIntoView({ behavior: "smooth" });
     };
 
+    //Constant for table
     const rows = elements.map((element) => (
       <Table.Tr key={element.Holiday}>
         <Table.Td>{element.Holiday}</Table.Td>
@@ -47,8 +49,6 @@ export default function Disposal() {
         <Table.Td>{element.Shepard}</Table.Td>
       </Table.Tr>
     ));
-
-    const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <Container component="main">
@@ -63,15 +63,12 @@ export default function Disposal() {
       <div className="flex-container">
         <div className="locations-container">
           <div className="div-container">
-            <Title component="h1">East Calgary Landfill and Eco Centre</Title>
+            <Title component="h1">East Calgary Landfill and Eco Centre</Title><br />
             <Text component="p">Materials Accepted:</Text>
-            <Drawer className="drawer" position="right" size='xl' opened={opened} onClose={close} withCloseButton={false}>
-        {<Box className="drawer-content">
-          <Title>Residential Waste</Title>
-          </Box>}
-      </Drawer>
-
-      <Button className="button" onClick={open}>Residential Waste</Button>
+            <div>
+              <Drawers />
+            </div>
+      
             <br />
             <Text component="p">Hours of Operation (April - October):</Text>
             <ul>
@@ -88,12 +85,12 @@ export default function Disposal() {
             <Text className="address">3020 68 Street SE</Text>
           </div>
           <div className="div-container">
-            <Title component="h1">Spyhill Landfill and Eco Centre</Title>
+            <Title component="h1">Spyhill Landfill and Eco Centre</Title><br />
             <Text component="p">Materials Accepted:</Text>
-            <ul>
-              <li>Residential Waste</li>
-              <li>Commercial Waste</li>
-            </ul>
+            <div>
+              <Drawers />
+            </div>
+
             <br />
             <Text component="p">Hours of Operation (Year Round):</Text>
             <ul>
@@ -110,15 +107,12 @@ export default function Disposal() {
             <Text className="address">11808 69 Street NW</Text>
           </div>
           <div className="div-container">
-            <Title component="h1">Shepard Landfill and Eco Centre</Title>
+            <Title component="h1">Shepard Landfill and Eco Centre</Title><br />
             <Text component="p">Materials Accepted:</Text>
-            <ul>
-              <li>Residential Waste</li>
-              <li>
-                No Commercial Waste except for Clean Fill and Industrial Waste -
-                Permits and Appointments may be required.
-              </li>
-            </ul>
+            <div>
+              <ShepardDrawers />
+            </div>
+
             <br />
             <Text component="p">Hours of Operation (Year Round):</Text>
             <ul>

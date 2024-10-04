@@ -29,6 +29,11 @@ h2 {
   font-family: 'Times New Roman', Times, serif;
 }
 
+.drawer-overlay {
+  backdrop-filter: blur(1px);
+  opacity: 0.55;
+}
+
 .button {
   margin-left: 15px;
   background-color: #eaf1b1;
@@ -39,6 +44,7 @@ h2 {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-left: 25px;
+  width: 150px;
 }
 
 .button:hover {
@@ -104,7 +110,7 @@ h2 {
   border: 3px solid #102f15;
   border-radius: 8px;
   width: 90vh;
-  height: 70vh;
+  height: 75vh;
   background-color: #728c5a;
   margin-left: 15px;
   color: #eaf1b1;
