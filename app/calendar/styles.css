@@ -179,6 +179,25 @@ body {
   align-items: center; /* Center items vertically */
 }
 
+/* Right Section Styles */
+.calendar-header-right {
+  flex: 1; /* Allow the right section to take available space */
+  text-align: center; /* Center text in the right section */
+}
+
+/* Month and Year Display Styles */
+.month-display,
+.year-display {
+  cursor: pointer; /* Indicate that text is clickable */
+  margin: 0 10px; /* Add some spacing */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.month-display:hover,
+.year-display:hover {
+  color: #556B2F; /* Change color on hover */
+}
+
 /* Notes Section */
 .note-box {
   margin-top: 20px;
