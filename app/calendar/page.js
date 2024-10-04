@@ -141,24 +141,33 @@ const Calendar = () => {
           </div>
         </div>
 
-          {/* Right-side Calendar */}
-          <div className="calendar-right-side">
-            {/* Calendar Header */}
-            <div className="calendar-header">
-              <h2>SEPTEMBER</h2>
-              <span className="year-display">2023</span>
+        <div className="calendar-right-side">
+          {/* Calendar Header Divided into Three Columns */}
+          <div className="calendar-header">
+            <div className="calendar-header-left">
+              <div 
+                className="month-display" 
+                onMouseEnter={handleMouseEnterMonth} 
+                onMouseLeave={handleMouseLeavePicker} 
+                onClick={handleMouseEnterMonth}
+              >
+                {months[currentMonth]}
+              </div>
             </div>
 
-            {/* Calendar Grid */}
-            <div className="calendar">
-              <div className="calendar-grid">
-                <div className="day-names">
-                  {daysOfWeek.map((day) => (
-                    <div key={day} className="day-header">
-                      {day.slice(0, 2).toUpperCase()} {/* Showing only two letters of the names of the days of the week */}
+            {/* Middle section for pickers */}
+            <div className="calendar-header-middle">
+              {showMonthPicker && (
+                <div className="month-picker">
+                  {months.map((month, index) => (
+                    <div key={index} onClick={() => handleMonthSelect(index)} className="month-option">
+                      {month}
                     </div>
                   ))}
                 </div>
+              )}
+
+
                 <div className="calendar-body">
                   {daysInMonth.map((day) => (
                     <div key={day} className="calendar-day">
@@ -200,6 +209,7 @@ const Calendar = () => {
           )}
         </div>
       </div>
+    </div>
   );
 };
 
