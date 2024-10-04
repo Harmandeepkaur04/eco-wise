@@ -1,7 +1,7 @@
 'use client';
 
 import { useDisclosure } from '@mantine/hooks';
-import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, Box, } from "@mantine/core";
+import { Button, List, Text, Title, Drawer, Box, } from "@mantine/core";
 import '@mantine/core/styles/Overlay.css';
 import '@mantine/core/styles/ModalBase.css';
 import '@mantine/core/styles/CloseButton.css';
@@ -38,7 +38,11 @@ export default function Drawers() {
           classNames={{ overlay: 'drawer-overlay' }}
         >
           <Box className="drawer-content">
-            <Title>Residential Waste</Title>
+            <Title className='drawer-title'>Residential Waste</Title>
+            <div>
+            <Text>Automotive Tires</Text>
+
+            </div>
           </Box>
         </Drawer>
         <Button className="button" onClick={handleOpenResidential}>Residential Waste</Button>
