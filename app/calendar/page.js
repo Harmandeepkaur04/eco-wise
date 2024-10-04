@@ -3,11 +3,10 @@
 import React, { useState } from 'react';
 import '../calendar/styles.css';
 import { FaRecycle, FaLeaf, FaTrash } from 'react-icons/fa';
-import Link from "next/link";
 
 const Calendar = () => {
-  const daysOfWeek = ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
-  const daysInMonth = Array.from({ length: 30 }, (_, i) => i + 1); // September has 30 days should add the option for calendar customization
+  const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
+  const today = new Date();
 
   const [notes, setNotes] = useState('');
   const [savedNotes, setSavedNotes] = useState('');
