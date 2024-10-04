@@ -42,6 +42,73 @@ const Calendar = () => {
     }
     };
 
+    const handleNoteChange = (e) => setNotes(e.target.value);
+  const toggleNotes = () => setShowNotes(!showNotes);
+
+  const handleSaveNotes = () => {
+    if (notes.trim()) {
+      if (editingIndex !== null) {
+        // Update existing note
+        const updatedNotes = savedNotes.map((note, index) =>
+          index === editingIndex ? notes : note
+        );
+        setSavedNotes(updatedNotes);
+        setEditingIndex(null);
+      } else {
+        // Add new note
+        setSavedNotes([...savedNotes, notes]);
+      }
+      setNotes(''); // Clear input after saving
+      setShowNotes(false); // Optionally hide the notes input after saving
+    }
+  };
+
+  const handleEditNote = (index) => {
+    setNotes(savedNotes[index]);
+    setEditingIndex(index);
+  };
+
+  const handleDeleteNote = (index) => {
+    const updatedNotes = savedNotes.filter((_, i) => i !== index);
+    setSavedNotes(updatedNotes);
+  };
+
+  const goToToday = () => {
+    setCurrentMonth(today.getMonth());
+    setCurrentYear(today.getFullYear());
+    setSelectedDay(today.getDate());
+  };
+
+  const handleMonthSelect = (monthIndex) => {
+    setCurrentMonth(monthIndex);
+    setShowMonthPicker(false);
+  };
+
+  const handleYearSelect = (year) => {
+    setCurrentYear(year);
+    setShowYearPicker(false);
+  };
+
+  useEffect(() => {
+    const reminder = calculateUpcomingReminder(selectedDay);
+    setUpcomingReminder(reminder);
+  }, [selectedDay, currentMonth, currentYear]);
+
+  const handleMouseEnterMonth = () => {
+    setShowMonthPicker(true);
+  };
+
+  const handleMouseEnterYear = () => {
+    setShowYearPicker(true);
+  };
+
+  const handleMouseLeavePicker = () => {
+    setTimeout(() => {
+      setShowMonthPicker(false);
+      setShowYearPicker(false);
+    }, 5000); // Change to 5000ms (5 seconds)
+  };
+  
   return (
     <><div className="calendar-container">
         {/* Monthly Schedule Overview Widget */}
