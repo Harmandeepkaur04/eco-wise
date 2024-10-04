@@ -155,16 +155,19 @@ const Calendar = () => {
               </div>
             </div>
 
-            {/* Calendar Grid */}
-            <div className="calendar">
-              <div className="calendar-grid">
-                <div className="day-names">
-                  {daysOfWeek.map((day) => (
-                    <div key={day} className="day-header">
-                      {day.slice(0, 2).toUpperCase()} {/* Showing only two letters of the names of the days of the week */}
+            {/* Middle section for pickers */}
+            <div className="calendar-header-middle">
+              {showMonthPicker && (
+                <div className="month-picker">
+                  {months.map((month, index) => (
+                    <div key={index} onClick={() => handleMonthSelect(index)} className="month-option">
+                      {month}
                     </div>
                   ))}
                 </div>
+              )}
+
+
                 <div className="calendar-body">
                   {daysInMonth.map((day) => (
                     <div key={day} className="calendar-day">
