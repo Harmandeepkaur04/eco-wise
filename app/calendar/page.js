@@ -178,27 +178,17 @@ const Calendar = () => {
               )}
             </div>
 
-                <div className="calendar-body">
-                  {daysInMonth.map((day) => (
-                    <div key={day} className="calendar-day">
-                      {day}
-                      {/* Add icons for specific days */}
-                      {(day === 4 || day === 11 || day === 18 || day === 25) && (
-                        <FaRecycle className="icon" title="Recycling Day" />
-                      )} {/* Recycling days on every Thursday */}
-                      {(day === 5 || day === 19) && (
-                        <FaTrash className="icon trash-icon" title="Trash Day" />
-                      )} {/* Trash days on every other Friday */}
-                      {(day === 6 || day === 13 || day === 20 || day === 27) && (
-                        <FaLeaf className="icon compost-icon" title="Compost Day" />
-                      )} {/* Compost days on every Saturday */} {/*  add the option to have customization as well for the icons ex. click a button to specific day */}
-                    </div>
-                  ))}
-                </div>
+            <div className="calendar-header-right">
+              <div 
+                className="year-display" 
+                onMouseEnter={handleMouseEnterYear} 
+                onMouseLeave={handleMouseLeavePicker} 
+                onClick={handleMouseEnterYear}
+              >
+                {currentYear}
               </div>
             </div>
           </div>
-        </div>
 
         {/* Note-taking section */}
         <div className="calendar-options">
