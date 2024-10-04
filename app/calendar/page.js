@@ -24,13 +24,10 @@ const Calendar = () => {
     new Date(0, i).toLocaleString("default", { month: "long" })
   );
 
+  const daysInMonth = getDaysInMonth(currentMonth, currentYear);
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
-  // Save notes and display them in the reminders widget
-  const handleSaveNotes = () => {
-    setSavedNotes(notes);
-    setNotes('');
-    setShowNotes(false); // Hides the note input after saving *change the layout please don't forget it's not  that good
-  };
+  const getLocalTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
   return (
     <><div className="calendar-container">
