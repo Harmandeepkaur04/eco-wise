@@ -214,6 +214,20 @@ body {
   animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
 }
 
+/* Year Picker Styles */
+.year-picker {
+  position: relative; /* Change to relative to keep it in flow */
+  background-color: #EAF1B1; /* Match with the background */
+  border-radius: 5px;
+  z-index: 100; /* Ensure it appears above other elements */
+  padding: 5px;
+  display: flex; /* Align options horizontally */
+  flex-wrap: nowrap; /* No wrapping, keep it horizontal */
+  margin-left: 5px; /* Space between the year display and options */
+  opacity: 0; /* Start as invisible */
+  transform: translateY(-5px); /* Start with a slight upward motion */
+  animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
+}
 /* Notes Section */
 .note-box {
   margin-top: 20px;
