@@ -250,6 +250,58 @@ body {
   background-color: #D1E6A7; /* Change color on hover */
 }
 
+/* Container for the Today button */
+.today-btn-container {
+  margin-top: auto; /* Push the button to the bottom */
+  align-self: flex-start; /* Align button to the left */
+}
+
+/* Today Button Styles */
+.today-btn {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  display: flex; /* Flexbox to center the icon and text */
+  align-items: center;
+  transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.today-btn svg {
+  margin-right: 8px; /* Spacing between icon and text */
+}
+
+.today-btn:hover {
+  background-color: #556B2F;
+}
+
+
+/* Animation Styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px); /* Slight upward motion */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Return to original position */
+  }
+}
+
+/* Animation for Hovering Pickers */
+.month-picker,
+.year-picker {
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for visibility */
+}
+
+.month-picker:hover,
+.year-picker:hover {
+  opacity: 1; /* Keep visible on hover */
+  transform: translateY(0); /* Ensure they return to original position */
+}
+
 /* Notes Section */
 .note-box {
   margin-top: 20px;
