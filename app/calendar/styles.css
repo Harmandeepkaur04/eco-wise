@@ -1,59 +1,46 @@
-/* Adjust for the fixed navigation bar */
+/* General body styles */
 body {
   background-color: #EAF1B1;
   color: #102F15;
   font-family: 'Times New Roman', serif;
-  display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; /* Changed to align calendar below the nav bar */
   min-height: 100vh;
   margin: 0;
-  padding-top: 80px; /* Adjust this value based on the height of your nav bar */
 }
 
-/* Ensure calendar styles override global styles */
+/* General styling */
 .calendar-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 15px;
+  width: 100%;
+  max-width: 1300px;
+  margin: 100px auto 0 auto; /* Added top margin to create space for the navigation bar */
+  padding: 20px;
   background-color: #EAF1B1;
   border-radius: 10px;
-  font-size: 18px;
-  box-sizing: border-box;
-  z-index: 1;
-}
-
-/* Override global font styles specifically for the calendar */
-.calendar-container,
-.calendar-container * {
-  font-family: 'Times New Roman', serif !important;
-  color: #102F15 !important;
-  background-color: inherit;
+  font-size: 22px;
 }
 
 /* Monthly overview widget */
 .monthly-overview-widget {
   background-color: #728C5A;
-  color: #EAF1B1;
-  padding: 15px;
+  color: #102F15;
+  padding: 20px;
   width: 100%;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-align: center;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-/* Calendar content layout */
 .calendar-content {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+  gap: 20px;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 /* Left widget */
@@ -61,54 +48,61 @@ body {
   background-color: #728C5A;
   color: #EAF1B1;
   width: 45%;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   text-align: left;
 }
 
 .month-date {
-  font-size: 30px;
+  font-size: 36px;
 }
 
 .time-display {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .class-list p {
-  font-size: 16px;
+  font-size: 18px;
   display: flex;
   align-items: center;
 }
 
 .class-list p svg {
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 /* Right-side calendar */
 .calendar-right-side {
   background-color: #EBFADC;
   width: 50%;
-  padding: 20px;
+  padding: 30px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* Align items to the start */
+  position: relative;
+  
 }
 
 .calendar-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space between month and year */
   align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
+  width: 100%; /* Ensure it takes full width */
+  margin-bottom: 30px;
 }
 
 .month-display {
-  font-size: 35px;
+  flex: 1; /* Allow the month to take available space */
+  text-align: left; /* Align month to the left */
+  font-size: 40px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
 }
 
 .year-display {
-  font-size: 35px;
+  text-align: right; /* Align year to the right */
+  font-size: 40px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
 }
 
 /* Calendar grid */
@@ -122,7 +116,7 @@ body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .day-header {
@@ -133,14 +127,14 @@ body {
 .calendar-body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 10px;
 }
 
 .calendar-day {
   background-color: #EBFADC;
   color: #102F15;
   border: 1px solid #ccc;
-  padding: 15px;
+  padding: 20px; /* Increased padding for better icon fit */
   text-align: center;
   position: relative;
   border-radius: 5px;
@@ -152,17 +146,102 @@ body {
 
 .icon-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  gap: 5px;
+  justify-content: center; /* Center the icons horizontally */
+  align-items: center; /* Center the icons vertically */
+  margin-top: 5px; /* Space between the day number and the icons */
+  gap: 5px; /* Space between the icons */
 }
 
 .icon {
-  font-size: 14px;
+  font-size: 16px; /* Adjust the icon size as needed */
 }
 
-/* Today Button Styles */
+/* Calendar Header Styles */
+.calendar-header {
+  display: flex;
+  justify-content: space-between; /* Space out the three sections */
+  align-items: center; /* Align items vertically */
+  position: relative; /* For absolute positioning of pickers */
+}
+
+/* Left Section Styles */
+.calendar-header-left {
+  flex: 1; /* Allow the left section to take available space */
+  text-align: center; /* Center text in the left section */
+}
+
+/* Middle Section Styles */
+.calendar-header-middle {
+  flex: 1; /* Allow the middle section to take available space */
+  display: flex; /* Align pickers in a row */
+  justify-content: center; /* Center the pickers */
+  align-items: center; /* Center items vertically */
+}
+
+/* Right Section Styles */
+.calendar-header-right {
+  flex: 1; /* Allow the right section to take available space */
+  text-align: center; /* Center text in the right section */
+}
+
+/* Month and Year Display Styles */
+.month-display,
+.year-display {
+  cursor: pointer; /* Indicate that text is clickable */
+  margin: 0 10px; /* Add some spacing */
+  transition: color 0.3s; /* Smooth color transition */
+}
+
+.month-display:hover,
+.year-display:hover {
+  color: #556B2F; /* Change color on hover */
+}
+
+/* Month Picker Styles */
+.month-picker {
+  position: absolute;
+  top: 5px; /* Position below the month text */
+  left: calc(30% - 20px); /* Center the picker aligned with month */
+  background-color: #EAF1B1; /* Match with the background */
+  border-radius: 5px;
+  z-index: 100; /* Ensure it appears above other elements */
+  padding: 10px;
+  display: flex; /* Align options horizontally */
+  flex-wrap: wrap; /* Allow wrap if necessary */
+  opacity: 0; /* Start as invisible */
+  transform: translateY(-5px); /* Start with a slight upward motion */
+  animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
+}
+
+/* Year Picker Styles */
+.year-picker {
+  position: relative; /* Change to relative to keep it in flow */
+  background-color: #EAF1B1; /* Match with the background */
+  border-radius: 5px;
+  z-index: 100; /* Ensure it appears above other elements */
+  padding: 5px;
+  display: flex;
+  flex-wrap: nowrap; /* No wrapping, keep it horizontal */
+  margin-left: 5px; /* Space between the year display and options */
+  opacity: 0;
+  transform: translateY(-5px);
+  animation: fadeIn 0.3s forwards;
+}
+
+/* Picker Option Hover Effects */
+.year-option,
+.month-option {
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.year-option:hover,
+.month-option:hover {
+  background-color: #D1E6A7;
+}
+
+/* Today button */
 .today-btn-container {
   margin-top: auto;
   align-self: flex-start;
@@ -172,80 +251,139 @@ body {
   background-color: #728C5A;
   color: #EAF1B1;
   border: none;
-  padding: 8px 15px;
-  margin-top: 15px;
+  padding: 10px 20px;
+  margin-top: 20px;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .today-btn svg {
-  margin-right: 5px;
-  font-size: 18px;
+  margin-right: 8px;
+}
+
+.today-btn:hover {
+  background-color: #556B2F;
+}
+
+/* Animation Styles */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px); /* Slight upward motion */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Return to original position */
+  }
+}
+
+/* Animation for Hovering Pickers */
+.month-picker,
+.year-picker {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.month-picker:hover,
+.year-picker:hover {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Notes section */
 .note-box {
-  margin-top: 15px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: 500px;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.3s forwards;
 }
 
 .note-input {
   width: 100%;
-  max-width: 450px;
-  height: 80px;
+  max-width: 500px;
+  height: 100px;
   margin: 10px auto;
   background-color: #EAF1B1;
   color: #102F15;
   border: 1px solid #728C5A;
-  padding: 8px;
+  padding: 10px;
   font-family: 'Times New Roman', serif;
   resize: none;
   border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.note-input:focus {
+  outline: none;
+  border-color: #556B2F;
 }
 
 .save-btn {
   background-color: #728C5A;
   color: #EAF1B1;
   border: none;
-  padding: 8px 15px;
-  font-size: 14px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
   margin-top: 10px;
   border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Calendar Header Styles */
-.calendar-header {
+.save-btn:hover {
+  background-color: #EAF1B1;
+  color: #102F15;
+  border: 1px solid #728C5A;
+  transform: translateY(-2px);
+}
+
+.saved-notes {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-note {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  background-color: #728C5A;
+  color: #102F15;
+  border: 1px solid #D1E6A7;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
   position: relative;
 }
 
-.month-display,
-.year-display {
-  cursor: pointer;
-  margin: 0 8px;
+/* Note buttons hidden by default */
+.note-buttons {
+  display: none;
 }
 
-.month-display:hover,
-.year-display:hover {
-  color: #556B2F;
-}
-
-/* Month Picker and Year Picker Override */
-.month-picker,
-.year-picker {
-  position: absolute;
-  top: 5px;
-  background-color: #EAF1B1;
-  border-radius: 5px;
-  z-index: 100;
-  padding: 8px;
+.saved-note:hover .note-buttons {
   display: flex;
-  opacity: 0;
-  transform: translateY(-5px);
-  animation: fadeIn 0.3s forwards;
+  gap: 10px;
+}
+
+/* Edit and Delete buttons styling */
+.edit-btn,
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #102F15;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 14px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  color: #556B2F;
 }
