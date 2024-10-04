@@ -103,7 +103,7 @@ export default function Disposal() {
               <li>Sunday: CLOSED</li>
             </ul>
             <br />
-            <Text component="p">Address:</Text>
+            <Text component="p">Address:</Text> 
             <Text className="address">11808 69 Street NW</Text>
           </div>
           <div className="div-container">
@@ -135,6 +135,25 @@ export default function Disposal() {
         </div>
       </div>
 
+      <div className="div-container-2">
+        <Title className="div-2-title">Why use an Eco Centre?</Title>
+        <Text className="div-2-txt">It is a convenient way to recycle, reuse and dispose of your old and unwanted household items. 
+          The user-friendly locations makes it safe and easy to drop off materials. 
+          They accept a wide range of items you can't dispose of in your carts at home. 
+          By bringing your sorted materials to the Eco Centre, you will help keep more materials out of the landfill that could still be reused or recycled in a different way.</Text>
+          <br />
+        <Title className="div-2-title">For reusable and recyclable materials:</Title>
+        <Text className="div-2-txt">Electronics, gently used furniture and other items can find a new life when brought to the Eco Centres.</Text>
+        <br />
+        <Title className="div-2-title">For hazardous materials:</Title>
+        <Text className="div-2-txt">Chemicals, batteries, and other items that require safe disposal to protect your family, home and the environment.</Text>
+        <br />
+        <Title className="div-2-title">For oversized and large quantities of household waste</Title>
+        <Text className="div-2-txt">Got a major decluttering project or a home reno on your hands? 
+          Eco Centres offer a responsible solution for disposing of construction materials, mattresses, 
+          and large amounts of household waste.</Text>
+
+      </div>
       <Title component="h2">Holiday Hours</Title>
 
       <Table ref={tableRef} className="table-container" stickyHeader stickyHeaderOffset={60}>
