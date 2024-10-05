@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
               <h1 className="header">Eco Wise</h1>
               <nav>
                 <ul className="nav-links">
-                  <li><Link href="/Home">Home</Link></li>
+                  <li><Link href="/">Home</Link></li>
                   <li><Link href="/recycle-page">Recycle</Link></li>
                   <li><Link href="/disposal">Disposal</Link></li>
                   <li><Link href="/rewards-page">Rewards</Link></li>
