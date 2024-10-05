@@ -141,4 +141,16 @@ nav a:hover {
     color: rgb(7, 182, 235); 
 }
 
+/* Light Dark Theme */
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+
 
