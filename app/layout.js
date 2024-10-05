@@ -20,6 +20,7 @@ const geistMono = localFont({
 
 export default function RootLayout({ children }) {
   return (
+
     <ThemeProvider>
       <html lang="en">
         <head />
