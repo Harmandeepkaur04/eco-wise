@@ -1,6 +1,6 @@
 "use client"
 import Link from 'next/link';
-import Leaderboard from './Leaderboard';
+import Leaderboard from './leaderboard';
 import './styles.css';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
