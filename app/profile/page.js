@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Container, Title, Text, Group, Button, List, ThemeIcon, TextInput } from '@mantine/core';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { IconCheck } from '@tabler/icons-react';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 import '../profile/styles.css';
 
 export default function ProfilePage() {
@@ -26,6 +27,35 @@ export default function ProfilePage() {
   const [isNotifications, setIsNotifications] = useState(false);
 
   const [isEditing, setIsEditing] = useState(false);
+
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setUserId(uid);
+        fetchUserInfo(uid);
+      } else {
+        // Handle user not signed in
+      }
+    });
+  }, []);
+
+
+  const fetchUserInfo = async (uid) => {
+    const docRef = doc(db, 'users', uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      setUserInfo(docSnap.data());
+    } else {
+      console.log('No such document!');
+    }
+  };
+
+
+
 
   const toggleUserInfo = () => {
     setIsUserInfo(!isUserInfo);
