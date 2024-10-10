@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Container, Title, Text, Group, Button, List, ThemeIcon } from '@mantine/core';
+import { Container, Title, Text, Group, Button, List, ThemeIcon, TextInput } from '@mantine/core';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { IconCheck } from '@tabler/icons-react';
 import '../profile/styles.css';
 
 export default function ProfilePage() {
-  const [userInfo] = useState({
+  const [userInfo, setUserInfo] = useState({
     name: 'Ben Stoks',
     email: 'ben@example.com',
     address: '123 green Street, Alberta, Canada',
@@ -25,6 +25,8 @@ export default function ProfilePage() {
   const [isRewards, setIsRewards] = useState(false);
   const [isNotifications, setIsNotifications] = useState(false);
 
+  const [isEditing, setIsEditing] = useState(false);
+
   const toggleUserInfo = () => {
     setIsUserInfo(!isUserInfo);
   };
@@ -41,10 +43,24 @@ export default function ProfilePage() {
     setIsNotifications(!isNotifications);
   };
 
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveClick = () => {
+    setIsEditing(false);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value,
+    }));
+  };
+
   return (
     <main>
-      
-
       <Container className='container'>
         <Title order={1}><strong>Profile Page</strong></Title>
 
@@ -53,9 +69,36 @@ export default function ProfilePage() {
           <Title order={3} onClick={toggleUserInfo} style={{ cursor: 'pointer' }}>User Information</Title>
           {isUserInfo && (
             <div>
-              <Text><strong>Name:</strong> {userInfo.name}</Text>
-              <Text><strong>Email:</strong> {userInfo.email}</Text>
-              <Text><strong>Address:</strong> {userInfo.address}</Text>
+              {isEditing ? (
+                <div>
+                  <TextInput
+                    label="Name"
+                    name="name"
+                    value={userInfo.name}
+                    onChange={handleChange}
+                  />
+                  <TextInput
+                    label="Email"
+                    name="email"
+                    value={userInfo.email}
+                    onChange={handleChange}
+                  />
+                  <TextInput
+                    label="Address"
+                    name="address"
+                    value={userInfo.address}
+                    onChange={handleChange}
+                  />
+                  <Button onClick={handleSaveClick}>Save</Button>
+                </div>
+              ) : (
+                <div>
+                  <Text><strong>Name:</strong> {userInfo.name}</Text>
+                  <Text><strong>Email:</strong> {userInfo.email}</Text>
+                  <Text><strong>Address:</strong> {userInfo.address}</Text>
+                  <Button onClick={handleEditClick}>Edit</Button>
+                </div>
+              )}
             </div>
           )}
         </div>
