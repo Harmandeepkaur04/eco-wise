@@ -1,17 +1,17 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container, Title, Text, Group, Button, List, ThemeIcon, TextInput } from '@mantine/core';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { IconCheck } from '@tabler/icons-react';
-import { doc, getDoc, setDoc } from 'firebase/firestore';
+
 import '../profile/styles.css';
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
     name: 'Ben Stoks',
     email: 'ben@example.com',
-    address: '123 green Street, Alberta, Canada',
+    address: '123 Green Street, Alberta, Canada',
   });
 
   const [points] = useState(150);
@@ -28,57 +28,8 @@ export default function ProfilePage() {
 
   const [isEditing, setIsEditing] = useState(false);
 
-
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        setUserId(uid);
-        fetchUserInfo(uid);
-      } else {
-        // Handle user not signed in
-      }
-    });
-  }, []);
-
-
-  const fetchUserInfo = async (uid) => {
-    const docRef = doc(db, 'users', uid);
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-      setUserInfo(docSnap.data());
-    } else {
-      console.log('No such document!');
-    }
-  };
-
-
-
-
-  const toggleUserInfo = () => {
-    setIsUserInfo(!isUserInfo);
-  };
-
-  const togglePoints = () => {
-    setIsPoints(!isPoints);
-  };
-
-  const toggleRewards = () => {
-    setIsRewards(!isRewards);
-  };
-
-  const toggleNotifications = () => {
-    setIsNotifications(!isNotifications);
-  };
-
   const handleEditClick = () => {
     setIsEditing(true);
-  };
-
-  const handleSaveClick = () => {
-    setIsEditing(false);
   };
 
   const handleChange = (e) => {
@@ -88,6 +39,53 @@ export default function ProfilePage() {
       [name]: value,
     }));
   };
+
+  const handleSaveClick = () => {
+    console.log('User info saved:', userInfo);
+    speak('User information has been saved.');
+    setIsEditing(false);
+  };
+
+  const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
+  const togglePoints = () => setIsPoints(!isPoints);
+  const toggleRewards = () => setIsRewards(!isRewards);
+  const toggleNotifications = () => setIsNotifications(!isNotifications);
+
+  // Improved audio navigation function
+  const speak = (message) => {
+    if ('speechSynthesis' in window) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(message);
+      utterance.rate = 1; // Speed of the voice
+      utterance.pitch = 1; // Pitch of the voice
+      utterance.volume = 1; // Volume level
+      synth.speak(utterance);
+      console.log('Speaking:', message);
+    } else {
+      console.error('SpeechSynthesis API not supported in this browser.');
+    }
+  };
+
+  useEffect(() => {
+    // Speak when the profile page is loaded
+    speak('Welcome to the profile page.');
+
+    const handleNavigation = (e) => {
+      const target = e.target;
+      if (target.tagName === 'BUTTON') {
+        speak(`You clicked ${target.innerText}`);
+      }
+      if (target.tagName === 'A') {
+        speak(`Navigating to ${target.innerText}`);
+      }
+    };
+
+    window.addEventListener('click', handleNavigation);
+
+    return () => {
+      window.removeEventListener('click', handleNavigation);
+    };
+  }, []);
 
   return (
     <main>
@@ -172,7 +170,10 @@ export default function ProfilePage() {
         </div>
 
         <Group position="center" className='button'>
-          <Button onClick={() => alert('Signed out!')}>Sign Out</Button>
+          <Button onClick={() => {
+            speak('Signed out!');
+            alert('Signed out!');
+          }}>Sign Out</Button>
         </Group>
       </Container>
     </main>
