@@ -91,10 +91,25 @@ nav a:hover {
     gap: 10px; /* Reduce gap for smaller screens */
   }
 
+
+/* Light Dark Theme */
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+
+
   nav a {
     padding: 8px;
     font-size: 0.9rem; /* Reduce font size on smaller screens */
   }
+
 
   .header {
     font-size: 1.2rem; /* Adjust header font size */

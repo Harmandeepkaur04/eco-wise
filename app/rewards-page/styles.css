@@ -12,9 +12,10 @@ h1, h2, h3 {
 }
 
 h2, h3 {
-  font-size: 50px;
+  font-size: 2.5rem; /* Adjusted font size for better readability */
 }
-.Rewards{
+
+.Rewards {
   color: #e1edbd;
 }
 
@@ -42,7 +43,7 @@ footer {
 .container header {
   border-bottom: 2px solid #426D54; /* Forest Green */
   padding: 20px;
-  font-size: 30px;
+  font-size: 1.875rem; /* Adjusted font size */
 }
 
 .leaderboard {
@@ -98,7 +99,7 @@ footer {
 }
 
 .completedMessage {
-  font-size: 18px;
+  font-size: 1.125rem; /* Adjusted font size */
   color: #5A8559; /* Dark Green */
   text-align: center;
   font-weight: bold;
@@ -117,6 +118,7 @@ footer {
     padding: 8px;
   }
 }
+
 /* List Styles */
 ul, ol {
   padding-left: 20px; /* Indent lists */
@@ -124,8 +126,6 @@ ul, ol {
   list-style-position: inside; /* Position bullets/numbers inside */
 }
 
-
-/* List Items */
 li {
   margin: 5px 0; /* Space between list items */
   padding: 5px; /* Padding for list items */
@@ -137,6 +137,7 @@ li {
 li:hover {
   background-color: #b0cf98; /* Darker green on hover */
 }
+
 /* Quiz Styles */
 .quiz {
   background: #ffffff; /* White background for quizzes */
@@ -167,6 +168,12 @@ li:hover {
   text-align: center; /* Center align text */
 }
 
+.quiz1, .quiz2 {
+  text-align: center;
+  font-size: 1.875rem; /* Adjusted font size */
+  font-weight: bolder;
+}
+
 /* Feedback */
 .feedback {
   margin-top: 10px;
@@ -194,6 +201,14 @@ button {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.retake-button {
+  text-align: center;
+}
+
+.question-card {
+  font-size: 1rem; /* Adjusted font size */
 }
 
 button:hover {
@@ -231,7 +246,6 @@ button:hover {
   transform: scale(1.02); /* Slight scale effect */
 }
 
-
 .tips-section, .resources-section {
   margin: 20px 0;
   padding: 20px;
@@ -243,7 +257,6 @@ button:hover {
 }
 
 .tips-section:hover, .resources-section:hover {
-
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
@@ -264,6 +277,14 @@ button:hover {
   margin: 10px 0 5px;
   border-bottom: 2px dotted #5A8559; /* Dotted underline for emphasis */
   padding-bottom: 5px; /* Space below the underline */
+}
+
+.tips-section p, .resources-section p {
+  font-size: 1.1rem;
+  color: #555; /* Darker gray for text */
+  line-height: 1.6;
+  margin-bottom: 15px; /* Space between paragraphs */
+  position: relative; /* For text decoration */
 }
 
 .tips-section p, .resources-section p {
@@ -338,5 +359,3 @@ a:hover {
     transform: translateY(0);
   }
 }
-
-
