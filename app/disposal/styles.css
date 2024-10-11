@@ -168,7 +168,7 @@ img {
 }
 
 .square-map {
-  width: 85vh;
+  width: 94vh;
   height: 100vh;
   border: 3px solid #102f15;
   border-radius: 8px;
@@ -181,7 +181,7 @@ img {
 .div-container {
   border: 3px solid #102f15;
   border-radius: 8px;
-  width: 85vh;
+  width: 94vh;
   height: 80vh;
   background-color: #728c5a;
   margin-left: 15px;
