@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect } from 'react';
 import { Container, Title, Text, Image, Grid, Group } from '@mantine/core';
-import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+
 import { useAudio } from '../Audio'; // Adjust the path as necessary
 import '../Index/style.css';
 
@@ -9,8 +10,14 @@ export default function Index() {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
 
   useEffect(() => {
+    console.log('useEffect called');
     speak('Welcome to the home page. Here you can find the latest updates and news.');
   }, []);
+
+  const handleAudioToggle = () => {
+    console.log('Audio toggle clicked');
+    setIsAudioOn(!isAudioOn);
+  };
 
   return (
     <main>
@@ -18,7 +25,7 @@ export default function Index() {
 
       {/* Audio Control Icon */}
       <Group position="center" className='button'>
-        <div onClick={() => setIsAudioOn(!isAudioOn)} style={{ cursor: 'pointer' }}>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
       </Group>

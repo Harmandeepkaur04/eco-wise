@@ -1,5 +1,5 @@
 import React from "react";
-import { AudioProvider } from './.app/Audio';
+import { AudioProvider } from './Audio';
 import Index from "./index/page";
 
 
