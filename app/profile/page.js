@@ -4,14 +4,15 @@ import Link from 'next/link';
 import { Container, Title, Text, Group, Button, List, ThemeIcon, TextInput } from '@mantine/core';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { IconCheck } from '@tabler/icons-react';
-
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
 import '../profile/styles.css';
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
-    name: 'Ben Stoks',
-    email: 'ben@example.com',
-    address: '123 Green Street, Alberta, Canada',
+    name: '',
+    email: '',
+    address: '',
   });
 
   const [points] = useState(150);
@@ -40,10 +41,15 @@ export default function ProfilePage() {
     }));
   };
 
-  const handleSaveClick = () => {
-    console.log('User info saved:', userInfo);
-    speak('User information has been saved.');
-    setIsEditing(false);
+  const handleSaveClick = async () => {
+    try {
+      await setDoc(doc(db, "users", "personal1"), userInfo); // Use your document ID
+      console.log('User info saved:', userInfo);
+      speak('User information has been saved.');
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error saving user info: ", error);
+    }
   };
 
   const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
@@ -81,6 +87,22 @@ export default function ProfilePage() {
     };
 
     window.addEventListener('click', handleNavigation);
+
+    const fetchUserInfo = async () => {
+      try {
+        const docRef = doc(db, "users", "user1"); // Use your document ID
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserInfo(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching user info: ", error);
+      }
+    };
+
+    fetchUserInfo();
 
     return () => {
       window.removeEventListener('click', handleNavigation);
