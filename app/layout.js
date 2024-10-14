@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
 import { MantineProvider } from '@mantine/core';
 import Link from 'next/link';
-import { AudioProvider } from '../context/AudioContext'; // Adjust the path as necessary
+import { AudioProvider } from './Audio'; // Adjust the path as necessary
 import './globals.css';
 
 const geistSans = localFont({
@@ -24,6 +24,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ClerkProvider>
           <MantineProvider withGlobalStyles withNormalizeCSS>
+            <AudioProvider>
             {/* Header */}
             <header className="header-container">
               <h1 className="header">Eco Wise</h1>
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
                 {children}
               </main>
             </SignedIn>
+            </AudioProvider>
           </MantineProvider>
         </ClerkProvider>
       </body>
