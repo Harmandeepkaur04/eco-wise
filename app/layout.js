@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
 import { MantineProvider } from '@mantine/core';
 import Link from 'next/link';
+import { AudioProvider } from '../context/AudioContext'; // Adjust the path as necessary
 import './globals.css';
 
 const geistSans = localFont({
