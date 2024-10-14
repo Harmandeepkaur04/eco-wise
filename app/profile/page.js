@@ -63,7 +63,7 @@ export default function ProfilePage() {
     if (isAudioOn && 'speechSynthesis' in window) {
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(message);
-      utterance.rate = 1; // Speed of the voice
+      utterance.rate = 0.7; // Speed of the voice
       utterance.pitch = 1; // Pitch of the voice
       utterance.volume = 1; // Volume level
       synth.speak(utterance);
@@ -77,7 +77,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     // Speak when the profile page is loaded
-    speak('Welcome to the profile page.');
+    speak('Welcome to the profile page Here you will get all Personal details including rewards,points and Notifications');
 
     const handleNavigation = (e) => {
       const target = e.target;
@@ -118,7 +118,7 @@ export default function ProfilePage() {
         <Title order={1}><strong>Profile Page</strong></Title>
 
         {/* Audio Control Icon */}
-        <Group position="center" className='button'>
+        <Group position="center" className='audio'>
           <div onClick={() => setIsAudioOn(!isAudioOn)} style={{ cursor: 'pointer' }}>
             {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
           </div>
