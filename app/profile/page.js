@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Container, Title, Text, Group, Button, List, ThemeIcon, TextInput } from '@mantine/core';
-import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { Container, Title, Text, Group, List, ThemeIcon, TextInput } from '@mantine/core';
+import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
+//import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
 import '../profile/styles.css';
 
 export default function ProfilePage() {
@@ -28,6 +28,7 @@ export default function ProfilePage() {
   const [isNotifications, setIsNotifications] = useState(false);
 
   const [isEditing, setIsEditing] = useState(false);
+  const [isAudioOn, setIsAudioOn] = useState(false); // State for audio control
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -59,7 +60,7 @@ export default function ProfilePage() {
 
   // Improved audio navigation function
   const speak = (message) => {
-    if ('speechSynthesis' in window) {
+    if (isAudioOn && 'speechSynthesis' in window) {
       const synth = window.speechSynthesis;
       const utterance = new SpeechSynthesisUtterance(message);
       utterance.rate = 1; // Speed of the voice
@@ -67,6 +68,8 @@ export default function ProfilePage() {
       utterance.volume = 1; // Volume level
       synth.speak(utterance);
       console.log('Speaking:', message);
+    } else if (!isAudioOn) {
+      console.log('Audio is off.');
     } else {
       console.error('SpeechSynthesis API not supported in this browser.');
     }
@@ -107,12 +110,19 @@ export default function ProfilePage() {
     return () => {
       window.removeEventListener('click', handleNavigation);
     };
-  }, []);
+  }, [isAudioOn]); // Add isAudioOn to the dependency array
 
   return (
     <main>
       <Container className='container'>
         <Title order={1}><strong>Profile Page</strong></Title>
+
+        {/* Audio Control Icon */}
+        <Group position="center" className='button'>
+          <div onClick={() => setIsAudioOn(!isAudioOn)} style={{ cursor: 'pointer' }}>
+            {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+          </div>
+        </Group>
 
         {/* User Info Section */}
         <div className='infoSection'>
