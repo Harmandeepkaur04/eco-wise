@@ -11,7 +11,7 @@ export default function Index() {
 
   useEffect(() => {
     speak('Welcome to the home page. Here you can find the latest updates and news.');
-  }, []);
+  }, [speak]);
 
   const handleAudioToggle = () => {
     console.log('Audio toggle clicked');
