@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 const AudioContext = createContext();
 
 export const AudioProvider = ({ children }) => {
-  const [isAudioOn, setIsAudioOn] = useState(true);
+  const [isAudioOn, setIsAudioOn] = useState(false);
 
   const speak = (message) => {
     if (isAudioOn && 'speechSynthesis' in window) {

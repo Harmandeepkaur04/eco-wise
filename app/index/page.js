@@ -11,7 +11,7 @@ export default function Index() {
 
   useEffect(() => {
     speak('Welcome to the home page. Here you can find the latest updates and news.');
-  }, [speak]);
+  }, []);
 
   const handleAudioToggle = () => {
     console.log('Audio toggle clicked');
@@ -23,7 +23,7 @@ export default function Index() {
       <Text className='link'>On this Page</Text>
 
       {/* Audio Control Icon */}
-      <Group position="center" className='button'>
+      <Group position="center" className='icon'>
         <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
