@@ -1,16 +1,18 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Container, Title, Text, Group, Button, List, ThemeIcon } from '@mantine/core';
-import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { Container, Title, Text, Group, List, ThemeIcon, TextInput,Button } from '@mantine/core';
+import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { IconCheck } from '@tabler/icons-react';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+//import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
 import '../profile/styles.css';
 
 export default function ProfilePage() {
-  const [userInfo] = useState({
-    name: 'Ben Stoks',
-    email: 'ben@example.com',
-    address: '123 green Street, Alberta, Canada',
+  const [userInfo, setUserInfo] = useState({
+    name: '',
+    email: '',
+    address: '',
   });
 
   const [points] = useState(150);
@@ -25,37 +27,138 @@ export default function ProfilePage() {
   const [isRewards, setIsRewards] = useState(false);
   const [isNotifications, setIsNotifications] = useState(false);
 
-  const toggleUserInfo = () => {
-    setIsUserInfo(!isUserInfo);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isAudioOn, setIsAudioOn] = useState(false); // State for audio control
+
+  const handleEditClick = () => {
+    setIsEditing(true);
   };
 
-  const togglePoints = () => {
-    setIsPoints(!isPoints);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value,
+    }));
   };
 
-  const toggleRewards = () => {
-    setIsRewards(!isRewards);
+  const handleSaveClick = async () => {
+    try {
+      await setDoc(doc(db, "users", "personal1"), userInfo); // Use your document ID
+      console.log('User info saved:', userInfo);
+      speak('User information has been saved.');
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error saving user info: ", error);
+    }
   };
 
-  const toggleNotifications = () => {
-    setIsNotifications(!isNotifications);
+  const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
+  const togglePoints = () => setIsPoints(!isPoints);
+  const toggleRewards = () => setIsRewards(!isRewards);
+  const toggleNotifications = () => setIsNotifications(!isNotifications);
+
+  // Improved audio navigation function
+  const speak = (message) => {
+    if (isAudioOn && 'speechSynthesis' in window) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(message);
+      utterance.rate = 0.7; // Speed of the voice
+      utterance.pitch = 1; // Pitch of the voice
+      utterance.volume = 1; // Volume level
+      synth.speak(utterance);
+      console.log('Speaking:', message);
+    } else if (!isAudioOn) {
+      console.log('Audio is off.');
+    } else {
+      console.error('SpeechSynthesis API not supported in this browser.');
+    }
   };
+
+  useEffect(() => {
+    // Speak when the profile page is loaded
+    speak('Welcome to the profile page Here you will get all Personal details including rewards,points and Notifications');
+
+    const handleNavigation = (e) => {
+      const target = e.target;
+      if (target.tagName === 'BUTTON') {
+        speak(`You clicked ${target.innerText}`);
+      }
+      if (target.tagName === 'A') {
+        speak(`Navigating to ${target.innerText}`);
+      }
+    };
+
+    window.addEventListener('click', handleNavigation);
+
+    const fetchUserInfo = async () => {
+      try {
+        const docRef = doc(db, "users", "user1"); // Use your document ID
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setUserInfo(docSnap.data());
+        } else {
+          console.log("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching user info: ", error);
+      }
+    };
+
+    fetchUserInfo();
+
+    return () => {
+      window.removeEventListener('click', handleNavigation);
+    };
+  }, [isAudioOn]); // Add isAudioOn to the dependency array
 
   return (
     <main>
-      
-
       <Container className='container'>
         <Title order={1}><strong>Profile Page</strong></Title>
+
+        {/* Audio Control Icon */}
+        <Group position="center" className='audio'>
+          <div onClick={() => setIsAudioOn(!isAudioOn)} style={{ cursor: 'pointer' }}>
+            {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+          </div>
+        </Group>
 
         {/* User Info Section */}
         <div className='infoSection'>
           <Title order={3} onClick={toggleUserInfo} style={{ cursor: 'pointer' }}>User Information</Title>
           {isUserInfo && (
             <div>
-              <Text><strong>Name:</strong> {userInfo.name}</Text>
-              <Text><strong>Email:</strong> {userInfo.email}</Text>
-              <Text><strong>Address:</strong> {userInfo.address}</Text>
+              {isEditing ? (
+                <div>
+                  <TextInput
+                    label="Name"
+                    name="name"
+                    value={userInfo.name}
+                    onChange={handleChange}
+                  />
+                  <TextInput
+                    label="Email"
+                    name="email"
+                    value={userInfo.email}
+                    onChange={handleChange}
+                  />
+                  <TextInput
+                    label="Address"
+                    name="address"
+                    value={userInfo.address}
+                    onChange={handleChange}
+                  />
+                  <Button onClick={handleSaveClick}>Save</Button>
+                </div>
+              ) : (
+                <div>
+                  <Text><strong>Name:</strong> {userInfo.name}</Text>
+                  <Text><strong>Email:</strong> {userInfo.email}</Text>
+                  <Text><strong>Address:</strong> {userInfo.address}</Text>
+                  <Button onClick={handleEditClick}>Edit</Button>
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -99,7 +202,10 @@ export default function ProfilePage() {
         </div>
 
         <Group position="center" className='button'>
-          <Button onClick={() => alert('Signed out!')}>Sign Out</Button>
+          <Button onClick={() => {
+            speak('Signed out!');
+            alert('Signed out!');
+          }}>Sign Out</Button>
         </Group>
       </Container>
     </main>
