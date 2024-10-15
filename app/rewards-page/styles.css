@@ -12,11 +12,11 @@ h1, h2, h3 {
 }
 
 h2, h3 {
-  font-size: 50px;
+  font-size: 2.5rem; /* Adjusted font size for better readability */
 }
 
-h2 {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.Rewards {
+  color: #e1edbd;
 }
 
 footer, header {
@@ -43,82 +43,7 @@ footer {
 .container header {
   border-bottom: 2px solid #426D54; /* Forest Green */
   padding: 20px;
-  font-size: 30px;
-}
-
-.quiz-tiles {
-  display: flex;
-  justify-content: flex-start; /* Aligns items to the start */
-  flex-wrap: nowrap; /* Prevents wrapping */
-  overflow-x: auto; /* Allows horizontal scrolling */
-  margin: 20px 0;
-}
-
-.quiz-tile {
-  flex: 0 0 300px; /* Fixed width for each tile */
-  margin: 10px; /* Adjust margin as needed */
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  background-image: url('/quiz.png'); 
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-}
-
-.quiz-tile:hover {
-  background-color: #e1edbd;
-  transform: scale(1.05);
-}
-
-.progress-bar {
-  height: 10px;
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-.progress {
-  height: 100%;
-  background-color: #5A8559; /* Dark Green */
-  transition: width 0.3s ease;
-}
-
-.question-card, .score-card {
-  text-align: center;
-}
-
-.option-button, .next-button, .retake-button, .quiz-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #5A8559; /* Dark Green */
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.option-button:hover, .next-button:hover, .retake-button:hover, .quiz-button:hover {
-  background-color: #426D54; /* Forest Green */
-  transform: scale(1.05);
-}
-
-.feedback {
-  margin-top: 20px;
-  color: black;
-}
-
-.score-card {
-  background-color: #e1edbd; /* Light Pastel Green */
-  padding: 20px;
-  border-radius: 8px;
+  font-size: 1.875rem; /* Adjusted font size */
 }
 
 .leaderboard {
@@ -149,26 +74,6 @@ footer {
   align-items: center;
 }
 
-label {
-  display: flex;
-  align-items: center;
-  font-size: 25px;
-}
-
-input[type="checkbox"] {
-  margin-right: 10px;
-  width: 25px; 
-  height: 25px;
-}
-
-li {
-  background-color: #e1edbd; /* Light Pastel Green */
-  margin: 10px 0;
-  padding: 15px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 .challengeContainer {
   max-width: 600px;
   margin: 0 auto;
@@ -176,10 +81,6 @@ li {
   background-color: #f0f4f1; /* Light background for overall page */
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.challengeList {
-  padding: 0;
 }
 
 .challengeItem {
@@ -198,7 +99,7 @@ li {
 }
 
 .completedMessage {
-  font-size: 18px;
+  font-size: 1.125rem; /* Adjusted font size */
   color: #5A8559; /* Dark Green */
   text-align: center;
   font-weight: bold;
@@ -211,40 +112,250 @@ li {
   text-decoration: line-through;
 }
 
-/* Add keyframes for animations */
+/* Responsive Design */
+@media (max-width: 768px) {
+  .challengeItem {
+    padding: 8px;
+  }
+}
+
+/* List Styles */
+ul, ol {
+  padding-left: 20px; /* Indent lists */
+  margin: 10px 0; /* Space between lists */
+  list-style-position: inside; /* Position bullets/numbers inside */
+}
+
+li {
+  margin: 5px 0; /* Space between list items */
+  padding: 5px; /* Padding for list items */
+  background-color: #e1edbd; /* Light Pastel Green */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth background change */
+}
+
+li:hover {
+  background-color: #b0cf98; /* Darker green on hover */
+}
+
+/* Quiz Styles */
+.quiz {
+  background: #ffffff; /* White background for quizzes */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 10px;
+  background-color: #e0e0e0; /* Light gray */
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #5A8559; /* Dark Green */
+  transition: width 0.3s ease; /* Smooth transition */
+}
+
+/* Question Card */
+.question-card {
+  margin-bottom: 20px;
+  text-align: center; /* Center align text */
+}
+
+.quiz1, .quiz2 {
+  text-align: center;
+  font-size: 1.875rem; /* Adjusted font size */
+  font-weight: bolder;
+}
+
+/* Feedback */
+.feedback {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333; /* Dark text for feedback */
+}
+
+/* Score Card */
+.score-card {
+  text-align: center;
+  background-color: #e1edbd; /* Light Pastel Green */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Buttons */
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #5A8559; /* Dark Green */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.retake-button {
+  text-align: center;
+}
+
+.question-card {
+  font-size: 1rem; /* Adjusted font size */
+}
+
+button:hover {
+  background-color: #426D54; /* Forest Green */
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Quiz Tiles Container */
+.quiz-tiles {
+  display: flex; /* Use Flexbox */
+  justify-content: space-between; /* Space evenly between tiles */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  margin: 20px 0;
+}
+
+/* Quiz Tile */
+.quiz-tile {
+  flex: 0 0 400px; /* Fixed width */
+  height: 650px;
+  flex: 1; /* Allow tiles to grow equally */
+  margin: 10px; /* Space around each tile */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background */
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  background-image: url('/quiz.png'); /* Add your image path here */
+  background-size: cover; /* Cover the entire tile */
+  background-position: center; /* Center the image */
+}
+
+.quiz-tile:hover {
+  background-color: #e1edbd; /* Light Pastel Green on hover */
+  transform: scale(1.02); /* Slight scale effect */
+}
+
+.tips-section, .resources-section {
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f0f4f1; /* Light background */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth scaling and shadow effect */
+  position: relative; /* For pseudo-elements */
+}
+
+.tips-section:hover, .resources-section:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.tips-section h2, .resources-section h2 {
+  font-size: 2.2rem;
+  color: #5A8559; /* Dark Green */
+  margin-bottom: 15px;
+  text-align: center; /* Center align headings */
+  font-weight: bold;
+  text-transform: uppercase; /* Make headings stand out */
+  letter-spacing: 1.5px; /* Space between letters */
+  animation: fadeIn 0.5s; /* Fade-in effect */
+}
+
+.tips-section h3, .resources-section h3 {
+  font-size: 1.6rem;
+  color: #426D54; /* Forest Green */
+  margin: 10px 0 5px;
+  border-bottom: 2px dotted #5A8559; /* Dotted underline for emphasis */
+  padding-bottom: 5px; /* Space below the underline */
+}
+
+.tips-section p, .resources-section p {
+  font-size: 1.1rem;
+  color: #555; /* Darker gray for text */
+  line-height: 1.6;
+  margin-bottom: 15px; /* Space between paragraphs */
+  position: relative; /* For text decoration */
+}
+
+.tips-section p, .resources-section p {
+  font-size: 1.1rem;
+  color: #555; /* Darker gray for text */
+  line-height: 1.6;
+  margin-bottom: 15px; /* Space between paragraphs */
+  position: relative; /* For text decoration */
+}
+
+.tips-section p::before {
+  content: '💡'; /* Light bulb icon */
+  position: absolute;
+  left: -30px; /* Positioning the icon */
+  font-size: 1.8rem; /* Icon size */
+}
+
+.tips-section ul, .resources-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tips-section li, .resources-section li {
+  margin-bottom: 15px;
+  background-color: #e1edbd; /* Light Pastel Green */
+  padding: 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+  position: relative; /* For pseudo-element */
+  overflow: hidden; /* Contain pseudo-element */
+}
+
+.tips-section li:hover, .resources-section li:hover {
+  background-color: #b0cf98; /* Darker green on hover */
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.tips-section li::after {
+  content: '✨'; /* Sparkle icon */
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 1.5rem; /* Icon size */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease; /* Fade in effect */
+}
+
+.tips-section li:hover::after {
+  opacity: 1; /* Show sparkle on hover */
+}
+
+a {
+  color: #5A8559; /* Dark Green for links */
+  text-decoration: none;
+  font-weight: bold; /* Bold links */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+a:hover {
+  color: #007bff; /* Change color on hover */
+  text-decoration: underline;
+}
+
+/* Keyframes for fade-in effect */
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
-  }
-}
-
-.quiz-tile, .option-button, .next-button, .retake-button, .quiz-button {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .quiz-tile {
-    flex: 1 1 calc(50% - 20px); /* Adjusts for medium screens */
-  }
-}
-@media (max-width: 768px) {
-  .quiz-tiles {
-    display: flex;
-    justify-content: flex-start; /* Aligns items to the start */
-    flex-wrap: nowrap; /* Prevents wrapping to the next line */
-    margin: 20px 0;
-    overflow-x: auto; /* Allows horizontal scrolling if needed */
-  }
-  .quiz-tile {
-    flex: 0 0 auto; /* Prevents the tiles from shrinking */
-    margin: 10px; /* Adjust margin as needed */
-    width: 300px; /* Set a fixed width for each tile */
-  }
-  .challengeItem {
-    padding: 8px;
+    transform: translateY(0);
   }
 }

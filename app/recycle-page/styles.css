@@ -4,14 +4,17 @@ body {
   margin: 0;
   padding: 0;
 }
+
 a:hover {
   color: #82B068; /* Medium Green */
 }
+
 h1, h2, h3 {
   color: #5A8559; /* Dark Green */
   text-align: center;
   margin-top: 20px;
 }
+
 .container .recycle h2{
   font-size: 50px;
   color: #B0CF98;
@@ -21,6 +24,7 @@ h2 {
 font-size: 50px;
 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 .article-list h2 {
 margin-left: 550px;
   font-size: 50px;
@@ -88,6 +92,8 @@ header {
   list-style-type: none;
   background-color: #ddf7c9;
   box-shadow: 0 4px 8px rgba(19, 125, 19, 0.5);
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .article-list li {
@@ -97,8 +103,10 @@ header {
   text-align: center;
   margin: 10px;
   padding: 20px;
-  width: 30%;
+  width: 300px;
   transition: transform 0.3s ease;
+  display: inline-block;
+
 }
 
 .article-list li:hover {
@@ -189,6 +197,7 @@ header {
   height: 200px;
   border-radius: 50%;
 }
+
 form {
   background: #fff;
   padding: 20px;

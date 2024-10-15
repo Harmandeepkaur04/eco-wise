@@ -1,5 +1,6 @@
 main {
-  color: #102f15;
+  color: #102f15 !important;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h2 {
@@ -11,8 +12,112 @@ h2 {
   margin-bottom: 15px;
   margin-top: 15px;
   padding: 10px;
+  border-radius: 8px;
 }
 
+/*------------------------------------------------------------------------*/
+/* DRAWER STYLING*/
+.drawer {
+  background-color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  color: #102f15;
+}
+
+.drawer-content {
+  border: solid 5px #102f15;
+  background-color: #eaf1b1;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.drawer-title {
+  font-size: x-large;
+  text-align: center;
+  background-color: #102f15;
+  color: #eaf1b1;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.drawer-overlay {
+  backdrop-filter: blur(1px);
+  opacity: 0.55;
+}
+
+.button {
+  margin-left: 15px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 25px;
+  width: 150px;
+}
+
+.button-2 {
+  margin-left: 15px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 25px;
+  width: 250px;
+}
+
+.button:hover {
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+.button-2:hover {
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+/*------------------------------------------------------------------------*/
+/* Drawer Contents Styling */
+img {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.material-div {
+  background-color: #728c5a;
+  width: 225px;
+  border-radius: 8px;
+  text-align: center;
+  justify-items: center;
+  display: flex;          /* Make it a flex container */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center;    /* Center children horizontally */
+  padding: 10px;
+}
+
+.materials {
+  font-size: large;
+  background-color: #102f15;
+  color: #eaf1b1;
+  border-radius: 8px;
+  width: 100px;
+  text-align: center;
+  padding: 5px 5px;
+  margin-bottom: 10px;
+}
+
+.item-list {
+  color: #eaf1b1;
+  text-align: left;
+}
+/*------------------------------------------------------------------------*/
+/* SCROLL BUTTON STYLING */
 .scroll-buttons {
   display: flex;
   justify-content: center;
@@ -33,11 +138,13 @@ h2 {
   background-color: #102f15;
 }
 
+/*------------------------------------------------------------------------*/
+/* DIV FLEX STYLING */
 .flex-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px;
+
   flex-wrap: wrap;
 }
 
@@ -47,6 +154,8 @@ h2 {
   gap: 20px;
 }
 
+/*------------------------------------------------------------------------*/
+/* MAP STYLING */
 .map-container {
   position: sticky;
   top: 0;
@@ -59,7 +168,7 @@ h2 {
 }
 
 .square-map {
-  width: 85vh;
+  width: 94vh;
   height: 100vh;
   border: 3px solid #102f15;
   border-radius: 8px;
@@ -67,21 +176,46 @@ h2 {
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
 }
 
+/*------------------------------------------------------------------------*/
+/* DIV STYLING */
 .div-container {
   border: 3px solid #102f15;
   border-radius: 8px;
-  width: 85vh;
-  height: 50vh;
+  width: 94vh;
+  height: 80vh;
   background-color: #728c5a;
   margin-left: 15px;
   color: #eaf1b1;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.div-container-2{
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  color: #eaf1b1;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px 20px;
+}
+
+.div-2-title {
+  font-size: xxx-large;
+}
+
+.div-2-txt {
+  font-size: large;
 }
 
 .div-container h1 {
   font-size: xx-large;
   text-align: center;
   color: #eaf1b1;
+  background-color: #102f15;
+  padding: 5px 10px;
+  
 }
 
 .div-container h3 {
@@ -91,14 +225,30 @@ h2 {
 
 .div-container p {
   margin-left: 15px;
-  font-size: large;
+  font-size: x-large;
 }
 
 .div-container ul {
-  margin-left: 25px;
-  color: #ebfadc;
+  padding: 5px 10px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: solid #102f15;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 10px 20px;
 }
 
+.address {
+  padding: 5px 10px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: solid #102f15;
+  border-radius: 8px;
+  margin: 10px 20px;
+}
+
+/*------------------------------------------------------------------------*/
+/* TABLE STYLING */
 .table-container {
   width: 95%;
   margin-top: 15px;
@@ -107,6 +257,8 @@ h2 {
 }
 
 .table-container th {
+  position: sticky;
+  top: 0;
   padding: 10px;
   border: 3px solid #ebfadc;
   border-radius: 8px;
@@ -123,5 +275,6 @@ h2 {
   text-align: center;
   background-color: #728c5a;
   color: #ebfadc;
-  font-size: small;
+  font-size: medium;
 }
+

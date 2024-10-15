@@ -1,7 +1,6 @@
-
 "use client"
 import Link from 'next/link';
-import Leaderboard from './Leaderboard';
+import Leaderboard from './leaderboard';
 import './styles.css';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -67,7 +66,7 @@ const Quiz = ({ questions, onRetake }) => {
       ) : (
         <div className="score-card">
           <Title order={4}>Your score: {score}</Title>
-          <Button onClick={handleRetakeQuiz}>Retake Quiz</Button>
+          <Button className='retake-button' onClick={handleRetakeQuiz}>Retake Quiz</Button>
         </div>
       )}
     </div>
@@ -97,25 +96,22 @@ const Home = () => {
   return (
     <Container>
       <header>
-        <Title order={2}>Rewards</Title>
+        <Title className='Rewards' order={2}>Rewards</Title>
       </header>
       <Leaderboard scores={scores} />
       <Challenges />
       <Title order={3}>Test Your Knowledge!</Title>
-      <Group spacing="md">
+      <Group className="quiz-tiles" spacing="md">
         <div className={`quiz-tile ${showQuiz1 ? 'active' : ''}`} onClick={handleShowQuiz1}>
-          <Title order={4}>Quiz 1: Recycling</Title>
+          <Title className='quiz1' order={4}>Quiz 1: Recycling</Title>
           {showQuiz1 && <Quiz questions={questions} onRetake={handleRetakeQuiz} />}
         </div>
         <div className={`quiz-tile ${showQuiz2 ? 'active' : ''}`} onClick={handleShowQuiz2}>
-          <Title order={4}>Quiz 2: Waste Management</Title>
+          <Title className='quiz2' order={4}>Quiz 2: Waste Management</Title>
           {showQuiz2 && <Quiz questions={WasteManagementQuestions} onRetake={handleRetakeQuiz} />}
         </div>
       </Group>
       <Tips />
-      <footer>
-        <p>© 2024 Recycling Rewards. All rights reserved.</p>
-      </footer>
     </Container>
   );
 };
