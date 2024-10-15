@@ -10,7 +10,6 @@ export default function Index() {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
 
   useEffect(() => {
-    console.log('useEffect called');
     speak('Welcome to the home page. Here you can find the latest updates and news.');
   }, []);
 

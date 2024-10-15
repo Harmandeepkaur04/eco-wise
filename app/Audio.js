@@ -1,6 +1,5 @@
-
 "use client";
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AudioContext = createContext();
 
@@ -30,6 +29,29 @@ export const AudioProvider = ({ children }) => {
       console.error('SpeechSynthesis API not supported in this browser.');
     }
   };
+
+  // Global click event listener to handle button and link clicks
+  useEffect(() => {
+    const handleClick = (e) => {
+      const target = e.target;
+      
+      // Check if the clicked element is a button or a link
+      if (target.tagName === 'BUTTON') {
+        speak(`You clicked ${target.innerText}`);
+      }
+      if (target.tagName === 'A') {
+        speak(`Navigating to ${target.innerText}`);
+      }
+    };
+
+    // Add event listener on mount
+    window.addEventListener('click', handleClick);
+
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, [isAudioOn]);
 
   return (
     <AudioContext.Provider value={{ isAudioOn, setIsAudioOn, speak }}>
