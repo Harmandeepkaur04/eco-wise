@@ -82,7 +82,7 @@ const Home = () => {
   const [showQuiz2, setShowQuiz2] = useState(false);
 
   useEffect(() => {
-    speak('Welcome to the Rewards page. Here you can test your knowledge about recycling and waste management.');
+    speak('Welcome to the Rewards page. Here you can test your knowledge about recycling , waste management and can earn points');
   }, [speak, isAudioOn]);
 
   const handleAudioToggle = () => {
@@ -117,7 +117,7 @@ const Home = () => {
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
       </div>
-      
+
       <Leaderboard scores={scores} />
       <Challenges />
       <Title order={3}>Test Your Knowledge!</Title>
