@@ -29,6 +29,23 @@ h2 {
   background-color: #eaf1b1;
   padding: 20px;
   font-family: 'Times New Roman', Times, serif;
+  overflow-y: auto;
+  height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.drawer-content::-webkit-scrollbar {
+  display: 6px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+  background-color: #102f15;
+  border-radius: 10px;
 }
 
 .drawer-title {
@@ -142,6 +159,77 @@ h2 {
   width: 80px;
   margin-bottom: 10px;
 }
+/*------------------------------------------------------------------------*/
+/* SEARCH BAR STYLING */
+
+.autocomplete {
+  background-color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  color: #eaf1b1;
+  padding: 10px;
+  width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.autocomplete input::placeholder {
+  color: #eaf1b1;
+  opacity: 1;
+}
+
+.autocomplete input {
+  background-color: #728c5a;
+  color: #eaf1b1;
+  border: 2px solid #eaf1b1;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+}
+
+.autocomplete-dropdown {
+  background-color: #728c5a;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 8px 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.autocomplete-item {
+  background-color: #728c5a;
+  color: #eaf1b1;
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item[data-hovered='true'] {
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar {
+  width: 6px; /* Thin scrollbar */
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-track {
+  background: transparent; /* Transparent scrollbar track */
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb {
+  background-color: #102f15; /* Same scrollbar thumb color as the items */
+  border-radius: 10px; /* Rounded scrollbar thumb */
+}
+
+.autocomplete-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
 /*------------------------------------------------------------------------*/
 /* SCROLL BUTTON STYLING */
 .scroll-buttons {
