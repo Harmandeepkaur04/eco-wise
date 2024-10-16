@@ -8,10 +8,12 @@ const RecyclePage = () => {
         <h4 >Recycling 101</h4>
         <p>If you're wondering what is recycling or how to recycle properly, check below to learn everything from recycling basics to expert tips.
         </p>
+
         <h2>What is Recycling?</h2>
         <p>
         Recycling is the process of converting waste materials into new products. This helps conserve natural resources, reduce pollution, and decrease the amount of waste sent to landfills.
         </p>
+
         <h2>Why Recycle?</h2>
         <p>
           Conserves Natural Resources: Recycling reduces the need for raw materials, preserving forests, water, and minerals.
@@ -19,8 +21,10 @@ const RecyclePage = () => {
           Reduces Pollution: Recycling decreases the need for extracting, refining, and processing raw materials, which can create substantial air and water pollution.
           Reduces Landfill Waste: Recycling helps divert waste from landfills, reducing the environmental impact.
         </p>
+
           <h2>How to Recycle Properly
           </h2>
+          
           <p>
           Know What Can Be Recycled<br></br>
           Keep it clean <br></br>
