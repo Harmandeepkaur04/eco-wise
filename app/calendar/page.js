@@ -3,8 +3,23 @@
 import React, { useState, useEffect } from 'react';
 import '../calendar/styles.css';
 import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
+import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import { useAudio } from '../Audio'; 
 
 const Calendar = () => {
+
+  const { speak, isAudioOn, setIsAudioOn } = useAudio();
+  
+  useEffect(() => {
+    speak('Welcome to the Calendar page. Here you can view and manage your events.');
+  }, [speak, isAudioOn]);
+
+  const handleAudioToggle = () => {
+    setIsAudioOn((prev) => !prev);
+  };
+
+
+
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
   const today = new Date();
 
@@ -111,6 +126,15 @@ const Calendar = () => {
 
   return (
     <div className="calendar-container">
+
+        {/* Audio Control Icon */}
+        <div style={{ textAlign: 'center', margin: '20px 0' }}>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </div>
+
+
       <div className="monthly-overview-widget">
         <h2>Monthly Schedule Overview</h2>
         <p>Upcoming: {months[currentMonth]} {upcomingReminder.date}, {upcomingReminder.type} 6 AM {upcomingReminder.icon}</p>
