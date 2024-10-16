@@ -33,7 +33,7 @@ export default function ProfilePage() {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
   
   useEffect(() => {
-    speak('Welcome to the profile page. Here you can view and manage your profiles.');
+    speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
   }, [speak, isAudioOn]);
 
   const handleAudioToggle = () => {
