@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Container, Title, Text, Group, List, ThemeIcon, TextInput,Button } from '@mantine/core';
 import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 //import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
@@ -28,7 +29,19 @@ export default function ProfilePage() {
   const [isNotifications, setIsNotifications] = useState(false);
 
   const [isEditing, setIsEditing] = useState(false);
-  const [isAudioOn, setIsAudioOn] = useState(false); // State for audio control
+
+  const { speak, isAudioOn, setIsAudioOn } = useAudio();
+  
+  useEffect(() => {
+    speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
+  }, [speak, isAudioOn]);
+
+  const handleAudioToggle = () => {
+    setIsAudioOn((prev) => !prev);
+  };
+
+
+  
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -58,39 +71,9 @@ export default function ProfilePage() {
   const toggleRewards = () => setIsRewards(!isRewards);
   const toggleNotifications = () => setIsNotifications(!isNotifications);
 
-  // Improved audio navigation function
-  const speak = (message) => {
-    if (isAudioOn && 'speechSynthesis' in window) {
-      const synth = window.speechSynthesis;
-      const utterance = new SpeechSynthesisUtterance(message);
-      utterance.rate = 0.7; // Speed of the voice
-      utterance.pitch = 1; // Pitch of the voice
-      utterance.volume = 1; // Volume level
-      synth.speak(utterance);
-      console.log('Speaking:', message);
-    } else if (!isAudioOn) {
-      console.log('Audio is off.');
-    } else {
-      console.error('SpeechSynthesis API not supported in this browser.');
-    }
-  };
 
-  useEffect(() => {
-    // Speak when the profile page is loaded
-    speak('Welcome to the profile page Here you will get all Personal details including rewards,points and Notifications');
 
-    const handleNavigation = (e) => {
-      const target = e.target;
-      if (target.tagName === 'BUTTON') {
-        speak(`You clicked ${target.innerText}`);
-      }
-      if (target.tagName === 'A') {
-        speak(`Navigating to ${target.innerText}`);
-      }
-    };
-
-    window.addEventListener('click', handleNavigation);
-
+    
     const fetchUserInfo = async () => {
       try {
         const docRef = doc(db, "users", "user1"); // Use your document ID
@@ -107,22 +90,19 @@ export default function ProfilePage() {
 
     fetchUserInfo();
 
-    return () => {
-      window.removeEventListener('click', handleNavigation);
-    };
-  }, [isAudioOn]); // Add isAudioOn to the dependency array
-
+   
   return (
     <main>
       <Container className='container'>
         <Title order={1}><strong>Profile Page</strong></Title>
-
         {/* Audio Control Icon */}
-        <Group position="center" className='audio'>
-          <div onClick={() => setIsAudioOn(!isAudioOn)} style={{ cursor: 'pointer' }}>
-            {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-          </div>
-        </Group>
+        <div style={{ textAlign: 'center', margin: '20px 0' }}>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </div>
+
+        
 
         {/* User Info Section */}
         <div className='infoSection'>
