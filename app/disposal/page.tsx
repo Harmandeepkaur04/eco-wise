@@ -52,7 +52,7 @@ export default function Disposal() {
 
   // Use effect for welcome message
   useEffect(() => {
-    speak('Welcome to the Disposal page. Here you can find information on waste management and recycling locations.');
+    speak('Welcome to the Disposal page. Here you can nereby recycling locations,their contacts and hours of operation.');
   }, [isAudioOn]); // Trigger when isAudioOn changes
   
     // Function to scroll to the table
