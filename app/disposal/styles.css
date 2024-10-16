@@ -83,11 +83,6 @@ h2 {
 
 /*------------------------------------------------------------------------*/
 /* Drawer Contents Styling */
-img {
-  height: 80px;
-  width: 80px;
-  margin-bottom: 10px;
-}
 
 .material-div {
   background-color: #728c5a;
@@ -95,26 +90,37 @@ img {
   border-radius: 8px;
   text-align: center;
   justify-items: center;
-  display: flex;          /* Make it a flex container */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center;    /* Center children horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
+  height: 70vh;
 }
 
-.materials {
+.material-div .materials {
   font-size: large;
   background-color: #102f15;
   color: #eaf1b1;
   border-radius: 8px;
-  width: 100px;
-  text-align: center;
   padding: 5px 5px;
-  margin-bottom: 10px;
 }
 
 .item-list {
   color: #eaf1b1;
   text-align: left;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.materials-grid img {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px;
 }
 /*------------------------------------------------------------------------*/
 /* SCROLL BUTTON STYLING */
