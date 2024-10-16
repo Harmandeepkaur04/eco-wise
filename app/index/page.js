@@ -10,7 +10,7 @@ export default function Index() {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
 
   useEffect(() => {
-    speak('Welcome to the home page. Here you can find the latest updates and news.');
+    speak('Welcome to the home page. Here you can find the general recycling data and provided services.');
   }, [isAudioOn]);
 
   const handleAudioToggle = () => {
