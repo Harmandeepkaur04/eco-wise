@@ -12,7 +12,6 @@ import '@mantine/core/styles/Drawer.css';
 import '@mantine/core/styles/Loader.css';
 import '@mantine/core/styles/Combobox.css';
 
-
 interface Material {
   id: string;
   name: string;
@@ -26,7 +25,8 @@ export default function Drawers() {
   
   const [materials, setMaterials] = useState<Material[]>([]); // State to hold materials
   const [loading, setLoading] = useState(true); // State to manage loading
-  const [allItems, setAllItems] = useState([]); // State to hold all material items
+  const [searchValue, setSearchValue] = useState(''); // State to track the input in Autocomplete
+  const [filteredMaterials, setFilteredMaterials] = useState<Material[]>([]); // State to hold filtered materials
 
   // Fetch materials from Firestore
   useEffect(() => {
@@ -38,9 +38,7 @@ export default function Drawers() {
           ...doc.data(),
         })) as Material[]; // Cast the result as an array of Material
         setMaterials(fetchedMaterials); // Update state with fetched materials
-
-        const items = fetchedMaterials.flatMap((material) => material.items);
-        setAllItems(items); // Update state with all items
+        setFilteredMaterials(fetchedMaterials); // Initially show all materials
         setLoading(false); // Stop loading
       } catch (error) {
         console.error("Error fetching materials:", error);
@@ -50,6 +48,25 @@ export default function Drawers() {
 
     fetchMaterials(); // Call the function when the component mounts
   }, []);
+
+  // Function to handle search input change and filter materials based on items and material name
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+
+    if (value === '') {
+      // If search is empty, show all materials
+      setFilteredMaterials(materials);
+    } else {
+      // Filter materials where the search query matches either the material name or any of the items
+      const filtered = materials.filter((material) =>
+        material.name.toLowerCase().includes(value.toLowerCase()) || // Check if the material name matches the query
+        material.items.some(item =>
+          item.toLowerCase().includes(value.toLowerCase()) // Check if any of the items match the query
+        )
+      );
+      setFilteredMaterials(filtered);
+    }
+  };
 
   // Logic to close one drawer when the other opens
   const handleOpenResidential = () => {
@@ -77,11 +94,16 @@ export default function Drawers() {
           <Box className="drawer-content">
             <Title className='drawer-title'>Residential Waste</Title><br />
             
-            {/* Autocomplete to search through all items */}
+            {/* Autocomplete to search through material names and items */}
             <Autocomplete
               label="Search Materials"
-              placeholder="Enter material name"
-              data={allItems}
+              placeholder="Enter material or item name"
+              data={[
+                ...materials.map(material => material.name),  // Include material names in the dropdown
+                ...materials.flatMap(material => material.items), // Include all items in the dropdown
+              ]} 
+              value={searchValue} // The current input in the Autocomplete
+              onChange={handleSearchChange} // Call handleSearchChange when the user types
               classNames={{
                 root: 'autocomplete',
                 dropdown: 'autocomplete-dropdown',
@@ -93,7 +115,7 @@ export default function Drawers() {
               <Loader />
             ) : (
               <div className="materials-grid">
-                {materials.map((material) => (
+                {filteredMaterials.map((material) => (
                   <div key={material.id} className='material-div'>
                     <img src={material.image} alt={material.name} />
                     <Text className='materials'>{material.name}</Text>
