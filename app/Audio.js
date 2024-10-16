@@ -7,6 +7,7 @@ export const AudioProvider = ({ children }) => {
   const [isAudioOn, setIsAudioOn] = useState(false);
 
   const speak = (message) => {
+    const synth = window.speechSynthesis;
     if (isAudioOn && 'speechSynthesis' in window) {
       const synth = window.speechSynthesis;
       const sentences = message.split(/(?<=[.?!])\s+/); // Split message into sentences
@@ -19,8 +20,9 @@ export const AudioProvider = ({ children }) => {
 
         // Delay each sentence
         setTimeout(() => {
+          if (isAudioOn){
           synth.speak(utterance);
-          console.log('Speaking:', sentence);
+          console.log('Speaking:', sentence);}
         }, index * 2000); // Adjust the delay as needed (2000ms = 2 seconds)
       });
     } else if (!isAudioOn) {
@@ -29,6 +31,13 @@ export const AudioProvider = ({ children }) => {
       console.error('SpeechSynthesis API not supported in this browser.');
     }
   };
+
+  useEffect(() => {
+    if (!isAudioOn && window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel(); // Cancel ongoing speech
+      console.log('Speech synthesis canceled.');
+    }
+  }, [isAudioOn]);
 
   // Global click event listener to handle button and link clicks
   useEffect(() => {
