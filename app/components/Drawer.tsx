@@ -63,7 +63,19 @@ export default function Drawers() {
         material.items.some(item =>
           item.toLowerCase().includes(value.toLowerCase()) // Check if any of the items match the query
         )
-      );
+      ).map(material => {
+        // If the query matches a material name, show all items; otherwise, show only matching items
+        if (material.name.toLowerCase().includes(value.toLowerCase())) {
+          return material; // Show the full material document with all items
+        } else {
+          // If searching for an item, only show the matching item
+          const filteredItems = material.items.filter(item =>
+            item.toLowerCase().includes(value.toLowerCase())
+          );
+          return { ...material, items: filteredItems }; // Return only the matching items
+        }
+      });
+
       setFilteredMaterials(filtered);
     }
   };
