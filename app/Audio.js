@@ -7,8 +7,9 @@ const AudioContext = createContext();
 URL: https://reactjs.org/docs/context.html */
 export const AudioProvider = ({ children }) => {
   const [isAudioOn, setIsAudioOn] = useState(false);
-  
-/* */
+
+/*Reference: Learn about speechSynthesis implementation.
+URL:https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis */
 
   const speak = (message) => {
     const synth = window.speechSynthesis;
