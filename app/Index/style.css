@@ -9,7 +9,7 @@
 
 /* Facility Links Style */
 .facility-links {
-  /* position: fixed; */
+
   z-index: 1000; 
   margin-top: 0px;
   padding: 5px;
@@ -24,7 +24,7 @@
   padding: 0;
   margin: 0;
   display:flex;
-  justify-content:left; /* Evenly spaces links */
+  justify-content:left; 
 }
 
 .facility-links ul li {
@@ -33,21 +33,21 @@
 }
 
 .facility-links ul li a {
-  font-weight: 300; /* Low text weight */
-  text-decoration: none; /* Remove underline */
-  color:#102f15; /* Attractive blue text */
-  font-size: 18px; /* Slightly larger text */
-  transition: color 0.3s ease; /* Smooth transition */
+  font-weight: 300; 
+  text-decoration: none; 
+  color:#102f15; 
+  font-size: 18px; 
+  transition: color 0.3s ease; 
 }
 
 .facility-links ul li a:hover, 
 .facility-links ul li a:focus {
-  color: #007bff; /* Keep the color the same on hover */
-  text-decoration: none; /* No underline on hover */
+  color: #007bff; 
+  text-decoration: none; 
 }
 
 .facility-links ul li a:active {
-  color: #0056b3; /* Slightly darker blue when clicked */
+  color: #0056b3; 
 }
 
 

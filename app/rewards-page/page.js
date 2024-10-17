@@ -1,12 +1,17 @@
 "use client"
 import Leaderboard from './leaderboard';
 import './styles.css';
+
 import React, { useState } from 'react';
+
 import { Title, Button, Container, Group } from '@mantine/core';
 import questions from './quiz1';
 import WasteManagementQuestions from './quiz2';
 import Tips from './tips';
 import Challenges from './challenges';
+
+import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import { useAudio } from '../Audio'; 
 
 const scores = [
   { name: 'Alice', points: 10 },
@@ -72,8 +77,17 @@ const Quiz = ({ questions, onRetake }) => {
 };
 
 const Home = () => {
+  const { speak, isAudioOn, setIsAudioOn } = useAudio();
   const [showQuiz1, setShowQuiz1] = useState(false);
   const [showQuiz2, setShowQuiz2] = useState(false);
+
+  useEffect(() => {
+    speak('Welcome to the Rewards page. Here you can test your knowledge about recycling , waste management and can earn points');
+  }, [speak, isAudioOn]);
+
+  const handleAudioToggle = () => {
+    setIsAudioOn((prev) => !prev);
+  };
 
   const handleShowQuiz1 = () => {
     setShowQuiz1(true);
@@ -96,6 +110,14 @@ const Home = () => {
       <header>
         <Title className='Rewards' order={2}>Rewards</Title>
       </header>
+
+       {/* Audio Control Icon */}
+       <div style={{ textAlign: 'center', margin: '20px 0' }}>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </div>
+
       <Leaderboard scores={scores} />
       <Challenges />
       <Title order={3}>Test Your Knowledge!</Title>

@@ -29,6 +29,23 @@ h2 {
   background-color: #eaf1b1;
   padding: 20px;
   font-family: 'Times New Roman', Times, serif;
+  overflow-y: auto;
+  height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.drawer-content::-webkit-scrollbar {
+  display: 6px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+  background-color: #102f15;
+  border-radius: 10px;
 }
 
 .drawer-title {
@@ -83,11 +100,6 @@ h2 {
 
 /*------------------------------------------------------------------------*/
 /* Drawer Contents Styling */
-img {
-  height: 80px;
-  width: 80px;
-  margin-bottom: 10px;
-}
 
 .material-div {
   background-color: #728c5a;
@@ -95,27 +107,129 @@ img {
   border-radius: 8px;
   text-align: center;
   justify-items: center;
-  display: flex;          /* Make it a flex container */
-  flex-direction: column; /* Stack children vertically */
-  align-items: center;    /* Center children horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 10px;
+  height: 40vh;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.materials {
+.material-div .materials {
   font-size: large;
   background-color: #102f15;
   color: #eaf1b1;
   border-radius: 8px;
-  width: 100px;
-  text-align: center;
   padding: 5px 5px;
-  margin-bottom: 10px;
 }
 
 .item-list {
   color: #eaf1b1;
   text-align: left;
+  overflow-y: auto;
+  height: 150px;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
 }
+
+.item-list::-webkit-scrollbar {
+  display: 6px;
+}
+
+.item-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.item-list::-webkit-scrollbar-thumb {
+  background-color: #102f15;
+  border-radius: 10px;
+}
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.materials-grid img {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px;
+}
+/*------------------------------------------------------------------------*/
+/* SEARCH BAR STYLING */
+
+.autocomplete {
+  background-color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  color: #eaf1b1;
+  padding: 10px;
+  width: 100%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.autocomplete input::placeholder {
+  color: #eaf1b1;
+  opacity: 1;
+}
+
+.autocomplete input {
+  background-color: #728c5a;
+  color: #eaf1b1;
+  border: 2px solid #eaf1b1;
+  border-radius: 8px;
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+}
+
+.autocomplete-dropdown {
+  background-color: #728c5a;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 8px 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.autocomplete-item {
+  background-color: #728c5a;
+  color: #eaf1b1;
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item[data-hovered='true'] {
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+.autocomplete-dropdown::-webkit-scrollbar {
+  width: 6px; /* Thin scrollbar */
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-track {
+  background: transparent; /* Transparent scrollbar track */
+}
+
+.autocomplete-dropdown::-webkit-scrollbar-thumb {
+  background-color: #102f15; /* Same scrollbar thumb color as the items */
+  border-radius: 10px; /* Rounded scrollbar thumb */
+}
+
+.autocomplete-dropdown {
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
 /*------------------------------------------------------------------------*/
 /* SCROLL BUTTON STYLING */
 .scroll-buttons {
@@ -168,7 +282,7 @@ img {
 }
 
 .square-map {
-  width: 85vh;
+  width: 94vh;
   height: 100vh;
   border: 3px solid #102f15;
   border-radius: 8px;
@@ -181,7 +295,7 @@ img {
 .div-container {
   border: 3px solid #102f15;
   border-radius: 8px;
-  width: 85vh;
+  width: 94vh;
   height: 80vh;
   background-color: #728c5a;
   margin-left: 15px;
