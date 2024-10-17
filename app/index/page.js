@@ -23,8 +23,10 @@ export default function Index() {
     console.log('Audio toggle clicked');
     setIsAudioOn((prev) => !prev);
   };
+
 /*Reference: Used Mantine official documentation for applying elements.
 URL:https://mantine.dev/docs/getting-started/ */
+
   return (
     <main>
       <Text className='link'>On this Page</Text>

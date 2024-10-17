@@ -1,11 +1,19 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+
+/* Reference: Mantine core documentation for all elements.
+URL:https://mantine.dev/core/container/ */ 
+
 import { Container, Title, Text, Group, List, ThemeIcon, TextInput,Button } from '@mantine/core';
 import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+
+
+/*Reference: Custom useAudio Hook imported from Audio.js */
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
+
 //import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
 import '../profile/styles.css';
 
@@ -40,9 +48,6 @@ export default function ProfilePage() {
     setIsAudioOn((prev) => !prev);
   };
 
-
-  
-
   const handleEditClick = () => {
     setIsEditing(true);
   };
@@ -57,7 +62,7 @@ export default function ProfilePage() {
 
   const handleSaveClick = async () => {
     try {
-      await setDoc(doc(db, "users", "personal1"), userInfo); // Use your document ID
+      await setDoc(doc(db, "users", "personal1"), userInfo); 
       console.log('User info saved:', userInfo);
       speak('User information has been saved.');
       setIsEditing(false);
@@ -90,6 +95,8 @@ export default function ProfilePage() {
 
     fetchUserInfo();
 
+/*Reference: Used Mantine official documentation for applying elements.
+URL:https://mantine.dev/docs/getting-started/ */
    
   return (
     <main>
@@ -101,8 +108,6 @@ export default function ProfilePage() {
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
       </div>
-
-        
 
         {/* User Info Section */}
         <div className='infoSection'>
