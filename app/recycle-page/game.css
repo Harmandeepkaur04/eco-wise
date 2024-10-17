@@ -1,110 +1,111 @@
-/* Fullscreen layout with centered content */
+/* Game Container */
 .game-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Fullscreen height */
-    background: linear-gradient(to right, #d92d7b, #36b3ce); /* Background gradient */
+    height: 70vh;
+    background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%); /* Adjusted gradient towards green */
     padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .game-inner {
     text-align: center;
     color: white;
+    max-width: 400px; /* Set max-width to fit content better */
+    width: 90%; /* Responsive width */
   }
   
-  /* Inner container for game content with dynamic sizing */
-  .game-inner {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle background without blur */
-    border-radius: 15px;
-    padding: 40px;
-    width: 100%; /* Full width on smaller screens */
-    max-width: 800px; /* Max width for larger screens */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Deep shadow for more emphasis */
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  .game-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
   
-  /* Heading styles */
+  .item-image-container {
+    margin: 10px 0;
+    width: 150px; /* Reduced width for smaller images */
+    height: 150px; /* Reduced height for smaller images */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Optional: a soft background */
+    border-radius: 8px;
+  }
+  
+  .item-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensures image keeps aspect ratio and covers the container */
+    border-radius: 8px;
+  }
+  
+  /* Smaller Title and Text */
   h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: white;
+    margin-bottom: 15px;
+    font-size: 1.6rem; /* Smaller font size */
   }
   
-  /* Text for items */
   h2 {
-    font-size: 2rem;
-    color: white;
-    margin-top: 20px;
+    margin-top: 10px;
+    font-size: 1.3rem; /* Smaller font size */
   }
   
-  /* Score display and game instructions */
   p {
-    font-size: 1.5rem;
-    color: #f2f2f2;
+    font-size: 1rem; /* Smaller font size for instructions and feedback */
   }
   
-  /* Correct and incorrect feedback with larger font and bold */
+  /* Button Styles */
+  .btn {
+    padding: 6px 12px; /* Smaller padding */
+    margin: 6px; /* Reduced margin */
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Smaller font size */
+    width: 90px; /* Smaller button width */
+  }
+  
+  .recycle-btn {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  .trash-btn {
+    background-color: #F44336; /* Red */
+  }
+  
   .correct {
-    color: #00ff7f; /* Green for correct answers */
-    font-weight: bold;
-    font-size: 1.8rem;
+    color: #4CAF50; /* Green */
+    font-size: 1rem; /* Reduced size for feedback */
   }
   
   .incorrect {
-    color: #ff6347; /* Red for incorrect answers */
-    font-weight: bold;
-    font-size: 1.8rem;
+    color: #F44336; /* Red */
+    font-size: 1rem; /* Reduced size for feedback */
   }
   
-  /* Styling for buttons (Recycle and Trash) */
-  button {
-    font-size: 1.25rem;
-    padding: 10px 30px;
-    margin: 20px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  /* Mantine buttons customization */
-  .mantine-Button-root {
-    width: 160px;
-    height: 50px;
-    font-size: 1.2rem;
-    margin: 15px;
-    color: white;
-  }
-  
-  /* Responsive adjustments for smaller screens */
+  /* Responsiveness */
   @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem;
+    .game-inner h1 {
+      font-size: 1.4rem; /* Smaller font size for mobile */
     }
   
-    h2 {
-      font-size: 1.75rem;
+    .game-inner h2 {
+      font-size: 1.2rem; /* Smaller font size for mobile */
     }
   
-    p {
-      font-size: 1.2rem;
+    .btn {
+      width: 80px;
+      font-size: 0.8rem; /* Smaller font size for mobile */
     }
   
-    .game-inner {
-      padding: 20px;
-      width: 100%;
-    }
-  
-    button {
-      width: 140px;
-      font-size: 1rem;
+    .item-image-container {
+      width: 120px; /* Smaller width for mobile */
+      height: 120px; /* Smaller height for mobile */
     }
   }
   
