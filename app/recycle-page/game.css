@@ -3,8 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
-    background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%); /* Adjusted gradient towards green */
+    height: 100vh;
+    background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%); /* Green gradient */
     padding: 20px;
     box-sizing: border-box;
   }
@@ -24,15 +24,18 @@
     width: 100%;
   }
   
-  .item-image-container {
-    margin: 10px 0;
-    width: 150px; /* Reduced width for smaller images */
-    height: 150px; /* Reduced height for smaller images */
-    display: flex;
-    justify-content: center;
+  .button-image-container {
+    display: flex; /* Flexbox for arranging buttons and image */
+    justify-content: space-between; /* Space out buttons evenly */
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.1); /* Optional: a soft background */
-    border-radius: 8px;
+    width: 100%; /* Full width to fit the buttons and image */
+    margin: 20px 0; /* Space above and below */
+  }
+  
+  .item-image-container {
+    display: flex;
+    flex-direction: column; /* Stack title and image vertically */
+    align-items: center;
   }
   
   .item-image {
@@ -40,6 +43,7 @@
     max-height: 100%;
     object-fit: cover; /* Ensures image keeps aspect ratio and covers the container */
     border-radius: 8px;
+    margin-top: 10px; /* Space between title and image */
   }
   
   /* Smaller Title and Text */

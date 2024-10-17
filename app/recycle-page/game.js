@@ -1,7 +1,6 @@
 "use client"
 import { useState } from 'react';
-import Confetti from 'react-confetti';
-import './Game.css';
+import './game.css'; // Ensure your CSS file is imported
 
 const items = [
   { name: 'Plastic Bottle', correctAnswer: 'recycle', image: '/plastic-bottle.png' },
@@ -14,17 +13,11 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [isGameEnd, setIsGameEnd] = useState(false);
-  const [confetti, setConfetti] = useState(false);
 
   const handleAnswer = (answer) => {
     if (answer === items[currentItem].correctAnswer) {
       setScore(score + 1);
       setFeedback('Correct!');
-      setConfetti(true);
-
-      setTimeout(() => {
-        setConfetti(false);
-      }, 2000);
     } else {
       setFeedback('Incorrect!');
     }
@@ -47,33 +40,30 @@ const Game = () => {
 
   return (
     <div className="game-container">
-      {confetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}
-
       <div className="game-inner">
         <h1>Recycling Game</h1>
         {isGameEnd ? (
           <div>
             <p>Your final score is: {score}</p>
-            <button onClick={restartGame}>Play Again</button>
+            <button onClick={restartGame} className="btn">Play Again</button>
           </div>
         ) : (
           <div className="game-content">
             <p>Score: {score}</p>
             <p>Is this item recyclable or trash?</p>
-            
-            {/* Display item image */}
-            <div className="item-image-container">
-              <img src={items[currentItem].image} alt={items[currentItem].name} className="item-image" />
+            <div className="button-image-container">
+              <button onClick={() => handleAnswer('recycle')} className="btn recycle-btn">Recycle</button>
+              <div className="item-image-container">
+                <h2>{items[currentItem].name}</h2>
+                <img
+                  src={`path_to_your_images/${items[currentItem].name}.jpg`} // Adjust path as needed
+                  alt={items[currentItem].name}
+                  className="item-image"
+                />
+              </div>
+              <button onClick={() => handleAnswer('trash')} className="btn trash-btn">Trash</button>
             </div>
-
-            <h2>{items[currentItem].name}</h2>
-            <button className="btn recycle-btn" onClick={() => handleAnswer('recycle')}>
-              Recycle
-            </button>
-            <button className="btn trash-btn" onClick={() => handleAnswer('trash')}>
-              Trash
-            </button>
-            <p className={feedback === 'Correct!' ? 'correct' : 'incorrect'}>{feedback}</p>
+            <p>{feedback}</p>
           </div>
         )}
       </div>
