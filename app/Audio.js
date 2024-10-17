@@ -3,8 +3,12 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 
 const AudioContext = createContext();
 
+/*Reference: React Documentation for using API 
+URL: https://reactjs.org/docs/context.html */
 export const AudioProvider = ({ children }) => {
   const [isAudioOn, setIsAudioOn] = useState(false);
+  
+/* */
 
   const speak = (message) => {
     const synth = window.speechSynthesis;
