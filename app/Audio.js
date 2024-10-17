@@ -10,20 +10,20 @@ export const AudioProvider = ({ children }) => {
     const synth = window.speechSynthesis;
     if (isAudioOn && 'speechSynthesis' in window) {
       const synth = window.speechSynthesis;
-      const sentences = message.split(/(?<=[.?!])\s+/); // Split message into sentences
+      const sentences = message.split(/(?<=[.?!])\s+/); 
 
       sentences.forEach((sentence, index) => {
         const utterance = new SpeechSynthesisUtterance(sentence);
-        utterance.rate = 0.8; // Adjust the speed of the voice
-        utterance.pitch = 1; // Pitch of the voice
-        utterance.volume = 1; // Volume level
+        utterance.rate = 0.8; 
+        utterance.pitch = 1; 
+        utterance.volume = 1; 
 
         // Delay each sentence
         setTimeout(() => {
           if (isAudioOn){
           synth.speak(utterance);
           console.log('Speaking:', sentence);}
-        }, index * 2000); // Adjust the delay as needed (2000ms = 2 seconds)
+        }, index * 2000); 
       });
     } else if (!isAudioOn) {
       console.log('Audio is off.');
@@ -34,7 +34,7 @@ export const AudioProvider = ({ children }) => {
 
   useEffect(() => {
     if (!isAudioOn && window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel(); // Cancel ongoing speech
+      window.speechSynthesis.cancel(); 
       console.log('Speech synthesis canceled.');
     }
   }, [isAudioOn]);

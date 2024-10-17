@@ -40,9 +40,7 @@ export default function RootLayout({ children }) {
         <ClerkProvider>
           <ThemeProvider>
             <MantineProvider withGlobalStyles withNormalizeCSS>
-              {/* Add the Navbar here */}
               <Navbar />
-              {/* AudioProvider can wrap around specific components that require audio context */}
               <AudioProvider>
                 {children}
               </AudioProvider>
