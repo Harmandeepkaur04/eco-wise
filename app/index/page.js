@@ -1,5 +1,7 @@
 "use client";
 import React, { useEffect } from 'react';
+/* Reference: Mantine core documentation for all elements.
+URL:https://mantine.dev/core/container/ */ 
 import { Container, Title, Text, Image, Grid, Group } from '@mantine/core';
 import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
