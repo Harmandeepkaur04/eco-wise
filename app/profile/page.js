@@ -70,7 +70,7 @@ export default function ProfilePage() {
       console.error("Error saving user info: ", error);
     }
   };
-
+/*Reference: Get the help from AI and youtube tutorial to learn about the toggle functionality and implementation.*/
   const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
   const togglePoints = () => setIsPoints(!isPoints);
   const toggleRewards = () => setIsRewards(!isRewards);
