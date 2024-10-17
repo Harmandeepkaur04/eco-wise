@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 URL:https://mantine.dev/core/container/ */ 
 import { Container, Title, Text, Image, Grid, Group } from '@mantine/core';
 import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
-/*Refrence: Custom useAudio Hook imported from Audio.js */
+/*Reference: Custom useAudio Hook imported from Audio.js */
 import { useAudio } from '../Audio'; 
 import '../Index/style.css';
 
@@ -19,7 +19,8 @@ export default function Index() {
     console.log('Audio toggle clicked');
     setIsAudioOn((prev) => !prev);
   };
-
+/*Reference: Used Mantine official documentation for applying elements.
+URL:https://mantine.dev/docs/getting-started/ */
   return (
     <main>
       <Text className='link'>On this Page</Text>
