@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 URL:https://mantine.dev/core/container/ */ 
 import { Container, Title, Text, Image, Grid, Group } from '@mantine/core';
 import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
-
-import { useAudio } from '../Audio'; // Adjust the path as necessary
+/*Refrence: Custom useAudio Hook imported from Audio.js */
+import { useAudio } from '../Audio'; 
 import '../Index/style.css';
 
 export default function Index() {
