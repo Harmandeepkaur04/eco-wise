@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import './game.css'; // Ensure your CSS file is imported
+import './game.css';
 
 const items = [
   { name: 'Plastic Bottle', correctAnswer: 'recycle', image: '/plastic-bottle.png' },
