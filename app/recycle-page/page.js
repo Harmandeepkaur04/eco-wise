@@ -1,5 +1,6 @@
 import React from 'react';
 import '../recycle-page/styles.css';
+import Game from './game';
 
 const RecyclePage = () => {
   return (
@@ -70,6 +71,9 @@ const RecyclePage = () => {
             <h3>The Journey of Recycled Plastic!</h3>
           </li>
         </ul>
+      </section>
+      <section>
+        <Game/>
       </section>
     <section className='recycling-guide'>
       <h4>Recycling Guide</h4>
