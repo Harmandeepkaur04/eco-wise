@@ -81,7 +81,7 @@ export default function ProfilePage() {
     
     const fetchUserInfo = async () => {
       try {
-        const docRef = doc(db, "users", "user1"); // Use your document ID
+        const docRef = doc(db, "users", "user1"); 
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           setUserInfo(docSnap.data());
