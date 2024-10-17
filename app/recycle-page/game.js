@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
-import { Button, Container, Text, Title, Group } from '@mantine/core';
-import './game.css';  // Import external CSS file
+import Confetti from 'react-confetti'; // Ensure react-confetti is imported correctly
+import './game.css';
 
 const items = [
   { name: 'Plastic Bottle', correctAnswer: 'recycle' },
@@ -14,11 +14,19 @@ const Game = () => {
   const [score, setScore] = useState(0);
   const [feedback, setFeedback] = useState('');
   const [isGameEnd, setIsGameEnd] = useState(false);
+  const [confetti, setConfetti] = useState(false); // Confetti state
 
+  // Confetti trigger logic
   const handleAnswer = (answer) => {
     if (answer === items[currentItem].correctAnswer) {
       setScore(score + 1);
       setFeedback('Correct!');
+      setConfetti(true); // Show confetti when the correct answer is chosen
+
+      // Hide confetti after 2 seconds
+      setTimeout(() => {
+        setConfetti(false);
+      }, 2000);
     } else {
       setFeedback('Incorrect!');
     }
@@ -40,52 +48,29 @@ const Game = () => {
   };
 
   return (
-    <Container className="game-container">
-      <Container className="game-inner">
-        <Title order={1} align="center" mb={20}>
-          Recycling Game
-        </Title>
-
+    <div className="game-container">
+      {/* Render Confetti only when 'confetti' state is true */}
+      {confetti && <Confetti width={window.innerWidth} height={window.innerHeight} />} 
+      
+      <div className="game-inner">
+        <h1>Recycling Game</h1>
         {isGameEnd ? (
           <div>
-            <Text align="center" size="xl">
-              Your final score is: {score}
-            </Text>
-            <Button onClick={restartGame} mt={20} color="teal">
-              Play Again
-            </Button>
+            <p>Your final score is: {score}</p>
+            <button onClick={restartGame}>Play Again</button>
           </div>
         ) : (
           <div>
-            <Text align="center" size="lg">
-              Score: {score}
-            </Text>
-            <Text align="center" size="xl" mt={10}>
-              Is this item recyclable or trash?
-            </Text>
-            <Title order={2} align="center" mt={20}>
-              {items[currentItem].name}
-            </Title>
-            <Group position="center" mt={20}>
-              <Button onClick={() => handleAnswer('recycle')} color="teal" size="lg">
-                Recycle
-              </Button>
-              <Button onClick={() => handleAnswer('trash')} color="red" size="lg">
-                Trash
-              </Button>
-            </Group>
-            <Text
-              align="center"
-              size="lg"
-              mt={10}
-              className={feedback === 'Correct!' ? 'correct' : 'incorrect'}
-            >
-              {feedback}
-            </Text>
+            <p>Score: {score}</p>
+            <p>Is this item recyclable or trash?</p>
+            <h2>{items[currentItem].name}</h2>
+            <button onClick={() => handleAnswer('recycle')}>Recycle</button>
+            <button onClick={() => handleAnswer('trash')}>Trash</button>
+            <p className={feedback === 'Correct!' ? 'correct' : 'incorrect'}>{feedback}</p>
           </div>
         )}
-      </Container>
-    </Container>
+      </div>
+    </div>
   );
 };
 
