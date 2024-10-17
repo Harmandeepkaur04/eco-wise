@@ -8,7 +8,7 @@ URL: https://reactjs.org/docs/context.html */
 export const AudioProvider = ({ children }) => {
   const [isAudioOn, setIsAudioOn] = useState(false);
 
-/*Reference: Learn about speechSynthesis implementation.
+/*Reference: Learn about speechSynthesis and all the attributes implementation.
 URL:https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis */
 
   const speak = (message) => {
