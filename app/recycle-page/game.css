@@ -1,0 +1,115 @@
+/* Game Container */
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%); /* Green gradient */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .game-inner {
+    text-align: center;
+    color: white;
+    max-width: 400px; /* Set max-width to fit content better */
+    width: 90%; /* Responsive width */
+  }
+  
+  .game-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .button-image-container {
+    display: flex; /* Flexbox for arranging buttons and image */
+    justify-content: space-between; /* Space out buttons evenly */
+    align-items: center;
+    width: 100%; /* Full width to fit the buttons and image */
+    margin: 20px 0; /* Space above and below */
+  }
+  
+  .item-image-container {
+    display: flex;
+    flex-direction: column; /* Stack title and image vertically */
+    align-items: center;
+  }
+  
+  .item-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensures image keeps aspect ratio and covers the container */
+    border-radius: 8px;
+    margin-top: 10px; /* Space between title and image */
+  }
+  
+  /* Smaller Title and Text */
+  h1 {
+    margin-bottom: 15px;
+    font-size: 1.6rem; /* Smaller font size */
+  }
+  
+  h2 {
+    margin-top: 10px;
+    font-size: 1.3rem; /* Smaller font size */
+  }
+  
+  p {
+    font-size: 1rem; /* Smaller font size for instructions and feedback */
+  }
+  
+  /* Button Styles */
+  .btn {
+    padding: 6px 12px; /* Smaller padding */
+    margin: 6px; /* Reduced margin */
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem; /* Smaller font size */
+    width: 90px; /* Smaller button width */
+  }
+  
+  .recycle-btn {
+    background-color: #4CAF50; /* Green */
+  }
+  
+  .trash-btn {
+    background-color: #F44336; /* Red */
+  }
+  
+  .correct {
+    color: #4CAF50; /* Green */
+    font-size: 1rem; /* Reduced size for feedback */
+  }
+  
+  .incorrect {
+    color: #F44336; /* Red */
+    font-size: 1rem; /* Reduced size for feedback */
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .game-inner h1 {
+      font-size: 1.4rem; /* Smaller font size for mobile */
+    }
+  
+    .game-inner h2 {
+      font-size: 1.2rem; /* Smaller font size for mobile */
+    }
+  
+    .btn {
+      width: 80px;
+      font-size: 0.8rem; /* Smaller font size for mobile */
+    }
+  
+    .item-image-container {
+      width: 120px; /* Smaller width for mobile */
+      height: 120px; /* Smaller height for mobile */
+    }
+  }
+  /* Added comments using ChatGPT  */
