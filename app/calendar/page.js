@@ -83,7 +83,8 @@ const Calendar = () => {
       setShowNotes(false); // Optionally hide the notes input after saving
     }
   };
-
+ // Function to handle when a user clicks the edit button for a note.
+  // It loads the selected note into the input field for editing.
   const handleEditNote = (index) => {
     setNotes(savedNotes[index]);
     setEditingIndex(index);
