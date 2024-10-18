@@ -4,14 +4,14 @@
   justify-content: center;
   align-items: center;
   height: 70vh;
-  background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%); /* Green gradient */
+  background: linear-gradient(90deg, #E0F7FA 0%, #A7FFEB 100%); /* Subtle green gradient */
   padding: 20px;
   box-sizing: border-box;
 }
 
 .game-inner {
   text-align: center;
-  color: white;
+  color: #333333; /* Dark text for high contrast */
   max-width: 400px; /* Set max-width to fit content better */
   width: 90%; /* Responsive width */
 }
@@ -46,38 +46,44 @@
   margin-top: 10px; /* Space between title and image */
 }
 
-/* Smaller Title and Text */
+/* Larger and More Interesting Title and Text */
 h1 {
   margin-bottom: 15px;
-  font-size: 1.6rem; /* Smaller font size */
+  font-size: 2rem; /* Larger font size */
+  font-family: 'Arial Black', sans-serif; /* Bold and interesting font */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
 h2 {
   margin-top: 10px;
-  font-size: 1.3rem; /* Smaller font size */
+  font-size: 1.5rem; /* Larger font size */
+  font-family: 'Arial Black', sans-serif; /* Bold and interesting font */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
 p {
-  font-size: 1rem; /* Smaller font size for instructions and feedback */
+  font-size: 1.2rem; /* Larger font size for instructions and feedback */
+  font-family: 'Verdana', sans-serif; /* Clear and readable font */
 }
 
 /* Button Styles */
 .btn {
-  padding: 6px 12px; /* Smaller padding */
-  margin: 6px; /* Reduced margin */
+  padding: 8px 16px; /* Larger padding */
+  margin: 8px; /* Increased margin */
   background-color: white;
   color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.9rem; /* Smaller font size */
-  width: 90px; /* Smaller button width */
-  transition: transform 0.2s, background-color 0.2s; /* Add transition for dynamic effect */
+  font-size: 1rem; /* Larger font size */
+  width: 100px; /* Larger button width */
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s; /* Add transition for dynamic effect */
 }
 
 .btn:hover {
   transform: scale(1.1); /* Scale up on hover */
   background-color: #ddd; /* Light grey background on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
 }
 
 .recycle-btn {
@@ -90,27 +96,27 @@ p {
 
 .correct {
   color: #4CAF50; /* Green */
-  font-size: 1rem; /* Reduced size for feedback */
+  font-size: 1.2rem; /* Larger size for feedback */
 }
 
 .incorrect {
   color: #F44336; /* Red */
-  font-size: 1rem; /* Reduced size for feedback */
+  font-size: 1.2rem; /* Larger size for feedback */
 }
 
 /* Responsiveness */
 @media (max-width: 768px) {
   .game-inner h1 {
-      font-size: 1.4rem; /* Smaller font size for mobile */
+      font-size: 1.8rem; /* Smaller font size for mobile */
   }
 
   .game-inner h2 {
-      font-size: 1.2rem; /* Smaller font size for mobile */
+      font-size: 1.4rem; /* Smaller font size for mobile */
   }
 
   .btn {
-      width: 80px;
-      font-size: 0.8rem; /* Smaller font size for mobile */
+      width: 90px;
+      font-size: 0.9rem; /* Smaller font size for mobile */
   }
 
   .item-image-container {
