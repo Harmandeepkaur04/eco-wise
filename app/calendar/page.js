@@ -43,12 +43,15 @@ const Calendar = () => {
   
   // State to track the current year. It defaults to the current year.
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
-  
+
   const [upcomingReminder, setUpcomingReminder] = useState({});
   const [editingIndex, setEditingIndex] = useState(null); // For tracking which note is being edited
   const [showMonthPicker, setShowMonthPicker] = useState(false);
   const [showYearPicker, setShowYearPicker] = useState(false);
-  const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i);
+
+  const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i); // Creating an array of 5 years around the current year. 
+  // This will generate an array of years centered on the current year (e.g., [2022, 2023, 2024, 2025, 2026]).
+  
   const months = Array.from({ length: 12 }, (_, i) =>
     new Date(0, i).toLocaleString("default", { month: "long" })
   );
