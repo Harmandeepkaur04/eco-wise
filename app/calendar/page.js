@@ -32,6 +32,7 @@ const Calendar = () => {
   // State to store the notes entered by the user in the input field.
   const [notes, setNotes] = useState('');
   
+    // Inspired by ChatGPT prompts and functionality for dynamic note input and display
   // State to store an array of saved notes.
   const [savedNotes, setSavedNotes] = useState([]);
   
@@ -146,7 +147,7 @@ const Calendar = () => {
     setTimeout(() => {
       setShowMonthPicker(false);
       setShowYearPicker(false);
-    }, 5000); // Change to 5000ms (5 seconds)
+    }, 3000); // Change to 3000ms (3 seconds)
   };
 
   return (
