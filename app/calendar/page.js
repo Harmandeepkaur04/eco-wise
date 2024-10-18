@@ -11,12 +11,24 @@ const Calendar = () => {
   // A function to calculate the number of days in a given month and year.
   // It creates a new Date object, where 'month + 1' points to the next month, and 0 gives the last day of the previous month
   const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
+  // State to store the notes entered by the user in the input field.
   const [notes, setNotes] = useState('');
-  const [savedNotes, setSavedNotes] = useState([]); // Store notes as an array
+  
+  // State to store an array of saved notes.
+  const [savedNotes, setSavedNotes] = useState([]);
+  
+  // State to toggle whether the notes input box is visible or hidden.
   const [showNotes, setShowNotes] = useState(false);
+  
+  // State to track the currently selected day in the calendar. It defaults to today's date.
   const [selectedDay, setSelectedDay] = useState(today.getDate());
+  
+  // State to track the current month. It defaults to the current month (0-11).
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
+  
+  // State to track the current year. It defaults to the current year.
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
+  
   const [upcomingReminder, setUpcomingReminder] = useState({});
   const [editingIndex, setEditingIndex] = useState(null); // For tracking which note is being edited
   const [showMonthPicker, setShowMonthPicker] = useState(false);
