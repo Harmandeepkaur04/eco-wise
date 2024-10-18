@@ -1,6 +1,6 @@
 'use client';
+import React, { useRef, useState, useEffect } from "react"; // Added useState and useEffect
 
-import React,{ useRef } from "react";
 import { useDisclosure } from '@mantine/hooks';
 import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, Box, } from "@mantine/core";
 import '@mantine/core/styles/Overlay.css';
@@ -33,6 +33,27 @@ const elements = [
 export default function Disposal() {
 
     const tableRef = useRef(null); // Create a ref for the table
+
+     // State for audio functionality
+  const [isAudioOn, setIsAudioOn] = useState(true);
+  
+  // Function to toggle audio
+  const toggleAudio = () => {
+    setIsAudioOn((prev) => !prev);
+  };
+
+  // Audio speak function
+  const speak = (message) => {
+    if (isAudioOn) {
+      const speech = new SpeechSynthesisUtterance(message);
+      window.speechSynthesis.speak(speech);
+    }
+  };
+
+  // Use effect for welcome message
+  useEffect(() => {
+    speak('Welcome to the Disposal page. Here you can nereby recycling locations,their contacts and hours of operation.');
+  }, [isAudioOn]); // Trigger when isAudioOn changes
   
     // Function to scroll to the table
     const scrollToTable = () => {
@@ -60,7 +81,11 @@ export default function Disposal() {
             </button>
           </div>
 
-{/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
+          <Button onClick={toggleAudio} className="audio-button">
+        {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
+      </Button>
+
+      {/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
       <div className="flex-container">
         <div className="locations-container">
           <div className="div-container">
