@@ -85,6 +85,7 @@ export default function Disposal() {
         {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
       </Button>
 
+      {/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
       <div className="flex-container">
         <div className="locations-container">
           <div className="div-container">
