@@ -1,7 +1,6 @@
 "use client"
 import Leaderboard from './leaderboard';
 import './styles.css';
-
 import React, { useState } from 'react';
 
 import { Title, Button, Container, Group } from '@mantine/core';
