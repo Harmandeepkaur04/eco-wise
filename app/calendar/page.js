@@ -270,13 +270,14 @@ const Calendar = () => {
         {showNotes && (
           <div className="note-box">
             <textarea
-              className="note-input"
-              placeholder="Add your notes here..."
-              value={notes}
-              onChange={handleNoteChange}
-            />
-            <button className="save-btn" onClick={handleSaveNotes}>
-              {editingIndex !== null ? 'Update Note' : 'Save Note'}
+             className="note-input"
+             placeholder="Add your notes here..." // Placeholder text for the input.
+             value={notes} // Bind the input value to the notes state.
+             onChange={handleNoteChange} // Update notes state when the user types.
+           />
+           <button className="save-btn" onClick={handleSaveNotes}>
+             {/* Display 'Update Note' if editing, otherwise display 'Save Note'. */}
+             {editingIndex !== null ? 'Update Note' : 'Save Note'}
             </button>
             <div className="saved-notes">
               {savedNotes.map((note, index) => (
