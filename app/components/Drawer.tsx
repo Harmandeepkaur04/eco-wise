@@ -143,6 +143,8 @@ export default function Drawers() {
                           // https://www.vecteezy.com/png/20047210-content-creator-png-graphic-clipart-design
                           // https://www.vecteezy.com/png/46933645-spraying-bottle-on-transparent-background
                           // https://www.vecteezy.com/png/48387099-tussock-of-grass-on-a-transparent-background
+                          
+                          // Asked ChatGPT how to connect drawer content to the Database.
                 ))}
               </div>
             )}
