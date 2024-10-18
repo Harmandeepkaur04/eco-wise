@@ -51,7 +51,9 @@ const Calendar = () => {
 
   const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i); // Creating an array of 5 years around the current year. 
   // This will generate an array of years centered on the current year (e.g., [2022, 2023, 2024, 2025, 2026]).
-  
+
+  // Creating an array of month names (January to December) for the month picker.
+  // Using Date and toLocaleString() to convert numeric months to their full names (e.g., "January", "February").
   const months = Array.from({ length: 12 }, (_, i) =>
     new Date(0, i).toLocaleString("default", { month: "long" })
   );
