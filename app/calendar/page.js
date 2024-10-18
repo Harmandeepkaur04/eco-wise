@@ -137,13 +137,15 @@ const Calendar = () => {
   return (
     <div className="calendar-container">
       <div className="monthly-overview-widget">
-        <h2>Monthly Schedule Overview</h2>
+        <h2>Monthly Schedule Overview</h2>  
+          {/* Display the upcoming reminder with the month name, date, type of collection, and icons. */}
         <p>Upcoming: {months[currentMonth]} {upcomingReminder.date}, {upcomingReminder.type} 6 AM {upcomingReminder.icon}</p>
         {savedNotes.length > 0 && <p>Notes: {savedNotes.join(', ')}</p>}
       </div>
 
       <div className="calendar-content">
         <div className="calendar-left-widget">
+          {/* Inspired by design seen here: https://dribbble.com/shots/8439006--Local-Autumn-Calendar-Events-Website */}
           <h3 className="month-date">{months[currentMonth]} {selectedDay}</h3>
           <h4 className="time-display">{getLocalTime()}</h4>
           <div className="class-list">
