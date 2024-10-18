@@ -1,5 +1,6 @@
 "use client"
 import { createContext, useState, useContext, useEffect } from 'react';
+import './styles.css';
 
 const ThemeContext = createContext();
 
