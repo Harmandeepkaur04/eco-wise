@@ -1,15 +1,42 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
+
+/* Reference: Mantine core documentation for all elements.
+URL:https://mantine.dev/core/container/ */ 
+
 import { Container, Title, Text, Image, Grid, Group } from '@mantine/core';
-import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+
+/*Reference: Custom useAudio Hook imported from Audio.js */
+import { useAudio } from '../Audio'; 
+
 import '../Index/style.css';
 
 export default function Index() {
+  const { speak, isAudioOn, setIsAudioOn } = useAudio();
+
+  useEffect(() => {
+    speak('Welcome to the home page. Here you can find the general recycling data and provided services.');
+  }, [isAudioOn]);
+
+  const handleAudioToggle = () => {
+    console.log('Audio toggle clicked');
+    setIsAudioOn((prev) => !prev);
+  };
+
+/*Reference: Used Mantine official documentation for applying elements.
+URL:https://mantine.dev/docs/getting-started/ */
+
   return (
     <main>
-
       <Text className='link'>On this Page</Text>
 
+      {/* Audio Control Icon */}
+      <Group position="center" className='icon'>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </Group>
 
       {/* Facility Links Section */}
       <Container className="facility-links">

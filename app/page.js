@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { AudioProvider } from './Audio';
 import Index from "./index/page";
 import ThemeToggle, { useTheme } from "./darkmode/page";
 
@@ -14,5 +15,6 @@ export default function Home() {
       </div>
       <Index />
     </main>
+
   );
 }
