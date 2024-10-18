@@ -6,6 +6,9 @@ import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
 
+// The main functional component representing the Calendar.
+// The overall framework of the calendar design is inspired by this video tutorial: 
+// https://youtu.be/BN_wfeG47oQ?si=3SoCrqNoRjMXXbzl
 const Calendar = () => {
 
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
@@ -294,13 +297,14 @@ const Calendar = () => {
         {showNotes && (
           <div className="note-box">
             <textarea
-              className="note-input"
-              placeholder="Add your notes here..."
-              value={notes}
-              onChange={handleNoteChange}
-            />
-            <button className="save-btn" onClick={handleSaveNotes}>
-              {editingIndex !== null ? 'Update Note' : 'Save Note'}
+             className="note-input"
+             placeholder="Add your notes here..." // Placeholder text for the input.
+             value={notes} // Bind the input value to the notes state.
+             onChange={handleNoteChange} // Update notes state when the user types.
+           />
+           <button className="save-btn" onClick={handleSaveNotes}>
+             {/* Display 'Update Note' if editing, otherwise display 'Save Note'. */}
+             {editingIndex !== null ? 'Update Note' : 'Save Note'}
             </button>
             <div className="saved-notes">
               {savedNotes.map((note, index) => (
