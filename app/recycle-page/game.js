@@ -1,4 +1,5 @@
 "use client"
+// Got an error for use client then used ChatGPT to find the error
 import { useState } from 'react';
 import './game.css';
 
@@ -56,7 +57,7 @@ const Game = () => {
               <div className="item-image-container">
                 <h2>{items[currentItem].name}</h2>
                 <img
-                  src={`path_to_your_images/${items[currentItem].name}.jpg`} // Adjust path as needed
+                  src={`/${items[currentItem].name}.png`} // Adjust path as needed
                   alt={items[currentItem].name}
                   className="item-image"
                 />
