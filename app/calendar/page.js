@@ -1,5 +1,5 @@
 "use client";
-
+// Importing React, useState, and useEffect hooks
 import React, { useState, useEffect } from 'react';
 import '../calendar/styles.css';
 import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
