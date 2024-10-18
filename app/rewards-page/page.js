@@ -7,7 +7,6 @@ import questions from './quiz1';
 import WasteManagementQuestions from './quiz2';
 import Tips from './tips';
 import Challenges from './challenges';
-
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
 
