@@ -53,7 +53,7 @@ const Calendar = () => {
   // This will generate an array of years centered on the current year (e.g., [2022, 2023, 2024, 2025, 2026]).
 
   // Creating an array of month names (January to December) for the month picker.
-  // Using Date and toLocaleString() to convert numeric months to their full names (e.g., "January", "February").
+  // Using Date and toLocaleString() to convert numeric months to their full names (e.g., "January", "February") if it's short then it will be (e.g, "Feb", "Sept").
   const months = Array.from({ length: 12 }, (_, i) =>
     new Date(0, i).toLocaleString("default", { month: "long" })
   );
@@ -62,9 +62,11 @@ const Calendar = () => {
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
   const getLocalTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
+ // Function to calculate the next reminder for the selected day.
+  // It checks whether the day is Thursday (compost/recycle day) or every other Friday (garbage day).
   const calculateUpcomingReminder = (day) => {
-    const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
+    // Get the day of the week for the selected day.
+    const dayOfWeek = new Date(currentYear, currentMonth, day).getDay(); 
     
     // Check for compost and recycle bins
     if (dayOfWeek === 4) { // Thursday
