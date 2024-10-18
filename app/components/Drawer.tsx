@@ -36,7 +36,7 @@ export default function Drawers() {
         const fetchedMaterials = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-        })) as Material[]; // Cast the result as an array of Material
+        })) as Material[]; // defines the result as an array of Material
         setMaterials(fetchedMaterials); // Update state with fetched materials
         setFilteredMaterials(fetchedMaterials); // Initially show all materials
         setLoading(false); // Stop loading
@@ -114,7 +114,7 @@ export default function Drawers() {
                 ...materials.map(material => material.name),  // Include material names in the dropdown
                 ...materials.flatMap(material => material.items), // Include all items in the dropdown
               ]} 
-              value={searchValue} // The current input in the Autocomplete
+              value={searchValue}
               onChange={handleSearchChange} // Call handleSearchChange when the user types
               classNames={{
                 root: 'autocomplete',
