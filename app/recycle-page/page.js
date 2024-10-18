@@ -49,6 +49,7 @@ const RecyclePage = () => {
 
         </p>
       </div>
+     
       
       {/* Audio Control Icon */}
       <div style={{ textAlign: 'center', margin: '20px 0' }}>
