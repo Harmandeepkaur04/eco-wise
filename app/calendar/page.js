@@ -69,13 +69,13 @@ const Calendar = () => {
     const dayOfWeek = new Date(currentYear, currentMonth, day).getDay(); 
     
     // Check for compost and recycle bins
-    if (dayOfWeek === 4) { // Thursday
+    if (dayOfWeek === 4) { // If the selected day is Thursday (index 4), it returns the compost and recycle reminder.
       return { date: day, type: 'Compost and Recycle Bin', icon: [<FaRecycle />, <FaLeaf />], day: 'Thursday' };
-    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) { // Every other Friday
+    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) { // If the selected day is Friday (index 5) and falls on every other week, return the garbage bin reminder.
       return { date: day, type: 'Black Garbage Bin Collection', icon: <FaTrash />, day: 'Friday' };
     } else {
       return { date: day, type: 'No Collection', icon: null, day: '' };
-    }
+    }  // Otherwise, there is no collection on that day.
   };
 
   const handleNoteChange = (e) => setNotes(e.target.value);
