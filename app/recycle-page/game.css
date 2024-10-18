@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
     background: linear-gradient(90deg, #4CAF50 0%, #81C784 100%); /* Green gradient */
     padding: 20px;
     box-sizing: border-box;
