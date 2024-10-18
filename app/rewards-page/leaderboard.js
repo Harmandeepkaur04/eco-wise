@@ -1,7 +1,6 @@
 import { Title, List } from '@mantine/core';
 
 
-
 const Leaderboard = ({ scores }) => {
   return (
     <div>
