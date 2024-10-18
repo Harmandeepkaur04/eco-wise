@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import '../calendar/styles.css';
 import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 
+// The main functional component representing the Calendar.
+// The overall framework of the calendar design is inspired by this video tutorial: 
+// https://youtu.be/BN_wfeG47oQ?si=3SoCrqNoRjMXXbzl
 const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
   const today = new Date();
