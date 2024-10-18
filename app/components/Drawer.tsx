@@ -129,14 +129,20 @@ export default function Drawers() {
               <div className="materials-grid">
                 {filteredMaterials.map((material) => (
                   <div key={material.id} className='material-div'>
-                    <img src={material.image} alt={material.name} />
+                    <img src={material.image} alt={material.name} /> 
                     <Text className='materials'>{material.name}</Text>
                     <List className='item-list'>
                       {material.items.map((item, index) => (
                         <List.Item key={index}>{item}</List.Item>
-                      ))}
+                      ))}                                     
                     </List>
-                  </div>
+                  </div> // images used:
+                          // https://www.vecteezy.com/png/12896182-stack-of-tires-wheel
+                          // https://www.vecteezy.com/png/41643148-ai-generated-cleaning-service-bucket-with-sponges-chemicals-bottle
+                          // https://www.vecteezy.com/png/8550261-shield-virus-health-and-medicine-icon-3d-illustration
+                          // https://www.vecteezy.com/png/20047210-content-creator-png-graphic-clipart-design
+                          // https://www.vecteezy.com/png/46933645-spraying-bottle-on-transparent-background
+                          // https://www.vecteezy.com/png/48387099-tussock-of-grass-on-a-transparent-background
                 ))}
               </div>
             )}
