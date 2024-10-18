@@ -6,6 +6,9 @@ import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
 
+// The main functional component representing the Calendar.
+// The overall framework of the calendar design is inspired by this video tutorial: 
+// https://youtu.be/BN_wfeG47oQ?si=3SoCrqNoRjMXXbzl
 const Calendar = () => {
 
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
