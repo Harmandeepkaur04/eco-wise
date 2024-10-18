@@ -174,7 +174,7 @@ export default function Disposal() {
         <Title className="div-2-title">For hazardous materials:</Title>
         <Text className="div-2-txt">Chemicals, batteries, and other items that require safe disposal to protect your family, home and the environment.</Text>
         <br />
-        <Title className="div-2-title">For oversized and large quantities of household waste</Title>
+        <Title className="div-2-title">For oversized and large quantities of household waste:</Title>
         <Text className="div-2-txt">Got a major decluttering project or a home reno on your hands? 
           Eco Centres offer a responsible solution for disposing of construction materials, mattresses, 
           and large amounts of household waste.</Text>
