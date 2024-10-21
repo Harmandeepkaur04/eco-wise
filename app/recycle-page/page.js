@@ -21,6 +21,12 @@ const RecyclePage = () => {
     <main>
       <ThemeToggle/>
     <div className="container">
+      {/* Audio Control Icon */}
+      <div style={{ textAlign: 'center', margin: '20px 0' }}>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </div>
       <div className='recycle'>
 
         <h4 >Recycling 101</h4>
@@ -49,14 +55,6 @@ const RecyclePage = () => {
           Check Local guidelines<br></br>
 
         </p>
-      </div>
-
-
-      {/* Audio Control Icon */}
-      <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
-          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-        </div>
       </div>
 
       <section>
