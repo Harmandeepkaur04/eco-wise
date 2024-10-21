@@ -107,15 +107,15 @@ const Home = () => {
   
   return (
     <Container>
-      {/* Audio Control Icon */}
+      <header>
+        <Title className='Rewards' order={2}>Rewards
+          {/* Audio Control Icon */}
       <div className='audio-icon'  style={{ textAlign: 'center', margin: '20px 0' }}>
         <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
       </div>
-
-      <header>
-        <Title className='Rewards' order={2}>Rewards</Title>
+        </Title>
       </header>
 
        
