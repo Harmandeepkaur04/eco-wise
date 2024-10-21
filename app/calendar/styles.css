@@ -489,3 +489,9 @@ body {
   border-radius: 5px;
   position: relative; /* Position relative to control absolute positioning of buttons */
 }
+
+.audio-icon{
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}
