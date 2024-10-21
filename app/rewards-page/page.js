@@ -9,12 +9,8 @@ import Tips from './tips';
 import Challenges from './challenges';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
-
-const scores = [
-  { name: 'Alice', points: 10 },
-  { name: 'Bob', points: 7 },
-  { name: 'Charlie', points: 5 },
-];
+import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
 
 const Quiz = ({ questions, onRetake }) => {
   const [score, setScore] = useState(0);
@@ -42,6 +38,16 @@ const Quiz = ({ questions, onRetake }) => {
     setShowFeedback(false);
     setFeedback('');
     onRetake();
+  };
+
+  const handleChallengeCompletion = async (name, points, rank) => {
+    try {
+      const leaderboardRef = doc(db, 'rewards', 'leaderboard', name);
+      await setDoc(leaderboardRef, { name, points, rank }, { merge: true });
+      console.log('Leaderboard updated successfully');
+    } catch (error) {
+      console.error('Error updating leaderboard:', error);
+    }
   };
 
   return (
@@ -103,7 +109,6 @@ const Home = () => {
     setShowQuiz2(false);
   };
 
-  
   return (
     <main>
     <Container>
@@ -118,7 +123,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Leaderboard scores={scores} />
+      <Leaderboard />
       <Challenges />
       <Title order={3}>Test Your Knowledge!</Title>
       <Group className="quiz-tiles" spacing="md">
