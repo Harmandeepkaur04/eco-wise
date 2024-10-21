@@ -1,10 +1,13 @@
 :root {
   --bg-color: #ffffff;
-  --btn-bg-color: #ffffff;
+  --btn-bg-color: #ccc;
   --btn-text-color: #333333;
   --hover-bg: #dddddd;
   --text-color: #333333;
-
+  --btn-text-color:#fff;
+  --hover-bg:#2196F3;
+  --moon-icon-color: #333; /* Light color for moon icon */
+  --sun-icon-color: #fff; /* Dark color for sun icon */
 }
 
 [data-theme="dark"] {
@@ -13,7 +16,8 @@
   --btn-text-color: #ffffff;
   --hover-bg: #555555;
   --text-color: #ffffff;
-
+  --moon-icon-color: #fff; /* Light color for moon icon */
+  --sun-icon-color: #333; /* Dark color for sun icon */
 
 }
 
@@ -48,7 +52,10 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem; /* Adjust font size for the icon */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between icon and text */
   transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
@@ -56,5 +63,85 @@ body {
   background-color: var(--hover-bg);
   color: var(--text-color);
   transform: scale(1.05);
+}
+
+.theme-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.theme-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--btn-bg-color);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--btn-text-color);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--hover-bg);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.moon-icon, .sun-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+.moon-icon {
+  left: 10px;
+  color: var(--moon-icon-color);
+  display: block;
+}
+
+.sun-icon {
+  right: 10px;
+  color: var(--sun-icon-color);
+  display: block;
+}
+
+input:checked + .slider .moon-icon {
+  display: block;
+}
+
+input:checked + .slider .sun-icon {
+  display: block;
 }
 
