@@ -1,38 +1,38 @@
 :root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --btn-bg-color: white;
-    --btn-text-color: black;
-  }
-  
-  [data-theme="dark"] {
-    --bg-color: #333333;
-    --text-color: #ffffff;
-    --btn-bg-color: #444444;
-    --btn-text-color: #ffffff;
-  }
-  
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-  
-  .btn {
-    background-color: var(--btn-bg-color);
-    color: var(--btn-text-color);
-    padding: 8px 16px;
-    margin: 8px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    width: 100px;
-    transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-  }
-  
-  .btn:hover {
-    transform: scale(1.1);
-    background-color: #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --btn-bg-color: white;
+  --btn-text-color: #121212;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1e1e1e; /* Darker background for better contrast */
+  --text-color: #fffafa; /* Lighter text color for better readability */
+  --btn-bg-color: #2a2a2a; /* Darker button background */
+  --btn-text-color: #ffffff; /* White text for buttons */
+  --color:#ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.btn {
+  background-color: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  padding: 8px 16px;
+  margin: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100px;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background-color: #3e3e3e; /* Slightly lighter shade on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark mode */
+}

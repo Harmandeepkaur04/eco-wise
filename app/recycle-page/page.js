@@ -4,6 +4,7 @@ import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; // Adjust the path as necessary
 import '../recycle-page/styles.css';
 import Game from './game';
+import ThemeToggle, { useTheme } from "../darkmode/page";
 
 const RecyclePage = () => {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
@@ -17,6 +18,8 @@ const RecyclePage = () => {
   };
 
   return (
+    <main>
+      <ThemeToggle/>
     <div className="container">
       <div className='recycle'>
 
@@ -159,6 +162,7 @@ const RecyclePage = () => {
         </div>
       </section>
     </div>
+    </main>
   );
 };
 

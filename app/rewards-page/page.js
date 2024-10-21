@@ -9,6 +9,7 @@ import Tips from './tips';
 import Challenges from './challenges';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
+import ThemeToggle, { useTheme } from "../darkmode/page";
 
 const scores = [
   { name: 'Alice', points: 10 },
@@ -45,6 +46,7 @@ const Quiz = ({ questions, onRetake }) => {
   };
 
   return (
+    <main>
     <div className="quiz">
       <div className="progress-bar">
         <div className="progress" style={{ width: `${(questionIndex / questions.length) * 100}%` }}></div>
@@ -70,6 +72,7 @@ const Quiz = ({ questions, onRetake }) => {
         </div>
       )}
     </div>
+    </main>
   );
 };
 
@@ -103,6 +106,8 @@ const Home = () => {
 
   
   return (
+    <main>
+    <ThemeToggle/>
     <Container>
       <header>
         <Title className='Rewards' order={2}>Rewards</Title>
@@ -130,6 +135,7 @@ const Home = () => {
       </Group>
       <Tips />
     </Container>
+    </main>
   );
 };
 
