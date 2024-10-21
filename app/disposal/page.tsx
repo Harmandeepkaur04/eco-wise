@@ -39,7 +39,7 @@ export default function Disposal() {
     const { speak, isAudioOn, setIsAudioOn } = useAudio();
 
     useEffect(() => {
-      speak('Welcome to the home page. Here you can find the general recycling data and provided services.');
+      speak('Welcome to the Disposal page. Here you can find all nearby recycling centers and there hours of operations.');
     }, [isAudioOn]);
   
     const handleAudioToggle = () => {
@@ -65,7 +65,15 @@ export default function Disposal() {
 
   return (
     <Container component="main">
-      <Title component="h2">Waste Management and Recycling Locations</Title>
+      <Title component="h2">Waste Management and Recycling Locations
+        {/* Audio Control Icon */}
+      <Group className='audio-icon'>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </Group>
+      </Title>
+      
 
       <div className="scroll-buttons">
             <button onClick={scrollToTable} className="scroll-button">
@@ -73,12 +81,7 @@ export default function Disposal() {
             </button>
           </div>
 
-      {/* Audio Control Icon */}
-      <Group position="center" className='audio-icon'>
-        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
-          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-        </div>
-      </Group>
+      
 
       <div className="flex-container">
         <div className="locations-container">
