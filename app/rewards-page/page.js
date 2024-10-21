@@ -110,15 +110,17 @@ const Home = () => {
     <ThemeToggle/>
     <Container>
       <header>
-        <Title className='Rewards' order={2}>Rewards</Title>
-      </header>
-
-       {/* Audio Control Icon */}
-       <div style={{ textAlign: 'center', margin: '20px 0' }}>
+        <Title className='Rewards' order={2}>Rewards
+          {/* Audio Control Icon */}
+      <div className='audio-icon'  style={{ textAlign: 'center', margin: '20px 0' }}>
         <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
       </div>
+        </Title>
+      </header>
+
+       
 
       <Leaderboard scores={scores} />
       <Challenges />
