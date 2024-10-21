@@ -17,7 +17,7 @@
   --hover-bg: #555555;
   --text-color: #ffffff;
   --moon-icon-color: #fff; /* Light color for moon icon */
-  --sun-icon-color: #333; /* Dark color for sun icon */
+  --sun-icon-color: #fff; /* Dark color for sun icon */
 
 }
 
@@ -123,16 +123,17 @@ input:checked + .slider:before {
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
+  transition: transform 0.4s, opacity 0.4s;
 }
 
 .moon-icon {
-  left: 10px;
+  right: 10px;
   color: var(--moon-icon-color);
   display: block;
 }
 
 .sun-icon {
-  right: 10px;
+  left: 10px;
   color: var(--sun-icon-color);
   display: block;
 }
