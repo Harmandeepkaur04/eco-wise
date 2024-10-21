@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #E0F7FA;
+    --bg-color: #ffffff;
     --text-color: #333333;
     --btn-bg-color: white;
     --btn-text-color: black;
@@ -7,9 +7,9 @@
   
   [data-theme="dark"] {
     --bg-color: #333333;
-    --text-color: #E0F7FA;
+    --text-color: #ffffff;
     --btn-bg-color: #444444;
-    --btn-text-color: #E0F7FA;
+    --btn-text-color: #ffffff;
   }
   
   body {
