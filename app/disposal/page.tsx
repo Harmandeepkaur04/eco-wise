@@ -11,6 +11,8 @@ import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 import Drawers from "../components/Drawer";
 import ShepardDrawers from "../components/ShepardDrawer";
+import { useAudio } from '../Audio'; 
+import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 const elements = [
   { Holiday: "New Year's Day", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
@@ -34,26 +36,16 @@ export default function Disposal() {
 
     const tableRef = useRef(null); // Create a ref for the table
 
-     // State for audio functionality
-  const [isAudioOn, setIsAudioOn] = useState(true);
+    const { speak, isAudioOn, setIsAudioOn } = useAudio();
+
+    useEffect(() => {
+      speak('Welcome to the home page. Here you can find the general recycling data and provided services.');
+    }, [isAudioOn]);
   
-  // Function to toggle audio
-  const toggleAudio = () => {
-    setIsAudioOn((prev) => !prev);
-  };
-
-  // Audio speak function
-  const speak = (message) => {
-    if (isAudioOn) {
-      const speech = new SpeechSynthesisUtterance(message);
-      window.speechSynthesis.speak(speech);
-    }
-  };
-
-  // Use effect for welcome message
-  useEffect(() => {
-    speak('Welcome to the Disposal page. Here you can nereby recycling locations,their contacts and hours of operation.');
-  }, [isAudioOn]); // Trigger when isAudioOn changes
+    const handleAudioToggle = () => {
+      console.log('Audio toggle clicked');
+      setIsAudioOn((prev) => !prev);
+    };
   
     // Function to scroll to the table
     const scrollToTable = () => {
@@ -81,9 +73,12 @@ export default function Disposal() {
             </button>
           </div>
 
-          <Button onClick={toggleAudio} className="audio-button">
-        {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
-      </Button>
+      {/* Audio Control Icon */}
+      <Group position="center" className='audio-icon'>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </Group>
 
       <div className="flex-container">
         <div className="locations-container">
