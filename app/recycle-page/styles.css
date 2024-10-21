@@ -225,4 +225,10 @@ input[type="checkbox"] {
   box-shadow: 0 4px 8px rgba(19, 125, 19, 0.5);
 }
 
+.audio-icon{
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}
+
 
