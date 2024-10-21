@@ -30,7 +30,7 @@ URL:https://mantine.dev/docs/getting-started/ */
   return (
     <main>
       {/* Audio Control Icon */}
-      <Group position="center" className='icon'>
+      <Group position="center" className='audio-icon'>
         <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>

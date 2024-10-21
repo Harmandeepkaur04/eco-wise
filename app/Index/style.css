@@ -327,6 +327,12 @@
 .footer-social .icon:hover {
     color: red; /* Change color on hover if desired */
 }
+/*Audio icon */
+.audio-icon{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
 
 
