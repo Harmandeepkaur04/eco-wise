@@ -4,8 +4,8 @@ import { useState } from 'react';
 import './game.css';
 
 const items = [
-  { name: 'Plastic Bottle', correctAnswer: 'recycle', image: '/plastic-bottle.png' },
-  { name: 'Banana Peel', correctAnswer: 'trash', image: '/banana-peel.png' },
+  { name: 'Plastic Bottle', correctAnswer: 'recycle', image: '/banana.png' },
+  { name: 'Banana Peel', correctAnswer: 'trash', image: '/banana.png' },
   { name: 'Newspaper', correctAnswer: 'recycle', image: '/newspaper.png' },
 ];
 
