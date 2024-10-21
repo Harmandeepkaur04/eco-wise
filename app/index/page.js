@@ -29,15 +29,13 @@ URL:https://mantine.dev/docs/getting-started/ */
 
   return (
     <main>
-      <Text className='link'>On this Page</Text>
-
       {/* Audio Control Icon */}
       <Group position="center" className='icon'>
         <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
       </Group>
-
+      <Text className='link'>On this Page</Text>
       {/* Facility Links Section */}
       <Container className="facility-links">
         <ul>
