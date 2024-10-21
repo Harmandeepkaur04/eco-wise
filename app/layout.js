@@ -7,6 +7,7 @@ import { MantineProvider } from '@mantine/core';
 import Link from 'next/link';
 import { AudioProvider } from './Audio'; // Adjust the path as necessary
 import './globals.css';
+import ThemeToggle, { useTheme } from "./darkmode/page";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,6 +30,7 @@ const Navbar = () => {
       <Link href="/disposal">Disposal</Link>
       <Link href="/calendar">Calendar</Link>
       <Link href="/profile">Profile</Link>
+    <ThemeToggle/>
     </nav>
   );
 };

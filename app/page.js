@@ -9,9 +9,6 @@ export default function Home() {
 
   return (
     <main>
-      <div className={theme}>
-        <ThemeToggle/>
-      </div>
       <Index />
     </main>
 

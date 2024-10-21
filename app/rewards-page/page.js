@@ -9,7 +9,6 @@ import Tips from './tips';
 import Challenges from './challenges';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
-import ThemeToggle, { useTheme } from "../darkmode/page";
 
 const scores = [
   { name: 'Alice', points: 10 },
@@ -107,7 +106,6 @@ const Home = () => {
   
   return (
     <main>
-    <ThemeToggle/>
     <Container>
       <header>
         <Title className='Rewards' order={2}>Rewards</Title>
