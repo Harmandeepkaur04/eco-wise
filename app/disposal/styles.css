@@ -391,4 +391,10 @@ h2 {
   color: #ebfadc;
   font-size: medium;
 }
+/*Audio icon */
+.audio-icon{
+  position: absolute;
+  top: 100px;
+  right: 30px;
+}
 
