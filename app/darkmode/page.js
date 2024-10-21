@@ -34,14 +34,14 @@ export const useTheme = () => useContext(ThemeContext);
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
-  //renders the button 
 
   return (
-    <button onClick={toggleTheme}>
-      {theme === 'light' ? 'dark' : 'light'} 
+    <button className="theme-toggle-btn" onClick={toggleTheme}>
+      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
     </button>
   );
 };
+
 
 // used https://nextui.org/docs/customization/dark-mode and https://dev.to/luisca/step-by-step-guide-to-adding-dark-mode-and-multiple-themes-to-your-nextjs-app-15lh for reference
 
