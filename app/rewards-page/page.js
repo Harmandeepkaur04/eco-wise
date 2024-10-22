@@ -11,6 +11,7 @@ import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
+import Quiz from './quiz';
 
 const Home = () => {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();

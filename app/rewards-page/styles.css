@@ -235,6 +235,7 @@ li:hover {
 .question-card {
   margin-bottom: 20px;
   text-align: center; /* Center align text */
+  font-size: 1.875rem;
 }
 
 .quiz1, .quiz2 {

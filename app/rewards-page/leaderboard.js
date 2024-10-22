@@ -21,13 +21,19 @@ const Leaderboard = () => {
     return () => unsubscribe();
   }, []);
 
+  const getRewardLevel = (points) => {
+    if (points >= 80) return 'Planet Protector';
+    if (points >= 50) return 'Eco Advocate';
+    return 'Recycler';
+  };
+
   return (
     <div className="leaderboard">
       <Title order={3}>Leaderboard</Title>
       <ul>
         {scores.map((score, index) => (
           <li key={index}>
-            Rank: {score.rank} - {score.name}: {score.points} points
+            Rank: {score.rank} - {score.name}: {score.points} points ({getRewardLevel(score.points)})
           </li>
         ))}
       </ul>
