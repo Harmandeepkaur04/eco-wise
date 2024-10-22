@@ -79,7 +79,9 @@ export default function Disposal() {
             </button>
           </div>
 
-{/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
+      
+
+      {/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
       <div className="flex-container">
         <div className="locations-container">
           <div className="div-container">

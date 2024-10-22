@@ -4,10 +4,11 @@ import { useState } from 'react';
 import './game.css';
 
 const items = [
-  { name: 'Plastic Bottle', correctAnswer: 'recycle', image: '/banana.png' },
-  { name: 'Banana Peel', correctAnswer: 'trash', image: '/banana.png' },
   { name: 'Newspaper', correctAnswer: 'recycle', image: '/newspaper.png' },
+  { name: 'Banana', correctAnswer: 'compost', image: '/banana.png' },
+  { name: 'Bottle', correctAnswer: 'recycle', image: '/bottle.png' },
 ];
+
 
 const Game = () => {
   const [currentItem, setCurrentItem] = useState(0);
