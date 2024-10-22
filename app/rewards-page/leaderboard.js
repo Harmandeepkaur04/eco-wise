@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { Title } from '@mantine/core';
 
@@ -7,13 +7,18 @@ const Leaderboard = () => {
   const [scores, setScores] = useState([]);
 
   useEffect(() => {
-    const fetchScores = async () => {
-      const querySnapshot = await getDocs(collection(db, 'rewards', 'leaderboard'));
-      const scoresData = querySnapshot.docs.map(doc => doc.data());
+    const unsubscribe = onSnapshot(collection(db, 'rewards', 'leaderboard', 'scores'), (snapshot) => {
+      const scoresData = snapshot.docs.map(doc => doc.data());
+      // Sort scores in descending order
+      scoresData.sort((a, b) => b.points - a.points);
+      // Assign ranks based on sorted scores
+      scoresData.forEach((score, index) => {
+        score.rank = index + 1;
+      });
       setScores(scoresData);
-    };
+    });
 
-    fetchScores();
+    return () => unsubscribe();
   }, []);
 
   return (
@@ -22,7 +27,7 @@ const Leaderboard = () => {
       <ul>
         {scores.map((score, index) => (
           <li key={index}>
-            {score.name}: {score.points} points (Rank: {score.rank})
+            Rank: {score.rank} - {score.name}: {score.points} points
           </li>
         ))}
       </ul>
