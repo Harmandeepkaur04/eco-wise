@@ -3,8 +3,9 @@ import { collection, onSnapshot } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { Title } from '@mantine/core';
 
-const Leaderboard = () => {
+const Leaderboard = ({ currentUser }) => {
   const [scores, setScores] = useState([]);
+  const [previousScores, setPreviousScores] = useState([]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(collection(db, 'rewards', 'leaderboard', 'scores'), (snapshot) => {
@@ -15,6 +16,7 @@ const Leaderboard = () => {
       scoresData.forEach((score, index) => {
         score.rank = index + 1;
       });
+      setPreviousScores(scores);
       setScores(scoresData);
     });
 
@@ -27,15 +29,35 @@ const Leaderboard = () => {
     return 'Recycler';
   };
 
+  const getAnimationClass = (currentRank, previousRank) => {
+    if (previousRank === undefined) return 'fadeIn';
+    return currentRank < previousRank ? 'moveUp' : 'moveDown';
+  };
+
+  const getRankClass = (rank) => {
+    if (rank === 1) return 'top-rank';
+    if (rank === 2) return 'second-rank';
+    if (rank === 3) return 'third-rank';
+    return '';
+  };
+
   return (
     <div className="leaderboard">
-      <Title order={3}>Leaderboard</Title>
+      <Title order={3} className="title">Leaderboard</Title>
       <ul>
-        {scores.map((score, index) => (
-          <li key={index}>
-            Rank: {score.rank} - {score.name}: {score.points} points ({getRewardLevel(score.points)})
-          </li>
-        ))}
+        {scores.map((score, index) => {
+          const previousRank = previousScores.find(prev => prev.name === score.name)?.rank;
+          const isCurrentUser = score.name === currentUser;
+          return (
+            <li key={score.name + score.points} className={`${getAnimationClass(score.rank, previousRank)} ${getRankClass(score.rank)} ${isCurrentUser ? 'user-entry' : ''}`}>
+              <span>
+                <img src={`https://robohash.org/${score.name}.png?set=set5`} alt={`${score.name}'s avatar`} />
+                Rank: {score.rank} - {score.name}
+              </span>
+              <span>{score.points} points ({getRewardLevel(score.points)})</span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

@@ -115,17 +115,28 @@ footer {
   font-size: 1.875rem; /* Adjusted font size */
 }
 
+/* Leaderboard Styles */
 .leaderboard {
   margin: 20px auto;
   max-width: 800px;
-  background-color: var(--leaderboard-bg);
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9); /* Light green gradient */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.leaderboard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .leaderboard h2 {
   color: var(--leaderboard-text);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  font-family: 'Inter', sans-serif;
 }
 
 .leaderboard ul {
@@ -136,13 +147,92 @@ footer {
 .leaderboard li {
   background-color: var(--leaderboard-item-bg);
   margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
+.leaderboard li:hover {
+  background-color: var(--list-item-hover-bg);
+  transform: translateX(10px);
+}
+
+.leaderboard li:nth-child(odd) {
+  background-color: var(--list-item-bg);
+}
+
+.leaderboard li:nth-child(odd):hover {
+  background-color: var(--list-item-hover-bg);
+}
+
+.leaderboard .title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: var(--leaderboard-text);
+}
+
+.leaderboard .user-entry {
+  background-color: #66bb6a; /* Highlight color for the user's entry */
+  font-weight: bold;
+}
+
+.leaderboard .top-rank {
+  background-color: #59b05c !important; /* Green for top rank */
+}
+
+.leaderboard .second-rank {
+  background-color: #70d173 !important; /* Blue for second rank */
+}
+
+.leaderboard .third-rank {
+  background-color: #a1d7a3 !important; /* Orange for third rank */
+}
+
+.leaderboard li img {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moveUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20px);
+  }
+}
+
+
+/* Challenge container */
 .challengeContainer {
   max-width: 600px;
   margin: 0 auto;
