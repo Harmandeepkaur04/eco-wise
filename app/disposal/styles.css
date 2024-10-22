@@ -1,3 +1,4 @@
+
 :root {
   --bg-color: #ffffff;
   --text-color: #102f15; /* Dark Green */
@@ -65,6 +66,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 
 main {
   color: var(--text-color) !important;
@@ -381,10 +383,12 @@ h2 {
 
 .div-2-title {
   font-size: xxx-large;
+  text-align: center;
 }
 
 .div-2-txt {
-  font-size: large;
+  font-size: x-large;
+  text-align: center;
 }
 
 .div-container h1 {
@@ -453,4 +457,11 @@ h2 {
   background-color: var(--table-cell-bg);
   color: var(--table-cell-text);
   font-size: medium;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+/*Audio icon */
+.audio-icon{
+  position: absolute;
+  top: 100px;
+  right: 30px;
 }

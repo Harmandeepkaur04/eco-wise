@@ -141,3 +141,10 @@ button:hover {
   background-color: var(--button-hover-bg);
   transform: scale(1.05);
 }
+
+.audio-icon{
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}
+

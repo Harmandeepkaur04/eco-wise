@@ -1,7 +1,5 @@
 'use client';
-import React, { useRef, useState, useEffect } from "react"; // Added useState and useEffect
-
-import { useDisclosure } from '@mantine/hooks';
+import React, { useRef, useState, useEffect } from "react";
 import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, Box, } from "@mantine/core";
 import '@mantine/core/styles/Overlay.css';
 import '@mantine/core/styles/ModalBase.css';
@@ -11,6 +9,8 @@ import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 import Drawers from "../components/Drawer";
 import ShepardDrawers from "../components/ShepardDrawer";
+import { useAudio } from '../Audio'; 
+import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 const elements = [
   { Holiday: "New Year's Day", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
@@ -34,26 +34,16 @@ export default function Disposal() {
 
     const tableRef = useRef(null); // Create a ref for the table
 
-     // State for audio functionality
-  const [isAudioOn, setIsAudioOn] = useState(true);
+    const { speak, isAudioOn, setIsAudioOn } = useAudio();
+
+    useEffect(() => {
+      speak('Welcome to the Disposal page. Here you can find all nearby recycling centers and there hours of operations.');
+    }, [isAudioOn]);
   
-  // Function to toggle audio
-  const toggleAudio = () => {
-    setIsAudioOn((prev) => !prev);
-  };
-
-  // Audio speak function
-  const speak = (message) => {
-    if (isAudioOn) {
-      const speech = new SpeechSynthesisUtterance(message);
-      window.speechSynthesis.speak(speech);
-    }
-  };
-
-  // Use effect for welcome message
-  useEffect(() => {
-    speak('Welcome to the Disposal page. Here you can nereby recycling locations,their contacts and hours of operation.');
-  }, [isAudioOn]); // Trigger when isAudioOn changes
+    const handleAudioToggle = () => {
+      console.log('Audio toggle clicked');
+      setIsAudioOn((prev) => !prev);
+    };
   
     // Function to scroll to the table
     const scrollToTable = () => {
@@ -73,7 +63,15 @@ export default function Disposal() {
 
   return (
     <Container component="main">
-      <Title component="h2">Waste Management and Recycling Locations</Title>
+      <Title component="h2">Waste Management and Recycling Locations
+        {/* Audio Control Icon */}
+      <Group className='audio-icon'>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </Group>
+      </Title>
+      
 
       <div className="scroll-buttons">
             <button onClick={scrollToTable} className="scroll-button">
@@ -81,10 +79,9 @@ export default function Disposal() {
             </button>
           </div>
 
-          <Button onClick={toggleAudio} className="audio-button">
-        {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
-      </Button>
+      
 
+      {/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
       <div className="flex-container">
         <div className="locations-container">
           <div className="div-container">
@@ -173,7 +170,7 @@ export default function Disposal() {
         <Title className="div-2-title">For hazardous materials:</Title>
         <Text className="div-2-txt">Chemicals, batteries, and other items that require safe disposal to protect your family, home and the environment.</Text>
         <br />
-        <Title className="div-2-title">For oversized and large quantities of household waste</Title>
+        <Title className="div-2-title">For oversized and large quantities of household waste:</Title>
         <Text className="div-2-txt">Got a major decluttering project or a home reno on your hands? 
           Eco Centres offer a responsible solution for disposing of construction materials, mattresses, 
           and large amounts of household waste.</Text>

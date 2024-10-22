@@ -267,6 +267,12 @@ body {
   gap: 70px;
   flex-wrap: wrap;
 }
+/*Audio icon */
+.audio-icon{
+  position: absolute;
+  top: 70px;
+  right: 30px;
+}
 
 .team-member {
   background-color: var(--team-member-bg);
