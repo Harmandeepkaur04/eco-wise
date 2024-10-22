@@ -9,10 +9,6 @@ export default function Home() {
 
   return (
     <main>
-      <div className={theme}>
-        <ThemeToggle/>
-        <p>The current theme is {theme}</p>
-      </div>
       <Index />
     </main>
 
