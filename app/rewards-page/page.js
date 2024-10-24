@@ -22,8 +22,9 @@ const Home = () => {
   const { user } = useUser();
 
   useEffect(() => {
-    speak('Welcome to the Rewards page. Here you can test your knowledge about recycling, waste management, and earn points.');
-  }, [speak]);
+
+    speak('Welcome to the Rewards page. Here you can test your knowledge about recycling , waste management and can earn points');
+  }, [ isAudioOn]);
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);

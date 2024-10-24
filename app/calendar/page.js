@@ -15,7 +15,7 @@ const Calendar = () => {
   
   useEffect(() => {
     speak('Welcome to the Calendar page. Here you can view and manage your events.');
-  }, [speak, isAudioOn]);
+  }, [isAudioOn]);
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);
