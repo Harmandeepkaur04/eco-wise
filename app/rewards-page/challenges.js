@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Title, List, Text } from '@mantine/core';
 
-const Challenges = () => {
+const Challenges = ({ totalPoints, updateTotalPoints }) => {
   const [challenges, setChallenges] = useState([
     { id: 1, name: 'Recycle 10 items', completed: false, points: 10 },
     { id: 2, name: 'Use a reusable bag', completed: false, points: 5 },
@@ -12,8 +12,6 @@ const Challenges = () => {
     { id: 7, name: 'Start a compost bin', completed: false, points: 20 },
     { id: 8, name: 'Participate in a local clean-up event', completed: false, points: 15 },
   ]);
-  
-  const [totalPoints, setTotalPoints] = useState(0);
 
   const toggleCompletion = (id) => {
     setChallenges(
@@ -26,9 +24,9 @@ const Challenges = () => {
 
     const challenge = challenges.find((challenge) => challenge.id === id);
     if (!challenge.completed) {
-      setTotalPoints(totalPoints + challenge.points);
+      updateTotalPoints(totalPoints + challenge.points);
     } else {
-      setTotalPoints(totalPoints - challenge.points);
+      updateTotalPoints(totalPoints - challenge.points);
     }
   };
 
@@ -49,6 +47,5 @@ const Challenges = () => {
     </div>
   );
 };
-
 
 export default Challenges;
