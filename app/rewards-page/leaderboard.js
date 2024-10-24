@@ -52,7 +52,7 @@ const Leaderboard = ({ currentUser }) => {
             <li key={score.name + score.points} className={`${getAnimationClass(score.rank, previousRank)} ${getRankClass(score.rank)} ${isCurrentUser ? 'user-entry' : ''}`}>
               <span>
                 <img src={`https://robohash.org/${score.name}.png?set=set5`} alt={`${score.name}'s avatar`} />
-                Rank: {score.rank} - {score.name}
+                Rank: {score.rank} - {score.name} {isCurrentUser && '(You)'}
               </span>
               <span>{score.points} points ({getRewardLevel(score.points)})</span>
             </li>

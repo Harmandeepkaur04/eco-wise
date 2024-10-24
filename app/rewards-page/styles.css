@@ -41,7 +41,7 @@
   --header-footer-text: #cccccc; /* Light text */
   --container-bg: #444444; /* Darker background */
   --leaderboard-bg: #555555; /* Darker background */
-  --leaderboard-text: #e1edbd; /* Light Pastel Green */
+  --leaderboard-text: #5A8559; /* Light Pastel Green */
   --leaderboard-item-bg: #666666; /* Darker background */
   --challenge-bg: #555555; /* Darker background */
   --challenge-item-bg: #666666; /* Darker background */
@@ -512,6 +512,25 @@ a:hover {
       transform: translateY(0);
   }
 }
+
+/* user style */
+.user-entry {
+  background-color: #f0f8ff; /* Light blue background */
+  font-weight: bolder; /* Bold text */
+  border: 2px solid #bcff1e; /* Blue border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Padding for spacing */
+}
+
+.user-entry img {
+  border: 2px solid #bcff1e; /* Blue border around the avatar */
+  border-radius: 50%; /* Circular avatar */
+}
+
+.user-entry span {
+  color: #bcff1e; /* Blue text color */
+}
+
 
 .audio-icon{
   position: absolute;
