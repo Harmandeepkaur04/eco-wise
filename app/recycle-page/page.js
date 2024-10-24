@@ -11,7 +11,7 @@ const RecyclePage = () => {
 
   useEffect(() => {
     speak('Welcome to the Recycling page. Here you can learn about recycling basics, articles, videos, and more.');
-  }, [isAudioOn, speak]);
+  }, [isAudioOn]);
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);
