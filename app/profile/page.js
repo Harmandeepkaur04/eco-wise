@@ -42,7 +42,7 @@ export default function ProfilePage() {
   
   useEffect(() => {
     speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
-  }, [speak, isAudioOn]);
+  }, [ isAudioOn]);
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);

@@ -271,7 +271,8 @@ input[type="checkbox"] {
 
 .audio-icon{
   position: absolute;
-  top: 70px;
+  top: 80px;
   right: 30px;
+  color: black;
 }
 

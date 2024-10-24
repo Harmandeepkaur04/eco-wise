@@ -144,8 +144,9 @@ button:hover {
 
 .audio-icon{
   position: absolute;
-  top: 70px;
+  top: 100px;
   right: 30px;
+  color: black;
 }
 
 .audio-icon{
