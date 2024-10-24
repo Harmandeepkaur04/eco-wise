@@ -1,17 +1,31 @@
-import { Title, List } from '@mantine/core';
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
+import { Title } from '@mantine/core';
 
+const Leaderboard = () => {
+  const [scores, setScores] = useState([]);
 
-const Leaderboard = ({ scores }) => {
+  useEffect(() => {
+    const fetchScores = async () => {
+      const querySnapshot = await getDocs(collection(db, 'rewards', 'leaderboard'));
+      const scoresData = querySnapshot.docs.map(doc => doc.data());
+      setScores(scoresData);
+    };
+
+    fetchScores();
+  }, []);
+
   return (
-    <div>
-      <Title order={2}>Leaderboard</Title>
-      <List>
+    <div className="leaderboard">
+      <Title order={3}>Leaderboard</Title>
+      <ul>
         {scores.map((score, index) => (
-          <List.Item key={index}>
-            {score.name}: {score.points}
-          </List.Item>
+          <li key={index}>
+            {score.name}: {score.points} points (Rank: {score.rank})
+          </li>
         ))}
-      </List>
+      </ul>
     </div>
   );
 };

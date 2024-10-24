@@ -1,7 +1,77 @@
+:root {
+  --bg-color: #EAF1B1;
+  --text-color: #102F15;
+  --container-bg: #EAF1B1;
+  --widget-bg: #728C5A;
+  --widget-text: #102F15;
+  --left-widget-bg: #728C5A;
+  --left-widget-text: #EAF1B1;
+  --right-widget-bg: #EBFADC;
+  --right-widget-text: #102F15;
+  --calendar-day-bg: #EBFADC;
+  --calendar-day-text: #102F15;
+  --selected-day-border: #728C5A;
+  --button-bg: #728C5A;
+  --button-text: #EAF1B1;
+  --button-hover-bg: #556B2F;
+  --picker-bg: #EAF1B1;
+  --picker-hover-bg: #D1E6A7;
+  --note-input-bg: #EAF1B1;
+  --note-input-text: #102F15;
+  --note-input-border: #728C5A;
+  --note-input-focus-border: #556B2F;
+  --save-btn-bg: #728C5A;
+  --save-btn-text: #EAF1B1;
+  --save-btn-hover-bg: #EAF1B1;
+  --save-btn-hover-text: #102F15;
+  --saved-note-bg: #728C5A;
+  --saved-note-text: #102F15;
+  --saved-note-border: #D1E6A7;
+  --edit-delete-btn-hover: #556B2F;
+  --calendar-btn-bg: #EAF1B1;
+  --calendar-btn-text: #102F15;
+  --calendar-btn-border: #728C5A;
+}
+
+[data-theme="dark"] {
+  --bg-color: #333333;
+  --text-color: #EAF1B1;
+  --container-bg: #444444;
+  --widget-bg: #555555;
+  --widget-text: #EAF1B1;
+  --left-widget-bg: #666666;
+  --left-widget-text: #EAF1B1;
+  --right-widget-bg: #555555;
+  --right-widget-text: #EAF1B1;
+  --calendar-day-bg: #666666;
+  --calendar-day-text: #EAF1B1;
+  --selected-day-border: #777777;
+  --button-bg: #666666;
+  --button-text: #EAF1B1;
+  --button-hover-bg: #777777;
+  --picker-bg: #555555;
+  --picker-hover-bg: #666666;
+  --note-input-bg: #555555;
+  --note-input-text: #EAF1B1;
+  --note-input-border: #777777;
+  --note-input-focus-border: #888888;
+  --save-btn-bg: #777777;
+  --save-btn-text: #EAF1B1;
+  --save-btn-hover-bg: #888888;
+  --save-btn-hover-text: #FFFFFF;
+  --saved-note-bg: #666666;
+  --saved-note-text: #EAF1B1;
+  --saved-note-border: #888888;
+  --edit-delete-btn-hover: #AAAAAA;
+  --calendar-btn-bg: #555555;
+  --calendar-btn-text: #EAF1B1;
+  --calendar-btn-border: #777777;
+}
+
 /* General body styles */
 body {
-  background-color: #EAF1B1;
-  color: #102F15;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   font-family: 'Times New Roman', serif;
   justify-content: center;
   align-items: flex-start; /* Changed to align calendar below the nav bar */
@@ -18,15 +88,15 @@ body {
   max-width: 1300px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #EAF1B1;
+  background-color: var(--container-bg);
   border-radius: 10px;
   font-size: 22px;
 }
 
 /* Monthly overview widget */
 .monthly-overview-widget {
-  background-color: #728C5A;
-  color: #102F15;
+  background-color: var(--widget-bg);
+  color: var(--widget-text);
   padding: 20px;
   width: 100%;
   border-radius: 10px;
@@ -45,8 +115,8 @@ body {
 
 /* Left widget */
 .calendar-left-widget {
-  background-color: #728C5A;
-  color: #EAF1B1;
+  background-color: var(--left-widget-bg);
+  color: var(--left-widget-text);
   width: 45%;
   padding: 30px;
   border-radius: 10px;
@@ -73,7 +143,7 @@ body {
 
 /* Right-side calendar */
 .calendar-right-side {
-  background-color: #EBFADC;
+  background-color: var(--right-widget-bg);
   width: 50%;
   padding: 30px;
   border-radius: 10px;
@@ -120,7 +190,7 @@ body {
 
 .day-header {
   font-weight: bold;
-  color: #102F15;
+  color: var(--text-color);
 }
 
 .calendar-body {
@@ -130,8 +200,8 @@ body {
 }
 
 .calendar-day {
-  background-color: #EBFADC;
-  color: #102F15;
+  background-color: var(--calendar-day-bg);
+  color: var(--calendar-day-text);
   border: 1px solid #ccc;
   padding: 20px; /* Increased padding for better icon fit */
   text-align: center;
@@ -140,7 +210,7 @@ body {
 }
 
 .selected-day {
-  border: 2px solid #728C5A;
+  border: 2px solid var(--selected-day-border);
 }
 
 .icon-container {
@@ -201,7 +271,7 @@ body {
   position: absolute;
   top: 5px; /* Position below the month text */
   left: calc(30% - 20px); /* Center the picker aligned with month */
-  background-color: #EAF1B1; /* Match with the background */
+  background-color: var(--picker-bg); /* Match with the background */
   border-radius: 5px;
   z-index: 100; /* Ensure it appears above other elements */
   padding: 10px;
@@ -215,7 +285,7 @@ body {
 /* Year Picker Styles */
 .year-picker {
   position: relative; /* Change to relative to keep it in flow */
-  background-color: #EAF1B1; /* Match with the background */
+  background-color: var(--picker-bg); /* Match with the background */
   border-radius: 5px;
   z-index: 100; /* Ensure it appears above other elements */
   padding: 5px;
@@ -234,7 +304,7 @@ body {
 }
 
 .year-option:hover {
-  background-color: #D1E6A7; /* Change color on hover */
+  background-color: var(--picker-hover-bg); /* Change color on hover */
 }
 
 /* Common Option Styles */
@@ -245,7 +315,7 @@ body {
 }
 
 .month-option:hover {
-  background-color: #D1E6A7; /* Change color on hover */
+  background-color: var(--picker-hover-bg); /* Change color on hover */
 }
 
 /* Container for the Today button */
@@ -256,8 +326,8 @@ body {
 
 /* Today Button Styles */
 .today-btn {
-  background-color: #728C5A;
-  color: #EAF1B1;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   border: none;
   padding: 10px 20px;
   margin-top: 20px;
@@ -272,19 +342,18 @@ body {
 }
 
 .today-btn:hover {
-  background-color: #556B2F;
+  background-color: var(--button-hover-bg);
 }
-
 
 /* Animation Styles */
 @keyframes fadeIn {
   from {
-    opacity: 0;
-    transform: translateY(-5px); /* Slight upward motion */
+      opacity: 0;
+      transform: translateY(-5px); /* Slight upward motion */
   }
   to {
-    opacity: 1;
-    transform: translateY(0); /* Return to original position */
+      opacity: 1;
+      transform: translateY(0); /* Return to original position */
   }
 }
 
@@ -317,9 +386,9 @@ body {
   max-width: 500px;
   height: 100px;
   margin: 10px auto;
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
+  background-color: var(--note-input-bg); /* Match with the background */
+  color: var(--note-input-text); /* Text color */
+  border: 1px solid var(--note-input-border); /* Border color */
   padding: 10px;
   font-family: 'Times New Roman', serif;
   resize: none;
@@ -329,12 +398,12 @@ body {
 
 .note-input:focus {
   outline: none; /* Remove default outline */
-  border-color: #556B2F; /* Change border color on focus */
+  border-color: var(--note-input-focus-border); /* Change border color on focus */
 }
 
 .save-btn {
-  background-color: #728C5A; /* Match with the background */
-  color: #EAF1B1; /* Text color */
+  background-color: var(--save-btn-bg); /* Match with the background */
+  color: var(--save-btn-text); /* Text color */
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -345,9 +414,9 @@ body {
 }
 
 .save-btn:hover {
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
+  background-color: var(--save-btn-hover-bg); /* Match with the background */
+  color: var(--save-btn-hover-text); /* Text color */
+  border: 1px solid var(--note-input-border); /* Border color */
   transform: translateY(-2px); /* Add slight upward motion */
 }
 
@@ -362,9 +431,9 @@ body {
 .saved-note {
   display: flex;
   justify-content: space-between; /* Space between note text and buttons */
-  background-color: #728C5A; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #D1E6A7; /* Border color */
+  background-color: var(--saved-note-bg); /* Match with the background */
+  color: var(--saved-note-text); /* Text color */
+  border: 1px solid var(--saved-note-border); /* Border color */
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
@@ -386,7 +455,7 @@ body {
 .delete-btn {
   background: transparent; /* Make buttons transparent */
   border: none;
-  color: #102F15; /* Color for edit/delete buttons */
+  color: var(--saved-note-text); /* Color for edit/delete buttons */
   cursor: pointer;
   transition: color 0.3s; /* Smooth color transition */
   font-size: 14px; /* Make text smaller */
@@ -394,27 +463,27 @@ body {
 
 .edit-btn:hover,
 .delete-btn:hover {
-  color: #556B2F; /* Change color on hover */
+  color: var(--edit-delete-btn-hover); /* Change color on hover */
 }
 
 /* Animation Styles */
 @keyframes fadeIn {
   from {
-    opacity: 0;
-    transform: translateY(-10px); /* Slight upward motion */
+      opacity: 0;
+      transform: translateY(-10px); /* Slight upward motion */
   }
   to {
-    opacity: 1;
-    transform: translateY(0); /* Return to original position */
+      opacity: 1;
+      transform: translateY(0); /* Return to original position */
   }
 }
 
 .calendar-btn {
   display: flex;
   justify-content: space-between; /* Space between note text and buttons */
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
+  background-color: var(--calendar-btn-bg); /* Match with the background */
+  color: var(--calendar-btn-text); /* Text color */
+  border: 1px solid var(--calendar-btn-border); /* Border color */
   padding: 10px;
   margin-top: 5px;
   border-radius: 5px;
@@ -425,5 +494,9 @@ body {
   position: absolute;
   top: 80px;
   right: 30px;
+
   color: black;
 }
+
+}
+

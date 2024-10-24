@@ -1,6 +1,75 @@
-/* MAIN PAGE STYLING */
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #102f15; /* Dark Green */
+  --header-bg: #102f15; /* Dark Green */
+  --header-text: #eaf1b1; /* Light Pastel Green */
+  --drawer-bg: #102f15; /* Dark Green */
+  --drawer-content-bg: #eaf1b1; /* Light Pastel Green */
+  --drawer-content-text: #102f15; /* Dark Green */
+  --button-bg: #eaf1b1; /* Light Pastel Green */
+  --button-text: #102f15; /* Dark Green */
+  --button-hover-bg: #102f15; /* Dark Green */
+  --button-hover-text: #eaf1b1; /* Light Pastel Green */
+  --material-div-bg: #728c5a; /* Green */
+  --material-div-text: #eaf1b1; /* Light Pastel Green */
+  --autocomplete-bg: #102f15; /* Dark Green */
+  --autocomplete-text: #eaf1b1; /* Light Pastel Green */
+  --autocomplete-input-bg: #728c5a; /* Green */
+  --autocomplete-input-text: #eaf1b1; /* Light Pastel Green */
+  --scroll-button-bg: #728c5a; /* Green */
+  --scroll-button-text: #eaf1b1; /* Light Pastel Green */
+  --scroll-button-hover-bg: #102f15; /* Dark Green */
+  --map-border: #102f15; /* Dark Green */
+  --div-container-bg: #728c5a; /* Green */
+  --div-container-text: #eaf1b1; /* Light Pastel Green */
+  --table-header-bg: #102f15; /* Dark Green */
+  --table-header-text: #eaf1b1; /* Light Pastel Green */
+  --table-cell-bg: #728c5a; /* Green */
+  --table-cell-text: #ebfadc; /* Light Green */
+}
+
+[data-theme="dark"] {
+  --bg-color: #333333;
+  --text-color: #eaf1b1; /* Light Pastel Green */
+  --header-bg: #444444; /* Darker background */
+  --header-text: #cccccc; /* Light text */
+  --drawer-bg: #444444; /* Darker background */
+  --drawer-content-bg: #555555; /* Darker background */
+  --drawer-content-text: #eaf1b1; /* Light Pastel Green */
+  --button-bg: #666666; /* Darker background */
+  --button-text: #eaf1b1; /* Light Pastel Green */
+  --button-hover-bg: #777777; /* Slightly darker on hover */
+  --button-hover-text: #ffffff; /* Light text */
+  --material-div-bg: #666666; /* Darker background */
+  --material-div-text: #eaf1b1; /* Light Pastel Green */
+  --autocomplete-bg: #555555; /* Darker background */
+  --autocomplete-text: #eaf1b1; /* Light Pastel Green */
+  --autocomplete-input-bg: #666666; /* Darker background */
+  --autocomplete-input-text: #eaf1b1; /* Light Pastel Green */
+  --scroll-button-bg: #666666; /* Darker background */
+  --scroll-button-text: #eaf1b1; /* Light Pastel Green */
+  --scroll-button-hover-bg: #777777; /* Slightly darker on hover */
+  --map-border: #555555; /* Darker background */
+  --div-container-bg: #666666; /* Darker background */
+  --div-container-text: #eaf1b1; /* Light Pastel Green */
+  --table-header-bg: #555555; /* Darker background */
+  --table-header-text: #eaf1b1; /* Light Pastel Green */
+  --table-cell-bg: #666666; /* Darker background */
+  --table-cell-text: #cccccc; /* Light text */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+}
+
+
 main {
-  color: #102f15 !important;
+  color: var(--text-color) !important;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -8,8 +77,8 @@ h2 {
   font-size: xx-large;
   display: flex;
   justify-content: center;
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--header-bg);
+  color: var(--header-text);
   margin-bottom: 15px;
   margin-top: 15px;
   padding: 10px;
@@ -17,27 +86,27 @@ h2 {
 }
 
 /*------------------------------------------------------------------------*/
-/* DRAWER STYLING*/
+/* DRAWER STYLING */
 .drawer {
-  background-color: #102f15;
-  border: 2px solid #102f15;
+  background-color: var(--drawer-bg);
+  border: 2px solid var(--drawer-bg);
   border-radius: 8px;
-  color: #102f15;
+  color: var(--drawer-bg);
 }
 
 .drawer-content {
-  border: solid 5px #102f15;
-  background-color: #eaf1b1;
+  border: solid 5px var(--drawer-bg);
+  background-color: var(--drawer-content-bg);
   padding: 20px;
   font-family: 'Times New Roman', Times, serif;
   overflow-y: auto;
   height: 100vh;
   scrollbar-width: thin;
-  scrollbar-color: #102f15 transparent;
+  scrollbar-color: var(--drawer-bg) transparent;
 }
 
 .drawer-content::-webkit-scrollbar {
-  display: 6px;
+  width: 6px;
 }
 
 .drawer-content::-webkit-scrollbar-track {
@@ -45,15 +114,15 @@ h2 {
 }
 
 .drawer-content::-webkit-scrollbar-thumb {
-  background-color: #102f15;
+  background-color: var(--drawer-bg);
   border-radius: 10px;
 }
 
 .drawer-title {
   font-size: x-large;
   text-align: center;
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--drawer-bg);
+  color: var(--drawer-content-bg);
   padding: 5px 10px;
   border-radius: 8px;
 }
@@ -65,45 +134,42 @@ h2 {
 
 .button {
   margin-left: 15px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: 2px solid #102f15;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid var(--drawer-bg);
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-left: 25px;
   width: 150px;
 }
 
 .button-2 {
   margin-left: 15px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: 2px solid #102f15;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 2px solid var(--drawer-bg);
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-left: 25px;
   width: 250px;
 }
 
 .button:hover {
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--button-hover-bg);
+  color: var(--button-hover-text);
 }
 
 .button-2:hover {
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--button-hover-bg);
+  color: var(--button-hover-text);
 }
 
 /*------------------------------------------------------------------------*/
 /* Drawer Contents Styling */
-
 .material-div {
-  background-color: #728c5a;
+  background-color: var(--material-div-bg);
   width: 225px;
   border-radius: 8px;
   text-align: center;
@@ -119,24 +185,24 @@ h2 {
 
 .material-div .materials {
   font-size: large;
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--drawer-bg);
+  color: var(--drawer-content-bg);
   border-radius: 8px;
   padding: 5px 5px;
 }
 
 .item-list {
-  color: #eaf1b1;
+  color: var(--drawer-content-bg);
   text-align: left;
   overflow-y: auto;
   height: 150px;
   padding-right: 10px;
   scrollbar-width: thin;
-  scrollbar-color: #102f15 transparent;
+  scrollbar-color: var(--drawer-bg) transparent;
 }
 
 .item-list::-webkit-scrollbar {
-  display: 6px;
+  width: 6px;
 }
 
 .item-list::-webkit-scrollbar-track {
@@ -144,7 +210,7 @@ h2 {
 }
 
 .item-list::-webkit-scrollbar-thumb {
-  background-color: #102f15;
+  background-color: var(--drawer-bg);
   border-radius: 10px;
 }
 
@@ -160,28 +226,28 @@ h2 {
   width: 80px;
   margin-bottom: 10px;
 }
+
 /*------------------------------------------------------------------------*/
 /* SEARCH BAR STYLING */
-
 .autocomplete {
-  background-color: #102f15;
-  border: 2px solid #102f15;
+  background-color: var(--autocomplete-bg);
+  border: 2px solid var(--autocomplete-bg);
   border-radius: 8px;
-  color: #eaf1b1;
+  color: var(--autocomplete-text);
   padding: 10px;
   width: 100%;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .autocomplete input::placeholder {
-  color: #eaf1b1;
+  color: var(--autocomplete-text);
   opacity: 1;
 }
 
 .autocomplete input {
-  background-color: #728c5a;
-  color: #eaf1b1;
-  border: 2px solid #eaf1b1;
+  background-color: var(--autocomplete-input-bg);
+  color: var(--autocomplete-input-text);
+  border: 2px solid var(--autocomplete-input-text);
   border-radius: 8px;
   padding: 8px;
   width: 100%;
@@ -190,8 +256,8 @@ h2 {
 }
 
 .autocomplete-dropdown {
-  background-color: #728c5a;
-  border: 2px solid #102f15;
+  background-color: var(--autocomplete-input-bg);
+  border: 2px solid var(--drawer-bg);
   border-radius: 8px;
   padding: 8px 0;
   max-height: 200px;
@@ -200,8 +266,8 @@ h2 {
 }
 
 .autocomplete-item {
-  background-color: #728c5a;
-  color: #eaf1b1;
+  background-color: var(--autocomplete-input-bg);
+  color: var(--autocomplete-input-text);
   padding: 10px;
   cursor: pointer;
   font-family: 'Times New Roman', Times, serif;
@@ -209,8 +275,8 @@ h2 {
 
 .autocomplete-item:hover,
 .autocomplete-item[data-hovered='true'] {
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--drawer-bg);
+  color: var(--drawer-content-bg);
 }
 
 .autocomplete-dropdown::-webkit-scrollbar {
@@ -222,13 +288,13 @@ h2 {
 }
 
 .autocomplete-dropdown::-webkit-scrollbar-thumb {
-  background-color: #102f15; /* Same scrollbar thumb color as the items */
+  background-color: var(--drawer-bg); /* Same scrollbar thumb color as the items */
   border-radius: 10px; /* Rounded scrollbar thumb */
 }
 
 .autocomplete-dropdown {
   scrollbar-width: thin;
-  scrollbar-color: #102f15 transparent;
+  scrollbar-color: var(--drawer-bg) transparent;
 }
 
 /*------------------------------------------------------------------------*/
@@ -240,9 +306,9 @@ h2 {
 }
 
 .scroll-button {
-  background-color: #728c5a;
-  color: #eaf1b1;
-  border: 2px solid #102f15;
+  background-color: var(--scroll-button-bg);
+  color: var(--scroll-button-text);
+  border: 2px solid var(--drawer-bg);
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
@@ -250,7 +316,7 @@ h2 {
 }
 
 .scroll-button:hover {
-  background-color: #102f15;
+  background-color: var(--scroll-button-hover-bg);
 }
 
 /*------------------------------------------------------------------------*/
@@ -259,7 +325,6 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
   flex-wrap: wrap;
 }
 
@@ -285,7 +350,7 @@ h2 {
 .square-map {
   width: 94vh;
   height: 100vh;
-  border: 3px solid #102f15;
+  border: 3px solid var(--map-border);
   border-radius: 8px;
   margin-right: 15px;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
@@ -294,22 +359,22 @@ h2 {
 /*------------------------------------------------------------------------*/
 /* DIV STYLING */
 .div-container {
-  border: 3px solid #102f15;
+  border: 3px solid var(--map-border);
   border-radius: 8px;
   width: 94vh;
   height: 80vh;
-  background-color: #728c5a;
+  background-color: var(--div-container-bg);
   margin-left: 15px;
-  color: #eaf1b1;
+  color: var(--div-container-text);
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
-.div-container-2{
-  border: 3px solid #102f15;
+.div-container-2 {
+  border: 3px solid var(--map-border);
   border-radius: 8px;
-  background-color: #728c5a;
-  color: #eaf1b1;
+  background-color: var(--div-container-bg);
+  color: var(--div-container-text);
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
   margin-top: 30px;
   margin-bottom: 30px;
@@ -329,10 +394,9 @@ h2 {
 .div-container h1 {
   font-size: xx-large;
   text-align: center;
-  color: #eaf1b1;
-  background-color: #102f15;
+  color: var(--div-container-text);
+  background-color: var(--drawer-bg);
   padding: 5px 10px;
-  
 }
 
 .div-container h3 {
@@ -347,9 +411,9 @@ h2 {
 
 .div-container ul {
   padding: 5px 10px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: solid #102f15;
+  background-color: var(--drawer-content-bg);
+  color: var(--drawer-bg);
+  border: solid var(--drawer-bg);
   border-radius: 8px;
   font-weight: bold;
   margin: 10px 20px;
@@ -357,9 +421,9 @@ h2 {
 
 .address {
   padding: 5px 10px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: solid #102f15;
+  background-color: var(--drawer-content-bg);
+  color: var(--drawer-bg);
+  border: solid var(--drawer-bg);
   border-radius: 8px;
   margin: 10px 20px;
 }
@@ -377,21 +441,21 @@ h2 {
   position: sticky;
   top: 0;
   padding: 10px;
-  border: 3px solid #ebfadc;
+  border: 3px solid var(--table-header-text);
   border-radius: 8px;
   text-align: center;
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-text);
   font-size: large;
 }
 
 .table-container td {
   padding: 10px;
-  border: 3px solid #eaf1b1;
+  border: 3px solid var(--table-header-text);
   border-radius: 8px;
   text-align: center;
-  background-color: #728c5a;
-  color: #ebfadc;
+  background-color: var(--table-cell-bg);
+  color: var(--table-cell-text);
   font-size: medium;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
 }
@@ -402,4 +466,3 @@ h2 {
   right: 30px;
   color: black;
 }
-
