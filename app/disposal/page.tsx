@@ -1,7 +1,5 @@
 'use client';
-import React, { useRef, useState, useEffect } from "react"; // Added useState and useEffect
-
-import { useDisclosure } from '@mantine/hooks';
+import React, { useRef, useState, useEffect } from "react";
 import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, Box, } from "@mantine/core";
 import '@mantine/core/styles/Overlay.css';
 import '@mantine/core/styles/ModalBase.css';
@@ -83,6 +81,7 @@ export default function Disposal() {
 
       
 
+      {/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
       <div className="flex-container">
         <div className="locations-container">
           <div className="div-container">
@@ -171,7 +170,7 @@ export default function Disposal() {
         <Title className="div-2-title">For hazardous materials:</Title>
         <Text className="div-2-txt">Chemicals, batteries, and other items that require safe disposal to protect your family, home and the environment.</Text>
         <br />
-        <Title className="div-2-title">For oversized and large quantities of household waste</Title>
+        <Title className="div-2-title">For oversized and large quantities of household waste:</Title>
         <Text className="div-2-txt">Got a major decluttering project or a home reno on your hands? 
           Eco Centres offer a responsible solution for disposing of construction materials, mattresses, 
           and large amounts of household waste.</Text>

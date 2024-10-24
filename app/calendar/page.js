@@ -1,11 +1,14 @@
 "use client";
-
+// Importing React, useState, and useEffect hooks
 import React, { useState, useEffect } from 'react';
 import '../calendar/styles.css';
 import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio'; 
 
+// The main functional component representing the Calendar.
+// The overall framework of the calendar design is inspired by this video tutorial: 
+// https://youtu.be/BN_wfeG47oQ?si=3SoCrqNoRjMXXbzl
 const Calendar = () => {
 
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
@@ -23,18 +26,38 @@ const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
   const today = new Date();
 
+  // A function to calculate the number of days in a given month and year.
+  // It creates a new Date object, where 'month + 1' points to the next month, and 0 gives the last day of the previous month
   const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
+  // State to store the notes entered by the user in the input field.
   const [notes, setNotes] = useState('');
-  const [savedNotes, setSavedNotes] = useState([]); // Store notes as an array
+  
+    // Inspired by ChatGPT prompts and functionality for dynamic note input and display
+  // State to store an array of saved notes.
+  const [savedNotes, setSavedNotes] = useState([]);
+  
+  // State to toggle whether the notes input box is visible or hidden.
   const [showNotes, setShowNotes] = useState(false);
+  
+  // State to track the currently selected day in the calendar. It defaults to today's date.
   const [selectedDay, setSelectedDay] = useState(today.getDate());
+  
+  // State to track the current month. It defaults to the current month (0-11).
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
+  
+  // State to track the current year. It defaults to the current year.
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
+
   const [upcomingReminder, setUpcomingReminder] = useState({});
   const [editingIndex, setEditingIndex] = useState(null); // For tracking which note is being edited
   const [showMonthPicker, setShowMonthPicker] = useState(false);
   const [showYearPicker, setShowYearPicker] = useState(false);
-  const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i);
+
+  const years = Array.from({ length: 5 }, (_, i) => currentYear - 2 + i); // Creating an array of 5 years around the current year. 
+  // This will generate an array of years centered on the current year (e.g., [2022, 2023, 2024, 2025, 2026]).
+
+  // Creating an array of month names (January to December) for the month picker.
+  // Using Date and toLocaleString() to convert numeric months to their full names (e.g., "January", "February") if it's short then it will be (e.g, "Feb", "Sept").
   const months = Array.from({ length: 12 }, (_, i) =>
     new Date(0, i).toLocaleString("default", { month: "long" })
   );
@@ -43,18 +66,20 @@ const Calendar = () => {
   const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
 
   const getLocalTime = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-
+ // Function to calculate the next reminder for the selected day.
+  // It checks whether the day is Thursday (compost/recycle day) or every other Friday (garbage day).
   const calculateUpcomingReminder = (day) => {
-    const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
+    // Get the day of the week for the selected day.
+    const dayOfWeek = new Date(currentYear, currentMonth, day).getDay(); 
     
     // Check for compost and recycle bins
-    if (dayOfWeek === 4) { // Thursday
+    if (dayOfWeek === 4) { // If the selected day is Thursday (index 4), it returns the compost and recycle reminder.
       return { date: day, type: 'Compost and Recycle Bin', icon: [<FaRecycle />, <FaLeaf />], day: 'Thursday' };
-    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) { // Every other Friday
+    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) { // If the selected day is Friday (index 5) and falls on every other week, return the garbage bin reminder.
       return { date: day, type: 'Black Garbage Bin Collection', icon: <FaTrash />, day: 'Friday' };
     } else {
       return { date: day, type: 'No Collection', icon: null, day: '' };
-    }
+    }  // Otherwise, there is no collection on that day.
   };
 
   const handleNoteChange = (e) => setNotes(e.target.value);
@@ -77,7 +102,8 @@ const Calendar = () => {
       setShowNotes(false); // Optionally hide the notes input after saving
     }
   };
-
+ // Function to handle when a user clicks the edit button for a note.
+  // It loads the selected note into the input field for editing.
   const handleEditNote = (index) => {
     setNotes(savedNotes[index]);
     setEditingIndex(index);
@@ -121,7 +147,7 @@ const Calendar = () => {
     setTimeout(() => {
       setShowMonthPicker(false);
       setShowYearPicker(false);
-    }, 5000); // Change to 5000ms (5 seconds)
+    }, 3000); // Change to 3000ms (3 seconds)
   };
 
   return (
@@ -136,13 +162,15 @@ const Calendar = () => {
 
 
       <div className="monthly-overview-widget">
-        <h2>Monthly Schedule Overview</h2>
+        <h2>Monthly Schedule Overview</h2>  
+          {/* Display the upcoming reminder with the month name, date, type of collection, and icons. */}
         <p>Upcoming: {months[currentMonth]} {upcomingReminder.date}, {upcomingReminder.type} 6 AM {upcomingReminder.icon}</p>
         {savedNotes.length > 0 && <p>Notes: {savedNotes.join(', ')}</p>}
       </div>
 
       <div className="calendar-content">
         <div className="calendar-left-widget">
+          {/* Inspired by design seen here: https://dribbble.com/shots/8439006--Local-Autumn-Calendar-Events-Website */}
           <h3 className="month-date">{months[currentMonth]} {selectedDay}</h3>
           <h4 className="time-display">{getLocalTime()}</h4>
           <div className="class-list">
@@ -272,13 +300,14 @@ const Calendar = () => {
         {showNotes && (
           <div className="note-box">
             <textarea
-              className="note-input"
-              placeholder="Add your notes here..."
-              value={notes}
-              onChange={handleNoteChange}
-            />
-            <button className="save-btn" onClick={handleSaveNotes}>
-              {editingIndex !== null ? 'Update Note' : 'Save Note'}
+             className="note-input"
+             placeholder="Add your notes here..." // Placeholder text for the input.
+             value={notes} // Bind the input value to the notes state.
+             onChange={handleNoteChange} // Update notes state when the user types.
+           />
+           <button className="save-btn" onClick={handleSaveNotes}>
+             {/* Display 'Update Note' if editing, otherwise display 'Save Note'. */}
+             {editingIndex !== null ? 'Update Note' : 'Save Note'}
             </button>
             <div className="saved-notes">
               {savedNotes.map((note, index) => (

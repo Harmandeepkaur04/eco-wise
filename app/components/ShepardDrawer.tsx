@@ -9,19 +9,17 @@ import '@mantine/core/styles/Drawer.css';
 
 export default function ShepardDrawers() {
 
-    //Constant for Drawer component
     const [residentialOpened, { open: openResidential, close: closeResidential }] = useDisclosure(false);
     const [commercialOpened, { open: openCommercial, close: closeCommercial }] = useDisclosure(false);
 
-  // Logic to close one drawer when the other opens
     const handleOpenResidential = () => {
-      closeCommercial(); // Close the commercial drawer if it's open
-      openResidential();  // Open the residential drawer
+      closeCommercial();
+      openResidential();
     };
 
     const handleOpenCommercial = () => {
-      closeResidential(); // Close the residential drawer if it's open
-      openCommercial();   // Open the commercial drawer
+      closeResidential();
+      openCommercial();
     };
 
 
