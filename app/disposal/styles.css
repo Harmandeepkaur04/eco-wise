@@ -400,8 +400,8 @@
 .div-container h1 {
   font-size: large;
   text-align: center;
-  color: var(--div-container-text);
-  background-color: var(--drawer-bg);
+  color: #eaf1b1;
+  background-color: #102f15;
   padding: 5px 10px;
   border: #102f15;
   border-radius: 8px;
@@ -413,9 +413,9 @@
 
 .div-container ul {
   padding: 5px 10px;
-  background-color: var(--drawer-content-bg);
-  color: var(--drawer-bg);
-  border: solid var(--drawer-bg);
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: solid #102f15;
   border-radius: 8px;
   font-weight: bold;
   margin: 10px 20px;
