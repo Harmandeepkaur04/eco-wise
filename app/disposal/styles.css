@@ -176,7 +176,7 @@
 /*------------------------------------------------------------------------*/
 /* Drawer Contents Styling */
 .material-div {
-  background-color: var(--material-div-bg);
+  background-color: #728c5a;
   width: 225px;
   border-radius: 8px;
   text-align: center;
@@ -192,24 +192,24 @@
 
 .material-div .materials {
   font-size: large;
-  background-color: var(--drawer-bg);
-  color: var(--drawer-content-bg);
+  background-color: #102f15;
+  color: #eaf1b1;
   border-radius: 8px;
   padding: 5px 5px;
 }
 
 .item-list {
-  color: var(--drawer-content-bg);
+  color: #eaf1b1;
   text-align: left;
   overflow-y: auto;
   height: 150px;
   padding-right: 10px;
   scrollbar-width: thin;
-  scrollbar-color: var(--drawer-bg) transparent;
+  scrollbar-color: #102f15 transparent;
 }
 
 .item-list::-webkit-scrollbar {
-  width: 6px;
+  display: 6px;
 }
 
 .item-list::-webkit-scrollbar-track {
@@ -217,7 +217,7 @@
 }
 
 .item-list::-webkit-scrollbar-thumb {
-  background-color: var(--drawer-bg);
+  background-color: #102f15;
   border-radius: 10px;
 }
 
@@ -233,6 +233,7 @@
   width: 80px;
   margin-bottom: 10px;
 }
+
 
 /*------------------------------------------------------------------------*/
 /* SEARCH BAR STYLING */
