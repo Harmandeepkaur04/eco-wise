@@ -237,24 +237,24 @@
 /*------------------------------------------------------------------------*/
 /* SEARCH BAR STYLING */
 .autocomplete {
-  background-color: var(--autocomplete-bg);
-  border: 2px solid var(--autocomplete-bg);
+  background-color: #102f15;
+  border: 2px solid #102f15;
   border-radius: 8px;
-  color: var(--autocomplete-text);
+  color: #eaf1b1;
   padding: 10px;
   width: 100%;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .autocomplete input::placeholder {
-  color: var(--autocomplete-text);
+  color: #eaf1b1;
   opacity: 1;
 }
 
 .autocomplete input {
-  background-color: var(--autocomplete-input-bg);
-  color: var(--autocomplete-input-text);
-  border: 2px solid var(--autocomplete-input-text);
+  background-color: #728c5a;
+  color: #eaf1b1;
+  border: 2px solid #eaf1b1;
   border-radius: 8px;
   padding: 8px;
   width: 100%;
@@ -263,8 +263,8 @@
 }
 
 .autocomplete-dropdown {
-  background-color: var(--autocomplete-input-bg);
-  border: 2px solid var(--drawer-bg);
+  background-color: #728c5a;
+  border: 2px solid #102f15;
   border-radius: 8px;
   padding: 8px 0;
   max-height: 200px;
@@ -273,8 +273,8 @@
 }
 
 .autocomplete-item {
-  background-color: var(--autocomplete-input-bg);
-  color: var(--autocomplete-input-text);
+  background-color: #728c5a;
+  color: #eaf1b1;
   padding: 10px;
   cursor: pointer;
   font-family: 'Times New Roman', Times, serif;
@@ -282,8 +282,8 @@
 
 .autocomplete-item:hover,
 .autocomplete-item[data-hovered='true'] {
-  background-color: var(--drawer-bg);
-  color: var(--drawer-content-bg);
+  background-color: #102f15;
+  color: #eaf1b1;
 }
 
 .autocomplete-dropdown::-webkit-scrollbar {
@@ -295,14 +295,15 @@
 }
 
 .autocomplete-dropdown::-webkit-scrollbar-thumb {
-  background-color: var(--drawer-bg); /* Same scrollbar thumb color as the items */
+  background-color: #102f15; /* Same scrollbar thumb color as the items */
   border-radius: 10px; /* Rounded scrollbar thumb */
 }
 
 .autocomplete-dropdown {
   scrollbar-width: thin;
-  scrollbar-color: var(--drawer-bg) transparent;
+  scrollbar-color: #102f15 transparent;
 }
+
 
 /*------------------------------------------------------------------------*/
 /* DRAWER STYLING*/
