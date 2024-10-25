@@ -1,8 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import '../calendar/styles.css';
+import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
+import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio';
+ 
 
 const Calendar = () => {
   const { speak, isAudioOn, setIsAudioOn } = useAudio(); // Moved this inside the component to avoid execution error
