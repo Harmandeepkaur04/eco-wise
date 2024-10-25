@@ -80,7 +80,7 @@
   overflow-y: auto;
   max-height: 100%; /* Ensure it doesn't overflow */
   scrollbar-width: thin;
-  scrollbar-color: var(--drawer-bg) transparent;
+  scrollbar-color: #102f15 transparent;
 }
 
 .div-container {
