@@ -1,102 +1,174 @@
-/* MAIN PAGE STYLING */
-main {
-  color: #102f15 !important;
-  font-family: 'Times New Roman', Times, serif;
+/* Styling for the main container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-h2 {
-  font-size: xx-large;
+.main-title {
+  border: #eaf1b1;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #102f15;
+  font-size: 1.5rem;
+  color: #eaf1b1;
+  text-align: center;
+  padding: 15px;
+}
+
+.main-content {
   display: flex;
-  justify-content: center;
+  width: 100%; /* Full width for side-by-side layout */
+}
+
+/* Styling for the buttons */
+.button-container {
+  width: 20%; /* Fixed width for buttons */
+  display: flex;
+  flex-direction: column;
+  border: solid #102f15;
+  padding: 10px;
+  background-color: #728c5a;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Button styling */
+.nav-button {
+  margin-bottom: 10px;
   background-color: #102f15;
   color: #eaf1b1;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  border: 2px solid #728c5a;
   padding: 10px;
-  border-radius: 8px;
+  transition: background-color 0.3s;
 }
 
-/*------------------------------------------------------------------------*/
-/* DRAWER STYLING*/
-.drawer {
-  background-color: #102f15;
-  border: 2px solid #102f15;
-  border-radius: 8px;
+.nav-button:hover {
+  background-color: #728c5a;
   color: #102f15;
 }
 
-.drawer-content {
-  border: solid 5px #102f15;
+/* Styling for the content box */
+.content-box {
+  width: 80%; /* Remaining space for content */
+  height: 80vh;
   background-color: #eaf1b1;
+  border: solid #102f15;
   padding: 20px;
-  font-family: 'Times New Roman', Times, serif;
+  overflow: auto;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container for the content sections (locations + map) */
+.content-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 73vh; /* Allow full height */
+}
+
+.locations-container {
+  width: 50%; /* Take up half the space */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   overflow-y: auto;
-  height: 100vh;
+  max-height: 100%; /* Ensure it doesn't overflow */
   scrollbar-width: thin;
   scrollbar-color: #102f15 transparent;
 }
 
-.drawer-content::-webkit-scrollbar {
-  display: 6px;
+.div-container {
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  color: #eaf1b1;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  height: fit-content;
+  padding: 20px;
+}
+  
+/* Scrollable sections */
+.scrollable-section {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
 }
 
-.drawer-content::-webkit-scrollbar-track {
-  background: transparent;
+.scrollable-section::-webkit-scrollbar {
+  width: 6px;
 }
 
-.drawer-content::-webkit-scrollbar-thumb {
+.scrollable-section::-webkit-scrollbar-thumb {
   background-color: #102f15;
   border-radius: 10px;
 }
 
-.drawer-title {
-  font-size: x-large;
+/* Specific styling for div containers */
+
+
+/* Map section styling */
+.map-section {
+  width: 50%; /* Take up half the space */
+  height: 100%; /* Full height */
+  display: flex;
+  align-items: center;
+}
+
+.square-map-container {
+  width: 100%; /* Full width of map section */
+  height: 100%; /* Full height of map section */
+}
+
+.square-map {
+  width: 100%; /* Ensure map fills the section */
+  height: 100%; /* Ensure map fills the section */
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.div-container-2 {
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  color: #eaf1b1;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  height: 70vh;
+  padding: 20px;
+}
+
+
+/* Styling for holiday schedule table */
+.holiday-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.holiday-table th {
+  padding: 10px;
+  border: 3px solid #ebfadc;
+  border-radius: 8px;
   text-align: center;
   background-color: #102f15;
   color: #eaf1b1;
-  padding: 5px 10px;
+}
+
+.holiday-table td {
+  padding: 10px;
+  border: 3px solid #eaf1b1;
   border-radius: 8px;
-}
-
-.drawer-overlay {
-  backdrop-filter: blur(1px);
-  opacity: 0.55;
-}
-
-.button {
-  margin-left: 15px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: 2px solid #102f15;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-left: 25px;
-  width: 150px;
-}
-
-.button-2 {
-  margin-left: 15px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: 2px solid #102f15;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-left: 25px;
-  width: 250px;
-}
-
-.button:hover {
-  background-color: #102f15;
-  color: #eaf1b1;
-}
-
-.button-2:hover {
-  background-color: #102f15;
-  color: #eaf1b1;
+  text-align: center;
+  background-color: #728c5a;
+  color: #ebfadc;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
 }
 
 /*------------------------------------------------------------------------*/
@@ -232,117 +304,109 @@ h2 {
 }
 
 /*------------------------------------------------------------------------*/
-/* SCROLL BUTTON STYLING */
-.scroll-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.scroll-button {
-  background-color: #728c5a;
-  color: #eaf1b1;
-  border: 2px solid #102f15;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.scroll-button:hover {
+/* DRAWER STYLING*/
+.drawer {
   background-color: #102f15;
-}
-
-/*------------------------------------------------------------------------*/
-/* DIV FLEX STYLING */
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  flex-wrap: wrap;
-}
-
-.locations-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/*------------------------------------------------------------------------*/
-/* MAP STYLING */
-.map-container {
-  position: sticky;
-  top: 0;
-}
-
-.square-map-container {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-.square-map {
-  width: 94vh;
-  height: 100vh;
-  border: 3px solid #102f15;
+  border: 2px solid #102f15;
   border-radius: 8px;
-  margin-right: 15px;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  color: #102f15;
 }
+
+.drawer-content {
+  border: solid 5px #102f15;
+  background-color: #eaf1b1;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  overflow-y: auto;
+  height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.drawer-content::-webkit-scrollbar {
+  display: 6px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+  background-color: #102f15;
+  border-radius: 10px;
+}
+
+.drawer-title {
+  font-size: x-large;
+  text-align: center;
+  background-color: #102f15;
+  color: #eaf1b1;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.drawer-overlay {
+  backdrop-filter: blur(1px);
+  opacity: 0.55;
+}
+
 
 /*------------------------------------------------------------------------*/
 /* DIV STYLING */
-.div-container {
-  border: 3px solid #102f15;
-  border-radius: 8px;
-  width: 94vh;
-  height: 80vh;
-  background-color: #728c5a;
+
+.button {
   margin-left: 15px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 25px;
+  width: 160px;
+}
+
+.button-2 {
+  margin-left: 15px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 25px;
+  width: 255px;
+}
+
+.button:hover {
+  background-color: #102f15;
   color: #eaf1b1;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
 }
 
-.div-container-2{
-  border: 3px solid #102f15;
-  border-radius: 8px;
-  background-color: #728c5a;
+.button-2:hover { 
+  background-color: #102f15;
   color: #eaf1b1;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 20px 20px;
 }
 
-.div-2-title {
-  font-size: xxx-large;
-  text-align: center;
-}
 
-.div-2-txt {
-  font-size: x-large;
-  text-align: center;
-}
+/*------------------------------------------------------------------------*/
+/* DIV STYLING */
 
 .div-container h1 {
-  font-size: xx-large;
+  font-size: large;
   text-align: center;
   color: #eaf1b1;
   background-color: #102f15;
   padding: 5px 10px;
+  border: #102f15;
+  border-radius: 8px;
   
 }
 
-.div-container h3 {
-  font-size: x-large;
-  margin-left: 5px;
-}
-
 .div-container p {
-  margin-left: 15px;
-  font-size: x-large;
+  font-size: large;
 }
 
 .div-container ul {
@@ -357,42 +421,38 @@ h2 {
 
 .address {
   padding: 5px 10px;
-  background-color: #eaf1b1;
-  color: #102f15;
+  background-color: #102f15;
+  color: #eaf1b1;
   border: solid #102f15;
   border-radius: 8px;
   margin: 10px 20px;
 }
 
-/*------------------------------------------------------------------------*/
-/* TABLE STYLING */
-.table-container {
-  width: 95%;
-  margin-top: 15px;
-  margin-left: 36px;
-  border-collapse: collapse;
+.div-container-2{
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px 20px;
+  height: fit-content;
 }
 
-.table-container th {
-  position: sticky;
-  top: 0;
-  padding: 10px;
-  border: 3px solid #ebfadc;
-  border-radius: 8px;
+.div-2-title {
+  font-size: xx-large;
   text-align: center;
   background-color: #102f15;
   color: #eaf1b1;
-  font-size: large;
 }
 
-.table-container td {
-  padding: 10px;
-  border: 3px solid #eaf1b1;
-  border-radius: 8px;
+.div-2-txt {
+  background-color: #eaf1b1;
+  color: #102f15;
+  padding: 15px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-size: large;
   text-align: center;
-  background-color: #728c5a;
-  color: #ebfadc;
-  font-size: medium;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
 }
 
