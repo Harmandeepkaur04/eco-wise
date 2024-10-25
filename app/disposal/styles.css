@@ -1,175 +1,186 @@
 
-:root {
-  --bg-color: #ffffff;
-  --text-color: #102f15; /* Dark Green */
-  --header-bg: #102f15; /* Dark Green */
-  --header-text: #eaf1b1; /* Light Pastel Green */
-  --drawer-bg: #102f15; /* Dark Green */
-  --drawer-content-bg: #eaf1b1; /* Light Pastel Green */
-  --drawer-content-text: #102f15; /* Dark Green */
-  --button-bg: #eaf1b1; /* Light Pastel Green */
-  --button-text: #102f15; /* Dark Green */
-  --button-hover-bg: #102f15; /* Dark Green */
-  --button-hover-text: #eaf1b1; /* Light Pastel Green */
-  --material-div-bg: #728c5a; /* Green */
-  --material-div-text: #eaf1b1; /* Light Pastel Green */
-  --autocomplete-bg: #102f15; /* Dark Green */
-  --autocomplete-text: #eaf1b1; /* Light Pastel Green */
-  --autocomplete-input-bg: #728c5a; /* Green */
-  --autocomplete-input-text: #eaf1b1; /* Light Pastel Green */
-  --scroll-button-bg: #728c5a; /* Green */
-  --scroll-button-text: #eaf1b1; /* Light Pastel Green */
-  --scroll-button-hover-bg: #102f15; /* Dark Green */
-  --map-border: #102f15; /* Dark Green */
-  --div-container-bg: #728c5a; /* Green */
-  --div-container-text: #eaf1b1; /* Light Pastel Green */
-  --table-header-bg: #102f15; /* Dark Green */
-  --table-header-text: #eaf1b1; /* Light Pastel Green */
-  --table-cell-bg: #728c5a; /* Green */
-  --table-cell-text: #ebfadc; /* Light Green */
-}
-
-[data-theme="dark"] {
-  --bg-color: #333333;
-  --text-color: #eaf1b1; /* Light Pastel Green */
-  --header-bg: #444444; /* Darker background */
-  --header-text: #cccccc; /* Light text */
-  --drawer-bg: #444444; /* Darker background */
-  --drawer-content-bg: #555555; /* Darker background */
-  --drawer-content-text: #eaf1b1; /* Light Pastel Green */
-  --button-bg: #666666; /* Darker background */
-  --button-text: #eaf1b1; /* Light Pastel Green */
-  --button-hover-bg: #777777; /* Slightly darker on hover */
-  --button-hover-text: #ffffff; /* Light text */
-  --material-div-bg: #666666; /* Darker background */
-  --material-div-text: #eaf1b1; /* Light Pastel Green */
-  --autocomplete-bg: #555555; /* Darker background */
-  --autocomplete-text: #eaf1b1; /* Light Pastel Green */
-  --autocomplete-input-bg: #666666; /* Darker background */
-  --autocomplete-input-text: #eaf1b1; /* Light Pastel Green */
-  --scroll-button-bg: #666666; /* Darker background */
-  --scroll-button-text: #eaf1b1; /* Light Pastel Green */
-  --scroll-button-hover-bg: #777777; /* Slightly darker on hover */
-  --map-border: #555555; /* Darker background */
-  --div-container-bg: #666666; /* Darker background */
-  --div-container-text: #eaf1b1; /* Light Pastel Green */
-  --table-header-bg: #555555; /* Darker background */
-  --table-header-text: #eaf1b1; /* Light Pastel Green */
-  --table-cell-bg: #666666; /* Darker background */
-  --table-cell-text: #cccccc; /* Light text */
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  margin: 0;
-  padding: 0;
-}
-
-
-main {
-  color: var(--text-color) !important;
-  font-family: 'Times New Roman', Times, serif;
-}
-
-h2 {
-  font-size: xx-large;
+/* Styling for the main container */
+.main-container {
   display: flex;
-  justify-content: center;
-  background-color: var(--header-bg);
-  color: var(--header-text);
-  margin-bottom: 15px;
-  margin-top: 15px;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-/*------------------------------------------------------------------------*/
-/* DRAWER STYLING */
-.drawer {
-  background-color: var(--drawer-bg);
-  border: 2px solid var(--drawer-bg);
-  border-radius: 8px;
-  color: var(--drawer-bg);
-}
-
-.drawer-content {
-  border: solid 5px var(--drawer-bg);
-  background-color: var(--drawer-content-bg);
+  flex-direction: column;
+  width: 100%;
   padding: 20px;
+  box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
-  overflow-y: auto;
-  height: 100vh;
-  scrollbar-width: thin;
-  scrollbar-color: var(--drawer-bg) transparent;
 }
 
-.drawer-content::-webkit-scrollbar {
+.main-title {
+  border: #eaf1b1;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #102f15;
+  font-size: 1.5rem;
+  color: #eaf1b1;
+  text-align: center;
+  padding: 20px;
+  width: 90%;
+  margin-left: 10vh;
+}
+
+.main-content {
+  display: flex;
+  width: 100%; /* Full width for side-by-side layout */
+}
+
+/* Styling for the buttons */
+.button-container {
+  width: 20%; /* Fixed width for buttons */
+  display: flex;
+  flex-direction: column;
+  border: solid #102f15;
+  margin-left: 10vh;
+  padding: 10px;
+  background-color: #728c5a;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Button styling */
+.nav-button {
+  margin-bottom: 10px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+/* Styling for the content box */
+.content-box {
+  width: 70%; /* Remaining space for content */
+  height: 80vh;
+  background-color: #eaf1b1;
+  border: solid #102f15;
+  padding: 20px;
+  overflow: auto;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container for the content sections (locations + map) */
+.content-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  height: 73vh; /* Allow full height */
+}
+
+.locations-container {
+  width: 50%; /* Take up half the space */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 100%; /* Ensure it doesn't overflow */
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.div-container {
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  color: #eaf1b1;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  height: fit-content;
+  padding: 20px;
+}
+  
+/* Scrollable sections */
+.scrollable-section {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.scrollable-section::-webkit-scrollbar {
   width: 6px;
 }
 
-.drawer-content::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.drawer-content::-webkit-scrollbar-thumb {
-  background-color: var(--drawer-bg);
+.scrollable-section::-webkit-scrollbar-thumb {
+  background-color: #102f15;
   border-radius: 10px;
 }
 
-.drawer-title {
-  font-size: x-large;
-  text-align: center;
-  background-color: var(--drawer-bg);
-  color: var(--drawer-content-bg);
-  padding: 5px 10px;
+/* Specific styling for div containers */
+
+
+/* Map section styling */
+.map-section {
+  width: 50%; /* Take up half the space */
+  height: 100%; /* Full height */
+  display: flex;
+  align-items: center;
+}
+
+.square-map-container {
+  width: 100%; /* Full width of map section */
+  height: 100%; /* Full height of map section */
+}
+
+.square-map {
+  width: 100%; /* Ensure map fills the section */
+  height: 100%; /* Ensure map fills the section */
+  border: 3px solid #102f15;
   border-radius: 8px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
 }
 
-.drawer-overlay {
-  backdrop-filter: blur(1px);
-  opacity: 0.55;
+.div-container-2 {
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  color: #eaf1b1;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  height: 70vh;
+  padding: 20px;
 }
 
-.button {
-  margin-left: 15px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: 2px solid var(--drawer-bg);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 150px;
+
+/* Styling for holiday schedule table */
+.holiday-table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.button-2 {
-  margin-left: 15px;
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: 2px solid var(--drawer-bg);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  width: 250px;
+.holiday-table th {
+  padding: 10px;
+  border: 3px solid #ebfadc;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #102f15;
+  color: #eaf1b1;
 }
 
-.button:hover {
-  background-color: var(--button-hover-bg);
-  color: var(--button-hover-text);
-}
-
-.button-2:hover {
-  background-color: var(--button-hover-bg);
-  color: var(--button-hover-text);
+.holiday-table td {
+  padding: 10px;
+  border: 3px solid #eaf1b1;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #728c5a;
+  color: #ebfadc;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
 }
 
 /*------------------------------------------------------------------------*/
 /* Drawer Contents Styling */
 .material-div {
-  background-color: var(--material-div-bg);
+  background-color: #728c5a;
   width: 225px;
   border-radius: 8px;
   text-align: center;
@@ -185,24 +196,24 @@ h2 {
 
 .material-div .materials {
   font-size: large;
-  background-color: var(--drawer-bg);
-  color: var(--drawer-content-bg);
+  background-color: #102f15;
+  color: #eaf1b1;
   border-radius: 8px;
   padding: 5px 5px;
 }
 
 .item-list {
-  color: var(--drawer-content-bg);
+  color: #eaf1b1;
   text-align: left;
   overflow-y: auto;
   height: 150px;
   padding-right: 10px;
   scrollbar-width: thin;
-  scrollbar-color: var(--drawer-bg) transparent;
+  scrollbar-color: #102f15 transparent;
 }
 
 .item-list::-webkit-scrollbar {
-  width: 6px;
+  display: 6px;
 }
 
 .item-list::-webkit-scrollbar-track {
@@ -210,7 +221,7 @@ h2 {
 }
 
 .item-list::-webkit-scrollbar-thumb {
-  background-color: var(--drawer-bg);
+  background-color: #102f15;
   border-radius: 10px;
 }
 
@@ -227,27 +238,28 @@ h2 {
   margin-bottom: 10px;
 }
 
+
 /*------------------------------------------------------------------------*/
 /* SEARCH BAR STYLING */
 .autocomplete {
-  background-color: var(--autocomplete-bg);
-  border: 2px solid var(--autocomplete-bg);
+  background-color: #102f15;
+  border: 2px solid #102f15;
   border-radius: 8px;
-  color: var(--autocomplete-text);
+  color: #eaf1b1;
   padding: 10px;
   width: 100%;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .autocomplete input::placeholder {
-  color: var(--autocomplete-text);
+  color: #eaf1b1;
   opacity: 1;
 }
 
 .autocomplete input {
-  background-color: var(--autocomplete-input-bg);
-  color: var(--autocomplete-input-text);
-  border: 2px solid var(--autocomplete-input-text);
+  background-color: #728c5a;
+  color: #eaf1b1;
+  border: 2px solid #eaf1b1;
   border-radius: 8px;
   padding: 8px;
   width: 100%;
@@ -256,8 +268,8 @@ h2 {
 }
 
 .autocomplete-dropdown {
-  background-color: var(--autocomplete-input-bg);
-  border: 2px solid var(--drawer-bg);
+  background-color: #728c5a;
+  border: 2px solid #102f15;
   border-radius: 8px;
   padding: 8px 0;
   max-height: 200px;
@@ -266,8 +278,8 @@ h2 {
 }
 
 .autocomplete-item {
-  background-color: var(--autocomplete-input-bg);
-  color: var(--autocomplete-input-text);
+  background-color: #728c5a;
+  color: #eaf1b1;
   padding: 10px;
   cursor: pointer;
   font-family: 'Times New Roman', Times, serif;
@@ -275,8 +287,8 @@ h2 {
 
 .autocomplete-item:hover,
 .autocomplete-item[data-hovered='true'] {
-  background-color: var(--drawer-bg);
-  color: var(--drawer-content-bg);
+  background-color: #102f15;
+  color: #eaf1b1;
 }
 
 .autocomplete-dropdown::-webkit-scrollbar {
@@ -288,132 +300,126 @@ h2 {
 }
 
 .autocomplete-dropdown::-webkit-scrollbar-thumb {
-  background-color: var(--drawer-bg); /* Same scrollbar thumb color as the items */
+  background-color: #102f15; /* Same scrollbar thumb color as the items */
   border-radius: 10px; /* Rounded scrollbar thumb */
 }
 
 .autocomplete-dropdown {
   scrollbar-width: thin;
-  scrollbar-color: var(--drawer-bg) transparent;
+  scrollbar-color: #102f15 transparent;
 }
+
 
 /*------------------------------------------------------------------------*/
-/* SCROLL BUTTON STYLING */
-.scroll-buttons {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.scroll-button {
-  background-color: var(--scroll-button-bg);
-  color: var(--scroll-button-text);
-  border: 2px solid var(--drawer-bg);
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.scroll-button:hover {
-  background-color: var(--scroll-button-hover-bg);
-}
-
-/*------------------------------------------------------------------------*/
-/* DIV FLEX STYLING */
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.locations-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/*------------------------------------------------------------------------*/
-/* MAP STYLING */
-.map-container {
-  position: sticky;
-  top: 0;
-}
-
-.square-map-container {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-}
-
-.square-map {
-  width: 94vh;
-  height: 100vh;
-  border: 3px solid var(--map-border);
+/* DRAWER STYLING*/
+.drawer {
+  background-color: #102f15;
+  border: 2px solid #102f15;
   border-radius: 8px;
-  margin-right: 15px;
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  color: #102f15;
 }
+
+.drawer-content {
+  border: solid 5px #102f15;
+  background-color: #eaf1b1;
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  overflow-y: auto;
+  height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.drawer-content::-webkit-scrollbar {
+  display: 6px;
+}
+
+.drawer-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.drawer-content::-webkit-scrollbar-thumb {
+  background-color: #102f15;
+  border-radius: 10px;
+}
+
+.drawer-title {
+  font-size: x-large;
+  text-align: center;
+  background-color: #102f15;
+  color: #eaf1b1;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.drawer-overlay {
+  backdrop-filter: blur(1px);
+  opacity: 0.55;
+}
+
 
 /*------------------------------------------------------------------------*/
 /* DIV STYLING */
-.div-container {
-  border: 3px solid var(--map-border);
-  border-radius: 8px;
-  width: 94vh;
-  height: 80vh;
-  background-color: var(--div-container-bg);
+
+.button {
   margin-left: 15px;
-  color: var(--div-container-text);
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-  text-align: center;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 25px;
+  width: 165px;
 }
 
-.div-container-2 {
-  border: 3px solid var(--map-border);
-  border-radius: 8px;
-  background-color: var(--div-container-bg);
-  color: var(--div-container-text);
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
-  margin-top: 30px;
-  margin-bottom: 30px;
-  padding: 20px 20px;
+.button-2 {
+  margin-left: 15px;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 25px;
+  width: 255px;
 }
 
-.div-2-title {
-  font-size: xxx-large;
-  text-align: center;
+.button:hover {
+  background-color: #102f15;
+  color: #eaf1b1;
 }
 
-.div-2-txt {
-  font-size: x-large;
-  text-align: center;
+.button-2:hover { 
+  background-color: #102f15;
+  color: #eaf1b1;
 }
+
+
+/*------------------------------------------------------------------------*/
+/* DIV STYLING */
 
 .div-container h1 {
-  font-size: xx-large;
+  font-size: large;
   text-align: center;
-  color: var(--div-container-text);
-  background-color: var(--drawer-bg);
+  color: #eaf1b1;
+  background-color: #102f15;
   padding: 5px 10px;
-}
-
-.div-container h3 {
-  font-size: x-large;
-  margin-left: 5px;
+  border: #102f15;
+  border-radius: 8px;
 }
 
 .div-container p {
-  margin-left: 15px;
-  font-size: x-large;
+  font-size: large;
 }
 
 .div-container ul {
   padding: 5px 10px;
-  background-color: var(--drawer-content-bg);
-  color: var(--drawer-bg);
-  border: solid var(--drawer-bg);
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: solid #102f15;
   border-radius: 8px;
   font-weight: bold;
   margin: 10px 20px;
@@ -421,43 +427,39 @@ h2 {
 
 .address {
   padding: 5px 10px;
-  background-color: var(--drawer-content-bg);
-  color: var(--drawer-bg);
-  border: solid var(--drawer-bg);
+  background-color: #102f15;
+  color: #eaf1b1;
+  border: solid #102f15;
   border-radius: 8px;
   margin: 10px 20px;
 }
 
-/*------------------------------------------------------------------------*/
-/* TABLE STYLING */
-.table-container {
-  width: 95%;
-  margin-top: 15px;
-  margin-left: 36px;
-  border-collapse: collapse;
-}
-
-.table-container th {
-  position: sticky;
-  top: 0;
-  padding: 10px;
-  border: 3px solid var(--table-header-text);
+.div-container-2{
+  border: 3px solid #102f15;
   border-radius: 8px;
-  text-align: center;
-  background-color: var(--table-header-bg);
-  color: var(--table-header-text);
-  font-size: large;
-}
-
-.table-container td {
-  padding: 10px;
-  border: 3px solid var(--table-header-text);
-  border-radius: 8px;
-  text-align: center;
-  background-color: var(--table-cell-bg);
-  color: var(--table-cell-text);
-  font-size: medium;
+  background-color: #728c5a;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px 20px;
+  height: fit-content;
+}
+
+.div-2-title {
+  font-size: xx-large;
+  text-align: center;
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+.div-2-txt {
+  background-color: #eaf1b1;
+  color: #102f15;
+  padding: 15px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-size: large;
+  text-align: center;
 }
 /*Audio icon */
 .audio-icon{
@@ -465,4 +467,8 @@ h2 {
   top: 100px;
   right: 30px;
   color: black;
+}
+
+.audio-button {
+  color: #102f15;
 }

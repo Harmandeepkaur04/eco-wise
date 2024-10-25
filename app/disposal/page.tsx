@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
-import { Button, Text, Table, Container, Paper, Group, Title, Grid, Drawer, Box, } from "@mantine/core";
+import { Button, Text, Table, Container, ScrollArea, Title, Box, Stack } from "@mantine/core";
 import '@mantine/core/styles/Overlay.css';
 import '@mantine/core/styles/ModalBase.css';
 import '@mantine/core/styles/CloseButton.css';
@@ -32,110 +32,57 @@ const elements = [
 
 export default function Disposal() {
 
-    const tableRef = useRef(null); // Create a ref for the table
 
-    const { speak, isAudioOn, setIsAudioOn } = useAudio();
+  const [activeContent, setActiveContent] = useState('locations');
 
-    useEffect(() => {
-      speak('Welcome to the Disposal page. Here you can find all nearby recycling centers and there hours of operations.');
-    }, [isAudioOn]);
-  
-    const handleAudioToggle = () => {
-      console.log('Audio toggle clicked');
-      setIsAudioOn((prev) => !prev);
-    };
-  
-    // Function to scroll to the table
-    const scrollToTable = () => {
-      tableRef.current.scrollIntoView({ behavior: "smooth" });
-    };
+  const renderContent = () => {
+    switch (activeContent) {
+      case 'locations':
+        return (
+          <Box className="content-container">
+            <ScrollArea className="locations-container">
+              <div className="div-container">
+                <Title component="h1">East Calgary Landfill and Eco Centre</Title>
+                <br />
+                <Text component="p">Materials Accepted:</Text>
+                <Drawers /><br />
+                <Text component="p">Hours of Operation (April - October):</Text>
+                <ul>
+                  <li>Monday: 6 am - 5 pm</li>
+                  <li>Tuesday: 6 am - 5 pm</li>
+                  <li>Wednesday: 6 am - 5 pm</li>
+                  <li>Thursday: 6 am - 5 pm</li>
+                  <li>Friday: 6 am - 5 pm</li>
+                  <li>Saturday: 7:30 am - 5 pm</li>
+                  <li>Sunday: 7:30 am - 5 pm</li>
+                </ul><br />
+                <Text className="address">Address: 3020 68 Street SE</Text>
+              </div><br />
+              <div className="div-container">
+                <Title component="h1">Spyhill Landfill and Eco Centre</Title>
+                <br />
+                <Text component="p">Materials Accepted:</Text>
+                <Drawers /><br />
+                <Text component="p">Hours of Operation (Year Round):</Text>
+                <ul>
+                  <li>Monday: 7:30 am - 5 pm</li>
+                  <li>Tuesday: 7:30 am - 5 pm</li>
+                  <li>Wednesday: 7:30 am - 5 pm</li>
+                  <li>Thursday: 7:30 am - 5 pm</li>
+                  <li>Friday: 7:30 am - 5 pm</li>
+                  <li>Saturday: 7:30 am - 5 pm</li>
+                  <li>Sunday: CLOSED</li>
+                </ul><br />
+                <Text className="address">Address: 11808 69 Street NW</Text>
+              </div>
+              <br />
+              <div className="div-container">
 
-    //Constant for table
-    const rows = elements.map((element) => (
-      <Table.Tr key={element.Holiday}>
-        <Table.Td>{element.Holiday}</Table.Td>
-        <Table.Td>{element.Date}</Table.Td>
-        <Table.Td>{element.East}</Table.Td>
-        <Table.Td>{element.Spyhill}</Table.Td>
-        <Table.Td>{element.Shepard}</Table.Td>
-      </Table.Tr>
-    ));
-
-  return (
-    <Container component="main">
-      <Title component="h2">Waste Management and Recycling Locations
-        {/* Audio Control Icon */}
-      <Group className='audio-icon'>
-        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
-          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-        </div>
-      </Group>
-      </Title>
-      
-
-      <div className="scroll-buttons">
-            <button onClick={scrollToTable} className="scroll-button">
-              View Holiday Hours
-            </button>
-          </div>
-
-      
-
-      {/* Reference: Info provided by https://www.calgary.ca/waste/drop-off/landfill-locations-and-hours.html */}
-      <div className="flex-container">
-        <div className="locations-container">
-          <div className="div-container">
-            <Title component="h1">East Calgary Landfill and Eco Centre</Title><br />
-            <Text component="p">Materials Accepted:</Text>
-            <div>
-              <Drawers />
-            </div>
-      
-            <br />
-            <Text component="p">Hours of Operation (April - October):</Text>
-            <ul>
-              <li>Monday: 6 am - 5 pm</li>
-              <li>Tuesday: 6 am - 5 pm</li>
-              <li>Wednesday: 6 am - 5 pm</li>
-              <li>Thursday: 6 am - 5 pm</li>
-              <li>Friday: 6 am - 5 pm</li>
-              <li>Saturday: 7:30 am - 5 pm</li>
-              <li>Sunday: 7:30 am - 5 pm</li>
-            </ul>
-            <br />
-            <Text component="p">Address:</Text>
-            <Text className="address">3020 68 Street SE</Text>
-          </div>
-          <div className="div-container">
-            <Title component="h1">Spyhill Landfill and Eco Centre</Title><br />
-            <Text component="p">Materials Accepted:</Text>
-            <div>
-              <Drawers />
-            </div>
-
-            <br />
-            <Text component="p">Hours of Operation (Year Round):</Text>
-            <ul>
-              <li>Monday: 7:30 am - 5 pm</li>
-              <li>Tuesday: 7:30 am - 5 pm</li>
-              <li>Wednesday: 7:30 am - 5 pm</li>
-              <li>Thursday: 7:30 am - 5 pm</li>
-              <li>Friday: 7:30 am - 5 pm</li>
-              <li>Saturday: 7:30 am - 5 pm</li>
-              <li>Sunday: CLOSED</li>
-            </ul>
-            <br />
-            <Text component="p">Address:</Text> 
-            <Text className="address">11808 69 Street NW</Text>
-          </div>
-          <div className="div-container">
             <Title component="h1">Shepard Landfill and Eco Centre</Title><br />
             <Text component="p">Materials Accepted:</Text>
             <div>
               <ShepardDrawers />
-            </div>
-
-            <br />
+            </div><br />
             <Text component="p">Hours of Operation (Year Round):</Text>
             <ul>
               <li>Monday: 7:30 am - 5 pm</li>
@@ -145,19 +92,19 @@ export default function Disposal() {
               <li>Friday: 7:30 am - 5 pm</li>
               <li>Saturday: 7:30 am - 5 pm</li>
               <li>Sunday: CLOSED</li>
-            </ul>
-            <br />
-            <Text component="p">Address:</Text>
-            <Text className="address">12111 68 Street SE</Text>
+            </ul> <br />
+            <Text className="address">Address: 12111 68 Street SE</Text>
           </div>
-        </div>
-
-        <div className="map-container">
-          <GoogleMaps />
-        </div>
-      </div>
-
-      <div className="div-container-2">
+          </ScrollArea>
+            <Box className="map-section">
+              <GoogleMaps />
+            </Box>
+          </Box>
+        );
+      case 'information':
+        return (
+          <ScrollArea className="scrollable-section">
+            <div className="div-container-2">
         <Title className="div-2-title">Why use an Eco Centre?</Title>
         <Text className="div-2-txt">It is a convenient way to recycle, reuse and dispose of your old and unwanted household items. 
           The user-friendly locations makes it safe and easy to drop off materials. 
@@ -176,9 +123,12 @@ export default function Disposal() {
           and large amounts of household waste.</Text>
 
       </div>
-      <Title component="h2">Holiday Hours</Title>
-
-      <Table ref={tableRef} className="table-container" stickyHeader stickyHeaderOffset={60}>
+          </ScrollArea>
+        );
+      case 'holiday-schedule':
+        return (
+          <ScrollArea className="scrollable-section">
+            <Table className="holiday-table">
       <Table.Thead>
         <Table.Tr>
           <Table.Th>Holiday</Table.Th>
@@ -190,7 +140,71 @@ export default function Disposal() {
       </Table.Thead>
       <Table.Tbody>{rows}</Table.Tbody>
     </Table>
+          </ScrollArea>
+        );
+      default:
+        return null;
+    }
+  };
 
-    </Container>
-  );
+
+  //---------------------------------------------------------------------------------------------------------------
+
+     // State for audio functionality
+  const [isAudioOn, setIsAudioOn] = useState(true);
+  
+  // Function to toggle audio
+  const toggleAudio = () => {
+    setIsAudioOn((prev) => !prev);
+  };
+
+  // Audio speak function
+  const speak = (message) => {
+    if (isAudioOn) {
+      const speech = new SpeechSynthesisUtterance(message);
+      window.speechSynthesis.speak(speech);
+    }
+  };
+
+  // Use effect for welcome message
+  useEffect(() => {
+    speak('Welcome to the Disposal page. Here you can nereby recycling locations,their contacts and hours of operation.');
+  }, [isAudioOn]); // Trigger when isAudioOn changes
+  
+    //Constant for table
+    const rows = elements.map((element) => (
+      <Table.Tr key={element.Holiday}>
+        <Table.Td>{element.Holiday}</Table.Td>
+        <Table.Td>{element.Date}</Table.Td>
+        <Table.Td>{element.East}</Table.Td>
+        <Table.Td>{element.Spyhill}</Table.Td>
+        <Table.Td>{element.Shepard}</Table.Td>
+      </Table.Tr>
+    ));
+
+return (
+  <Container className="main-container">
+    {/* Title component at the top */}
+    <Title order={2} className="main-title">Waste Management and Recycling Locations</Title>
+
+    {/* Main content container for side-by-side layout */}
+    <Box className="main-content">
+      {/* Left side: Navigation buttons */}
+      <Stack className="button-container">
+        <Button className="nav-button" onClick={() => setActiveContent('locations')}>Locations</Button>
+        <Button className="nav-button" onClick={() => setActiveContent('information')}>Information</Button>
+        <Button className="nav-button" onClick={() => setActiveContent('holiday-schedule')}>Holiday Schedule</Button>
+        <Button onClick={toggleAudio} className="audio-button">
+          {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
+        </Button>
+      </Stack>
+
+      {/* Right side: Content box */}
+      <Box className="content-box">
+        {renderContent()}
+      </Box>
+    </Box>
+  </Container>
+);
+
 }
