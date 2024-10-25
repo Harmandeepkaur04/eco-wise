@@ -3,7 +3,7 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -16,7 +16,9 @@
   font-size: 1.5rem;
   color: #eaf1b1;
   text-align: center;
-  padding: 15px;
+  padding: 20px;
+  width: 90%;
+  margin-left: 10vh;
 }
 
 .main-content {
@@ -30,7 +32,7 @@
   display: flex;
   flex-direction: column;
   border: solid #102f15;
-
+  margin-left: 10vh;
   padding: 10px;
   background-color: #728c5a;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
@@ -54,7 +56,7 @@
 
 /* Styling for the content box */
 .content-box {
-  width: 80%; /* Remaining space for content */
+  width: 70%; /* Remaining space for content */
   height: 80vh;
   background-color: #eaf1b1;
   border: solid #102f15;
@@ -368,7 +370,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-left: 25px;
-  width: 160px;
+  width: 165px;
 }
 
 .button-2 {
