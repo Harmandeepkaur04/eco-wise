@@ -9,11 +9,11 @@ import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 // https://youtu.be/BN_wfeG47oQ?si=3SoCrqNoRjMXXbzl
 const Calendar = () => {
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
-  const today = new Date();
+  const today = new Date(); 
 
   // A function to calculate the number of days in a given month and year.
   // It creates a new Date object, where 'month + 1' points to the next month, and 0 gives the last day of the previous month
-  const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
+  const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate(); // 
   // State to store the notes entered by the user in the input field.
   const [notes, setNotes] = useState('');
   
@@ -95,7 +95,7 @@ const Calendar = () => {
   };
 
   const handleDeleteNote = (index) => {
-    const updatedNotes = savedNotes.filter((_, i) => i !== index);
+    const updatedNotes = savedNotes.filter((_,     i) => i !== index);
     setSavedNotes(updatedNotes);
   };
 
