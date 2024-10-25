@@ -182,15 +182,6 @@ export default function Disposal() {
       </Table.Tr>
     ));
 
-
-
-
-
-
-
-/*------------------------------------------------------------------------------------------------------------------*/
-
-
 return (
   <Container className="main-container">
     {/* Title component at the top */}
