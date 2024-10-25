@@ -81,11 +81,12 @@ body {
 
 /* General styling */
 .calendar-container {
+  margin-top: 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-top: 100px;
   padding: 20px;
@@ -418,8 +419,8 @@ body {
   margin-top: 20px;
 }
 
-/* Button to toggle note input visibility */
-.toggle-add-note-btn {
+/* Add Notes and Event Button */
+.toggle-add-note-btn, .toggle-add-event-btn {
   background-color: #728C5A;
   color: #EAF1B1;
   border: none;
@@ -428,29 +429,30 @@ body {
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s;
-  margin-top: 10px;
 }
 
-.toggle-add-note-btn:hover {
+.toggle-add-note-btn:hover, .toggle-add-event-btn:hover {
   background-color: #556B2F;
 }
 
-/* Note input container with fade-in and fade-out animations */
-.note-input-container {
+/* Note and Event Input Fields */
+.note-input-container, .event-input-container {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column; /* Arrange inputs in a column */
+  align-items: flex-start;
   margin-top: 10px;
-  width: 74%;
-  animation: fadeInDown 0.5s forwards; /* Fade in by default */
+  width: 70%; /* Match both Add Notes and Add Event input widths */
+  animation: fadeInDown 0.5s forwards;
 }
 
-.note-input-container.fade-out {
-  animation: fadeOutUp 0.5s forwards; /* Fade out on cancel */
+.note-input-container.fade-out, .event-input-container.fade-out {
+  animation: fadeOutUp 0.5s forwards;
 }
 
-.note-input {
-  width: 95%;
+.note-input, .event-input-container input, .event-input-container textarea {
+  width: 100%;
+  margin-bottom: 10px; /* Add space between input fields */
   padding: 8px;
   padding-right: 40px;
   border-radius: 5px;
@@ -460,11 +462,16 @@ body {
   font-size: 16px;
 }
 
-.add-note-btn {
+/* Add Button inside the Description Textarea */
+.event-input-container textarea {
+  padding-right: 50px; /* Space for the add button */
+  height: 100px; /* Adjust height of the description box */
+}
+
+.add-event-btn {
   position: absolute;
-  right: 40px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 10px; /* Position button inside the textarea */
+  bottom: 10px;
   background-color: transparent;
   color: #102F15;
   border: none;
@@ -473,43 +480,74 @@ body {
   padding: 0;
 }
 
-.add-note-btn:hover {
+.add-event-btn:hover {
   color: #556B2F;
 }
 
-/* Notes list */
-.notes-list {
-  margin-top: 15px;
-}
-
-/* Saved Notes */
-.saved-note {
+/* Saved Event Layout */
+.saved-event {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   padding: 8px;
-  background-color: #728C5A;
-  color: #EAF1B1;
+  background-color: #728C5A; /* Same background as the notes */
+  color: #EAF1B1; /* Same text color as the notes */
   border-radius: 5px;
   margin-bottom: 5px;
-  width: 70%;
-  border: 1px solid #D1E6A7;
+  width: 70%; /* Matching the width of the input containers */
+  border: 1px solid #D1E6A7; /* Same border as the notes */
   position: relative;
   font-size: 80%;
+}
+
+/* Event Title and Date */
+.event-title-date {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Event Title at the Top Left */
+.event-title {
+  font-weight: bold;
+  text-align: left;
+}
+
+/* Event Date at the Top Right Corner */
+.event-date {
+  position: absolute; /* Absolute positioning to place it at the corner */
+  top: 8px;
+  right: 8px;
+  font-size: 14px;
+  color: #D1E6A7;
+}
+
+/* Event Description at the Bottom */
+.event-description {
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: left;
+  color: #EAF1B1;
 }
 
 /* Hide buttons initially */
 .note-buttons {
   display: none;
   gap: 10px;
+  position: absolute;
+  bottom: 10px; /* Positioned at the bottom right */
+  right: 10px;
 }
 
 /* Show buttons on hover */
-.saved-note:hover .note-buttons {
+.saved-event:hover .note-buttons {
   display: flex;
+  justify-content: flex-end;
 }
 
-/* Edit and Delete buttons styling */
+/* Edit and Delete buttons */
 .edit-btn, .delete-btn {
   background: transparent;
   border: none;
@@ -520,6 +558,27 @@ body {
 
 .edit-btn:hover, .delete-btn:hover {
   color: #FF6347;
+}
+
+/* Saved Notes Section (unchanged) */
+.saved-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: #728C5A; /* Same background */
+  color: #EAF1B1; /* Same text color */
+  border-radius: 5px;
+  margin-bottom: 5px;
+  width: 70%; /* Same width */
+  border: 1px solid #D1E6A7; /* Same border */
+  position: relative;
+  font-size: 80%;
+}
+
+/* Show buttons on hover for saved notes */
+.saved-note:hover .note-buttons {
+  display: flex;
 }
 
 /* Animation for fade-in */
@@ -546,17 +605,45 @@ body {
   }
 }
 
-/* Animation Styles */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px); /* Slight upward motion */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Return to original position */
-  }
+/* Divider Line */
+.divider-line {
+  border: 1px solid #556B2F;
+  margin: 10px 0;
+  width: 65%;
 }
+
+
+/* Event Dot */
+.event-dot {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(28, 48, 28);
+  border-radius: 50%;
+  margin: 5px auto;
+}
+
+
+/* Event layout */
+.event-title-date {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.80em;
+  margin-bottom: .1px;
+  width: 30%;
+}
+
+.event-title {
+  font-weight: bold;
+}
+
+.event-date {
+  color: #1a4220;
+}
+
+.event-description {
+  margin-bottom: 5px;
+}
+
 
 .calendar-btn {
   display: flex;
