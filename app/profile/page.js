@@ -42,7 +42,7 @@ export default function ProfilePage() {
   
   useEffect(() => {
     speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
-  }, [speak, isAudioOn]);
+  }, [ isAudioOn]);
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);
@@ -101,13 +101,15 @@ URL:https://mantine.dev/docs/getting-started/ */
   return (
     <main>
       <Container className='container'>
-        <Title order={1}><strong>Profile Page</strong></Title>
+
         {/* Audio Control Icon */}
-        <div style={{ textAlign: 'center', margin: '20px 0' }}>
+      <Group position="center" className='audio-icon'>
         <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
           {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
         </div>
-      </div>
+      </Group>
+
+        <Title order={1}><strong>Profile Page</strong></Title>
 
         {/* User Info Section */}
         <div className='infoSection'>

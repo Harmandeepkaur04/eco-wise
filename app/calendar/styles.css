@@ -1,13 +1,83 @@
+:root {
+  --bg-color: #EAF1B1;
+  --text-color: #102F15;
+  --container-bg: #EAF1B1;
+  --widget-bg: #728C5A;
+  --widget-text: #102F15;
+  --left-widget-bg: #728C5A;
+  --left-widget-text: #EAF1B1;
+  --right-widget-bg: #EBFADC;
+  --right-widget-text: #102F15;
+  --calendar-day-bg: #EBFADC;
+  --calendar-day-text: #102F15;
+  --selected-day-border: #728C5A;
+  --button-bg: #728C5A;
+  --button-text: #EAF1B1;
+  --button-hover-bg: #556B2F;
+  --picker-bg: #EAF1B1;
+  --picker-hover-bg: #D1E6A7;
+  --note-input-bg: #EAF1B1;
+  --note-input-text: #102F15;
+  --note-input-border: #728C5A;
+  --note-input-focus-border: #556B2F;
+  --save-btn-bg: #728C5A;
+  --save-btn-text: #EAF1B1;
+  --save-btn-hover-bg: #EAF1B1;
+  --save-btn-hover-text: #102F15;
+  --saved-note-bg: #728C5A;
+  --saved-note-text: #102F15;
+  --saved-note-border: #D1E6A7;
+  --edit-delete-btn-hover: #556B2F;
+  --calendar-btn-bg: #EAF1B1;
+  --calendar-btn-text: #102F15;
+  --calendar-btn-border: #728C5A;
+}
+
+[data-theme="dark"] {
+  --bg-color: #333333;
+  --text-color: #EAF1B1;
+  --container-bg: #444444;
+  --widget-bg: #555555;
+  --widget-text: #EAF1B1;
+  --left-widget-bg: #666666;
+  --left-widget-text: #EAF1B1;
+  --right-widget-bg: #555555;
+  --right-widget-text: #EAF1B1;
+  --calendar-day-bg: #666666;
+  --calendar-day-text: #EAF1B1;
+  --selected-day-border: #777777;
+  --button-bg: #666666;
+  --button-text: #EAF1B1;
+  --button-hover-bg: #777777;
+  --picker-bg: #555555;
+  --picker-hover-bg: #666666;
+  --note-input-bg: #555555;
+  --note-input-text: #EAF1B1;
+  --note-input-border: #777777;
+  --note-input-focus-border: #888888;
+  --save-btn-bg: #777777;
+  --save-btn-text: #EAF1B1;
+  --save-btn-hover-bg: #888888;
+  --save-btn-hover-text: #FFFFFF;
+  --saved-note-bg: #666666;
+  --saved-note-text: #EAF1B1;
+  --saved-note-border: #888888;
+  --edit-delete-btn-hover: #AAAAAA;
+  --calendar-btn-bg: #555555;
+  --calendar-btn-text: #EAF1B1;
+  --calendar-btn-border: #777777;
+}
+
 /* General body styles */
 body {
-  background-color: #EAF1B1;
+  background-color: #EBFADC;
   color: #102F15;
   font-family: 'Times New Roman', serif;
   justify-content: center;
   align-items: flex-start; /* Changed to align calendar below the nav bar */
   min-height: 100vh;
   margin: 0;
-}
+  }
 
 /* General styling */
 .calendar-container {
@@ -17,9 +87,10 @@ body {
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
+  margin-top: 100px;
   padding: 20px;
-  background-color: #EAF1B1;
-  border-radius: 10px;
+  background-color: #203a14;
+  border-radius: 20px;
   font-size: 22px;
 }
 
@@ -28,7 +99,7 @@ body {
   background-color: #728C5A;
   color: #102F15;
   padding: 20px;
-  width: 100%;
+  width: 97%;
   border-radius: 10px;
   margin-bottom: 20px;
   text-align: center;
@@ -39,19 +110,38 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  width: 100%;
+  width: 102%;
   margin-bottom: 20px;
 }
 
-/* Left widget */
+/* Left widget with underlap effect */
 .calendar-left-widget {
   background-color: #728C5A;
   color: #EAF1B1;
-  width: 45%;
+  width: 60%;
   padding: 30px;
   border-radius: 10px;
   text-align: left;
+  position: relative;
+  z-index: 1; /* This keeps it underneath the right widget */
+  margin-right: -120px; /* Creates the underlap effect */
+  margin-left: 20px; /* Centers the left widget better */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for visibility */
 }
+
+/* Right-side widget stays on top */
+.calendar-right-side {
+  background-color: #EBFADC;
+  width: 75%;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2; /* Ensures it stays above the left widget */
+  margin-left: -80px; /* Slight shift to the right for "box in a box" effect */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* More prominent shadow for contrast */
+  margin-right: 10px;
+}
+
 
 .month-date {
   font-size: 36px;
@@ -71,24 +161,14 @@ body {
   margin-right: 10px;
 }
 
-/* Right-side calendar */
-.calendar-right-side {
-  background-color: #EBFADC;
-  width: 50%;
-  padding: 30px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align items to the start */
-  position: relative; /* Ensure that children can be absolutely positioned */
-}
 
+/* General styling */
 .calendar-header {
   display: flex;
-  justify-content: space-between; /* Space between month and year */
   align-items: center;
-  width: 100%; /* Ensure it takes full width */
-  margin-bottom: 30px;
+  justify-content: space-between; /* Adjust the spacing between arrows and year */
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .month-display {
@@ -155,12 +235,13 @@ body {
   font-size: 16px; /* Adjust the icon size as needed */
 }
 
-/* Calendar Header Styles */
+/* General styling */
 .calendar-header {
   display: flex;
-  justify-content: space-between; /* Space out the three sections */
-  align-items: center; /* Align items vertically */
-  position: relative; /* For absolute positioning of pickers */
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 /* Left Section Styles */
@@ -191,26 +272,67 @@ body {
   transition: color 0.3s; /* Smooth color transition */
 }
 
+
+/* Arrow button styles */
+.arrow-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #102F15;
+  transition: color 0.3s;
+}
+
+.arrow-btn:hover {
+  color: #556B2F;
+}
+
+/* Month container */
+.month-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align arrows and month to the left */
+  position: relative;
+}
+
+/* Month display */
+.month-display {
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0 10px;
+  position: relative;
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth slide transition */
+}
+
+/* Slide left and right animations */
+.month-display.slide-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.month-display.slide-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.month-display.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Year display */
+.year-display {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: right;
+  flex: 1;
+}
+
 .month-display:hover,
 .year-display:hover {
   color: #556B2F; /* Change color on hover */
 }
 
-/* Month Picker Styles */
-.month-picker {
-  position: absolute;
-  top: 5px; /* Position below the month text */
-  left: calc(30% - 20px); /* Center the picker aligned with month */
-  background-color: #EAF1B1; /* Match with the background */
-  border-radius: 5px;
-  z-index: 100; /* Ensure it appears above other elements */
-  padding: 10px;
-  display: flex; /* Align options horizontally */
-  flex-wrap: wrap; /* Allow wrap if necessary */
-  opacity: 0; /* Start as invisible */
-  transform: translateY(-5px); /* Start with a slight upward motion */
-  animation: fadeIn 0.3s forwards; /* Animation for showing the picker */
-}
 
 /* Year Picker Styles */
 .year-picker {
@@ -237,16 +359,6 @@ body {
   background-color: #D1E6A7; /* Change color on hover */
 }
 
-/* Common Option Styles */
-.month-option {
-  padding: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Smooth background transition */
-}
-
-.month-option:hover {
-  background-color: #D1E6A7; /* Change color on hover */
-}
 
 /* Container for the Today button */
 .today-btn-container {
@@ -300,101 +412,138 @@ body {
   transform: translateY(0); /* Ensure they return to original position */
 }
 
-/* Notes section */
-.note-box {
+
+/* Add Notes Section */
+.add-notes-section {
   margin-top: 20px;
+}
+
+/* Button to toggle note input visibility */
+.toggle-add-note-btn {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.toggle-add-note-btn:hover {
+  background-color: #556B2F;
+}
+
+/* Note input container with fade-in and fade-out animations */
+.note-input-container {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 100%;
-  opacity: 0; /* Start as invisible for animation */
-  transform: translateY(-10px); /* Start with a slight upward motion */
-  animation: fadeIn 0.3s forwards; /* Fade in animation */
+  margin-top: 10px;
+  width: 74%;
+  animation: fadeInDown 0.5s forwards; /* Fade in by default */
+}
+
+.note-input-container.fade-out {
+  animation: fadeOutUp 0.5s forwards; /* Fade out on cancel */
 }
 
 .note-input {
-  width: 100%;
-  max-width: 500px;
-  height: 100px;
-  margin: 10px auto;
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
-  padding: 10px;
-  font-family: 'Times New Roman', serif;
-  resize: none;
+  width: 95%;
+  padding: 8px;
+  padding-right: 40px;
   border-radius: 5px;
-  transition: border-color 0.3s; /* Smooth border color transition */
-}
-
-.note-input:focus {
-  outline: none; /* Remove default outline */
-  border-color: #556B2F; /* Change border color on focus */
-}
-
-.save-btn {
-  background-color: #728C5A; /* Match with the background */
-  color: #EAF1B1; /* Text color */
-  border: none;
-  padding: 10px 20px;
+  border: 1px solid #728C5A;
+  background-color: #EAF1B1;
+  color: #102F15;
   font-size: 16px;
+}
+
+.add-note-btn {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: #102F15;
+  border: none;
+  font-size: 24px;
   cursor: pointer;
-  margin-top: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s; /* Add transform for hover effect */
+  padding: 0;
 }
 
-.save-btn:hover {
-  background-color: #EAF1B1; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #728C5A; /* Border color */
-  transform: translateY(-2px); /* Add slight upward motion */
+.add-note-btn:hover {
+  color: #556B2F;
 }
 
-.saved-notes {
-  margin-top: 10px;
-  width: 100%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
+/* Notes list */
+.notes-list {
+  margin-top: 15px;
 }
 
+/* Saved Notes */
 .saved-note {
   display: flex;
-  justify-content: space-between; /* Space between note text and buttons */
-  background-color: #728C5A; /* Match with the background */
-  color: #102F15; /* Text color */
-  border: 1px solid #D1E6A7; /* Border color */
-  padding: 10px;
-  margin-top: 5px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background-color: #728C5A;
+  color: #EAF1B1;
   border-radius: 5px;
-  position: relative; /* Position relative to control absolute positioning of buttons */
+  margin-bottom: 5px;
+  width: 70%;
+  border: 1px solid #D1E6A7;
+  position: relative;
+  font-size: 80%;
 }
 
-/* Note buttons hidden by default */
+/* Hide buttons initially */
 .note-buttons {
-  display: none; /* Start hidden */
+  display: none;
+  gap: 10px;
 }
 
+/* Show buttons on hover */
 .saved-note:hover .note-buttons {
-  display: flex; /* Show buttons on hover */
-  gap: 10px; /* Space between buttons */
+  display: flex;
 }
 
 /* Edit and Delete buttons styling */
-.edit-btn,
-.delete-btn {
-  background: transparent; /* Make buttons transparent */
+.edit-btn, .delete-btn {
+  background: transparent;
   border: none;
-  color: #102F15; /* Color for edit/delete buttons */
+  color: #EAF1B1;
   cursor: pointer;
-  transition: color 0.3s; /* Smooth color transition */
-  font-size: 14px; /* Make text smaller */
+  font-size: 14px;
 }
 
-.edit-btn:hover,
-.delete-btn:hover {
-  color: #556B2F; /* Change color on hover */
+.edit-btn:hover, .delete-btn:hover {
+  color: #FF6347;
+}
+
+/* Animation for fade-in */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animation for fade-out */
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }
 
 /* Animation Styles */
@@ -420,3 +569,16 @@ body {
   border-radius: 5px;
   position: relative; /* Position relative to control absolute positioning of buttons */
 }
+
+.calendar-container {
+  margin-top: 100px; /* Offset for navbar */
+}
+
+.audio-icon {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  color: black;
+}
+
+

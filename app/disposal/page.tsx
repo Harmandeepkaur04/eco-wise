@@ -9,6 +9,8 @@ import "../disposal/styles.css";
 import GoogleMaps from "../components/GoogleMaps";
 import Drawers from "../components/Drawer";
 import ShepardDrawers from "../components/ShepardDrawer";
+import { useAudio } from '../Audio'; 
+import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 const elements = [
   { Holiday: "New Year's Day", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
@@ -29,6 +31,7 @@ const elements = [
 ];
 
 export default function Disposal() {
+
 
   const [activeContent, setActiveContent] = useState('locations');
 
@@ -74,6 +77,7 @@ export default function Disposal() {
               </div>
               <br />
               <div className="div-container">
+
             <Title component="h1">Shepard Landfill and Eco Centre</Title><br />
             <Text component="p">Materials Accepted:</Text>
             <div>

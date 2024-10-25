@@ -1,5 +1,7 @@
 "use client"
 import { createContext, useState, useContext, useEffect } from 'react';
+import './styles.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const ThemeContext = createContext();
 
@@ -35,12 +37,17 @@ const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <button onClick={toggleTheme}>
-      Switch to {theme === 'light' ? 'dark' : 'light'} theme
-    </button>
+    <label className="theme-toggle-switch">
+      <input type="checkbox" checked={theme === 'dark'} onChange={toggleTheme} />
+      <span className="slider round">
+        <i className="fas fa-sun sun-icon"></i>
+        <i className="fas fa-moon moon-icon"></i>
+      </span>
+    </label>
   );
 };
 
 
+// used https://nextui.org/docs/customization/dark-mode and https://dev.to/luisca/step-by-step-guide-to-adding-dark-mode-and-multiple-themes-to-your-nextjs-app-15lh for reference
 
 export default ThemeToggle;

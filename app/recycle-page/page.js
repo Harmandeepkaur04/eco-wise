@@ -10,14 +10,23 @@ const RecyclePage = () => {
 
   useEffect(() => {
     speak('Welcome to the Recycling page. Here you can learn about recycling basics, articles, videos, and more.');
-  }, [isAudioOn, speak]);
+  }, [isAudioOn]);
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);
   };
 
   return (
+    <main>
     <div className="container">
+      
+      {/* Audio Control Icon */}
+      <div className='audio-icon' style={{ textAlign: 'center', margin: '20px 0' }}>
+        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+        </div>
+      </div>
+
       <div className='recycle'>
 
         <h4 >Recycling 101</h4>
@@ -37,8 +46,6 @@ const RecyclePage = () => {
           Reduces Pollution: Recycling decreases the need for extracting, refining, and processing raw materials, which can create substantial air and water pollution.
           Reduces Landfill Waste: Recycling helps divert waste from landfills, reducing the environmental impact.
         </p>
-
-
           <h2>How to Recycle Properly
           </h2>
           
@@ -49,13 +56,7 @@ const RecyclePage = () => {
 
         </p>
       </div>
-      
-      {/* Audio Control Icon */}
-      <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
-          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-        </div>
-      </div>
+
 
       <section>
         <h2>Articles</h2>
@@ -160,6 +161,7 @@ const RecyclePage = () => {
         </div>
       </section>
     </div>
+    </main>
   );
 };
 

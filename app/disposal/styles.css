@@ -1,3 +1,4 @@
+
 /* Styling for the main container */
 .main-container {
   display: flex;
@@ -29,6 +30,7 @@
   display: flex;
   flex-direction: column;
   border: solid #102f15;
+
   padding: 10px;
   background-color: #728c5a;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
@@ -78,7 +80,7 @@
   overflow-y: auto;
   max-height: 100%; /* Ensure it doesn't overflow */
   scrollbar-width: thin;
-  scrollbar-color: #102f15 transparent;
+  scrollbar-color: var(--drawer-bg) transparent;
 }
 
 .div-container {
@@ -173,9 +175,8 @@
 
 /*------------------------------------------------------------------------*/
 /* Drawer Contents Styling */
-
 .material-div {
-  background-color: #728c5a;
+  background-color: var(--material-div-bg);
   width: 225px;
   border-radius: 8px;
   text-align: center;
@@ -191,24 +192,24 @@
 
 .material-div .materials {
   font-size: large;
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--drawer-bg);
+  color: var(--drawer-content-bg);
   border-radius: 8px;
   padding: 5px 5px;
 }
 
 .item-list {
-  color: #eaf1b1;
+  color: var(--drawer-content-bg);
   text-align: left;
   overflow-y: auto;
   height: 150px;
   padding-right: 10px;
   scrollbar-width: thin;
-  scrollbar-color: #102f15 transparent;
+  scrollbar-color: var(--drawer-bg) transparent;
 }
 
 .item-list::-webkit-scrollbar {
-  display: 6px;
+  width: 6px;
 }
 
 .item-list::-webkit-scrollbar-track {
@@ -216,7 +217,7 @@
 }
 
 .item-list::-webkit-scrollbar-thumb {
-  background-color: #102f15;
+  background-color: var(--drawer-bg);
   border-radius: 10px;
 }
 
@@ -232,28 +233,28 @@
   width: 80px;
   margin-bottom: 10px;
 }
+
 /*------------------------------------------------------------------------*/
 /* SEARCH BAR STYLING */
-
 .autocomplete {
-  background-color: #102f15;
-  border: 2px solid #102f15;
+  background-color: var(--autocomplete-bg);
+  border: 2px solid var(--autocomplete-bg);
   border-radius: 8px;
-  color: #eaf1b1;
+  color: var(--autocomplete-text);
   padding: 10px;
   width: 100%;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .autocomplete input::placeholder {
-  color: #eaf1b1;
+  color: var(--autocomplete-text);
   opacity: 1;
 }
 
 .autocomplete input {
-  background-color: #728c5a;
-  color: #eaf1b1;
-  border: 2px solid #eaf1b1;
+  background-color: var(--autocomplete-input-bg);
+  color: var(--autocomplete-input-text);
+  border: 2px solid var(--autocomplete-input-text);
   border-radius: 8px;
   padding: 8px;
   width: 100%;
@@ -262,8 +263,8 @@
 }
 
 .autocomplete-dropdown {
-  background-color: #728c5a;
-  border: 2px solid #102f15;
+  background-color: var(--autocomplete-input-bg);
+  border: 2px solid var(--drawer-bg);
   border-radius: 8px;
   padding: 8px 0;
   max-height: 200px;
@@ -272,8 +273,8 @@
 }
 
 .autocomplete-item {
-  background-color: #728c5a;
-  color: #eaf1b1;
+  background-color: var(--autocomplete-input-bg);
+  color: var(--autocomplete-input-text);
   padding: 10px;
   cursor: pointer;
   font-family: 'Times New Roman', Times, serif;
@@ -281,8 +282,8 @@
 
 .autocomplete-item:hover,
 .autocomplete-item[data-hovered='true'] {
-  background-color: #102f15;
-  color: #eaf1b1;
+  background-color: var(--drawer-bg);
+  color: var(--drawer-content-bg);
 }
 
 .autocomplete-dropdown::-webkit-scrollbar {
@@ -294,13 +295,13 @@
 }
 
 .autocomplete-dropdown::-webkit-scrollbar-thumb {
-  background-color: #102f15; /* Same scrollbar thumb color as the items */
+  background-color: var(--drawer-bg); /* Same scrollbar thumb color as the items */
   border-radius: 10px; /* Rounded scrollbar thumb */
 }
 
 .autocomplete-dropdown {
   scrollbar-width: thin;
-  scrollbar-color: #102f15 transparent;
+  scrollbar-color: var(--drawer-bg) transparent;
 }
 
 /*------------------------------------------------------------------------*/
@@ -397,12 +398,11 @@
 .div-container h1 {
   font-size: large;
   text-align: center;
-  color: #eaf1b1;
-  background-color: #102f15;
+  color: var(--div-container-text);
+  background-color: var(--drawer-bg);
   padding: 5px 10px;
   border: #102f15;
   border-radius: 8px;
-  
 }
 
 .div-container p {
@@ -411,9 +411,9 @@
 
 .div-container ul {
   padding: 5px 10px;
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: solid #102f15;
+  background-color: var(--drawer-content-bg);
+  color: var(--drawer-bg);
+  border: solid var(--drawer-bg);
   border-radius: 8px;
   font-weight: bold;
   margin: 10px 20px;
@@ -455,4 +455,10 @@
   font-size: large;
   text-align: center;
 }
-
+/*Audio icon */
+.audio-icon{
+  position: absolute;
+  top: 100px;
+  right: 30px;
+  color: black;
+}
