@@ -39,16 +39,17 @@
 /* Button styling */
 .nav-button {
   margin-bottom: 10px;
-  background-color: #102f15;
-  color: #eaf1b1;
-  border: 2px solid #728c5a;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
   padding: 10px;
   transition: background-color 0.3s;
 }
 
 .nav-button:hover {
-  background-color: #728c5a;
-  color: #102f15;
+  background-color: #102f15;
+  color: #eaf1b1;
 }
 
 /* Styling for the content box */
@@ -463,4 +464,8 @@
   top: 100px;
   right: 30px;
   color: black;
+}
+
+.audio-button {
+  color: #102f15;
 }
