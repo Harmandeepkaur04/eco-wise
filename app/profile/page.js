@@ -1,20 +1,20 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+//import Link from 'next/link';
 
 /* Reference: Mantine core documentation for all elements.
 URL:https://mantine.dev/core/container/ */ 
 
 import { Container, Title, Text, Group, List, ThemeIcon, TextInput,Button } from '@mantine/core';
-import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 
 /*Reference: Custom useAudio Hook imported from Audio.js */
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-
-//import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
+import { auth, db } from "../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 import '../profile/styles.css';
 
 export default function ProfilePage() {
