@@ -13,7 +13,7 @@ import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { auth, db } from "../firebaseConfig";
+import { auth, db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import '../profile/styles.css';
 import { useFavicon } from '@mantine/hooks';
@@ -56,12 +56,20 @@ export default function ProfilePage() {
       [name]: value,
     }));
   };
+ 
   const handleSaveClick = async () => {
     try {
-      await setDoc(doc(db, "users", auth.currentUser.uid), userInfo);
-      console.log('User info saved:', userInfo);
-      speak('User information has been saved.');
-      setIsEditing(false);
+      const user = auth.currentUser;
+      if (user) {
+        console.log("Saving info for user:", user.uid); // Log the user ID
+        console.log("User Info being saved:", userInfo); // Log the userInfo object
+        await setDoc(doc(db, "users", user.uid), userInfo);
+        console.log('User info saved successfully:', userInfo);
+        speak('User information has been saved.');
+        setIsEditing(false);
+      } else {
+        console.error("No user is authenticated.");
+      }
     } catch (error) {
       console.error("Error saving user info:", error);
     }
@@ -75,11 +83,13 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      if (auth.currentUser) {
+      const user = auth.currentUser;
+      if (user) {
         try {
-          const docRef = doc(db, "users", auth.currentUser.uid);
+          const docRef = doc(db, "users", user.uid);
           const docSnap = await getDoc(docRef);
           if (docSnap.exists()) {
+            console.log("Fetch user Info:" , docSnap.data())
             setUserInfo(docSnap.data());
           } else {
             console.log("No such document!");
