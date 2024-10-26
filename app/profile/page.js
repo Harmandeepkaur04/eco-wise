@@ -16,6 +16,7 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from "../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import '../profile/styles.css';
+import { useFavicon } from '@mantine/hooks';
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
@@ -72,24 +73,30 @@ export default function ProfilePage() {
   const toggleRewards = () => setIsRewards(!isRewards);
   const toggleNotifications = () => setIsNotifications(!isNotifications);
 
-
-
-    
+  useEffect(() => {
     const fetchUserInfo = async () => {
-      try {
-        const docRef = doc(db, "users", "user1"); 
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setUserInfo(docSnap.data());
-        } else {
-          console.log("No such document!");
+      if (auth.currentUser) {
+        try {
+          const docRef = doc(db, "users", auth.currentUser.uid);
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            setUserInfo(docSnap.data());
+          } else {
+            console.log("No such document!");
+          }
+        } catch (error) {
+          console.error("Error fetching user info:", error);
         }
-      } catch (error) {
-        console.error("Error fetching user info: ", error);
       }
     };
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) fetchUserInfo();
+    });
 
-    fetchUserInfo();
+    return unsubscribe;
+  }, []);
+
+    
 
 /*Reference: Used Mantine official documentation for applying elements.
 URL:https://mantine.dev/docs/getting-started/ */
