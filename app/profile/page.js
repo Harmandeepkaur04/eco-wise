@@ -25,19 +25,15 @@ export default function ProfilePage() {
   });
 
   const [points] = useState(150);
-
   const [notifications] = useState([
     'Reminder: Drop off your recyclables at the nearest center today!',
     'New event: Community cleanup drive on Saturday!',
   ]);
-
   const [isUserInfo, setIsUserInfo] = useState(false);
   const [isPoints, setIsPoints] = useState(false);
   const [isRewards, setIsRewards] = useState(false);
   const [isNotifications, setIsNotifications] = useState(false);
-
   const [isEditing, setIsEditing] = useState(false);
-
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
   
   useEffect(() => {
@@ -59,17 +55,17 @@ export default function ProfilePage() {
       [name]: value,
     }));
   };
-
   const handleSaveClick = async () => {
     try {
-      await setDoc(doc(db, "users", "personal1"), userInfo); 
+      await setDoc(doc(db, "users", auth.currentUser.uid), userInfo);
       console.log('User info saved:', userInfo);
       speak('User information has been saved.');
       setIsEditing(false);
     } catch (error) {
-      console.error("Error saving user info: ", error);
+      console.error("Error saving user info:", error);
     }
   };
+ 
 /*Reference: Get the help from AI and youtube tutorial to learn about the toggle functionality and implementation.*/
   const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
   const togglePoints = () => setIsPoints(!isPoints);
