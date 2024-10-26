@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+
 //import Link from 'next/link';
 
 /* Reference: Mantine core documentation for all elements.
@@ -13,8 +14,8 @@ import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
-import { auth, db } from "../../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import {  db } from "../../firebase";
+//import { onAuthStateChanged } from "firebase/auth";
 import '../profile/styles.css';
 import { useFavicon } from '@mantine/hooks';
 
@@ -56,24 +57,21 @@ export default function ProfilePage() {
       [name]: value,
     }));
   };
- 
+  
   const handleSaveClick = async () => {
     try {
-      const user = auth.currentUser;
-      if (user) {
-        console.log("Saving info for user:", user.uid); // Log the user ID
-        console.log("User Info being saved:", userInfo); // Log the userInfo object
-        await setDoc(doc(db, "users", user.uid), userInfo);
-        console.log('User info saved successfully:', userInfo);
-        speak('User information has been saved.');
-        setIsEditing(false);
-      } else {
-        console.error("No user is authenticated.");
-      }
+      const userId = "default_user"; // Replace with a default or unique user ID if necessary
+      console.log("Saving info for user ID:", userId);
+      console.log("User Info being saved:", userInfo);
+      await setDoc(doc(db, "users", userId), userInfo);
+      console.log('User info saved successfully:', userInfo);
+      speak('User information has been saved.');
+      setIsEditing(false);
     } catch (error) {
       console.error("Error saving user info:", error);
     }
   };
+  
  
 /*Reference: Get the help from AI and youtube tutorial to learn about the toggle functionality and implementation.*/
   const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
@@ -81,31 +79,37 @@ export default function ProfilePage() {
   const toggleRewards = () => setIsRewards(!isRewards);
   const toggleNotifications = () => setIsNotifications(!isNotifications);
 
+  
   useEffect(() => {
-    const fetchUserInfo = async () => {
-      const user = auth.currentUser;
-      if (user) {
-        try {
-          const docRef = doc(db, "users", user.uid);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            console.log("Fetch user Info:" , docSnap.data())
-            setUserInfo(docSnap.data());
-          } else {
-            console.log("No such document!");
-          }
-        } catch (error) {
-          console.error("Error fetching user info:", error);
+    const fetchUserInfo = async (user) => {
+      try {
+        const docRef = doc(db, "users", "default_user");
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          console.log("Fetched user Info:", docSnap.data());
+          setUserInfo(docSnap.data());
+        } else {
+          console.log("No such document!");
+          
         }
+      } catch (error) {
+        console.error("Error fetching user info:", error);
       }
     };
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) fetchUserInfo();
-    });
 
-    return unsubscribe;
-  }, []);
+    /*const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Fetch user info if authenticated
+        fetchUserInfo(user);
+      } else {
+        // Redirect to login page if not authenticated
+        console.error("No user is authenticated. Redirecting to login.");
+       
+      }
+    });*/
 
+    fetchUserInfo()
+  }, []); 
     
 
 /*Reference: Used Mantine official documentation for applying elements.
