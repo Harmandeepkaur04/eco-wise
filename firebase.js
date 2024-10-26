@@ -7,12 +7,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC7aj-1WK4msNkDOgjX4NGEe49YRM4ryeI",
-  authDomain: "ecowise-e9fef.firebaseapp.com",
-  projectId: "ecowise-e9fef",
-  storageBucket: "ecowise-e9fef.appspot.com",
-  messagingSenderId: "442321119770",
-  appId: "1:442321119770:web:817c0a8e130e4327903fa3"
+  apiKey: "AIzaSyCh13xrzygYO4mW6kp-w6LIVQLCER7SM0Q",
+  authDomain: "ecowise-460dd.firebaseapp.com",
+  projectId: "ecowise-460dd",
+  storageBucket: "ecowise-460dd.appspot.com",
+  messagingSenderId: "469551357235",
+  appId: "1:469551357235:web:8d46085b5cb54f6ef1b246"
 };
 
 // Initialize Firebase

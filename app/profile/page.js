@@ -14,8 +14,13 @@ import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
+<<<<<<< Updated upstream
 import {  db } from "../../firebase";
 //import { onAuthStateChanged } from "firebase/auth";
+=======
+
+import { db } from '../../firebase';
+>>>>>>> Stashed changes
 import '../profile/styles.css';
 import { useFavicon } from '@mantine/hooks';
 
