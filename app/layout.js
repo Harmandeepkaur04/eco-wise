@@ -3,11 +3,13 @@ import React from 'react';
 import { ThemeProvider } from './darkmode/page'; // Adjust the path as necessary
 import localFont from "next/font/local";
 import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
+import { useRouter } from 'next/router';
 import { MantineProvider } from '@mantine/core';
 import Link from 'next/link';
 import { AudioProvider } from './Audio'; // Adjust the path as necessary
 import './globals.css';
 import ThemeToggle, { useTheme } from "./darkmode/page";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

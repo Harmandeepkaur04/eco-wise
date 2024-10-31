@@ -13,11 +13,14 @@ import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 /*Reference: Custom useAudio Hook imported from Audio.js */
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
 
-import { db } from '../../firebase';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
+import { useAuth } from '@clerk/nextjs';
+
+
 import '../profile/styles.css';
-import { useFavicon } from '@mantine/hooks';
+
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
@@ -26,7 +29,7 @@ export default function ProfilePage() {
     address: '',
   });
 
-  const [points] = useState(150);
+  const [points,setPoints] = useState(150);
   const [notifications] = useState([
     'Reminder: Drop off your recyclables at the nearest center today!',
     'New event: Community cleanup drive on Saturday!',
@@ -37,6 +40,7 @@ export default function ProfilePage() {
   const [isNotifications, setIsNotifications] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
+  const { userId } = useAuth();
   
   useEffect(() => {
     speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
@@ -58,11 +62,10 @@ export default function ProfilePage() {
     }));
   };
   
+  
   const handleSaveClick = async () => {
+    if (!userId) return; // Ensure user is logged in
     try {
-      const userId = "default_user"; // Replace with a default or unique user ID if necessary
-      console.log("Saving info for user ID:", userId);
-      console.log("User Info being saved:", userInfo);
       await setDoc(doc(db, "users", userId), userInfo);
       console.log('User info saved successfully:', userInfo);
       speak('User information has been saved.');
@@ -79,23 +82,27 @@ export default function ProfilePage() {
   const toggleRewards = () => setIsRewards(!isRewards);
   const toggleNotifications = () => setIsNotifications(!isNotifications);
 
-  
   useEffect(() => {
-    const fetchUserInfo = async (user) => {
+    const fetchUserInfo = async () => {
+      if (!userId) return; // Ensure user is logged in
       try {
-        const docRef = doc(db, "users", "default_user");
+        const docRef = doc(db, "users", userId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log("Fetched user Info:", docSnap.data());
           setUserInfo(docSnap.data());
         } else {
-          console.log("No such document!");
-          
+          console.log("No user data found!");
         }
       } catch (error) {
         console.error("Error fetching user info:", error);
       }
     };
+
+    fetchUserInfo();
+  }, [userId]);
+  
+  
 
     /*const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -108,8 +115,7 @@ export default function ProfilePage() {
       }
     });*/
 
-    fetchUserInfo()
-  }, []); 
+    
     
 
 /*Reference: Used Mantine official documentation for applying elements.
