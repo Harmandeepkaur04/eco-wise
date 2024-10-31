@@ -29,7 +29,7 @@ export default function ProfilePage() {
     address: '',
   });
 
-  const [points,setPoints] = useState(150);
+  const [points,setPoints] = useState(0);
   const [notifications] = useState([
     'Reminder: Drop off your recyclables at the nearest center today!',
     'New event: Community cleanup drive on Saturday!',
@@ -64,7 +64,7 @@ export default function ProfilePage() {
   
   
   const handleSaveClick = async () => {
-    if (!userId) return; // Ensure user is logged in
+    if (!userId) return; 
     try {
       await setDoc(doc(db, "users", userId), userInfo);
       console.log('User info saved successfully:', userInfo);
@@ -100,6 +100,25 @@ export default function ProfilePage() {
     };
 
     fetchUserInfo();
+  }, [userId]);
+
+  useEffect(() => {
+    const fetchUserPoints = async () => {
+      if (!userId) return;
+      try {
+        const pointsDocRef = doc(db, "leaderboard", userId);
+        const pointsDocSnap = await getDoc(pointsDocRef);
+        if (pointsDocSnap.exists()) {
+          setPoints(pointsDocSnap.data().points || 0); // Assume 'points' field holds the user's points
+        } else {
+          console.log("No points data found!");
+        }
+      } catch (error) {
+        console.error("Error fetching points:", error);
+      }
+    };
+
+    fetchUserPoints();
   }, [userId]);
   
   
