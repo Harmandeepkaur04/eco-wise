@@ -95,11 +95,13 @@ nav a:hover {
   :root {
     --background-color: #ffffff;
     --text-color: #000000;
+    --color:#171717;
   }
   
   [data-theme='dark'] {
     --background-color: #000000;
     --text-color: #ffffff;
+    --color:#ffffff;
   }
   
   body {
@@ -117,6 +119,7 @@ nav a:hover {
 
   .header {
     font-size: 1.2rem; /* Adjust header font size */
+    color: var(--color);
   }
 }
 
