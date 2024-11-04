@@ -472,3 +472,116 @@
 .audio-button {
   color: #102f15;
 }
+
+
+/*------------------------------------------------------------------------*/
+/* Booking */
+
+/* Styling for the booking form container */
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #728c5a;
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  color: #eaf1b1;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.booking-form h3 {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #eaf1b1;
+  background-color: #102f15;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Date picker styling */
+.booking-form .mantine-DatePicker-wrapper {
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 8px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.booking-form .mantine-DatePicker-wrapper input {
+  color: #102f15;
+}
+
+/* Vehicle select styling */
+.booking-form .mantine-Select-wrapper {
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.booking-form .mantine-Select-wrapper input {
+  color: #102f15;
+}
+
+/* Address input styling */
+.booking-form .mantine-TextInput-wrapper {
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.booking-form .mantine-TextInput-wrapper input {
+  color: #102f15;
+}
+
+/* Book button styling */
+.book-button {
+  align-self: center;
+  background-color: #eaf1b1;
+  color: #102f15;
+  border: 2px solid #102f15;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-button:hover {
+  background-color: #102f15;
+  color: #eaf1b1;
+}
+
+/* Add scroll for smaller screens */
+.scrollable-section {
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #102f15 transparent;
+}
+
+.scrollable-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable-section::-webkit-scrollbar-thumb {
+  background-color: #102f15;
+  border-radius: 10px;
+}
+
+/* Styling for form labels */
+.form-label {
+  font-size: 1rem;
+  color: #eaf1b1;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
