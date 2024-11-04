@@ -1,21 +1,26 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+
+//import Link from 'next/link';
 
 /* Reference: Mantine core documentation for all elements.
 URL:https://mantine.dev/core/container/ */ 
 
 import { Container, Title, Text, Group, List, ThemeIcon, TextInput,Button } from '@mantine/core';
-import { FaFacebook, FaTwitter, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 
 /*Reference: Custom useAudio Hook imported from Audio.js */
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
 
-//import { db } from '../firebaseConfig'; // Make sure to adjust the path as necessary
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig';
+import { useAuth } from '@clerk/nextjs';
+
+
 import '../profile/styles.css';
+
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
@@ -24,21 +29,18 @@ export default function ProfilePage() {
     address: '',
   });
 
-  const [points] = useState(150);
-
+  const [points,setPoints] = useState(0);
   const [notifications] = useState([
     'Reminder: Drop off your recyclables at the nearest center today!',
     'New event: Community cleanup drive on Saturday!',
   ]);
-
   const [isUserInfo, setIsUserInfo] = useState(false);
   const [isPoints, setIsPoints] = useState(false);
   const [isRewards, setIsRewards] = useState(false);
   const [isNotifications, setIsNotifications] = useState(false);
-
   const [isEditing, setIsEditing] = useState(false);
-
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
+  const { userId } = useAuth();
   
   useEffect(() => {
     speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
@@ -59,41 +61,81 @@ export default function ProfilePage() {
       [name]: value,
     }));
   };
-
+  
+  
   const handleSaveClick = async () => {
+    if (!userId) return; 
     try {
-      await setDoc(doc(db, "users", "personal1"), userInfo); 
-      console.log('User info saved:', userInfo);
+      await setDoc(doc(db, "users", userId), userInfo);
+      console.log('User info saved successfully:', userInfo);
       speak('User information has been saved.');
       setIsEditing(false);
     } catch (error) {
-      console.error("Error saving user info: ", error);
+      console.error("Error saving user info:", error);
     }
   };
+  
+ 
 /*Reference: Get the help from AI and youtube tutorial to learn about the toggle functionality and implementation.*/
   const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
   const togglePoints = () => setIsPoints(!isPoints);
   const toggleRewards = () => setIsRewards(!isRewards);
   const toggleNotifications = () => setIsNotifications(!isNotifications);
 
-
-
-    
+  useEffect(() => {
     const fetchUserInfo = async () => {
+      if (!userId) return; // Ensure user is logged in
       try {
-        const docRef = doc(db, "users", "user1"); 
+        const docRef = doc(db, "users", userId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
+          console.log("Fetched user Info:", docSnap.data());
           setUserInfo(docSnap.data());
         } else {
-          console.log("No such document!");
+          console.log("No user data found!");
         }
       } catch (error) {
-        console.error("Error fetching user info: ", error);
+        console.error("Error fetching user info:", error);
       }
     };
 
     fetchUserInfo();
+  }, [userId]);
+
+  useEffect(() => {
+    const fetchUserPoints = async () => {
+      if (!userId) return;
+      try {
+        const pointsDocRef = doc(db, "leaderboard", userId);
+        const pointsDocSnap = await getDoc(pointsDocRef);
+        if (pointsDocSnap.exists()) {
+          setPoints(pointsDocSnap.data().points || 0); // Assume 'points' field holds the user's points
+        } else {
+          console.log("No points data found!");
+        }
+      } catch (error) {
+        console.error("Error fetching points:", error);
+      }
+    };
+
+    fetchUserPoints();
+  }, [userId]);
+  
+  
+
+    /*const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Fetch user info if authenticated
+        fetchUserInfo(user);
+      } else {
+        // Redirect to login page if not authenticated
+        console.error("No user is authenticated. Redirecting to login.");
+       
+      }
+    });*/
+
+    
+    
 
 /*Reference: Used Mantine official documentation for applying elements.
 URL:https://mantine.dev/docs/getting-started/ */
