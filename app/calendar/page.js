@@ -5,10 +5,9 @@ import '../calendar/styles.css';
 import { FaRecycle, FaLeaf, FaTrash, FaCalendarDay } from 'react-icons/fa';
 import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio';
- 
 
 const Calendar = () => {
-  const { speak, isAudioOn, setIsAudioOn } = useAudio(); // Moved this inside the component to avoid execution error
+  const { speak, isAudioOn, setIsAudioOn } = useAudio();
 
   useEffect(() => {
     speak('Welcome to the Calendar page. Here you can view and manage your events.');
@@ -23,15 +22,19 @@ const Calendar = () => {
 
   const getDaysInMonth = (month, year) => new Date(year, month + 1, 0).getDate();
   const [notes, setNotes] = useState('');
-  const [savedNotes, setSavedNotes] = useState([]); // Store notes as an array
-  const [showNotesInput, setShowNotesInput] = useState(false); // State for toggling the note input
-  const [isFadingOut, setIsFadingOut] = useState(false); // State for controlling fade-out animation
+  const [savedNotes, setSavedNotes] = useState([]);
+  const [showNotesInput, setShowNotesInput] = useState(false);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [events, setEvents] = useState([]); // Store events as an array
+  const [showEventInput, setShowEventInput] = useState(false);
+  const [newEvent, setNewEvent] = useState({ title: '', date: '', description: '' });
   const [selectedDay, setSelectedDay] = useState(today.getDate());
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [upcomingReminder, setUpcomingReminder] = useState({});
-  const [editingIndex, setEditingIndex] = useState(null); // For tracking which note is being edited
-  const [monthSlideDirection, setMonthSlideDirection] = useState(''); // For slide animation direction
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingEventIndex, setEditingEventIndex] = useState(null); // New state for editing events
+  const [monthSlideDirection, setMonthSlideDirection] = useState('');
 
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -46,9 +49,9 @@ const Calendar = () => {
   const calculateUpcomingReminder = (day) => {
     const dayOfWeek = new Date(currentYear, currentMonth, day).getDay();
 
-    if (dayOfWeek === 4) { // Thursday
+    if (dayOfWeek === 4) {
       return { date: day, type: 'Compost and Recycle Bin', icon: [<FaRecycle key="recycle" />, <FaLeaf key="leaf" />], day: 'Thursday' };
-    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) { // Every other Friday
+    } else if (dayOfWeek === 5 && (Math.floor((day - 1) / 7) % 2 === 0)) {
       return { date: day, type: 'Black Garbage Bin Collection', icon: <FaTrash key="trash" />, day: 'Friday' };
     } else {
       return { date: day, type: 'No Collection', icon: null, day: '' };
@@ -56,16 +59,29 @@ const Calendar = () => {
   };
 
   const handleNoteChange = (e) => setNotes(e.target.value);
-
   const toggleNotesInput = () => {
     if (showNotesInput) {
-      setIsFadingOut(true); // Trigger fade-out animation
+      setIsFadingOut(true);
       setTimeout(() => {
-        setShowNotesInput(false); // Hide input after animation
-        setIsFadingOut(false); // Reset fading out state
-      }, 500); // Match animation duration
+        setShowNotesInput(false);
+        setIsFadingOut(false);
+      }, 500);
     } else {
-      setShowNotesInput(true); // Show input immediately
+      setShowNotesInput(true);
+    }
+  };
+
+  // Event-related handlers
+  const handleEventChange = (e) => setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  const toggleEventInput = () => {
+    if (showEventInput) {
+      setIsFadingOut(true);
+      setTimeout(() => {
+        setShowEventInput(false);
+        setIsFadingOut(false);
+      }, 500);
+    } else {
+      setShowEventInput(true);
     }
   };
 
@@ -80,15 +96,31 @@ const Calendar = () => {
       } else {
         setSavedNotes([...savedNotes, notes]);
       }
-      setNotes(''); // Clear input after saving
-      setShowNotesInput(false); // Hide the input field after saving
+      setNotes('');
+      setShowNotesInput(false);
+    }
+  };
+
+  const handleAddEvent = () => {
+    if (newEvent.title && newEvent.date) {
+      if (editingEventIndex !== null) {
+        const updatedEvents = events.map((event, index) =>
+          index === editingEventIndex ? newEvent : event
+        );
+        setEvents(updatedEvents);
+        setEditingEventIndex(null);
+      } else {
+        setEvents([...events, newEvent]);
+      }
+      setNewEvent({ title: '', date: '', description: '' });
+      setShowEventInput(false);
     }
   };
 
   const handleEditNote = (index) => {
     setNotes(savedNotes[index]);
     setEditingIndex(index);
-    setShowNotesInput(true); // Show input when editing
+    setShowNotesInput(true);
   };
 
   const handleDeleteNote = (index) => {
@@ -96,28 +128,21 @@ const Calendar = () => {
     setSavedNotes(updatedNotes);
   };
 
+  const handleEditEvent = (index) => {
+    setNewEvent(events[index]);
+    setEditingEventIndex(index);
+    setShowEventInput(true);
+  };
+
+  const handleDeleteEvent = (index) => {
+    const updatedEvents = events.filter((_, i) => i !== index);
+    setEvents(updatedEvents);
+  };
+
   const goToToday = () => {
     setCurrentMonth(today.getMonth());
     setCurrentYear(today.getFullYear());
     setSelectedDay(today.getDate());
-  };
-
-  const handleMonthChange = (direction) => {
-    setMonthSlideDirection(direction);
-    setTimeout(() => {
-      if (direction === 'left') {
-        setCurrentMonth((prevMonth) => (prevMonth === 0 ? 11 : prevMonth - 1));
-        if (currentMonth === 0) {
-          setCurrentYear((prevYear) => prevYear - 1);
-        }
-      } else {
-        setCurrentMonth((prevMonth) => (prevMonth === 11 ? 0 : prevMonth + 1));
-        if (currentMonth === 11) {
-          setCurrentYear((prevYear) => prevYear + 1);
-        }
-      }
-      setMonthSlideDirection('');
-    }, 300); // Match animation duration
   };
 
   useEffect(() => {
@@ -155,7 +180,6 @@ const Calendar = () => {
               {showNotesInput ? 'Cancel' : 'Add Notes'}
             </button>
 
-            {/* Notes Input Field with Add Button Inside */}
             {showNotesInput && (
               <div className={`note-input-container ${isFadingOut ? 'fade-out' : ''}`}>
                 <input
@@ -167,6 +191,36 @@ const Calendar = () => {
                   onChange={handleNoteChange}
                 />
                 <button className="add-note-btn" onClick={handleSaveNotes}>+</button>
+              </div>
+            )}
+
+            {/* Add Event Button */}
+            <button className="toggle-add-event-btn" onClick={toggleEventInput}>
+              {showEventInput ? 'Cancel' : 'Add Event'}
+            </button>
+
+            {showEventInput && (
+              <div className={`event-input-container ${isFadingOut ? 'fade-out' : ''}`}>
+                <input
+                  type="text"
+                  name="title"
+                  value={newEvent.title}
+                  onChange={handleEventChange}
+                  placeholder="Event title"
+                />
+                <input
+                  type="date"
+                  name="date"
+                  value={newEvent.date}
+                  onChange={handleEventChange}
+                />
+                <textarea
+                  name="description"
+                  value={newEvent.description}
+                  onChange={handleEventChange}
+                  placeholder="Event description"
+                />
+                <button className="add-event-btn" onClick={handleAddEvent}>+</button>
               </div>
             )}
 
@@ -182,26 +236,41 @@ const Calendar = () => {
                 </div>
               ))}
             </div>
+
+            <hr className="divider-line" /> {/* Divider Line */}
+
+            {/* Display Saved Events */}
+            <div className="events-list">
+              {events.map((event, index) => (
+                <div key={index} className="saved-event">
+                  <div className="event-title-date">
+                    <span className="event-title">{event.title}</span> 
+                    <span className="event-date"> on {new Date(event.date).toLocaleDateString()}</span>
+                  </div>
+                  <div className="event-description">{event.description}</div>
+                  <div className="note-buttons">
+                    <button onClick={() => handleEditEvent(index)} className="edit-btn">Edit</button>
+                    <button onClick={() => handleDeleteEvent(index)} className="delete-btn">Delete</button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Right Side Calendar */}
         <div className="calendar-right-side">
-          {/* Calendar Header with Arrows */}
           <div className="calendar-header">
-            <button className="arrow-btn" onClick={() => handleMonthChange('left')}>
+            <button className="arrow-btn" onClick={() => setCurrentMonth(prev => prev === 0 ? 11 : prev - 1)}>
               {'<'}
             </button>
-            <div className={`month-display ${monthSlideDirection}`}>
-              {months[currentMonth]}
-            </div>
-            <button className="arrow-btn" onClick={() => handleMonthChange('right')}>
+            <div className={`month-display ${monthSlideDirection}`}>{months[currentMonth]}</div>
+            <button className="arrow-btn" onClick={() => setCurrentMonth(prev => prev === 11 ? 0 : prev + 1)}>
               {'>'}
             </button>
             <div className="year-display">{currentYear}</div>
           </div>
 
-          {/* Calendar Grid */}
           <div className="calendar">
             <div className="calendar-grid">
               <div className="day-names">
@@ -218,6 +287,7 @@ const Calendar = () => {
                   const date = new Date(currentYear, currentMonth, day);
                   const isGarbageDay = date.getDay() === 5 && (Math.floor((day - 1) / 7) % 2 === 0);
                   const isCompostDay = date.getDay() === 4;
+                  const eventOnDay = events.find(event => new Date(event.date).getDate() === day);
 
                   return (
                     <div
@@ -230,6 +300,7 @@ const Calendar = () => {
                         {isCompostDay && <FaLeaf className="icon compost-icon" title="Compost Day" />}
                         {isGarbageDay && <FaTrash className="icon trash-icon" title="Garbage Day" />}
                         {isCompostDay && <FaRecycle className="icon" title="Recycling Day" />}
+                        {eventOnDay && <div className="event-dot" title={eventOnDay.title}></div>}
                       </div>
                     </div>
                   );
