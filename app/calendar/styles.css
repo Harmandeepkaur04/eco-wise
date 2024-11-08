@@ -667,3 +667,17 @@ body {
   right: 30px;
   color: black;
 }
+
+.notification-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffecb3;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  z-index: 1000;
+}
+
