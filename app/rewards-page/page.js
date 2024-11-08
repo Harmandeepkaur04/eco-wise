@@ -13,6 +13,7 @@ import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import Quiz from './quiz';
 import { useUser } from '@clerk/clerk-react';
+import FeedbackForm from '../feedback/page';
 
 const Home = () => {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
@@ -90,6 +91,7 @@ const Home = () => {
         </Group>
         <Tips />
       </Container>
+      <FeedbackForm/>
     </main>
   );
 };
