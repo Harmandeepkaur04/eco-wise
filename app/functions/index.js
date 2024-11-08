@@ -17,7 +17,7 @@ exports.sendInviteEmail = functions.https.onCall((data, context) => {
     from: senderEmail,
     to: receiverEmail,
     subject: `Invitation to join ${groupName}`,
-    text: `You have been invited to join the group ${groupName} by ${senderEmail}.`,
+    text: `You have been invited to join the group ${groupName} by ${senderEmail}. Click the link to accept the invitation: https://yourdomain.com/accept-invite?email=${receiverEmail}&group=${groupName}`,
   };
 
   return transporter.sendMail(mailOptions)
