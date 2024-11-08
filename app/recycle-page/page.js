@@ -6,9 +6,22 @@ import '../recycle-page/styles.css';
 import Game from './game';
 import TreeGame from '../treegame/page';
 import FriendRequestButton from '../friendrequest/page';
+import ChatComponent from '../chat/page';
+import Auth from '../components/auth';
+import UserSelector from '../chat/userselector';
+import ChatPage from '../chatpage/page';
+import { useChat } from '../chatprovider/page';
+import { useUser } from '@clerk/nextjs';
 
 const RecyclePage = () => {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
+  const { recipientEmail, setRecipientEmail } = useChat(); // Use the context
+  const { user } = useUser(); // Get the authenticated user
+
+ // Define senderId using the authenticated user's email
+ const senderId = user ? user.emailAddresses[0].emailAddress : '';
+ // Define receiverId using the selected recipient email
+ const receiverId = recipientEmail;
 
   useEffect(() => {
     speak('Welcome to the Recycling page. Here you can learn about recycling basics, articles, videos, and more.');
@@ -18,9 +31,6 @@ const RecyclePage = () => {
     setIsAudioOn((prev) => !prev);
   };
 
-  // Define senderId and receiverId here
-  const senderId = 'user1'; // Replace with actual sender ID
-  const receiverId = 'user2'; // Replace with actual receiver ID
 
   return (
     <main>
@@ -163,6 +173,9 @@ const RecyclePage = () => {
       <div>
         <h1>Send a Friend Request</h1>
         <FriendRequestButton senderId={senderId} receiverId={receiverId} />
+          <UserSelector onSelectUser={setRecipientEmail} />
+          {recipientEmail && <ChatComponent recipientEmail={recipientEmail} />}
+          <Auth />
       </div>
     </main>
   );
