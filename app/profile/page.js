@@ -21,6 +21,9 @@ import { useAuth } from '@clerk/nextjs';
 
 import '../profile/styles.css';
 
+import Home from '../pages';
+import Invite from '../pages/invite';
+
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({
@@ -237,6 +240,9 @@ URL:https://mantine.dev/docs/getting-started/ */
           }}>Sign Out</Button>
         </Group>
       </Container>
+      <Home/>
+      <Invite/>
     </main>
+    
   );
 }
