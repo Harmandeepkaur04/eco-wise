@@ -3,7 +3,8 @@ import { collection, addDoc, onSnapshot, query, orderBy } from 'firebase/firesto
 import { db } from '../../firebaseConfig';
 import { useUser } from '@clerk/nextjs';
 
-const ChatComponent = ({ recipientEmail }) => {
+
+const ChatComponent = ({ recipientEmail, recipientName }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -56,7 +57,7 @@ const ChatComponent = ({ recipientEmail }) => {
       <div>
         {loading ? <p>Loading messages...</p> : messages.map(message => (
           <div key={message.id}>
-            <p><strong>{message.sender === user.emailAddresses[0].emailAddress ? 'You' : 'Copilot'}:</strong> {message.text}</p>
+            <p><strong>{message.sender === user.emailAddresses[0].emailAddress ? 'You' : (recipientName || recipientEmail)}:</strong> {message.text}</p>
           </div>
         ))}
       </div>

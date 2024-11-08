@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Auth from '../components/auth';
 import ChatComponent from '../chat/page';
 import UserSelector from '../chat/userselector';
-import FriendRequestButton from '../friendrequest/page'; // Assuming this is another component you have
+import FriendRequestButton from '../friendrequest/page'; // 
 
 const ChatPage = () => {
   const [recipientEmail, setRecipientEmail] = useState('');

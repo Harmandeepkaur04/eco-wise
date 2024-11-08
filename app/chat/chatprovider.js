@@ -1,6 +1,7 @@
 // components/ChatProvider.js
 import React, { useState, createContext, useContext } from 'react';
 
+
 const ChatContext = createContext();
 
 export const useChat = () => useContext(ChatContext);
