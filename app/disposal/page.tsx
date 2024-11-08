@@ -186,6 +186,17 @@ const handleBooking = () => {
 </ScrollArea>
 
           );
+          case 'collection-tracker':
+        return (
+          <ScrollArea className="scrollable-section">
+            <Box className="collection-tracker">
+              <Title order={3}>Collection Tracker</Title>
+              <Text>This section tracks your waste collection and recycling progress.</Text>
+              <Text>View collection dates, types of waste collected, and your recycling stats.</Text>
+              {/* Add more detailed components for tracking as needed */}
+            </Box>
+          </ScrollArea>
+        );
       default:
         return null;
     }
@@ -239,6 +250,7 @@ return (
         <Button className="nav-button" onClick={() => setActiveContent('information')}>Information</Button>
         <Button className="nav-button" onClick={() => setActiveContent('holiday-schedule')}>Holiday Schedule</Button>
         <Button className="nav-button" onClick={() => setActiveContent('booking')}>Book Pickup</Button>
+        <Button className="nav-button" onClick={() => setActiveContent('collection-tracker')}>Collection Tracker</Button>
         <Button onClick={toggleAudio} className="audio-button">
           {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
         </Button>
