@@ -98,20 +98,20 @@ const Calendar = () => {
     }
   };
 
-  // Save note to list and reset input field
+  // `handleSaveNotes` saves the current note text to `savedNotes` array and clears the input if valid
   const handleSaveNotes = () => {
-    if (notes.trim()) {
-      if (editingIndex !== null) {
+    if (notes.trim()) { // Checks if the input is not empty
+      if (editingIndex !== null) { // If editing an existing note, update it in the `savedNotes` array
         const updatedNotes = savedNotes.map((note, index) =>
-          index === editingIndex ? notes : note
+          index === editingIndex ? notes : note // Replaces the note at the editing index
         );
-        setSavedNotes(updatedNotes);
-        setEditingIndex(null);
+        setSavedNotes(updatedNotes); // Updates savedNotes with edited note
+        setEditingIndex(null); // Resets editing index
       } else {
-        setSavedNotes([...savedNotes, notes]);
+        setSavedNotes([...savedNotes, notes]); // Adds new note if not editing
       }
-      setNotes('');
-      setShowNotesInput(false);
+      setNotes(''); // Clears the note input field
+      setShowNotesInput(false); // Hides the note input field
     }
   };
 
