@@ -115,44 +115,48 @@ const Calendar = () => {
     }
   };
 
-  // Save new event to the event list
-  const handleAddEvent = () => {
-    if (newEvent.title && newEvent.date) {
-      if (editingEventIndex !== null) {
+   // `handleAddEvent` saves a new event to `events` array or updates an existing event if editing
+   const handleAddEvent = () => {
+    if (newEvent.title && newEvent.date) { // Checks if title and date fields are not empty
+      if (editingEventIndex !== null) { // Updates existing event if editing
         const updatedEvents = events.map((event, index) =>
-          index === editingEventIndex ? newEvent : event
+          index === editingEventIndex ? newEvent : event // Replaces event at editing index
         );
-        setEvents(updatedEvents);
-        setEditingEventIndex(null);
+        setEvents(updatedEvents); // Updates events array with edited event
+        setEditingEventIndex(null); // Resets editing event index
       } else {
-        setEvents([...events, newEvent]);
+        setEvents([...events, newEvent]); // Adds new event if not editing
       }
-      setNewEvent({ title: '', date: '', description: '' });
-      setShowEventInput(false);
+      setNewEvent({ title: '', date: '', description: '' }); // Clears event input fields
+      setShowEventInput(false); // Hides the event input form
     }
   };
 
-  // Edit and delete handlers for notes
-  const handleEditNote = (index) => {
-    setNotes(savedNotes[index]);
-    setEditingIndex(index);
-    setShowNotesInput(true);
-  };
-  const handleDeleteNote = (index) => {
-    const updatedNotes = savedNotes.filter((_, i) => i !== index);
-    setSavedNotes(updatedNotes);
-  };
+// `handleEditNote` loads a specific note into the input field for editing
+const handleEditNote = (index) => {
+  setNotes(savedNotes[index]); // Sets `notes` to the selected note’s content
+  setEditingIndex(index); // Stores the index of the note being edited
+  setShowNotesInput(true); // Shows the note input field for editing
+};
 
-  // Edit and delete handlers for events
-  const handleEditEvent = (index) => {
-    setNewEvent(events[index]);
-    setEditingEventIndex(index);
-    setShowEventInput(true);
-  };
-  const handleDeleteEvent = (index) => {
-    const updatedEvents = events.filter((_, i) => i !== index);
-    setEvents(updatedEvents);
-  };
+// `handleDeleteNote` removes a note from `savedNotes` by filtering it out by index
+const handleDeleteNote = (index) => {
+  const updatedNotes = savedNotes.filter((_, i) => i !== index); // Excludes the note at the specified index
+  setSavedNotes(updatedNotes); // Updates `savedNotes` with filtered notes
+};
+
+// `handleEditEvent` loads a specific event into the input fields for editing
+const handleEditEvent = (index) => {
+  setNewEvent(events[index]); // Sets `newEvent` to the selected event’s details
+  setEditingEventIndex(index); // Stores index of event being edited
+  setShowEventInput(true); // Shows event input field for editing
+};
+
+// `handleDeleteEvent` removes an event from `events` by filtering it out by index
+const handleDeleteEvent = (index) => {
+  const updatedEvents = events.filter((_, i) => i !== index); // Excludes the event at the specified index
+  setEvents(updatedEvents); // Updates `events` with the remaining events
+};
 
   // Reset calendar view to today’s date
   const goToToday = () => {
