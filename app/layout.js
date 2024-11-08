@@ -3,11 +3,14 @@ import React from 'react';
 import { ThemeProvider } from './darkmode/page'; // Adjust the path as necessary
 import localFont from "next/font/local";
 import { ClerkProvider, SignedIn, SignedOut, SignIn, UserButton } from "@clerk/nextjs";
+import { useRouter } from 'next/router';
 import { MantineProvider } from '@mantine/core';
 import Link from 'next/link';
 import { AudioProvider } from './Audio'; // Adjust the path as necessary
 import './globals.css';
 import ThemeToggle, { useTheme } from "./darkmode/page";
+import ChatProvider from './chatprovider/page';
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +41,7 @@ const Navbar = () => {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
+      <ChatProvider>
     <html lang="en">
       <body>
       <header className="header-container">
@@ -61,6 +65,7 @@ export default function RootLayout({ children }) {
           </SignedIn>
       </body>
     </html>
+    </ChatProvider>
     </ClerkProvider>
   );
 }

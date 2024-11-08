@@ -129,7 +129,7 @@ export default function Drawers() {
               <div className="materials-grid">
                 {filteredMaterials.map((material) => (
                   <div key={material.id} className='material-div'>
-                    <img src={material.image} alt={material.name} /> 
+                    {material.image ? <img src={material.image} alt={material.name} /> : <Text>No image available</Text>} 
                     <Text className='materials'>{material.name}</Text>
                     <List className='item-list'>
                       {material.items.map((item, index) => (
