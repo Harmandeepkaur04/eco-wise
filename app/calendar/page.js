@@ -115,20 +115,20 @@ const Calendar = () => {
     }
   };
 
-  // Save new event to the event list
-  const handleAddEvent = () => {
-    if (newEvent.title && newEvent.date) {
-      if (editingEventIndex !== null) {
+   // `handleAddEvent` saves a new event to `events` array or updates an existing event if editing
+   const handleAddEvent = () => {
+    if (newEvent.title && newEvent.date) { // Checks if title and date fields are not empty
+      if (editingEventIndex !== null) { // Updates existing event if editing
         const updatedEvents = events.map((event, index) =>
-          index === editingEventIndex ? newEvent : event
+          index === editingEventIndex ? newEvent : event // Replaces event at editing index
         );
-        setEvents(updatedEvents);
-        setEditingEventIndex(null);
+        setEvents(updatedEvents); // Updates events array with edited event
+        setEditingEventIndex(null); // Resets editing event index
       } else {
-        setEvents([...events, newEvent]);
+        setEvents([...events, newEvent]); // Adds new event if not editing
       }
-      setNewEvent({ title: '', date: '', description: '' });
-      setShowEventInput(false);
+      setNewEvent({ title: '', date: '', description: '' }); // Clears event input fields
+      setShowEventInput(false); // Hides the event input form
     }
   };
 
