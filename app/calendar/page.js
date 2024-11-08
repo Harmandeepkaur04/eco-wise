@@ -218,80 +218,99 @@ const handleDeleteEvent = (index) => {
               {showNotesInput ? 'Cancel' : 'Add Notes'}
             </button>
 
-            {showNotesInput && (
-              <div className={`note-input-container ${isFadingOut ? 'fade-out' : ''}`}>
-                <input
-                  type="text"
-                  id="note-input"
-                  className="note-input"
-                  placeholder="Enter your note here..."
-                  value={notes}
-                  onChange={handleNoteChange}
-                />
-                <button className="add-note-btn" onClick={handleSaveNotes}>+</button>
-              </div>
-            )}
+            {/* Conditionally render the note input form only if `showNotesInput` is true */}
+{showNotesInput && (
+  <div className={`note-input-container ${isFadingOut ? 'fade-out' : ''}`}>
+    {/* Input field for entering a new note */}
+    <input
+      type="text" // Specifies the input type as text
+      id="note-input" // Unique ID for styling or accessibility
+      className="note-input" // CSS class for styling the input
+      placeholder="Enter your note here..." // Placeholder text to guide the user
+      value={notes} // Binds the current `notes` state value to the input
+      onChange={handleNoteChange} // Calls `handleNoteChange` on each keystroke to update `notes` state
+    />
+    {/* Button to save the note when clicked, triggering `handleSaveNotes` */}
+    <button className="add-note-btn" onClick={handleSaveNotes}>+</button>
+  </div>
+)}
 
-            {/* Add Event Button */}
-            <button className="toggle-add-event-btn" onClick={toggleEventInput}>
-              {showEventInput ? 'Cancel' : 'Add Event'}
-            </button>
+{/* Button to toggle the event input form visibility */}
+<button className="toggle-add-event-btn" onClick={toggleEventInput}>
+  {/* If `showEventInput` is true, display "Cancel", otherwise display "Add Event" */}
+  {showEventInput ? 'Cancel' : 'Add Event'}
+</button>
 
-            {showEventInput && (
-              <div className={`event-input-container ${isFadingOut ? 'fade-out' : ''}`}>
-                <input
-                  type="text"
-                  name="title"
-                  value={newEvent.title}
-                  onChange={handleEventChange}
-                  placeholder="Event title"
-                />
-                <input
-                  type="date"
-                  name="date"
-                  value={newEvent.date}
-                  onChange={handleEventChange}
-                />
-                <textarea
-                  name="description"
-                  value={newEvent.description}
-                  onChange={handleEventChange}
-                  placeholder="Event description"
-                />
-                <button className="add-event-btn" onClick={handleAddEvent}>+</button>
-              </div>
-            )}
+{/* Conditionally render the event input form only if `showEventInput` is true */}
+{showEventInput && (
+  <div className={`event-input-container ${isFadingOut ? 'fade-out' : ''}`}>
+    {/* Input field for event title */}
+    <input
+      type="text" // Input type for text
+      name="title" // `name` attribute identifies which part of the `newEvent` object this input updates
+      value={newEvent.title} // Binds `newEvent.title` to input
+      onChange={handleEventChange} // Calls `handleEventChange` to update `newEvent.title` with user input
+      placeholder="Event title" // Placeholder text for guidance
+    />
+    {/* Input field for selecting the event date */}
+    <input
+      type="date" // Date input type provides a date picker
+      name="date" // `name` attribute specifies which `newEvent` property to update
+      value={newEvent.date} // Binds `newEvent.date` to the input
+      onChange={handleEventChange} // Updates `newEvent.date` whenever the user selects a date
+    />
+    {/* Textarea for event description */}
+    <textarea
+      name="description" // Name specifies which `newEvent` property to update
+      value={newEvent.description} // Binds `newEvent.description` to the textarea
+      onChange={handleEventChange} // Updates `newEvent.description` with each keystroke
+      placeholder="Event description" // Placeholder text for guidance
+    />
+    {/* Button to add the new event, triggering `handleAddEvent` */}
+    <button className="add-event-btn" onClick={handleAddEvent}>+</button>
+  </div>
+)}
 
-            {/* Display Saved Notes */}
-            <div className="notes-list">
-              {savedNotes.map((note, index) => (
-                <div key={index} className="saved-note">
-                  <span>{note}</span>
-                  <div className="note-buttons">
-                    <button onClick={() => handleEditNote(index)} className="edit-btn">Edit</button>
-                    <button onClick={() => handleDeleteNote(index)} className="delete-btn">Delete</button>
-                  </div>
-                </div>
-              ))}
-            </div>
+{/* Display list of saved notes */}
+<div className="notes-list">
+  {/* Iterates over `savedNotes` array to render each note */}
+  {savedNotes.map((note, index) => (
+    <div key={index} className="saved-note"> {/* `key` ensures each element is uniquely identifiable */}
+      <span>{note}</span> {/* Displays the note text */}
+      <div className="note-buttons">
+        {/* Button to edit the current note, triggering `handleEditNote` with note's index */}
+        <button onClick={() => handleEditNote(index)} className="edit-btn">Edit</button>
+        {/* Button to delete the current note, triggering `handleDeleteNote` with note's index */}
+        <button onClick={() => handleDeleteNote(index)} className="delete-btn">Delete</button>
+      </div>
+    </div>
+  ))}
+</div>
 
-            <hr className="divider-line" /> {/* Divider Line */}
+{/* Divider line to separate notes and events sections */}
+<hr className="divider-line" />
 
-            {/* Display Saved Events */}
-            <div className="events-list">
-              {events.map((event, index) => (
-                <div key={index} className="saved-event">
-                  <div className="event-title-date">
-                    <span className="event-title">{event.title}</span> 
-                    <span className="event-date"> on {new Date(event.date).toLocaleDateString()}</span>
-                  </div>
-                  <div className="event-description">{event.description}</div>
-                  <div className="note-buttons">
-                    <button onClick={() => handleEditEvent(index)} className="edit-btn">Edit</button>
-                    <button onClick={() => handleDeleteEvent(index)} className="delete-btn">Delete</button>
-                  </div>
-                </div>
-              ))}
+{/* Display list of saved events */}
+<div className="events-list">
+  {/* Iterates over `events` array to render each event */}
+  {events.map((event, index) => (
+    <div key={index} className="saved-event"> {/* `key` uniquely identifies each event */}
+      <div className="event-title-date">
+        {/* Displays the event title */}
+        <span className="event-title">{event.title}</span>
+        {/* Displays the event date, formatted as a localized date string */}
+        <span className="event-date"> on {new Date(event.date).toLocaleDateString()}</span>
+      </div>
+      {/* Displays the event description */}
+      <div className="event-description">{event.description}</div>
+      <div className="note-buttons">
+        {/* Button to edit the event, calling `handleEditEvent` with the event's index */}
+        <button onClick={() => handleEditEvent(index)} className="edit-btn">Edit</button>
+        {/* Button to delete the event, calling `handleDeleteEvent` with the event's index */}
+        <button onClick={() => handleDeleteEvent(index)} className="delete-btn">Delete</button>
+      </div>
+    </div>
+  ))}
             </div>
           </div>
         </div>
