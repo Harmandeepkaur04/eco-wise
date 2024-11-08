@@ -297,51 +297,113 @@ const handleDeleteEvent = (index) => {
         </div>
 
         {/* Right Side Calendar */}
-        <div className="calendar-right-side">
-          <div className="calendar-header">
-            <button className="arrow-btn" onClick={() => setCurrentMonth(prev => prev === 0 ? 11 : prev - 1)}>
-              {'<'}
-            </button>
-            <div className={`month-display ${monthSlideDirection}`}>{months[currentMonth]}</div>
-            <button className="arrow-btn" onClick={() => setCurrentMonth(prev => prev === 11 ? 0 : prev + 1)}>
-              {'>'}
-            </button>
-            <div className="year-display">{currentYear}</div>
-          </div>
+        <div className="calendar-right-side"> {/* Container for the right side of the calendar UI */}
+  <div className="calendar-header"> {/* Header of the calendar, containing month navigation and display */}
+    
+    {/* Button to go to the previous month; if currently on January (0), wraps around to December (11) */}
+    <button className="arrow-btn" onClick={() => setCurrentMonth(prev => prev === 0 ? 11 : prev - 1)}>
+      {'<'} {/* Left arrow symbol */}
+    </button>
+    
+    {/* Displays the current month with an optional sliding direction class for animation */}
+    <div className={`month-display ${monthSlideDirection}`}>{months[currentMonth]}</div>
+    
+    {/* Button to go to the next month; if currently on December (11), wraps around to January (0) */}
+    <button className="arrow-btn" onClick={() => setCurrentMonth(prev => prev === 11 ? 0 : prev + 1)}>
+      {'>'} {/* Right arrow symbol */}
+    </button>
+    
+    {/* Displays the current year */}
+    <div className="year-display">{currentYear}</div>
+  </div>
 
-          <div className="calendar">
-            <div className="calendar-grid">
-              <div className="day-names">
-                {daysOfWeek.map((day) => (
-                  <div key={day} className="day-header">{day.slice(0, 2).toUpperCase()}</div>
-                ))}
+  <div className="calendar"> {/* Main calendar grid container */}
+    <div className="calendar-grid"> {/* Inner grid structure for day headers and dates */}
+
+      {/* Header row displaying the days of the week */}
+      <div className="day-names">
+        {daysOfWeek.map((day) => ( 
+          /* .map() iterates over daysOfWeek array to create a day header for each day.
+             `day` represents the current day in the iteration, e.g., 'Sun', 'Mon', etc. */
+          <div key={day} className="day-header">{day.slice(0, 2).toUpperCase()}</div>
+          /* `day.slice(0, 2).toUpperCase()` extracts the first two characters of each day name, 
+             converts them to uppercase, and displays them as headers, like "SU" for Sunday. 
+             The `key` prop uniquely identifies each day header. */
+        ))}
+      </div>
+
+      <div className="calendar-body"> {/* Calendar grid displaying dates and events for the selected month */}
+        
+        {/* Generates empty cells at the start of the month, aligning the first date correctly based on the day it falls on */}
+        {Array.from({ length: firstDayOfMonth }).map((_, i) => (
+          /* Array.from({ length: firstDayOfMonth }) creates an array with a length equal to `firstDayOfMonth`, 
+             which represents the weekday index of the 1st day (0 = Sunday, 1 = Monday, etc.). 
+             Each element is an empty placeholder until the first actual date. */
+          <div key={i} className="empty-day"></div> 
+          /* `key={i}` uniquely identifies each empty cell, and `className="empty-day"` styles the placeholder cells. */
+        ))}
+
+        {/* Generates the actual calendar days for the current month */}
+        {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
+          /* Array.from({ length: daysInMonth }, (_, i) => i + 1) creates an array with numbers from 1 up to `daysInMonth`, 
+             where `daysInMonth` is the total number of days in the selected month. This loop renders each date cell. */
+
+          // Create a date object for the current day
+          const date = new Date(currentYear, currentMonth, day);
+
+          // Boolean to check if the date is a garbage collection day; 
+          // garbage is collected on Friday (day index 5) and only on alternate weeks.
+          const isGarbageDay = date.getDay() === 5 && (Math.floor((day - 1) / 7) % 2 === 0);
+          /* `date.getDay() === 5` checks if the day is Friday (5 = Friday).
+             `(Math.floor((day - 1) / 7) % 2 === 0)` ensures garbage collection is biweekly. 
+             `(day - 1) / 7` finds the zero-based week index, and `% 2 === 0` confirms it's an even week. */
+
+          // Boolean to check if the date is a compost collection day (every Thursday)
+          const isCompostDay = date.getDay() === 4;
+          /* `date.getDay() === 4` checks if the day is Thursday (4 = Thursday), 
+             which is a compost collection day. If true, a compost icon will be displayed on this day. */
+
+          // Searches `events` array to find any event scheduled on this day
+          const eventOnDay = events.find(event => new Date(event.date).getDate() === day);
+          /* `events.find(...)` checks if any event in the `events` array matches the current `day`.
+             `new Date(event.date).getDate() === day` converts each event's date and compares it to the current calendar day.
+             If found, `eventOnDay` will store the matched event; otherwise, it will be `undefined`. */
+
+          return (
+            <div
+              key={day} // Unique key for each date cell in the calendar
+              className={`calendar-day ${selectedDay === day ? "selected-day" : ""}`}
+              /* `calendar-day` styles each date cell. `selected-day` class is added if `day` equals `selectedDay`, 
+                 providing visual feedback to highlight the currently selected date. */
+              onClick={() => setSelectedDay(day)} // Sets `selectedDay` to the clicked day
+            >
+              {day} {/* Displays the day number within the date cell */}
+
+              {/* Container for displaying various icons (e.g., compost, garbage, events) associated with the day */}
+              <div className="icon-container">
+
+                {/* Compost icon displayed if `isCompostDay` is true, indicating compost collection on this day */}
+                {isCompostDay && <FaLeaf className="icon compost-icon" title="Compost Day" />}
+                /* `&&` is a conditional rendering operator here. If `isCompostDay` is true, the `<FaLeaf />` component is rendered.
+                   Otherwise, it skips rendering. The `title` attribute shows "Compost Day" on hover. */
+
+                {/* Garbage icon displayed if `isGarbageDay` is true, indicating garbage collection on this day */}
+                {isGarbageDay && <FaTrash className="icon trash-icon" title="Garbage Day" />}
+                /* `isGarbageDay &&` conditionally displays `<FaTrash />` icon only if `isGarbageDay` is true.
+                   This icon represents garbage collection, with a hover tooltip "Garbage Day". */
+
+                {/* Recycling icon, displayed along with compost on Thursdays */}
+                {isCompostDay && <FaRecycle className="icon" title="Recycling Day" />}
+                /* `isCompostDay &&` conditionally displays the `<FaRecycle />` icon only if `isCompostDay` is true.
+                   This icon represents recycling, shown alongside compost icon on Thursdays. */
+
+                {/* Event indicator, represented by a dot, displayed if there is an event on the current day */}
+                {eventOnDay && <div className="event-dot" title={eventOnDay.title}></div>}
+                /* `eventOnDay &&` conditionally displays a small `event-dot` if `eventOnDay` is not `undefined`.
+                   This dot indicates an event scheduled for the current day, with `title` as a tooltip showing event details. */
               </div>
-
-              <div className="calendar-body">
-                {Array.from({ length: firstDayOfMonth }).map((_, i) => (
-                  <div key={i} className="empty-day"></div>
-                ))}
-                {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((day) => {
-                  const date = new Date(currentYear, currentMonth, day);
-                  const isGarbageDay = date.getDay() === 5 && (Math.floor((day - 1) / 7) % 2 === 0);
-                  const isCompostDay = date.getDay() === 4;
-                  const eventOnDay = events.find(event => new Date(event.date).getDate() === day);
-
-                  return (
-                    <div
-                      key={day}
-                      className={`calendar-day ${selectedDay === day ? "selected-day" : ""}`}
-                      onClick={() => setSelectedDay(day)}
-                    >
-                      {day}
-                      <div className="icon-container">
-                        {isCompostDay && <FaLeaf className="icon compost-icon" title="Compost Day" />}
-                        {isGarbageDay && <FaTrash className="icon trash-icon" title="Garbage Day" />}
-                        {isCompostDay && <FaRecycle className="icon" title="Recycling Day" />}
-                        {eventOnDay && <div className="event-dot" title={eventOnDay.title}></div>}
-                      </div>
-                    </div>
-                  );
+            </div>
+          );
                 })}
               </div>
             </div>
