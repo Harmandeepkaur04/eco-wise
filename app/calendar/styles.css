@@ -681,3 +681,8 @@ body {
   z-index: 1000;
 }
 
+
+.notification-icon {
+  margin-right: 10px;
+}
+
