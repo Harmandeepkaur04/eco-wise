@@ -1,6 +1,9 @@
-// pages/api/send-invite.js
-import nodemailer from 'nodemailer';
+/*Reference
+URL:https://www.nodemailer.com/ */
 
+import nodemailer from 'nodemailer';//API route to send email
+
+//handle http request
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     const { email } = req.body;
@@ -10,8 +13,8 @@ export default async function handler(req, res) {
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER, // Your email address
-        pass: process.env.EMAIL_PASS, // Your email password
+        user: process.env.EMAIL_USER, 
+        pass: process.env.EMAIL_PASS, 
       },
     });
 
@@ -25,7 +28,7 @@ export default async function handler(req, res) {
 
     // Send email
     try {
-      await transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions);//wait for email to send
       console.log('Email sent successfully'); // Debugging log
       res.status(200).json({ message: 'Invitation sent successfully!' });
       

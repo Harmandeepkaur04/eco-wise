@@ -21,7 +21,7 @@ import { useAuth } from '@clerk/nextjs';
 
 import '../profile/styles.css';
 
-import Home from '../pages';
+//import Home from '../pages';
 import Invite from '../pages/invite';
 
 
@@ -240,7 +240,7 @@ URL:https://mantine.dev/docs/getting-started/ */
           }}>Sign Out</Button>
         </Group>
       </Container>
-      <Home/>
+      
       <Invite/>
     </main>
     
