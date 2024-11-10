@@ -1,11 +1,12 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
-import { Button, Text, Table, Container, ScrollArea, Title, Box, Stack } from "@mantine/core";
+import { Button, Text, Table, Container, ScrollArea, Title, Box, Stack, TextInput, Select } from "@mantine/core";
 import '@mantine/core/styles/Overlay.css';
 import '@mantine/core/styles/ModalBase.css';
 import '@mantine/core/styles/CloseButton.css';
 import '@mantine/core/styles/Drawer.css';
 import "../disposal/styles.css";
+import { DatePicker } from '@mantine/dates';
 import GoogleMaps from "../components/GoogleMaps";
 import Drawers from "../components/Drawer";
 import ShepardDrawers from "../components/ShepardDrawer";
@@ -31,6 +32,19 @@ const elements = [
 ];
 
 export default function Disposal() {
+
+  const [pickupDate, setPickupDate] = useState(null);
+const [vehicle, setVehicle] = useState(null);
+const [address, setAddress] = useState("");
+
+const handleBooking = () => {
+  if (!pickupDate || !vehicle || !address) {
+    alert("Please fill out all fields before booking.");
+  } else {
+    alert("Pickup appointment booked!");
+    // Proceed with booking logic
+  }
+};
 
 
   const [activeContent, setActiveContent] = useState('locations');
@@ -142,6 +156,36 @@ export default function Disposal() {
     </Table>
           </ScrollArea>
         );
+        case 'booking':
+          return (
+            <ScrollArea className="scrollable-section">
+  <Box className="booking-form">
+    <Title order={3}>Book a Pickup Appointment</Title>
+
+    <label className="form-label" htmlFor="pickup-date">Select Pickup Date</label>
+    <DatePicker id="pickup-date" value={pickupDate} onChange={setPickupDate} />
+
+    <label className="form-label" htmlFor="vehicle">Select Vehicle</label>
+    <Select
+      id="vehicle"
+      placeholder="Choose a vehicle"
+      data={[
+        { value: 'van', label: 'Van' },
+        { value: 'pickup_truck', label: 'Pickup Truck' },
+        { value: 'truck', label: 'Truck' },
+      ]}
+      value={vehicle}
+      onChange={setVehicle}
+    />
+
+    <label className="form-label" htmlFor="pickup-address">Pickup Address</label>
+    <TextInput id="pickup-address" placeholder="Enter your address" value={address} onChange={(e) => setAddress(e.currentTarget.value)} />
+
+    <Button className="book-button" onClick={handleBooking}>Book Pickup</Button>
+  </Box>
+</ScrollArea>
+
+          );
       default:
         return null;
     }
@@ -194,6 +238,7 @@ return (
         <Button className="nav-button" onClick={() => setActiveContent('locations')}>Locations</Button>
         <Button className="nav-button" onClick={() => setActiveContent('information')}>Information</Button>
         <Button className="nav-button" onClick={() => setActiveContent('holiday-schedule')}>Holiday Schedule</Button>
+        <Button className="nav-button" onClick={() => setActiveContent('booking')}>Book Pickup</Button>
         <Button onClick={toggleAudio} className="audio-button">
           {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
         </Button>
