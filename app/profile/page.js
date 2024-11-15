@@ -22,7 +22,7 @@ import { useAuth } from '@clerk/nextjs';
 import '../profile/styles.css';
 
 //import Home from '../pages';
-import Invite from '../pages/invite';
+import Invite from '../pages/index';
 
 
 export default function ProfilePage() {
