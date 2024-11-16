@@ -481,6 +481,8 @@
 .booking-form {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
   gap: 20px;
   padding: 20px;
   background-color: #728c5a;
@@ -488,7 +490,8 @@
   border-radius: 8px;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
   color: #eaf1b1;
-  max-width: 80%;
+  width: 50%; /* Full width */
+  height: auto; /* Adjust height dynamically */
   margin: 0 auto;
 }
 
@@ -502,18 +505,65 @@
 }
 
 /* Date picker styling */
-.booking-form .mantine-DatePicker-wrapper {
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: 2px solid #102f15;
-  border-radius: 8px;
-  padding: 8px;
-  font-family: 'Times New Roman', Times, serif;
+.booking-form .mantine-DatePicker {
+ align-items: center;
 }
 
-.booking-form .mantine-DatePicker-wrapper input {
-  color: #102f15;
+.booking-form .mantine-DatePicker-day {
+  border-radius: 50%; /* Circular days */
+  height: 40px; /* Consistent size */
+  width: 40px; /* Consistent size */
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333; /* Regular text color */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s, color 0.3s;
 }
+
+.booking-form .mantine-DatePicker-day[data-selected] {
+  background-color: #102f15;
+  color: #ffffff; /* White text for contrast */
+}
+
+.booking-form .mantine-DatePicker-day:hover {
+  background-color: #102f15; /* Hover matches selected color */
+  color: #ffffff;
+}
+
+.booking-form .mantine-DatePicker-day[data-disabled] {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.booking-form .mantine-DatePicker-weekday {
+  font-size: 12px;
+  color: #eaf1b1; /* Light gray text */
+  text-align: center;
+  font-weight: bold;
+}
+
+.mantine-DatePicker-monthPicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* Same as the day picker */
+  width: 40px; /* Same as the day picker */
+  border-radius: 50%; /* Circular appearance */
+  font-size: 14px;
+  font-weight: bold;
+  background-color: transparent;
+  color: #333333;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.mantine-DatePicker-monthPicker:hover {
+  background-color: #102f15; /* Hover matches day picker */
+  color: #ffffff; /* White text for hover */
+}
+
 
 /* Vehicle select styling */
 .booking-form .mantine-Select-wrapper {
@@ -578,13 +628,9 @@
 }
 
 /* Styling for form labels */
-.form-label {
-  font-size: 1rem;
-  color: #eaf1b1;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+
 
 .collection-tracker {
   color: #102f15;
 }
+
