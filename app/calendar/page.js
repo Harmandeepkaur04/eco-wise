@@ -43,6 +43,14 @@ const Calendar = () => {
   const [editingEventIndex, setEditingEventIndex] = useState(null);
   const [monthSlideDirection, setMonthSlideDirection] = useState('');
 
+   // Navigation Icons State
+   const [activeIcon, setActiveIcon] = useState('');
+   const activeIconLabel = {
+     calendar: 'Calendar View',
+     'calendar-plus': 'Add Event',
+     'note-sticky': 'Sticky Notes',
+   }[activeIcon] || 'Select an Icon';
+
   const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
@@ -177,11 +185,29 @@ const Calendar = () => {
         </div>
       </div>
 
+      <div className="navigation-icons">
+  <div className="icon-buttons">
+    <button onClick={() => setActiveIcon('calendar')} aria-label="Calendar">
+      <i className="fa-solid fa-calendar"></i>
+    </button>
+    <button onClick={() => setActiveIcon('calendar-plus')} aria-label="Add Event">
+      <i className="fa-regular fa-calendar-plus"></i>
+    </button>
+    <button onClick={() => setActiveIcon('note-sticky')} aria-label="Sticky Notes">
+      <i className="fa-solid fa-note-sticky"></i>
+    </button>
+  </div>
+  <p className={`active-icon-label ${activeIcon && 'fade-in-down'}`}>{activeIconLabel}</p>
+</div>
+
+
       <div className="monthly-overview-widget">
         <h2>Monthly Schedule Overview</h2>
         <p>Upcoming: {months[currentMonth]} {upcomingReminder.date}, {upcomingReminder.type} 6 AM {upcomingReminder.icon}</p>
         {savedNotes.length > 0 && <p>Notes: {savedNotes.join(', ')}</p>}
       </div>
+
+                          
 
       <div className="calendar-content">
         <div className="calendar-left-widget">
@@ -192,6 +218,7 @@ const Calendar = () => {
             <p><FaLeaf /> Compost: Every Thursday, 6 AM</p>
             <p><FaTrash /> Garbage: Every other Friday, 6 AM</p>
 
+          
             {/* Add Notes Button */}
             <button className="toggle-add-note-btn" onClick={toggleNotesInput}>
               {showNotesInput ? 'Cancel' : 'Add Notes'}

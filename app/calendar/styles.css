@@ -75,37 +75,91 @@ body {
   font-family: 'Times New Roman', serif;
   justify-content: center;
   align-items: flex-start; /* Changed to align calendar below the nav bar */
-  min-height: 100vh;
+  min-height: 160vh;
   margin: 0;
   }
 
-/* General styling */
-.calendar-container {
-  margin-top: 0%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 100px;
-  padding: 20px;
-  background-color: #203a14;
-  border-radius: 20px;
-  font-size: 22px;
-}
-
-/* Monthly overview widget */
-.monthly-overview-widget {
-  background-color: #728C5A;
-  color: #102F15;
-  padding: 20px;
-  width: 97%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 25px;
-}
+  .calendar-container {
+    margin-top: 100px;
+    display: flex; /* Ensures children align side by side */
+    flex-wrap: wrap; /* Allows wrapping if there's not enough space */
+    justify-content: 50px; /* Distributes space between children */
+    align-items: flex-start; /* Aligns children at the top */
+    width: 100%;
+    max-width: 1500px;
+    padding: 20px;
+    background-color: #203a14;
+    border-radius: 20px;
+    font-size: 22px;
+    gap: 10px; /* Adds spacing between children */
+    margin-left: 3%;
+  }
+  
+  .navigation-icons {
+    background-color: #728C5A;
+    color: #102F15;
+    padding: 20px;
+    width: 33%; /* Adjust width to fit beside the monthly overview */
+    border-radius: 10px;
+    text-align: left;
+    font-size: 20px;
+    margin: 0px; /* Removes unnecessary margins */
+    min-height: 80px;
+    margin-left: 18px;
+    display: flex; /* Added for alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Space between icons and label */
+  }
+  
+  .icon-buttons {
+    display: flex;
+    gap: 15px; /* Add space between the icons */
+  }
+  
+  .icon-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #102F15;
+  }
+  
+  .icon-buttons button:hover {
+    color: #EBFADC;
+  }
+  
+  .active-icon-label {
+    margin-left: auto;
+    font-size: 20px;
+    text-align: right;
+  }
+  
+  .fade-in-down {
+    animation: fadeInDown 0.5s forwards;
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .monthly-overview-widget {
+    background-color: #728C5A;
+    color: #102F15;
+    padding: 10px;
+    width: 64.3%; /* Adjust width to fit beside the navigation icons */
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0; /* Removes unnecessary margins */
+  }
 
 .calendar-content {
   display: flex;
