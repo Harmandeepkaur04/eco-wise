@@ -26,7 +26,7 @@ const geistMono = localFont({
 // Navbar component
 const Navbar = () => {
   return (
-    <nav style={{ display: 'flex', justifyContent: 'space-around', padding: '10px', backgroundColor: '#f0f0f0' }}>
+    <nav style={{ display: 'flex', justifyContent: 'space-around', padding: '10px', backgroundColor: '#EBFADC' }}>
       <Link href="/">Home</Link>
       <Link href="/recycle-page">Recycle</Link>
       <Link href="/rewards-page">Rewards</Link>
