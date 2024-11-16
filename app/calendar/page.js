@@ -184,9 +184,15 @@ const handleDeleteEvent = (index) => {
       {/* Notification Banner */}
       {showNotification && (
         <div className="notification-banner">
-          <FaBell className="notification-icon" />
-          <span>{`Reminder: ${upcomingReminder.type} on ${upcomingReminder.day} at 6 AM`}</span>
-          <button className="close-btn" onClick={handleCloseNotification}>×</button>
+          // Displays a bell icon for notifications using the FaBell component from Font Awesome
+<FaBell className="notification-icon" />
+
+{/*Shows a reminder message with dynamic content based on `upcomingReminder` data*/}
+<span>{`Reminder: ${upcomingReminder.type} on ${upcomingReminder.day} at 6 AM`}</span>
+
+{/*Adds a button with an "×" icon to close the notification; triggers `handleCloseNotification` when clicked*/}
+<button className="close-btn" onClick={handleCloseNotification}>×</button>
+
         </div>
       )}
 
