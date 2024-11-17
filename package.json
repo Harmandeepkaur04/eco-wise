@@ -19,12 +19,9 @@
     "@tabler/icons-react": "^3.20.0",
     "emailjs-com": "^3.2.0",
     "firebase": "^10.14.1",
-<<<<<<< Updated upstream
     "framer-motion": "^11.11.17",
     "next": "^15.0.1",
     "qrcode": "^1.5.4",
-=======
->>>>>>> Stashed changes
     "react": "^18.3.1",
     "react-beautiful-dnd": "^13.1.1",
     "react-confetti": "^6.1.0",
