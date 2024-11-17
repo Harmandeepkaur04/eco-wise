@@ -8,7 +8,13 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { useAuth } from '@clerk/nextjs';
 import '../profile/styles.css';
+<<<<<<< Updated upstream
 import Invite from '../pages/index'; 
+=======
+
+//import Home from '../pages';
+
+>>>>>>> Stashed changes
 
 
 export default function ProfilePage() {
@@ -210,12 +216,17 @@ export default function ProfilePage() {
             alert('Signed out!');
           }}>Sign Out</Button>
         </Group>
+<<<<<<< Updated upstream
 
 
 
         
       </Container>
       
+=======
+      </Container>    
+     
+>>>>>>> Stashed changes
     </main>
     
   );
