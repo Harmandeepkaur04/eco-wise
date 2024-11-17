@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Invite a Friend</h1>
+      
       <form onSubmit={handleSubmit}>
         <label htmlFor="friendEmail">Friend's Email:</label>
         <input
