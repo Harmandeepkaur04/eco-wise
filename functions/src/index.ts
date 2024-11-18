@@ -1,19 +1,33 @@
-/**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
- */
+import * as functions from "firebase-functions";
+import * as admin from "firebase-admin";
+import sgMail from "@sendgrid/mail";
+import cors from "cors";
 
-import {onRequest} from "firebase-functions/v2/https";
-import * as logger from "firebase-functions/logger";
+admin.initializeApp();
+sgMail.setApiKey(functions.config().sendgrid.key); // Load API key from environment variables
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+const corsHandler = cors({ origin: true });
 
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+export const sendInvite = functions.https.onRequest((req, res) => {
+  corsHandler(req, res, () => {
+    const { email } = req.body;
+
+    const msg = {
+      to: email,
+      from: "your-email@example.com",
+      subject: "Join our Recycling Community!",
+      text: `Hi there! Your friend invited you to join our recycling community.
+        Sign up here: https://yourwebsite.com/signup?referral=uniqueID`,
+    };
+
+    sgMail
+      .send(msg)
+      .then(() => {
+        res.status(200).send("Invite sent!");
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        res.status(500).send(error.toString());
+      });
+  });
+});
