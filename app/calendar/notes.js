@@ -42,13 +42,16 @@ const Calendar = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingEventIndex, setEditingEventIndex] = useState(null);
   const [monthSlideDirection, setMonthSlideDirection] = useState('');
+  const [activeView, setActiveView] = useState('calendar'); // 'calendar' or 'notes'
+  const [reminderNotes, setReminderNotes] = useState([]);
 
    // Navigation Icons State
    const [activeIcon, setActiveIcon] = useState('');
    const activeIconLabel = {
      calendar: 'Calendar View',
-     'calendar-plus': 'Add Event',
+     'calendar-plus': 'Event',
      'note-sticky': 'Sticky Notes',
+     'notification-bell': 'Notifications',
    }[activeIcon] || 'Select an Icon';
 
   const months = [
@@ -123,6 +126,13 @@ const Calendar = () => {
     }
   };
 
+  const toggleReminder = (index) => {
+    const updatedNotes = savedNotes.map((note, i) =>
+      i === index ? { ...note, reminder: !note.reminder } : note
+    );
+    setSavedNotes(updatedNotes);
+  };
+
   // Save new event to the event list
   const handleAddEvent = () => {
     if (newEvent.title && newEvent.date) {
@@ -186,15 +196,18 @@ const Calendar = () => {
       </div>
 
       <div className="navigation-icons">
-  <div className="icon-buttons">
-    <button onClick={() => setActiveIcon('calendar')} aria-label="Calendar">
-      <i className="fa-solid fa-calendar"></i>
+    <div className="icon-buttons">
+    <button onClick={() => { setActiveIcon('calendar'); setActiveView('calendar'); }} aria-label="Calendar">
+    <i className="fa-solid fa-calendar"></i>
     </button>
     <button onClick={() => setActiveIcon('calendar-plus')} aria-label="Add Event">
-      <i className="fa-regular fa-calendar-plus"></i>
+    <i className="fa-regular fa-calendar-plus"></i>
     </button>
-    <button onClick={() => setActiveIcon('note-sticky')} aria-label="Sticky Notes">
-      <i className="fa-solid fa-note-sticky"></i>
+    <button onClick={() => { setActiveIcon('note-sticky'); setActiveView('notes'); }} aria-label="Sticky Notes">
+    <i className="fa-solid fa-note-sticky"></i>
+    </button>
+    <button onClick={() => setActiveIcon('notification-bell')} aria-label="Notifications">
+      <i className="fa-solid fa-bell"></i>
     </button>
   </div>
   <p className={`active-icon-label ${activeIcon && 'fade-in-down'}`}>{activeIconLabel}</p>
@@ -214,11 +227,12 @@ const Calendar = () => {
           <h3 className="month-date">{months[currentMonth]} {selectedDay}</h3>
           <h4 className="time-display">{getLocalTime()}</h4>
 
+          
           <div className="class-list">
             <p><FaLeaf /> Compost: Every Thursday, 6 AM</p>
+            <p><FaRecycle/> Recycle: Every other Thursday, 6 am</p>
             <p><FaTrash /> Garbage: Every other Friday, 6 AM</p>
-
-          
+            
             {/* Add Notes Button */}
             <button className="toggle-add-note-btn" onClick={toggleNotesInput}>
               {showNotesInput ? 'Cancel' : 'Add Notes'}
