@@ -6,10 +6,16 @@
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
-    "target": "es2017"
+    "target": "es2017",
+    "esModuleInterop": true, // Add this to ensure compatibility with ES modules
+    "skipLibCheck": true // Add this to speed up the compilation
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src",
+    "index.js" // Include index.js to avoid ESLint parsing error
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules to avoid unnecessary linting
   ]
 }

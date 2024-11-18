@@ -20,6 +20,7 @@ module.exports = {
   ignorePatterns: [
     "/lib/**/*", // Ignore built files.
     "/generated/**/*", // Ignore generated files.
+    "index.js", // Ignore index.js to avoid parsing error
   ],
   plugins: [
     "@typescript-eslint",
@@ -29,5 +30,9 @@ module.exports = {
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "indent": ["error", 2],
+    "linebreak-style": ["error", process.platform === "win32" ? "windows" : "unix"], // Handle linebreaks
+    "max-len": ["error", { "code": 120 }], // Increase max line length to 120
+    "object-curly-spacing": ["error", "always"], // Ensure consistent spacing inside braces
+    "comma-dangle": ["error", "always-multiline"], // Ensure trailing commas where valid
   },
 };
