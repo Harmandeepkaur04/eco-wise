@@ -1,25 +1,14 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-
-//import Link from 'next/link';
-
-/* Reference: Mantine core documentation for all elements.
-URL:https://mantine.dev/core/container/ */ 
-
-import { Container, Title, Text, Group, List, ThemeIcon, TextInput,Button } from '@mantine/core';
-import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
-
-
-/*Reference: Custom useAudio Hook imported from Audio.js */
+import { Container, Title, Text, Group, List, ThemeIcon, TextInput, Button } from '@mantine/core';
+import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 import { useAudio } from '../Audio';
 import { IconCheck } from '@tabler/icons-react';
-
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
 import { useAuth } from '@clerk/nextjs';
-
-
 import '../profile/styles.css';
+import Invite from '../pages/index'; 
 
 
 export default function ProfilePage() {
@@ -29,7 +18,7 @@ export default function ProfilePage() {
     address: '',
   });
 
-  const [points,setPoints] = useState(0);
+  const [points, setPoints] = useState(0);
   const [notifications] = useState([
     'Reminder: Drop off your recyclables at the nearest center today!',
     'New event: Community cleanup drive on Saturday!',
@@ -41,10 +30,14 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
   const { userId } = useAuth();
+  const [isInviteFriend, setIsInviteFriend] = useState(false);
   
+
   useEffect(() => {
-    speak('Welcome to the profile page. Here you can view and manage your personal information and  track record on activities .');
-  }, [ isAudioOn]);
+    speak('Welcome to the profile page. Here you can view and manage your personal information and track record on activities.');
+  }, [isAudioOn]);
+
+  
 
   const handleAudioToggle = () => {
     setIsAudioOn((prev) => !prev);
@@ -61,10 +54,9 @@ export default function ProfilePage() {
       [name]: value,
     }));
   };
-  
-  
+
   const handleSaveClick = async () => {
-    if (!userId) return; 
+    if (!userId) return;
     try {
       await setDoc(doc(db, "users", userId), userInfo);
       console.log('User info saved successfully:', userInfo);
@@ -74,17 +66,16 @@ export default function ProfilePage() {
       console.error("Error saving user info:", error);
     }
   };
-  
- 
-/*Reference: Get the help from AI and youtube tutorial to learn about the toggle functionality and implementation.*/
+
   const toggleUserInfo = () => setIsUserInfo(!isUserInfo);
   const togglePoints = () => setIsPoints(!isPoints);
   const toggleRewards = () => setIsRewards(!isRewards);
   const toggleNotifications = () => setIsNotifications(!isNotifications);
+  const toggleInviteFriend = () => setIsInviteFriend(!isInviteFriend);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      if (!userId) return; // Ensure user is logged in
+      if (!userId) return;
       try {
         const docRef = doc(db, "users", userId);
         const docSnap = await getDoc(docRef);
@@ -109,7 +100,7 @@ export default function ProfilePage() {
         const pointsDocRef = doc(db, "leaderboard", userId);
         const pointsDocSnap = await getDoc(pointsDocRef);
         if (pointsDocSnap.exists()) {
-          setPoints(pointsDocSnap.data().points || 0); // Assume 'points' field holds the user's points
+          setPoints(pointsDocSnap.data().points || 0);
         } else {
           console.log("No points data found!");
         }
@@ -120,40 +111,18 @@ export default function ProfilePage() {
 
     fetchUserPoints();
   }, [userId]);
-  
-  
 
-    /*const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // Fetch user info if authenticated
-        fetchUserInfo(user);
-      } else {
-        // Redirect to login page if not authenticated
-        console.error("No user is authenticated. Redirecting to login.");
-       
-      }
-    });*/
-
-    
-    
-
-/*Reference: Used Mantine official documentation for applying elements.
-URL:https://mantine.dev/docs/getting-started/ */
-   
   return (
     <main>
       <Container className='container'>
-
-        {/* Audio Control Icon */}
-      <Group position="center" className='audio-icon'>
-        <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
-          {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
-        </div>
-      </Group>
+        <Group position="center" className='audio-icon'>
+          <div onClick={handleAudioToggle} style={{ cursor: 'pointer' }}>
+            {isAudioOn ? <FaVolumeUp size={24} /> : <FaVolumeMute size={24} />}
+          </div>
+        </Group>
 
         <Title order={1}><strong>Profile Page</strong></Title>
 
-        {/* User Info Section */}
         <div className='infoSection'>
           <Title order={3} onClick={toggleUserInfo} style={{ cursor: 'pointer' }}>User Information</Title>
           {isUserInfo && (
@@ -230,13 +199,26 @@ URL:https://mantine.dev/docs/getting-started/ */
           )}
         </div>
 
+        <div className='infoSection'>
+          <Title order={3} onClick={toggleInviteFriend} style={{ cursor: 'pointer' }}>Invite a Friend</Title>
+          <Invite />
+        </div>
+
         <Group position="center" className='button'>
           <Button onClick={() => {
             speak('Signed out!');
             alert('Signed out!');
           }}>Sign Out</Button>
         </Group>
+
+
+
+        
       </Container>
+      
+        
+     
     </main>
+    
   );
 }

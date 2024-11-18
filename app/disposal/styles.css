@@ -41,19 +41,37 @@
 
 /* Button styling */
 .nav-button {
+  align-items: center; /* Vertically align icon and text */
   margin-bottom: 10px;
   background-color: #eaf1b1;
   color: #102f15;
   border: 2px solid #102f15;
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px 15px; /* Add sufficient padding */
+  font-weight: bold;
+  font-size: 1.1rem; /* Slightly larger text */
   transition: background-color 0.3s;
+  gap: 10px; /* Add space between icon and text */
+}
+
+.button-container {
+  display: flex;
+}
+
+.nav-button svg {
+  flex-shrink: 0; /* Prevent the icon from shrinking */
+  font-size: 1.5rem; /* Slightly larger icon */
+}
+
+.nav-button span {
+  flex-grow: 1; /* Ensure text takes available space */
 }
 
 .nav-button:hover {
   background-color: #102f15;
   color: #eaf1b1;
 }
+
 
 /* Styling for the content box */
 .content-box {
@@ -481,6 +499,8 @@
 .booking-form {
   display: flex;
   flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
   gap: 20px;
   padding: 20px;
   background-color: #728c5a;
@@ -488,7 +508,8 @@
   border-radius: 8px;
   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
   color: #eaf1b1;
-  max-width: 80%;
+  width: 50%; /* Full width */
+  height: auto; /* Adjust height dynamically */
   margin: 0 auto;
 }
 
@@ -502,17 +523,103 @@
 }
 
 /* Date picker styling */
-.booking-form .mantine-DatePicker-wrapper {
-  background-color: #eaf1b1;
-  color: #102f15;
-  border: 2px solid #102f15;
-  border-radius: 8px;
-  padding: 8px;
-  font-family: 'Times New Roman', Times, serif;
+.booking-form .mantine-DatePicker-month {
+ align-items: center;
+ margin: auto;
 }
 
-.booking-form .mantine-DatePicker-wrapper input {
+.booking-form .mantine-DatePicker-day {
+  border-radius: 50%; /* Circular days */
+  height: 40px; /* Consistent size */
+  width: 40px; /* Consistent size */
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333; /* Regular text color */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.booking-form .mantine-DatePicker-day[data-selected] {
+  background-color: #102f15;
+  color: #ffffff; /* White text for contrast */
+}
+
+.booking-form .mantine-DatePicker-day:hover {
+  color: #ffffff;
+}
+
+.booking-form .mantine-DatePicker-monthCell {
+  border-radius: 50%;
+}
+.booking-form .mantine-DatePicker-monthCell:hover {
+  background-color: #102f15; /* Hover matches selected color */
+}
+
+.booking-form .mantine-DatePicker-day[data-disabled] {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.booking-form .mantine-DatePicker-weekday {
+  font-size: 12px;
+  color: #eaf1b1; /* Light gray text */
+  text-align: center;
+  font-weight: bold;
+}
+
+.mantine-DatePicker-monthsList {
+  align-items: center;
+  margin: auto;
+  height: 40px; /* Consistent size */
+  width: 40px; /* Consistent size */
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
   color: #102f15;
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s, color 0.3s;
+  
+}
+
+.mantine-DatePicker-monthsListCell {
+  border-radius: 15%;
+}
+
+.mantine-DatePicker-monthsListControl {
+  padding: 5px 10px;
+}
+
+.mantine-DatePicker-monthsListCell:hover {
+  background-color: #102f15; /* Hover matches day picker */
+  color: #ffffff; /* White text for hover */
+}
+
+.mantine-DatePicker-yearsList {
+  align-items: center;
+  margin: auto;
+  height: 40px; /* Consistent size */
+  width: 40px; /* Consistent size */
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #102f15;
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.mantine-DatePicker-yearsListCell {
+  border-radius: 15%;
+}
+
+.mantine-DatePicker-yearsListControl {
+  padding: 5px 10px;
+}
+
+.mantine-DatePicker-yearsListCell:hover {
+  background-color: #102f15; /* Hover matches day picker */
+  color: #ffffff; /* White text for hover */
 }
 
 /* Vehicle select styling */
@@ -578,10 +685,75 @@
 }
 
 /* Styling for form labels */
-.form-label {
-  font-size: 1rem;
-  color: #eaf1b1;
-  margin-bottom: 5px;
-  font-weight: bold;
+
+
+.collection-tracker {
+  color: #102f15;
+}
+
+.mantine-TextInput-wrapper input {
+  background-color: #728c5a; /* Default background */
+  color: #eaf1b1; /* Default text color */
+  border: 2px solid #102f15; /* Default border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 8px; /* Padding */
+  font-family: 'Times New Roman', Times, serif; /* Font family */
+  font-size: 1rem; /* Font size */
+  outline: none; /* Remove default outline */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.mantine-TextInput-wrapper input::placeholder {
+  color: #102f15; /* Placeholder color */
+  opacity: 1; /* Ensure visibility */
+}
+
+/* Change background after input */
+.mantine-TextInput-wrapper input:valid {
+  background-color: #eaf1b1; /* Background after valid input */
+  color: #102f15; /* Change text color for contrast */
+}
+
+.mantine-TextInput-wrapper input:focus {
+  background-color: #eaf1b1; /* Background when focused */
+  color: #102f15; /* Text color when focused */
+  border: 2px solid #728c5a; /* Highlight border on focus */
+}
+
+/* Weekend day styling */
+.weekend {
+  color: red !important; /* Red text */
+  font-weight: bold; /* Make the text bold */
+}
+
+
+/* Fade-in animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out; /* Duration and easing */
+}
+
+/* Fade-out animation */
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out; /* Duration and easing */
+}
+
+/* Keyframes for fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Fully transparent */
+  }
+  to {
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Keyframes for fade-out */
+@keyframes fadeOut {
+  from {
+    opacity: 1; /* Fully visible */
+  }
+  to {
+    opacity: 0; /* Fully transparent */
+  }
 }
 

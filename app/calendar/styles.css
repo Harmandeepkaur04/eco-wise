@@ -75,37 +75,93 @@ body {
   font-family: 'Times New Roman', serif;
   justify-content: center;
   align-items: flex-start; /* Changed to align calendar below the nav bar */
-  min-height: 100vh;
+  min-height: 160vh;
   margin: 0;
   }
 
-/* General styling */
-.calendar-container {
-  margin-top: 0%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 100px;
-  padding: 20px;
-  background-color: #203a14;
-  border-radius: 20px;
-  font-size: 22px;
-}
-
-/* Monthly overview widget */
-.monthly-overview-widget {
-  background-color: #728C5A;
-  color: #102F15;
-  padding: 20px;
-  width: 97%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 25px;
-}
+  .calendar-container {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap; /* Enables responsiveness */
+    justify-content: space-between; /* Distributes the widgets properly */
+    align-items: flex-start; /* Aligns both widgets at the top */
+    width: 100%;
+    max-width: 1500px;
+    padding: 20px;
+    background-color: #203a14;
+    border-radius: 20px;
+    font-size: 22px;
+    gap: 10px; /* Keeps the widgets visually separate */
+    margin: auto; /* Centers the container */
+  }
+  
+  
+  
+  .navigation-icons {
+    background-color: #728C5A;
+    color: #102F15;
+    padding: 20px;
+    width: 33%; /* Adjust width to fit beside the monthly overview */
+    border-radius: 10px;
+    text-align: left;
+    font-size: 20px;
+    margin: 0px; /* Removes unnecessary margins */
+    min-height: 80px;
+    margin-left: 18px;
+    display: flex; /* Added for alignment */
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Space between icons and label */
+  }
+  
+  .icon-buttons {
+    display: flex;
+    gap: 15px; /* Add space between the icons */
+  }
+  
+  .icon-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #102F15;
+  }
+  
+  .icon-buttons button:hover {
+    color: #EBFADC;
+  }
+  
+  .active-icon-label {
+    margin-left: auto;
+    font-size: 20px;
+    text-align: right;
+  }
+  
+  .fade-in-down {
+    animation: fadeInDown 0.5s forwards;
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .monthly-overview-widget {
+    background-color: #728C5A;
+    color: #102F15;
+    padding: 10px;
+    width: 64.3%; /* Adjust width to fit beside the navigation icons */
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0; /* Removes unnecessary margins */
+  }
 
 .calendar-content {
   display: flex;
@@ -128,21 +184,24 @@ body {
   margin-right: -120px; /* Creates the underlap effect */
   margin-left: 20px; /* Centers the left widget better */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for visibility */
+  min-height: 800px;
 }
 
-/* Right-side widget stays on top */
 .calendar-right-side {
   background-color: #EBFADC;
-  width: 75%;
+  width: 100%; /* Same width as the left widget */
+  height: 800px; /* Matches the left widget */
   padding: 30px;
   border-radius: 20px;
   position: relative;
   z-index: 2; /* Ensures it stays above the left widget */
-  margin-left: -80px; /* Slight shift to the right for "box in a box" effect */
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* More prominent shadow for contrast */
-  margin-right: 10px;
+  margin-left: -60px; /* Slight shift to create "box in a box" */
+  margin-right: 1px; /* Ensure right alignment with some breathing space */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Prominent shadow */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
-
 
 .month-date {
   font-size: 36px;
@@ -450,6 +509,18 @@ body {
   animation: fadeOutUp 0.5s forwards;
 }
 
+.note-input-container{
+  margin-bottom: 10px; /* Add space between input fields */
+  padding: 8px;
+  padding-right: 40px;
+  border-radius: 5px;
+  border: 1px solid #728C5A;
+  background-color: #EAF1B1;
+  color: #102F15;
+  font-size: 16px;
+  
+}
+
 .note-input, .event-input-container input, .event-input-container textarea {
   width: 100%;
   margin-bottom: 10px; /* Add space between input fields */
@@ -669,3 +740,124 @@ body {
 }
 
 
+.notes-tab {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.note-features {
+  list-style: none;
+  padding: 0;
+}
+
+.note-features li {
+  margin: 10px 0;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.note-features li:hover {
+  text-decoration: underline;
+  color: #FF6347;
+}
+
+
+.take-note-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.note-input {
+  width: 70%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #728C5A;
+  font-size: 16px;
+}
+
+.save-note-btn {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.save-note-btn:hover {
+  background-color: #5A6C3A;
+}
+
+.saved-notes {
+  margin-top: 20px;
+}
+
+
+/* Hide buttons initially */
+.note-buttons {
+  display: none;
+  gap: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* Show buttons on hover */
+.saved-note:hover .note-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-btn, .delete-btn {
+  background: transparent;
+  border: none;
+  color: #EAF1B1;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+  color: #FF6347;
+}
+
+.calendar-week {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.calendar-week-day {
+  background-color: #EAF1B1;
+  border: 1px solid #728C5A;
+  border-radius: 5px;
+  padding: 10px;
+  width: 13%;
+  text-align: center;
+}
+
+.week-event {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  padding: 5px;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.calendar-day-view {
+  background-color: #EAF1B1;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.day-event {
+  background-color: #728C5A;
+  color: #EAF1B1;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
