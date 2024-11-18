@@ -5,13 +5,14 @@ import { useAudio } from '../Audio'; // Adjust the path as necessary
 import '../recycle-page/styles.css';
 import Game from './game';
 import TreeGame from '../treegame/page';
-import FriendRequestButton from '../friendrequest/page';
+// import FriendRequestButton from '../friendrequest/page';
 import ChatComponent from '../chat/page';
 import Auth from '../components/auth';
 import UserSelector from '../chat/userselector';
 import ChatPage from '../chatpage/page';
 import { useChat } from '../chatprovider/page';
 import { useUser } from '@clerk/nextjs';
+import Chat from '../chatpage/page';
 
 const RecyclePage = () => {
   const { speak, isAudioOn, setIsAudioOn } = useAudio();
@@ -170,13 +171,14 @@ const RecyclePage = () => {
         </section>
       </div>
       <TreeGame />
-      <div>
+      {/* <div>
         <h1>Send a Friend Request</h1>
         <FriendRequestButton senderId={senderId} receiverId={receiverId} />
           <UserSelector onSelectUser={setRecipientEmail} />
           {recipientEmail && <ChatComponent recipientEmail={recipientEmail} />}
           <Auth />
-      </div>
+      </div> */}
+      <Chat/>
     </main>
   );
 };
