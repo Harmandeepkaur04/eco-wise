@@ -1,99 +1,68 @@
-import { useState, useEffect } from 'react';
-import { collection, addDoc, onSnapshot, query, orderBy, where } from 'firebase/firestore';
-import { db } from '../../firebaseConfig';
-import { useUser } from '@clerk/nextjs';
-import './styles.css'; // Import the CSS file
-
-const ChatComponent = ({ recipientEmail, recipientName }) => {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState('');
-  const [loading, setLoading] = useState(true);
-  const { user } = useUser();
-  const [currentRecipient, setCurrentRecipient] = useState(recipientEmail);
-  const [currentRecipientName, setCurrentRecipientName] = useState(recipientName);
-
-  useEffect(() => {
-    if (!user || !currentRecipient) return;
-
-    console.log("User:", user);
-    console.log("Current Recipient Email:", currentRecipient);
-
-    const q = query(
-      collection(db, 'chatMessages'), // Changed collection name to 'chatMessages'
-      where('participants', 'array-contains', user.emailAddresses[0].emailAddress),
-      where('participants', 'array-contains', currentRecipient),
-      orderBy('createdAt')
+import { useState } from 'react';
+ 
+const Chat = () => {
+    const [email, setEmail] = useState('simranjotkaur.bal@edu.sait.ca');
+    const [message, setMessage] = useState('');
+    const [messages, setMessages] = useState([
+        { email: 'simranjotkaur.bal@edu.sait.ca', message: 'Hello' },
+        { email: 'simranjotkaur.bal@edu.sait.ca', message: 'Test' }
+    ]);
+ 
+    const sendMessage = () => {
+        if (message.trim() !== "") {
+            setMessages([...messages, { email, message }]);
+            setMessage('');
+        } else {
+            alert("Please enter a message.");
+        }
+    };
+ 
+    return (
+        <div className="chat-container">
+            <h2>Email Chat Component</h2>
+            <label htmlFor="email">Select Email:</label>
+            <select id="email" value={email} onChange={(e) => setEmail(e.target.value)}>
+                <option value="simranjotkaur.bal@edu.sait.ca">simranjotkaur.bal@edu.sait.ca</option>
+                <option value="biancadominique.detorres@edu.sait.ca">biancadominique.detorres@edu.sait.ca</option>
+                <option value="viclei.pasco@edu.sait.ca">viclei.pasco@edu.sait.ca</option>
+            </select>
+            <div className="message-box">
+                <label htmlFor="message">Message:</label>
+                <textarea
+                    id="message"
+                    rows="4"
+                    cols="50"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                ></textarea>
+            </div>
+            <button onClick={sendMessage}>Send</button>
+            <div id="display" className="message-box">
+                {messages.map((msg, index) => (
+                    <div key={index} className="message">
+                        <strong>To: {msg.email}</strong><br />
+                        {msg.message}
+                    </div>
+                ))}
+            </div>
+            <style jsx>{`
+                .chat-container {
+                    max-width: 600px;
+                    margin: auto;
+                    border: 1px solid #ccc;
+                    padding: 20px;
+                    border-radius: 10px;
+                }
+                .message-box {
+                    margin-top: 20px;
+                }
+                .message {
+                    border-bottom: 1px solid #eee;
+                    padding: 10px 0;
+                }
+            `}</style>
+        </div>
     );
-
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const messagesData = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      console.log("Fetched Messages:", messagesData);
-      setMessages(messagesData);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, [user, currentRecipient]);
-
-  const handleSendMessage = async (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
-    console.log("Send button clicked"); // Log to confirm function is called
-    if (newMessage.trim() && user) {
-      try {
-        console.log("Sending message:", newMessage);
-        await addDoc(collection(db, 'chatMessages'), { // Changed collection name to 'chatMessages'
-          text: newMessage,
-          createdAt: new Date(),
-          participants: [user.emailAddresses[0].emailAddress, currentRecipient],
-          sender: user.emailAddresses[0].emailAddress,
-        });
-        setNewMessage('');
-        console.log("Message sent successfully");
-      } catch (error) {
-        console.error("Error sending message: ", error);
-      }
-    } else {
-      console.log("Message is empty or user is not defined");
-    }
-  };
-
-  const extractName = (email) => {
-    return email.split('@')[0];
-  };
-
-  const handleRecipientChange = (newRecipientEmail, newRecipientName) => {
-    setCurrentRecipient(newRecipientEmail);
-    setCurrentRecipientName(newRecipientName);
-    setMessages([]);
-    setLoading(true);
-  };
-
-  return (
-    <div className="chatContainer">
-      <div className="chatHeader">
-        <h2>Chat with {currentRecipientName}</h2>
-      </div>
-      <div className="messagesContainer">
-        {loading ? <p>Loading messages...</p> : messages.map(message => (
-          <div key={message.id} className="message">
-            <p><strong>{message.sender === user.emailAddresses[0].emailAddress ? 'You' : extractName(message.sender)}:</strong> {message.text}</p>
-          </div>
-        ))}
-      </div>
-      <form className="inputContainer" onSubmit={handleSendMessage}>
-        <input
-          type="text"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          className="input"
-        />
-        <button type="submit" className="sendButton">Send</button>
-      </form>
-    </div>
-  );
 };
-
-export default ChatComponent;
+ 
+export default Chat;
