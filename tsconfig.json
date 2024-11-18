@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "app/calendar/page.js", "app/calendar/page.js", "app/calendar/page.js"  ],
   "exclude": [
     "node_modules"
   ]
