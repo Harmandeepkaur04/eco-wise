@@ -10,8 +10,13 @@ import { DatePicker } from '@mantine/dates';
 import GoogleMaps from "../components/GoogleMaps";
 import Drawers from "../components/Drawer";
 import ShepardDrawers from "../components/ShepardDrawer";
+import { loadStripe } from '@stripe/stripe-js';
+import '@mantine/dates/styles.css';
 import { useAudio } from '../Audio'; 
 import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
+
 
 const elements = [
   { Holiday: "New Year's Day", Date: 'Jan 1', East: 'CLOSED', Spyhill: 'CLOSED', Shepard: 'CLOSED' },
@@ -33,12 +38,31 @@ const elements = [
 
 export default function Disposal() {
 
-  const [pickupDate, setPickupDate] = useState(null);
-const [vehicle, setVehicle] = useState(null);
-const [address, setAddress] = useState("");
+const [pickupDate, setPickupDate] = useState<Date | null>(null);
+const [address, setAddress] = useState<string>('');
+
+const handlePayment = async () => {
+  if (!pickupDate || !address) {
+    alert('Please fill out all fields before booking.');
+    return;
+  }
+
+  const response = await fetch('/api/create-checkout-session', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({}),
+  });
+
+  const { sessionId } = await response.json();
+
+  const stripe = await stripePromise;
+  if (stripe) {
+    await stripe.redirectToCheckout({ sessionId });
+  }
+};
 
 const handleBooking = () => {
-  if (!pickupDate || !vehicle || !address) {
+  if (!pickupDate || !address) {
     alert("Please fill out all fields before booking.");
   } else {
     alert("Pickup appointment booked!");
@@ -62,7 +86,7 @@ const handleBooking = () => {
                 <Drawers /><br />
                 <Text component="p">Hours of Operation (April - October):</Text>
                 <ul>
-                  <li>Monday: 6 am - 5 pm</li>
+                  <li>Monday: 6 am - 5 pm...</li>
                   <li>Tuesday: 6 am - 5 pm</li>
                   <li>Wednesday: 6 am - 5 pm</li>
                   <li>Thursday: 6 am - 5 pm</li>
@@ -157,35 +181,41 @@ const handleBooking = () => {
           </ScrollArea>
         );
         case 'booking':
-          return (
-            <ScrollArea className="scrollable-section">
-  <Box className="booking-form">
-    <Title order={3}>Book a Pickup Appointment</Title>
+        return (
+          <Box className="booking-form">
+  <Title order={3}>Book a Pickup Appointment</Title>
 
-    <label className="form-label" htmlFor="pickup-date">Select Pickup Date</label>
-    <DatePicker id="pickup-date" value={pickupDate} onChange={setPickupDate} />
-
-    <label className="form-label" htmlFor="vehicle">Select Vehicle</label>
-    <Select
-      id="vehicle"
-      placeholder="Choose a vehicle"
-      data={[
-        { value: 'van', label: 'Van' },
-        { value: 'pickup_truck', label: 'Pickup Truck' },
-        { value: 'truck', label: 'Truck' },
-      ]}
-      value={vehicle}
-      onChange={setVehicle}
+  <label className="form-label" htmlFor="pickup-date">Select Pickup Date</label>
+  <DatePicker 
+    id="pickup-date"
+    value={pickupDate}
+    onChange={setPickupDate}
     />
 
-    <label className="form-label" htmlFor="pickup-address">Pickup Address</label>
-    <TextInput id="pickup-address" placeholder="Enter your address" value={address} onChange={(e) => setAddress(e.currentTarget.value)} />
+  <label className="form-label" htmlFor="pickup-address">Pickup Address</label>
+  <TextInput
+    id="pickup-address"
+    placeholder="Enter your address"
+    value={address}
+    onChange={(e) => setAddress(e.currentTarget.value)}
+  />
 
-    <Button className="book-button" onClick={handleBooking}>Book Pickup</Button>
-  </Box>
-</ScrollArea>
+  <Button className="book-button" onClick={handlePayment}>Book & Pay</Button>
+</Box>
 
-          );
+
+        );
+          case 'collection-tracker':
+        return (
+          <ScrollArea className="scrollable-section">
+            <Box className="collection-tracker">
+              <Title order={3}>Collection Tracker</Title>
+              <Text>This section tracks your waste collection and recycling progress.</Text>
+              <Text>View collection dates, types of waste collected, and your recycling stats.</Text>
+              {/* Add more detailed components for tracking as needed */}
+            </Box>
+          </ScrollArea>
+        );
       default:
         return null;
     }
@@ -239,6 +269,7 @@ return (
         <Button className="nav-button" onClick={() => setActiveContent('information')}>Information</Button>
         <Button className="nav-button" onClick={() => setActiveContent('holiday-schedule')}>Holiday Schedule</Button>
         <Button className="nav-button" onClick={() => setActiveContent('booking')}>Book Pickup</Button>
+        <Button className="nav-button" onClick={() => setActiveContent('collection-tracker')}>Collection Tracker</Button>
         <Button onClick={toggleAudio} className="audio-button">
           {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
         </Button>

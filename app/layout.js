@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { AudioProvider } from './Audio'; // Adjust the path as necessary
 import './globals.css';
 import ThemeToggle, { useTheme } from "./darkmode/page";
+import ChatProvider from './chatprovider/page';
 
 
 const geistSans = localFont({
@@ -25,7 +26,7 @@ const geistMono = localFont({
 // Navbar component
 const Navbar = () => {
   return (
-    <nav style={{ display: 'flex', justifyContent: 'space-around', padding: '10px', backgroundColor: '#f0f0f0' }}>
+    <nav style={{ display: 'flex', justifyContent: 'space-around', padding: '10px', backgroundColor: '#EBFADC' }}>
       <Link href="/">Home</Link>
       <Link href="/recycle-page">Recycle</Link>
       <Link href="/rewards-page">Rewards</Link>
@@ -40,6 +41,7 @@ const Navbar = () => {
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
+      <ChatProvider>
     <html lang="en">
       <body>
       <header className="header-container">
@@ -63,6 +65,7 @@ export default function RootLayout({ children }) {
           </SignedIn>
       </body>
     </html>
+    </ChatProvider>
     </ClerkProvider>
   );
 }
