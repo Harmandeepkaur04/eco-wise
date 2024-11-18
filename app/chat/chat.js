@@ -5,7 +5,6 @@ import { useUser } from '@clerk/nextjs';
 import './styles.css'; // Import the CSS file
 
 const ChatComponent = ({ recipientEmail, recipientName }) => {
-  // State variables to manage messages, new message input, loading state, and user info
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -14,21 +13,18 @@ const ChatComponent = ({ recipientEmail, recipientName }) => {
   const [currentRecipientName, setCurrentRecipientName] = useState(recipientName);
 
   useEffect(() => {
-    // Exit early if user or recipient is not available
     if (!user || !currentRecipient) return;
 
     console.log("User:", user);
     console.log("Current Recipient Email:", currentRecipient);
 
-    // Firestore query to fetch messages involving the current user and recipient, ordered by creation time
     const q = query(
-      collection(db, 'messages'),
+      collection(db, 'chatMessages'), // Changed collection name to 'chatMessages'
       where('participants', 'array-contains', user.emailAddresses[0].emailAddress),
       where('participants', 'array-contains', currentRecipient),
       orderBy('createdAt')
     );
 
-    // Real-time listener for the query
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const messagesData = snapshot.docs.map(doc => ({
         id: doc.id,
@@ -39,34 +35,36 @@ const ChatComponent = ({ recipientEmail, recipientName }) => {
       setLoading(false);
     });
 
-    // Clean up the listener when the component unmounts or dependencies change
     return () => unsubscribe();
   }, [user, currentRecipient]);
 
-  const handleSendMessage = async () => {
-    // Send a new message to Firestore if the message is not empty and user is available
+  const handleSendMessage = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    console.log("Send button clicked"); // Log to confirm function is called
     if (newMessage.trim() && user) {
       try {
-        await addDoc(collection(db, 'messages'), {
+        console.log("Sending message:", newMessage);
+        await addDoc(collection(db, 'chatMessages'), { // Changed collection name to 'chatMessages'
           text: newMessage,
           createdAt: new Date(),
           participants: [user.emailAddresses[0].emailAddress, currentRecipient],
           sender: user.emailAddresses[0].emailAddress,
         });
-        setNewMessage(''); // Clear the input field after sending
+        setNewMessage('');
+        console.log("Message sent successfully");
       } catch (error) {
         console.error("Error sending message: ", error);
       }
+    } else {
+      console.log("Message is empty or user is not defined");
     }
   };
 
   const extractName = (email) => {
-    // Extract the username from an email address
     return email.split('@')[0];
   };
 
   const handleRecipientChange = (newRecipientEmail, newRecipientName) => {
-    // Update the recipient and reset the message state
     setCurrentRecipient(newRecipientEmail);
     setCurrentRecipientName(newRecipientName);
     setMessages([]);
@@ -85,15 +83,15 @@ const ChatComponent = ({ recipientEmail, recipientName }) => {
           </div>
         ))}
       </div>
-      <div className="inputContainer">
+      <form className="inputContainer" onSubmit={handleSendMessage}>
         <input
           type="text"
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           className="input"
         />
-        <button onClick={handleSendMessage} className="sendButton">Send</button>
-      </div>
+        <button type="submit" className="sendButton">Send</button>
+      </form>
     </div>
   );
 };
