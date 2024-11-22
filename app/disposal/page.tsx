@@ -42,6 +42,10 @@ export default function Disposal() {
 
 const [pickupDate, setPickupDate] = useState<Date | null>(null);
 const [address, setAddress] = useState<string>('');
+const [eventDetails, setEventDetails] = useState<{ pickupDate: string | null; address: string | null }>({
+  pickupDate: null,
+  address: null,
+});
 
 const handlePayment = async () => {
   if (!pickupDate || !address) {
@@ -52,25 +56,35 @@ const handlePayment = async () => {
   const response = await fetch('/api/create-checkout-session', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({}),
+    body: JSON.stringify({
+      pickupDate: pickupDate.toISOString(),
+      address,
+    }),
   });
 
   const { sessionId } = await response.json();
 
   const stripe = await stripePromise;
   if (stripe) {
-    await stripe.redirectToCheckout({ sessionId });
+    const { error } = await stripe.redirectToCheckout({ sessionId });
+    if (!error) {
+      // Redirect to the disposal page with query params
+      const encodedPickupDate = encodeURIComponent(pickupDate.toISOString());
+      const encodedAddress = encodeURIComponent(address);
+      window.location.href = `/disposal?pickupDate=${encodedPickupDate}&address=${encodedAddress}`;
+    }
   }
 };
 
-const handleBooking = () => {
-  if (!pickupDate || !address) {
-    alert("Please fill out all fields before booking.");
-  } else {
-    alert("Pickup appointment booked!");
-    // Proceed with booking logic
+
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const pickupDate = params.get('pickupDate');
+  const address = params.get('address');
+  if (pickupDate && address) {
+    setEventDetails({ pickupDate, address });
   }
-};
+}, []);
 
 
   const [activeContent, setActiveContent] = useState('locations');
@@ -196,27 +210,22 @@ const handleBooking = () => {
         case 'booking':
         return (
           <Box className={`booking-form ${fadeState}`}>
-  <Title order={3}>Book a Pickup Appointment</Title>
-
-  <label className="form-label" htmlFor="pickup-date">Select Pickup Date</label>
-  <DatePicker 
-    id="pickup-date"
-    value={pickupDate}
-    onChange={setPickupDate}
-    />
-
-  <label className="form-label" htmlFor="pickup-address">Pickup Address</label>
-  <TextInput
-    id="pickup-address"
-    placeholder="Enter your address"
-    value={address}
-    onChange={(e) => setAddress(e.currentTarget.value)}
-  />
-
-  <Button className="book-button" onClick={handlePayment}>Book & Pay</Button>
-</Box>
-
-
+            <Title order={3}>Book a Pickup Appointment</Title>
+            <label className="form-label" htmlFor="pickup-date">Select Pickup Date</label>
+            <DatePicker
+              id="pickup-date"
+              value={pickupDate}
+              onChange={setPickupDate}
+            />
+            <label className="form-label" htmlFor="pickup-address">Pickup Address</label>
+            <TextInput
+              id="pickup-address"
+              placeholder="Enter your address"
+              value={address}
+              onChange={(e) => setAddress(e.currentTarget.value)}
+            />
+            <Button className="book-button" onClick={handlePayment}>Book & Pay</Button>
+          </Box>
         );
           
       default:
@@ -282,6 +291,29 @@ return (
         {renderContent()}
       </Box>
     </Box>
+    <Box className="events-container">
+  <Title order={3}>Your Pickup Details</Title>
+  {eventDetails.pickupDate && eventDetails.address ? (
+    <Box>
+      <Text>
+        <strong>Pickup Date:</strong> {new Date(eventDetails.pickupDate).toLocaleDateString()}
+      </Text>
+      <Text>
+        <strong>Address:</strong> {eventDetails.address}
+      </Text>
+      <Button
+        className="delete-button"
+        onClick={() => setEventDetails({ pickupDate: null, address: null })}
+      >
+        Delete
+      </Button>
+    </Box>
+  ) : (
+    <Text>No pickup scheduled yet.</Text>
+  )}
+</Box>
+
+
   </Container>
 );
 

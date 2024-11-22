@@ -731,9 +731,9 @@ body {
 }
 
 /* Weekend day styling */
-.weekend {
-  color: red !important; /* Red text */
-  font-weight: bold; /* Make the text bold */
+
+.mantine-DatePicker-day[data-weekend] {
+  color: #d63939; /* Red for weekends */
 }
 
 
@@ -767,3 +767,59 @@ body {
   }
 }
 
+/* Event Container Styling */
+.events-container {
+  margin-top: 30px;
+  padding: 20px;
+  border: 3px solid #102f15;
+  border-radius: 8px;
+  background-color: #728c5a;
+  color: #eaf1b1;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  font-family: 'Times New Roman', Times, serif;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.events-container h3 {
+  font-size: 1.8rem;
+  background-color: #102f15;
+  color: #eaf1b1;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.events-container p {
+  font-size: 1.2rem;
+  color: #eaf1b1;
+  margin: 10px 0;
+}
+
+.events-container p strong {
+  color: #102f15;
+}
+
+/* Delete Button Styling */
+.delete-button {
+  background-color: #ff6b6b; /* Red for delete action */
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d9534f; /* Darker red on hover */
+}
+
+.delete-button:active {
+  background-color: #c9302c; /* Even darker red on click */
+}
