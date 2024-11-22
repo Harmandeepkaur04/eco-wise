@@ -23,67 +23,96 @@ export default function Drawers() {
   const [residentialOpened, { open: openResidential, close: closeResidential }] = useDisclosure(false);
   const [commercialOpened, { open: openCommercial, close: closeCommercial }] = useDisclosure(false);
   
-  const [materials, setMaterials] = useState<Material[]>([]); // State to hold materials
-  const [loading, setLoading] = useState(true); // State to manage loading
-  const [searchValue, setSearchValue] = useState(''); // State to track the input in Autocomplete
-  const [filteredMaterials, setFilteredMaterials] = useState<Material[]>([]); // State to hold filtered materials
+  const [residentialMaterials, setResidentialMaterials] = useState<Material[]>([]);
+  const [commercialMaterials, setCommercialMaterials] = useState<Material[]>([]);
 
-  // Fetch materials from Firestore
+  const [loadingResidential, setLoadingResidential] = useState(true);
+  const [loadingCommercial, setLoadingCommercial] = useState(true);
+
+  const [residentialSearchValue, setResidentialSearchValue] = useState('');
+  const [commercialSearchValue, setCommercialSearchValue] = useState('');
+
+  const [filteredResidentialMaterials, setFilteredResidentialMaterials] = useState<Material[]>([]);
+  const [filteredCommercialMaterials, setFilteredCommercialMaterials] = useState<Material[]>([]);
+
+  // Fetch residential materials
   useEffect(() => {
-    const fetchMaterials = async () => {
+    const fetchResidentialMaterials = async () => {
       try {
-        const querySnapshot = await getDocs(collection(db, 'materials')); // Fetch materials from 'materials' collection
+        const querySnapshot = await getDocs(collection(db, 'materials'));
         const fetchedMaterials = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-        })) as Material[]; // defines the result as an array of Material
-        setMaterials(fetchedMaterials); // Update state with fetched materials
-        setFilteredMaterials(fetchedMaterials); // Initially show all materials
-        setLoading(false); // Stop loading
+        })) as Material[];
+        setResidentialMaterials(fetchedMaterials);
+        setFilteredResidentialMaterials(fetchedMaterials);
+        setLoadingResidential(false);
       } catch (error) {
-        console.error("Error fetching materials:", error);
-        setLoading(false); // Stop loading on error
+        console.error("Error fetching residential materials:", error);
+        setLoadingResidential(false);
       }
     };
 
-    fetchMaterials(); // Call the function when the component mounts
+    fetchResidentialMaterials();
   }, []);
 
-  // Function to handle search input change and filter materials based on items and material name
-  const handleSearchChange = (value: string) => {
-    setSearchValue(value);
+  // Fetch commercial materials
+  useEffect(() => {
+    const fetchCommercialMaterials = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'commercial')); // Fetch data from 'commercial' collection
+        const fetchedMaterials = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as Material[];
+        setCommercialMaterials(fetchedMaterials);
+        setFilteredCommercialMaterials(fetchedMaterials);
+        setLoadingCommercial(false);
+      } catch (error) {
+        console.error("Error fetching commercial materials:", error);
+        setLoadingCommercial(false);
+      }
+    };
 
+    fetchCommercialMaterials();
+  }, []);
+
+  // Handle residential search
+  const handleResidentialSearchChange = (value: string) => {
+    setResidentialSearchValue(value);
     if (value === '') {
-      // If search is empty, show all materials
-      setFilteredMaterials(materials);
+      setFilteredResidentialMaterials(residentialMaterials);
     } else {
-      // Filter materials where the search query matches either the material name or any of the items
-      const filtered = materials.filter((material) =>
-        material.name.toLowerCase().includes(value.toLowerCase()) || // Check if the material name matches the query
+      const filtered = residentialMaterials.filter((material) =>
+        material.name.toLowerCase().includes(value.toLowerCase()) ||
         material.items.some(item =>
-          item.toLowerCase().includes(value.toLowerCase()) // Check if any of the items match the query
+          item.toLowerCase().includes(value.toLowerCase())
         )
-      ).map(material => {
-        // If the query matches a material name, show all items; otherwise, show only matching items
-        if (material.name.toLowerCase().includes(value.toLowerCase())) {
-          return material; // Show the full material document with all items
-        } else {
-          // If searching for an item, only show the matching item
-          const filteredItems = material.items.filter(item =>
-            item.toLowerCase().includes(value.toLowerCase())
-          );
-          return { ...material, items: filteredItems }; // Return only the matching items
-        }
-      });
+      );
+      setFilteredResidentialMaterials(filtered);
+    }
+  };
 
-      setFilteredMaterials(filtered);
+  // Handle commercial search
+  const handleCommercialSearchChange = (value: string) => {
+    setCommercialSearchValue(value);
+    if (value === '') {
+      setFilteredCommercialMaterials(commercialMaterials);
+    } else {
+      const filtered = commercialMaterials.filter((material) =>
+        material.name.toLowerCase().includes(value.toLowerCase()) ||
+        material.items.some(item =>
+          item.toLowerCase().includes(value.toLowerCase())
+        )
+      );
+      setFilteredCommercialMaterials(filtered);
     }
   };
 
   // Logic to close one drawer when the other opens
   const handleOpenResidential = () => {
-    closeCommercial(); // Close the commercial drawer if it's open
-    openResidential();  // Open the residential drawer
+    closeCommercial();
+    openResidential();
   };
 
   const handleOpenCommercial = () => {
@@ -93,6 +122,7 @@ export default function Drawers() {
 
   return (
     <div>
+      {/* Residential Drawer */}
       <Box>
         <Drawer
           className="drawer"
@@ -105,17 +135,15 @@ export default function Drawers() {
         >
           <Box className="drawer-content">
             <Title className='drawer-title'>Residential Waste</Title><br />
-            
-            {/* Autocomplete to search through material names and items */}
             <Autocomplete
               label="Search Materials"
               placeholder="Enter material or item name"
               data={[
-                ...materials.map(material => material.name),  // Include material names in the dropdown
-                ...materials.flatMap(material => material.items), // Include all items in the dropdown
-              ]} 
-              value={searchValue}
-              onChange={handleSearchChange} // Call handleSearchChange when the user types
+                ...residentialMaterials.map(material => material.name),
+                ...residentialMaterials.flatMap(material => material.items),
+              ]}
+              value={residentialSearchValue}
+              onChange={handleResidentialSearchChange}
               classNames={{
                 root: 'autocomplete',
                 dropdown: 'autocomplete-dropdown',
@@ -123,28 +151,20 @@ export default function Drawers() {
               } as Record<string, string>}
             />
             <br />
-            {loading ? (
+            {loadingResidential ? (
               <Loader />
             ) : (
               <div className="materials-grid">
-                {filteredMaterials.map((material) => (
+                {filteredResidentialMaterials.map((material) => (
                   <div key={material.id} className='material-div'>
-                    {material.image ? <img src={material.image} alt={material.name} /> : <Text>No image available</Text>} 
+                    {material.image ? <img src={material.image} alt={material.name} /> : <Text>No image available</Text>}
                     <Text className='materials'>{material.name}</Text>
                     <List className='item-list'>
                       {material.items.map((item, index) => (
                         <List.Item key={index}>{item}</List.Item>
-                      ))}                                     
+                      ))}
                     </List>
-                  </div> // images used:
-                          // https://www.vecteezy.com/png/12896182-stack-of-tires-wheel
-                          // https://www.vecteezy.com/png/41643148-ai-generated-cleaning-service-bucket-with-sponges-chemicals-bottle
-                          // https://www.vecteezy.com/png/8550261-shield-virus-health-and-medicine-icon-3d-illustration
-                          // https://www.vecteezy.com/png/20047210-content-creator-png-graphic-clipart-design
-                          // https://www.vecteezy.com/png/46933645-spraying-bottle-on-transparent-background
-                          // https://www.vecteezy.com/png/48387099-tussock-of-grass-on-a-transparent-background
-                          
-                          // Asked ChatGPT how to connect drawer content to the Database.
+                  </div>
                 ))}
               </div>
             )}
@@ -153,6 +173,7 @@ export default function Drawers() {
         <Button className="button" onClick={handleOpenResidential}>Residential Waste</Button>
       </Box>
 
+      {/* Commercial Drawer */}
       <Box>
         <Drawer
           className="drawer"
@@ -164,7 +185,40 @@ export default function Drawers() {
           classNames={{ overlay: 'drawer-overlay' }}
         >
           <Box className="drawer-content">
-            <Title>Commercial Waste</Title>
+            <Title className='drawer-title'>Commercial Waste</Title><br />
+            <Autocomplete
+              label="Search Materials"
+              placeholder="Enter material or item name"
+              data={[
+                ...commercialMaterials.map(material => material.name),
+                ...commercialMaterials.flatMap(material => material.items),
+              ]}
+              value={commercialSearchValue}
+              onChange={handleCommercialSearchChange}
+              classNames={{
+                root: 'autocomplete',
+                dropdown: 'autocomplete-dropdown',
+                item: 'autocomplete-item',
+              } as Record<string, string>}
+            />
+            <br />
+            {loadingCommercial ? (
+              <Loader />
+            ) : (
+              <div className="materials-grid">
+                {filteredCommercialMaterials.map((material) => (
+                  <div key={material.id} className='material-div'>
+                    {material.image ? <img src={material.image} alt={material.name} /> : <Text>No image available</Text>}
+                    <Text className='materials'>{material.name}</Text>
+                    <List className='item-list'>
+                      {material.items.map((item, index) => (
+                        <List.Item key={index}>{item}</List.Item>
+                      ))}
+                    </List>
+                  </div>
+                ))}
+              </div>
+            )}
           </Box>
         </Drawer>
         <Button className="button" onClick={handleOpenCommercial}>Commercial Waste</Button>

@@ -38,6 +38,7 @@ const elements = [
 ];
 
 export default function Disposal() {
+  
 
 const [pickupDate, setPickupDate] = useState<Date | null>(null);
 const [address, setAddress] = useState<string>('');
@@ -217,17 +218,7 @@ const handleBooking = () => {
 
 
         );
-          case 'collection-tracker':
-        return (
-          <ScrollArea className="scrollable-section">
-            <Box className="collection-tracker">
-              <Title order={3}>Collection Tracker</Title>
-              <Text>This section tracks your waste collection and recycling progress.</Text>
-              <Text>View collection dates, types of waste collected, and your recycling stats.</Text>
-              {/* Add more detailed components for tracking as needed */}
-            </Box>
-          </ScrollArea>
-        );
+          
       default:
         return null;
     }
@@ -281,7 +272,6 @@ return (
         <Button className="nav-button" onClick={() => setActiveContent('information')}><BiFile />Information</Button>
         <Button className="nav-button" onClick={() => setActiveContent('holiday-schedule')}><BiCalendarEvent />Holiday Schedule</Button>
         <Button className="nav-button" onClick={() => setActiveContent('booking')}><BiBook />Book Pickup</Button>
-        <Button className="nav-button" onClick={() => setActiveContent('collection-tracker')}>Collection Tracker</Button>
         <Button onClick={toggleAudio} className="audio-button">
           {isAudioOn ? 'Mute Audio' : 'Unmute Audio'}
         </Button>

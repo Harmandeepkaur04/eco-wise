@@ -1,5 +1,14 @@
 
 /* Styling for the main container */
+:root {
+--background-color: #ffffff;
+--team-bg: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -7,6 +16,7 @@
   padding: 20px;
   box-sizing: border-box;
   font-family: 'Times New Roman', Times, serif;
+  background-color: #ffffff;
 }
 
 .main-title {
