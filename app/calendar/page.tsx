@@ -24,8 +24,9 @@ const Calendar: React.FC = () => {
   }, [isAudioOn]);
 
   const handleAudioToggle = () => {
-    setIsAudioOn((prev) => !prev);
-  };
+    setIsAudioOn((prev: boolean) => !prev);
+};
+
 
   const daysOfWeek = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
   const today = new Date();
@@ -146,16 +147,17 @@ const handleEditNote = (index: number) => {
             }
           };
           
-          const handleDelete = (index) => {
+          const handleDelete = (index: number) => {
             const updatedNotes = savedNotes.filter((_, i) => i !== index);
             setSavedNotes(updatedNotes);
-          };
-          
-          const handleEdit = (index) => {
+        };
+        
+        const handleEdit = (index: number) => {
             const noteToEdit = savedNotes[index];
             setNotes(noteToEdit);
             handleDelete(index);
-          };
+        };
+        
 
           const weekDays = Array.from({ length: 7 }, (_, i) => {
             const date = new Date();
