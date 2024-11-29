@@ -720,14 +720,14 @@ body {
 
 /* Change background after input */
 .mantine-TextInput-wrapper input:valid {
-  background-color: #eaf1b1; /* Background after valid input */
-  color: #102f15; /* Change text color for contrast */
+  background-color: #eaf1b1;
+  color: #102f15;
 }
 
 .mantine-TextInput-wrapper input:focus {
-  background-color: #eaf1b1; /* Background when focused */
-  color: #102f15; /* Text color when focused */
-  border: 2px solid #728c5a; /* Highlight border on focus */
+  background-color: #eaf1b1; 
+  color: #102f15;
+  border: 2px solid #728c5a; 
 }
 
 /* Weekend day styling */
@@ -739,12 +739,12 @@ body {
 
 /* Fade-in animation */
 .fade-in {
-  animation: fadeIn 0.5s ease-in-out; /* Duration and easing */
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 /* Fade-out animation */
 .fade-out {
-  animation: fadeOut 0.5s ease-in-out; /* Duration and easing */
+  animation: fadeOut 0.5s ease-in-out;
 }
 
 /* Keyframes for fade-in */
@@ -753,17 +753,17 @@ body {
     opacity: 0;
   }
   to {
-    opacity: 1; /* Fully visible */
+    opacity: 1;
   }
 }
 
 /* Keyframes for fade-out */
 @keyframes fadeOut {
   from {
-    opacity: 1; /* Fully visible */
+    opacity: 1;
   }
   to {
-    opacity: 0; /* Fully transparent */
+    opacity: 0;
   }
 }
 
