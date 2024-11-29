@@ -721,7 +721,7 @@ body {
 /* Change background after input */
 .mantine-TextInput-wrapper input:valid {
   background-color: #eaf1b1; /* Background after valid input */
-  color: #102f15; /* Change text color for contrast */
+  color: #102f15;
 }
 
 .mantine-TextInput-wrapper input:focus {
