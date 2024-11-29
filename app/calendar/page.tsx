@@ -116,6 +116,7 @@ const handleEditEvent = (index: number) => {
   setShowCreateEventModal(true); // Open the modal for editing
 };
 
+ // Ensure eventToEdit has all required properties
 // Function to handle deleting a note
 const handleDeleteNote = (index: number) => {
   const updatedNotes = savedNotes.filter((_, i) => i !== index);
