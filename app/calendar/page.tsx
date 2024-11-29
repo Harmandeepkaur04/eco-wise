@@ -103,6 +103,7 @@ const handleDeleteEvent = (index: number) => {
 const handleEditEvent = (index: number) => {
   const eventToEdit = events[index];
 
+   // Ensure eventToEdit has all required properties
   // Ensure eventToEdit has all required properties
   const updatedEventToEdit = {
     title: eventToEdit.title || '',
