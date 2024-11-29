@@ -744,7 +744,7 @@ body {
 
 /* Fade-out animation */
 .fade-out {
-  animation: fadeOut 0.5s ease-in-out; /* Duration and easing */
+  animation: fadeOut 0.5s ease-in-out;
 }
 
 /* Keyframes for fade-in */
