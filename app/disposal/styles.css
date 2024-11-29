@@ -733,7 +733,7 @@ body {
 /* Weekend day styling */
 
 .mantine-DatePicker-day[data-weekend] {
-  color: #d63939; /* Red for weekends */
+  color: #d63939;
 }
 
 
@@ -750,7 +750,7 @@ body {
 /* Keyframes for fade-in */
 @keyframes fadeIn {
   from {
-    opacity: 0; /* Fully transparent */
+    opacity: 0;
   }
   to {
     opacity: 1; /* Fully visible */
