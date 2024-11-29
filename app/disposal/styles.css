@@ -720,7 +720,7 @@ body {
 
 /* Change background after input */
 .mantine-TextInput-wrapper input:valid {
-  background-color: #eaf1b1; /* Background after valid input */
+  background-color: #eaf1b1;
   color: #102f15;
 }
 
