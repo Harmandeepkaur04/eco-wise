@@ -727,7 +727,7 @@ body {
 .mantine-TextInput-wrapper input:focus {
   background-color: #eaf1b1; /* Background when focused */
   color: #102f15; /* Text color when focused */
-  border: 2px solid #728c5a; /* Highlight border on focus */
+  border: 2px solid #728c5a; 
 }
 
 /* Weekend day styling */
