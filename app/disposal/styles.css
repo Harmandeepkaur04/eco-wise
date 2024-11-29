@@ -760,7 +760,7 @@ body {
 /* Keyframes for fade-out */
 @keyframes fadeOut {
   from {
-    opacity: 1; /* Fully visible */
+    opacity: 1;
   }
   to {
     opacity: 0; /* Fully transparent */
