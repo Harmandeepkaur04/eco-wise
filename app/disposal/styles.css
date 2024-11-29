@@ -733,7 +733,7 @@ body {
 /* Weekend day styling */
 
 .mantine-DatePicker-day[data-weekend] {
-  color: #d63939; /* Red for weekends */
+  color: #d63939;
 }
 
 

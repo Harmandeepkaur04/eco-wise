@@ -16,6 +16,7 @@ import { BiBook, BiCompass, BiFile, BiCalendarEvent } from "react-icons/bi";
 import { useAudio } from '../Audio'; 
 import {FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
+
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
 
