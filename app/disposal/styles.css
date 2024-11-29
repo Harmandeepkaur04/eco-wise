@@ -763,7 +763,7 @@ body {
     opacity: 1;
   }
   to {
-    opacity: 0; /* Fully transparent */
+    opacity: 0;
   }
 }
 
