@@ -7,9 +7,14 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
 });
 
 export async function POST(req: NextRequest) {
-console.log('Received request for creating a Stripe session');
+  console.log('Received request for creating a Stripe session');
   try {
     const body = await req.json();
+    const { pickupDate, address } = body;
+
+    if (!pickupDate || !address) {
+      return NextResponse.json({ error: 'Pickup date and address are required.' }, { status: 400 });
+    }
 
     // Create a Checkout session
     const session = await stripe.checkout.sessions.create({
@@ -28,8 +33,8 @@ console.log('Received request for creating a Stripe session');
         },
       ],
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/success`,
-      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/booking`,
+      success_url: `${process.env.NEXT_PUBLIC_DOMAIN}/disposal?pickupDate=${encodeURIComponent(pickupDate)}&address=${encodeURIComponent(address)}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_DOMAIN}/disposal`,
     });
 
     return NextResponse.json({ sessionId: session.id });
